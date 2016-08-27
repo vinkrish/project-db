@@ -23,15 +23,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `term_remark`
+-- Table structure for table `move_student`
 --
 
-CREATE TABLE IF NOT EXISTS `term_remark` (
+CREATE TABLE IF NOT EXISTS `move_student` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) DEFAULT NULL,
-  `Term` int(11) NOT NULL,
-  `Remark` text NOT NULL,
+  `StudentId` bigint(20) NOT NULL,
+  `StudentName` varchar(100) DEFAULT NULL,
+  `SecIdFrom` bigint(20) NOT NULL,
+  `SecIdTo` bigint(20) NOT NULL,
+  `SectionFrom` varchar(100) DEFAULT NULL,
+  `SectionTo` varchar(100) DEFAULT NULL,
+  `Status` varchar(20) DEFAULT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
