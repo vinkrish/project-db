@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 07:47 AM
+-- Generation Time: Sep 01, 2016 at 09:56 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `SubjectId` bigint(20) NOT NULL DEFAULT '0',
   `Type` varchar(10) NOT NULL DEFAULT 'Daily',
   `Session` int(11) NOT NULL DEFAULT '0',
-  `DateAttendance` varchar(20) NOT NULL,
+  `DateAttendance` date NOT NULL,
   `TypeOfLeave` varchar(10) NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2016 at 09:57 AM
+-- Generation Time: Sep 01, 2016 at 10:10 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,19 +23,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `homework`
+-- Table structure for table `sliptest_mark`
 --
 
-CREATE TABLE IF NOT EXISTS `homework` (
+CREATE TABLE IF NOT EXISTS `sliptest_mark` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SectionId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) DEFAULT NULL,
-  `HomeworkMessage` longtext NOT NULL,
-  `HomeworkDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `SliptestId` bigint(20) NOT NULL,
+  `StudentId` bigint(20) NOT NULL,
+  `Mark` float DEFAULT '0',
+  `Grade` varchar(10) DEFAULT NULL,
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
