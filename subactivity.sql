@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 09:20 AM
+-- Generation Time: Sep 08, 2016 at 03:37 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,13 +30,13 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ActivityId` bigint(20) NOT NULL,
   `SubActivityName` varchar(100) NOT NULL,
-  `MaximumMark` int(11) NOT NULL,
+  `MaximumMark` float NOT NULL,
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `SubActivityAvg` float DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

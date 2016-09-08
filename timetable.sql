@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 07:52 AM
+-- Generation Time: Sep 01, 2016 at 12:11 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS `timetable` (
   `DayOfWeek` varchar(10) NOT NULL,
   `PeriodNo` int(11) NOT NULL,
   `SubjectId` bigint(20) DEFAULT NULL,
-  `TimingFrom` varchar(10) DEFAULT '""',
-  `TimingTo` varchar(10) DEFAULT '""',
+  `TimingFrom` time DEFAULT '00:00:00',
+  `TimingTo` time DEFAULT '00:00:00',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
