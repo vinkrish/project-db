@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2016 at 03:37 PM
+-- Generation Time: Sep 09, 2016 at 11:47 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `SubActivityAvg` float DEFAULT '0',
+  `Orders` int(11) DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 07:49 AM
+-- Generation Time: Sep 09, 2016 at 11:47 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -34,9 +34,10 @@ CREATE TABLE IF NOT EXISTS `exam_subject` (
   `MaximumMark` float NOT NULL,
   `FailMark` float NOT NULL,
   `Percentage` float NOT NULL,
+  `Orders` int(11) DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
