@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
-  `SubjectId` bigint(100) NOT NULL,
+  `SubjectId` bigint(20) NOT NULL,
   `ActivityName` varchar(100) NOT NULL,
   `MaximumMark` float NOT NULL,
   `Weightage` float NOT NULL,
