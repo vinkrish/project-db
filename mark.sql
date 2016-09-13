@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 09:25 AM
+-- Generation Time: Sep 13, 2016 at 12:30 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `mark` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ExamId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
+  `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float DEFAULT '0',
   `Grade` varchar(10) DEFAULT NULL,

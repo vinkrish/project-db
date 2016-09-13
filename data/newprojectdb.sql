@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 08, 2016 at 03:35 PM
+-- Generation Time: Sep 13, 2016 at 12:32 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,12 +30,13 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
-  `SubjectId` bigint(100) NOT NULL,
+  `SubjectId` bigint(20) NOT NULL,
   `ActivityName` varchar(100) NOT NULL,
   `MaximumMark` float NOT NULL,
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `ActivityAvg` float NOT NULL DEFAULT '0',
+  `Orders` int(11) DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
@@ -44,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `activity` (
 -- Dumping data for table `activity`
 --
 
-INSERT INTO `activity` (`Id`, `SectionId`, `ExamId`, `SubjectId`, `ActivityName`, `MaximumMark`, `Weightage`, `Calculation`, `ActivityAvg`, `DateTimeRecordInserted`) VALUES
-(4, 5252, 2, 5336, 'act edited', 12, 25, 2, 0, '2016-09-07 09:15:26');
+INSERT INTO `activity` (`Id`, `SectionId`, `ExamId`, `SubjectId`, `ActivityName`, `MaximumMark`, `Weightage`, `Calculation`, `ActivityAvg`, `Orders`, `DateTimeRecordInserted`) VALUES
+(4, 5252, 2, 5336, 'act edited', 12, 25, 2, 0, NULL, '2016-09-07 09:15:26');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `authorization` (
   `User` varchar(50) NOT NULL,
   `Token` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=81 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=86 ;
 
 --
 -- Dumping data for table `authorization`
@@ -197,7 +198,12 @@ INSERT INTO `authorization` (`Id`, `User`, `Token`) VALUES
 (77, 'achs', '7l9fhol0mkdhh6b5gjdtret1bk'),
 (78, 'achs', '7f8r521dt4mf4llapri7m2dev9'),
 (79, 'achs', 'fis7f7evvrsmcoe9olkuju4u9e'),
-(80, 'achs', '6t8g77saniuavehf9b7snf4ml');
+(80, 'achs', '6t8g77saniuavehf9b7snf4ml'),
+(81, '', '3t4gkjml9j4uf7df6smlp7kshb'),
+(82, '', 'mu8j8hd07f7qbef6t85i0d6ns2'),
+(83, 'achs', 'iemvsbgh1vmak0sindu0o323p7'),
+(84, 'achs', 'h5ilmrbkpgsfbj6nbicaboppi0'),
+(85, 'achs', '7go1c9g567fc3gkrkc140j85na');
 
 -- --------------------------------------------------------
 
@@ -569,6 +575,7 @@ CREATE TABLE IF NOT EXISTS `exam_subject` (
   `MaximumMark` float NOT NULL,
   `FailMark` float NOT NULL,
   `Percentage` float NOT NULL,
+  `Orders` int(11) DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
@@ -577,12 +584,12 @@ CREATE TABLE IF NOT EXISTS `exam_subject` (
 -- Dumping data for table `exam_subject`
 --
 
-INSERT INTO `exam_subject` (`Id`, `ExamId`, `SubjectId`, `SubjectName`, `MaximumMark`, `FailMark`, `Percentage`, `DateTimeRecordInserted`) VALUES
-(1, 2, 5336, 'ENGLISH (ORAL)', 100, 40, 0, '2016-08-26 08:30:46'),
-(6, 2, 5343, 'E.V.S. (WRITING)', 22, 22, 22, '2016-08-26 10:10:30'),
-(7, 2, 5340, 'NUMBER WORK (ORAL)', 111, 1, 11, '2016-08-26 10:12:40'),
-(8, 3, 5342, 'E.V.S. (ORAL)', 50, 30, 30, '2016-08-28 10:47:43'),
-(9, 3, 5343, 'E.V.S. (WRITING)', 100, 30, 70, '2016-08-28 10:48:01');
+INSERT INTO `exam_subject` (`Id`, `ExamId`, `SubjectId`, `SubjectName`, `MaximumMark`, `FailMark`, `Percentage`, `Orders`, `DateTimeRecordInserted`) VALUES
+(1, 2, 5336, 'ENGLISH (ORAL)', 100, 40, 0, NULL, '2016-08-26 08:30:46'),
+(6, 2, 5343, 'E.V.S. (WRITING)', 22, 22, 22, NULL, '2016-08-26 10:10:30'),
+(7, 2, 5340, 'NUMBER WORK (ORAL)', 111, 1, 11, NULL, '2016-08-26 10:12:40'),
+(8, 3, 5342, 'E.V.S. (ORAL)', 50, 30, 30, NULL, '2016-08-28 10:47:43'),
+(9, 3, 5343, 'E.V.S. (WRITING)', 100, 30, 70, NULL, '2016-08-28 10:48:01');
 
 -- --------------------------------------------------------
 
@@ -662,6 +669,7 @@ CREATE TABLE IF NOT EXISTS `mark` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ExamId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
+  `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float DEFAULT '0',
   `Grade` varchar(10) DEFAULT NULL,
@@ -3627,6 +3635,7 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `SubActivityAvg` float DEFAULT '0',
+  `Orders` int(11) DEFAULT '0',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
@@ -3635,8 +3644,8 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
 -- Dumping data for table `subactivity`
 --
 
-INSERT INTO `subactivity` (`Id`, `ActivityId`, `SubActivityName`, `MaximumMark`, `Weightage`, `Calculation`, `SubActivityAvg`, `DateTimeRecordInserted`) VALUES
-(2, 4, 'sub act edited', 25, 50, -1, 0, '2016-09-07 13:02:12');
+INSERT INTO `subactivity` (`Id`, `ActivityId`, `SubActivityName`, `MaximumMark`, `Weightage`, `Calculation`, `SubActivityAvg`, `Orders`, `DateTimeRecordInserted`) VALUES
+(2, 4, 'sub act edited', 25, 50, -1, 0, NULL, '2016-09-07 13:02:12');
 
 -- --------------------------------------------------------
 
@@ -3877,10 +3886,18 @@ CREATE TABLE IF NOT EXISTS `subject_student` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
+  `StudentIds` varchar(30000) NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `subject_student`
+--
+
+INSERT INTO `subject_student` (`Id`, `SectionId`, `SubjectId`, `StudentIds`, `DateTimeRecordInserted`) VALUES
+(1, 5252, 5336, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-13 09:29:14'),
+(2, 5252, 5337, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-13 09:30:39');
 
 -- --------------------------------------------------------
 
