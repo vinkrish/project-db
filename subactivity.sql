@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2016 at 11:47 AM
+-- Generation Time: Sep 16, 2016 at 12:45 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ActivityId` bigint(20) NOT NULL,
   `SubActivityName` varchar(100) NOT NULL,
+  `Type` varchar(10) DEFAULT 'Mark',
   `MaximumMark` float NOT NULL,
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
