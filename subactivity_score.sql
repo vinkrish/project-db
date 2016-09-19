@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 09:42 AM
+-- Generation Time: Sep 19, 2016 at 07:46 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `subactivity_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SubActivityId` bigint(20) DEFAULT NULL,
+  `SubActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
-  `Mark` float DEFAULT '0',
-  `Grade` varchar(10) DEFAULT NULL,
+  `Mark` float NOT NULL DEFAULT '0',
+  `Grade` varchar(10) NOT NULL DEFAULT '',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

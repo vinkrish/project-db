@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 09:41 AM
+-- Generation Time: Sep 19, 2016 at 07:45 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `activity_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
-  `Mark` float DEFAULT '0',
-  `Grade` varchar(10) DEFAULT NULL,
+  `Mark` float NOT NULL DEFAULT '0',
+  `Grade` varchar(10) NOT NULL DEFAULT '',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

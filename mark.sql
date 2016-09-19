@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2016 at 12:30 PM
+-- Generation Time: Sep 19, 2016 at 07:45 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS `mark` (
   `SubjectId` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
-  `Mark` float DEFAULT '0',
-  `Grade` varchar(10) DEFAULT NULL,
+  `Mark` float NOT NULL DEFAULT '0',
+  `Grade` varchar(10) NOT NULL DEFAULT '',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
