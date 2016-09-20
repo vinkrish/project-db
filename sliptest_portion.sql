@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 10:03 AM
+-- Generation Time: Sep 20, 2016 at 11:51 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `sliptest_portion` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SliptestId` bigint(20) NOT NULL,
   `PortionId` bigint(20) NOT NULL,
-  `Portion` text NOT NULL,
+  `PortionName` text NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
