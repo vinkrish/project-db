@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2016 at 10:10 AM
+-- Generation Time: Sep 20, 2016 at 11:56 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sliptest_mark`
+-- Table structure for table `sliptest_score`
 --
 
-CREATE TABLE IF NOT EXISTS `sliptest_mark` (
+CREATE TABLE IF NOT EXISTS `sliptest_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SliptestId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
