@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2016 at 09:40 AM
+-- Generation Time: Sep 22, 2016 at 03:40 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS `sliptest` (
   `Average` float NOT NULL,
   `TestDate` date NOT NULL,
   `SubmissionDate` date NOT NULL,
-  `Weightage` float NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
