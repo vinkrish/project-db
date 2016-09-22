@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 09:55 AM
+-- Generation Time: Sep 22, 2016 at 09:40 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,7 +30,8 @@ CREATE TABLE IF NOT EXISTS `sliptest` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
-  `SlipTestName` varchar(100) NOT NULL,
+  `SliptestName` varchar(100) NOT NULL,
+  `PortionIds` varchar(500) NOT NULL,
   `ExtraPortion` text NOT NULL,
   `MaximumMark` float NOT NULL,
   `Average` float NOT NULL,
