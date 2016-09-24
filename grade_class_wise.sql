@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 10:09 AM
+-- Generation Time: Sep 24, 2016 at 07:27 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `grade_class_wise` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ClassId` bigint(20) NOT NULL,
-  `Grade` varchar(10) NOT NULL,
+  `Grade` varchar(20) NOT NULL DEFAULT '',
   `MarkFrom` int(11) NOT NULL,
-  `MarkTo` int(1) NOT NULL,
+  `MarkTo` int(11) NOT NULL,
   `GradePoint` int(11) NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
