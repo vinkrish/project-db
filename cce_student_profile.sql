@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2016 at 11:19 AM
+-- Generation Time: Sep 25, 2016 at 04:56 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `cce_student_profile` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
-  `StudentName` varchar(200) NOT NULL,
   `Height` float NOT NULL,
   `Weight` float NOT NULL,
   `BloodGroup` varchar(20) NOT NULL,
