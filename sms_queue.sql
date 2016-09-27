@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 27, 2016 at 01:37 PM
+-- Generation Time: Sep 27, 2016 at 03:28 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `queue_transaction`
+-- Table structure for table `sms_queue`
 --
 
-CREATE TABLE IF NOT EXISTS `queue_transaction` (
+CREATE TABLE IF NOT EXISTS `sms_queue` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SchoolId` bigint(20) NOT NULL,
   `Phone` varchar(15) NOT NULL,
