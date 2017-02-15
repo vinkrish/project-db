@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2016 at 04:19 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Feb 14, 2017 at 04:22 PM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `newprojectdb`
+-- Database: `unnamedprojectdb`
 --
 
 -- --------------------------------------------------------
@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `activity`
 --
 
-CREATE TABLE IF NOT EXISTS `activity` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `activity` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
@@ -38,9 +38,8 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `Calculation` int(11) NOT NULL,
   `ActivityAvg` float NOT NULL DEFAULT '0',
   `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activity`
@@ -48,7 +47,8 @@ CREATE TABLE IF NOT EXISTS `activity` (
 
 INSERT INTO `activity` (`Id`, `SectionId`, `ExamId`, `SubjectId`, `ActivityName`, `Type`, `MaximumMark`, `Weightage`, `Calculation`, `ActivityAvg`, `Orders`, `DateTimeRecordInserted`) VALUES
 (4, 5252, 2, 5336, 'act edited', '', 12, 25, 2, 0, 0, '2016-09-07 09:15:26'),
-(5, 5252, 2, 5336, 'act 2nd', 'null', 11, 100, 1, 0, 0, '2016-09-19 09:34:33');
+(5, 5252, 2, 5336, 'act 2nd', 'null', 11, 100, 1, 0, 0, '2016-09-19 09:34:33'),
+(6, 5252, 2, 5336, 'asfd ', 'null', 12, 12, 1, 0, 0, '2017-01-01 10:44:21');
 
 -- --------------------------------------------------------
 
@@ -56,15 +56,14 @@ INSERT INTO `activity` (`Id`, `SectionId`, `ExamId`, `SubjectId`, `ActivityName`
 -- Table structure for table `activity_score`
 --
 
-CREATE TABLE IF NOT EXISTS `activity_score` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `activity_score` (
+  `Id` bigint(20) NOT NULL,
   `ActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
   `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activity_score`
@@ -152,8 +151,8 @@ INSERT INTO `activity_score` (`Id`, `ActivityId`, `StudentId`, `Mark`, `Grade`, 
 -- Table structure for table `attendance`
 --
 
-CREATE TABLE IF NOT EXISTS `attendance` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `attendance` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL DEFAULT '0',
   `StudentName` varchar(100) DEFAULT NULL,
@@ -162,9 +161,8 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `Session` int(11) NOT NULL DEFAULT '0',
   `DateAttendance` date NOT NULL,
   `TypeOfLeave` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attendance`
@@ -181,7 +179,14 @@ INSERT INTO `attendance` (`Id`, `SectionId`, `StudentId`, `StudentName`, `Subjec
 (14, 5258, 494111, 'HAMSA', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
 (15, 5258, 494112, 'JANANI.B.S', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
 (16, 5258, 494113, 'KASHINI. R', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
-(20, 5258, 494114, 'LASYA GOWDA. M', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:55:42');
+(20, 5258, 494114, 'LASYA GOWDA. M', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:55:42'),
+(21, 5252, 494011, 'STACEY BLESSINA. A.M', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:18:47'),
+(22, 5255, 494297, 'ANISHMITHA. S', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:23:44'),
+(23, 5255, 494298, 'GNANA JENIFER. A', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:23:44'),
+(24, 5258, 494111, 'HAMSA', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
+(25, 5258, 494112, 'JANANI.B.S', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
+(26, 5258, 494113, 'KASHINI. R', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
+(27, 5255, 494299, 'GOBIKA SHREE', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:25:21');
 
 -- --------------------------------------------------------
 
@@ -189,12 +194,11 @@ INSERT INTO `attendance` (`Id`, `SectionId`, `StudentId`, `StudentName`, `Subjec
 -- Table structure for table `authorization`
 --
 
-CREATE TABLE IF NOT EXISTS `authorization` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `authorization` (
+  `Id` bigint(20) NOT NULL,
   `User` varchar(50) NOT NULL,
-  `Token` varchar(100) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+  `Token` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `authorization`
@@ -300,59 +304,43 @@ INSERT INTO `authorization` (`Id`, `User`, `Token`) VALUES
 (97, 'achs', 'ijvsc7u7kqo8p1mfu0o3vc7tl0'),
 (98, 'achs', 'eg3sul9u5veri1cqphe2mhg03'),
 (99, 'achs', 'rm382kbu087bs89tccodjpk1am'),
-(100, 'achs', 'qqdtteb78vav63galc955cgvtu');
+(100, 'achs', 'qqdtteb78vav63galc955cgvtu'),
+(101, 'achs', 'g62go0tlnhn3b9pqri0b262snv'),
+(102, 'achs', '39svvart8ngpb8rm0m9gcpedqe'),
+(103, 'achs', '80q7vgh8nfa8q79j67869fht2h'),
+(104, 'achs', 'udhslgeaiap5k9jn4r5mfal2sd'),
+(105, 'achs', 'k43tn5u3qps5tv86m57oktvkjd'),
+(106, 'achs', 'm2voe0l74rj45sjpkou6vhk4re'),
+(107, 'achs', '8lavvrrcj7afi75e15r2s1p71g'),
+(108, 'achs', 'pumfbda34arcfphve2mhd6o04'),
+(109, 'achs', 'be69rr2bou2b37mdsd2gsnsv3'),
+(110, 'achs', 'lk1tk8lh53n30u676jn3blu2mo'),
+(111, 'achs', 'idqf704cu1mdqh7d4o58s3q4v3'),
+(112, 'achs', '4ki0mhvmpn73hvqmttt4lcdld4'),
+(113, 'achs', 'a173afjssetpihu9sg6qafa9mc'),
+(114, 'achs', 'v1il2lvcqeqetqmpeq76n04vge'),
+(115, 'achs', 'qtr9scnmem5ntvuscab6n8trl7'),
+(116, 'achs', 'tp4r8j11hs42gel25qnq4u89c'),
+(117, 'achs', 'kevsnhji6lt4b3q918p9014u76'),
+(118, '', '1usos5f3qdlebsgqll55scqeku'),
+(119, '', 'cdjqvcbgtabl4eqho1ah62ppqd'),
+(120, '', 'cmf9d0r607ga3ffp4rkb36lrd5'),
+(121, 'achs', '22a3s2o0p1d3arregj4o3b8qks'),
+(122, 'achs', 'bmo07lbv3cuban6vkq23bdgkkl'),
+(123, '', 'dkm5ro6vpelkup9o1afp7v2sjb'),
+(124, '', '2gmb7lp1kd3r3474h44hk1hcnv'),
+(125, '', '60mpe9uim6isshtifto6uh7s07'),
+(126, 'achs', '194c0le6s4a19oi5cual3o8rac'),
+(127, 'achs', 'pcrjc44mtefo51ov9elqvqdhff');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cce_aspect_primary`
+-- Table structure for table `cce_aspect_grade`
 --
 
-CREATE TABLE IF NOT EXISTS `cce_aspect_primary` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `AspectName` varchar(200) NOT NULL,
-  `TopicId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_coscholastic`
---
-
-CREATE TABLE IF NOT EXISTS `cce_coscholastic` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SchoolId` bigint(20) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_coscholastic_class`
---
-
-CREATE TABLE IF NOT EXISTS `cce_coscholastic_class` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `CoScholasticId` bigint(20) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `ClassName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_cosch_aspect_grade`
---
-
-CREATE TABLE IF NOT EXISTS `cce_cosch_aspect_grade` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cce_aspect_grade` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `AspectId` bigint(20) NOT NULL,
@@ -360,10 +348,151 @@ CREATE TABLE IF NOT EXISTS `cce_cosch_aspect_grade` (
   `Term` int(11) NOT NULL,
   `Grade` varchar(20) NOT NULL,
   `Value` int(11) NOT NULL,
-  `Description` varchar(200) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `Description` varchar(200) NOT NULL DEFAULT '',
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_aspect_grade`
+--
+
+INSERT INTO `cce_aspect_grade` (`Id`, `SectionId`, `StudentId`, `AspectId`, `Type`, `Term`, `Grade`, `Value`, `Description`, `DateTimeRecordInserted`) VALUES
+(1, 5252, 494012, 1, 0, 1, 'A', 0, '', '2017-01-13 09:16:24'),
+(2, 5252, 494013, 1, 0, 1, 'B', 0, '', '2017-01-13 09:16:24'),
+(3, 5252, 494014, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(4, 5252, 494015, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(5, 5252, 494016, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(6, 5252, 494017, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(7, 5252, 494019, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(8, 5252, 494020, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(9, 5252, 494021, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(10, 5252, 494022, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(11, 5252, 494023, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(12, 5252, 494024, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(13, 5252, 494025, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(14, 5252, 494026, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(15, 5252, 494027, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(16, 5252, 494028, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(17, 5252, 494029, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(18, 5252, 494011, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(19, 5252, 494030, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(20, 5252, 494031, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(21, 5252, 494032, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(22, 5252, 494033, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(23, 5252, 494034, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(24, 5252, 494035, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(25, 5252, 494036, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(26, 5252, 494037, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(27, 5252, 494038, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(28, 5252, 494039, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(29, 5252, 494040, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(30, 5252, 494041, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(31, 5252, 494042, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(32, 5252, 494043, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(33, 5252, 494044, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(34, 5252, 494045, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(35, 5252, 494046, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(36, 5252, 494047, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(37, 5252, 494048, 1, 0, 1, '', 0, '', '2017-01-13 09:16:24'),
+(38, 5253, 494049, 1, 0, 1, 'D', 0, '', '2017-01-13 09:18:50'),
+(39, 5253, 494050, 1, 0, 1, 'E', 0, '', '2017-01-13 09:18:50'),
+(40, 5253, 494051, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(41, 5253, 494052, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(42, 5253, 494053, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(43, 5253, 494054, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(44, 5253, 494055, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(45, 5253, 494056, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(46, 5253, 494057, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(47, 5253, 494058, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(48, 5253, 494059, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(49, 5253, 494060, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(50, 5253, 494061, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(51, 5253, 494062, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(52, 5253, 494063, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(53, 5253, 494064, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(54, 5253, 494065, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(55, 5253, 494066, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(56, 5253, 494067, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(57, 5253, 494068, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(58, 5253, 494069, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(59, 5253, 494070, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(60, 5253, 494071, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(61, 5253, 494072, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(62, 5253, 494073, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(63, 5253, 494074, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(64, 5253, 494075, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(65, 5253, 494076, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(66, 5253, 494077, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(67, 5253, 494078, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(68, 5253, 494079, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(69, 5253, 494080, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(70, 5253, 494081, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(71, 5253, 494082, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(72, 5253, 494083, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(73, 5253, 494084, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
+(74, 5253, 494085, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cce_aspect_primary`
+--
+
+CREATE TABLE `cce_aspect_primary` (
+  `Id` bigint(20) NOT NULL,
+  `Name` varchar(200) NOT NULL,
+  `TopicId` bigint(20) NOT NULL,
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_aspect_primary`
+--
+
+INSERT INTO `cce_aspect_primary` (`Id`, `Name`, `TopicId`, `DateTimeRecordInserted`) VALUES
+(1, 'aspect primary test edited', 2, '2017-01-01 10:45:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cce_coscholastic`
+--
+
+CREATE TABLE `cce_coscholastic` (
+  `Id` bigint(20) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_coscholastic`
+--
+
+INSERT INTO `cce_coscholastic` (`Id`, `SchoolId`, `Name`, `DateTimeRecordInserted`) VALUES
+(1, 107, 'co co sch', '2016-12-10 10:23:53'),
+(2, 107, 'new coscho edited', '2016-12-10 10:24:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cce_coscholastic_class`
+--
+
+CREATE TABLE `cce_coscholastic_class` (
+  `Id` bigint(20) NOT NULL,
+  `CoScholasticId` bigint(20) NOT NULL,
+  `ClassId` bigint(20) NOT NULL,
+  `ClassName` varchar(100) NOT NULL,
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_coscholastic_class`
+--
+
+INSERT INTO `cce_coscholastic_class` (`Id`, `CoScholasticId`, `ClassId`, `ClassName`, `DateTimeRecordInserted`) VALUES
+(1, 1, 1582, 'VLKG', '2016-12-10 15:50:11');
 
 -- --------------------------------------------------------
 
@@ -371,13 +500,20 @@ CREATE TABLE IF NOT EXISTS `cce_cosch_aspect_grade` (
 -- Table structure for table `cce_section_heading`
 --
 
-CREATE TABLE IF NOT EXISTS `cce_section_heading` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SectionHeadingName` varchar(200) NOT NULL,
+CREATE TABLE `cce_section_heading` (
+  `Id` bigint(20) NOT NULL,
+  `Name` varchar(200) NOT NULL,
   `CoScholasticId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_section_heading`
+--
+
+INSERT INTO `cce_section_heading` (`Id`, `Name`, `CoScholasticId`, `DateTimeRecordInserted`) VALUES
+(1, 'section heading demo', 1, '2016-12-12 08:58:56'),
+(2, '2nd heading', 1, '2017-01-01 10:58:58');
 
 -- --------------------------------------------------------
 
@@ -385,8 +521,8 @@ CREATE TABLE IF NOT EXISTS `cce_section_heading` (
 -- Table structure for table `cce_student_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `cce_student_profile` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cce_student_profile` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Term` int(11) NOT NULL DEFAULT '1',
@@ -402,9 +538,51 @@ CREATE TABLE IF NOT EXISTS `cce_student_profile` (
   `VisionRight` varchar(100) NOT NULL,
   `Ailment` varchar(100) NOT NULL,
   `OralHygiene` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_student_profile`
+--
+
+INSERT INTO `cce_student_profile` (`Id`, `SectionId`, `StudentId`, `Term`, `FromDate`, `ToDate`, `TotalDays`, `DaysAttended`, `Height`, `Weight`, `BloodGroup`, `HealthStatus`, `VisionLeft`, `VisionRight`, `Ailment`, `OralHygiene`, `DateTimeRecordInserted`) VALUES
+(1, 5252, 494012, 1, '2016-06-06', '2016-12-17', 135, 111, 12, 23, '0', '', '', '', '', '', '2016-12-09 15:03:18'),
+(2, 5252, 494013, 1, '2016-06-06', '2016-12-17', 135, 123, 23, 34, 'a', '', '', '', '', '', '2016-12-09 15:03:18'),
+(3, 5252, 494014, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(4, 5252, 494015, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(5, 5252, 494016, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(6, 5252, 494017, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(7, 5252, 494019, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(8, 5252, 494020, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(9, 5252, 494021, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(10, 5252, 494022, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(11, 5252, 494023, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(12, 5252, 494024, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(13, 5252, 494025, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(14, 5252, 494026, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(15, 5252, 494027, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(16, 5252, 494028, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(17, 5252, 494029, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(18, 5252, 494011, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(19, 5252, 494030, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(20, 5252, 494031, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(21, 5252, 494032, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(22, 5252, 494033, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(23, 5252, 494034, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(24, 5252, 494035, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(25, 5252, 494036, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(26, 5252, 494037, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(27, 5252, 494038, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(28, 5252, 494039, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(29, 5252, 494040, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(30, 5252, 494041, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(31, 5252, 494042, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(32, 5252, 494043, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(33, 5252, 494044, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(34, 5252, 494045, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(35, 5252, 494046, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(36, 5252, 494047, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
+(37, 5252, 494048, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18');
 
 -- --------------------------------------------------------
 
@@ -412,14 +590,25 @@ CREATE TABLE IF NOT EXISTS `cce_student_profile` (
 -- Table structure for table `cce_topic_grade`
 --
 
-CREATE TABLE IF NOT EXISTS `cce_topic_grade` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cce_topic_grade` (
+  `Id` bigint(20) NOT NULL,
   `TopicId` bigint(20) NOT NULL,
   `Grade` varchar(20) NOT NULL,
   `Value` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_topic_grade`
+--
+
+INSERT INTO `cce_topic_grade` (`Id`, `TopicId`, `Grade`, `Value`, `DateTimeRecordInserted`) VALUES
+(2, 2, 'A', 10, '2017-01-10 15:45:02'),
+(3, 2, 'B', 9, '2017-01-10 15:45:16'),
+(4, 2, 'C', 8, '2017-01-10 15:45:25'),
+(5, 2, 'D', 7, '2017-01-10 15:45:33'),
+(6, 2, 'E', 6, '2017-01-10 15:45:45'),
+(7, 2, 'F', 5, '2017-01-10 15:45:53');
 
 -- --------------------------------------------------------
 
@@ -427,14 +616,22 @@ CREATE TABLE IF NOT EXISTS `cce_topic_grade` (
 -- Table structure for table `cce_topic_primary`
 --
 
-CREATE TABLE IF NOT EXISTS `cce_topic_primary` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `TopicName` varchar(200) NOT NULL,
+CREATE TABLE `cce_topic_primary` (
+  `Id` bigint(20) NOT NULL,
+  `Name` varchar(200) NOT NULL,
   `SectionHeadingId` bigint(20) NOT NULL,
   `Evaluation` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cce_topic_primary`
+--
+
+INSERT INTO `cce_topic_primary` (`Id`, `Name`, `SectionHeadingId`, `Evaluation`, `DateTimeRecordInserted`) VALUES
+(2, 'topic primary', 1, 0, '2016-12-13 11:51:30'),
+(4, 'name fixes', 1, 0, '2017-01-01 10:31:30'),
+(5, '2nd topic ', 2, 0, '2017-01-01 11:01:31');
 
 -- --------------------------------------------------------
 
@@ -442,14 +639,13 @@ CREATE TABLE IF NOT EXISTS `cce_topic_primary` (
 -- Table structure for table `class`
 --
 
-CREATE TABLE IF NOT EXISTS `class` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `class` (
+  `Id` bigint(20) NOT NULL,
   `ClassName` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
   `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1684 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
@@ -472,7 +668,7 @@ INSERT INTO `class` (`Id`, `ClassName`, `SchoolId`, `AttendanceType`, `DateTimeR
 (1595, 'X', 107, 'Daily', '2016-07-25 14:29:24'),
 (1681, 'XI', 107, 'Daily', '2016-07-25 14:29:24'),
 (1682, 'XII', 107, 'Daily', '2016-07-25 14:29:24'),
-(1683, 'Test class', 107, 'Period', '2016-08-28 09:13:08');
+(1683, 'Class edited', 107, 'Period', '2016-08-28 09:13:08');
 
 -- --------------------------------------------------------
 
@@ -480,14 +676,13 @@ INSERT INTO `class` (`Id`, `ClassName`, `SchoolId`, `AttendanceType`, `DateTimeR
 -- Table structure for table `class_subject_group`
 --
 
-CREATE TABLE IF NOT EXISTS `class_subject_group` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `class_subject_group` (
+  `Id` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_subject_group`
@@ -638,16 +833,15 @@ INSERT INTO `class_subject_group` (`Id`, `ClassId`, `SubjectGroupId`, `SubjectGr
 -- Table structure for table `exam`
 --
 
-CREATE TABLE IF NOT EXISTS `exam` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exam` (
+  `Id` bigint(20) NOT NULL,
   `ExamName` varchar(100) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `Term` int(11) NOT NULL DEFAULT '1',
   `Type` varchar(10) NOT NULL DEFAULT 'Mark',
   `Percentage` float NOT NULL DEFAULT '100',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam`
@@ -656,7 +850,8 @@ CREATE TABLE IF NOT EXISTS `exam` (
 INSERT INTO `exam` (`Id`, `ExamName`, `ClassId`, `Term`, `Type`, `Percentage`, `DateTimeRecordInserted`) VALUES
 (2, 'asdf', 1582, 1, 'Grade', 100, '2016-08-21 06:39:18'),
 (3, 'test exam', 1683, 1, 'Mark', 100, '2016-08-28 10:46:32'),
-(4, 'ghndg', 1582, 2, 'Mark', 100, '2016-09-19 09:06:03');
+(4, 'ghndg', 1582, 2, 'Mark', 100, '2016-09-19 09:06:03'),
+(5, 'text back', 1582, 2, 'Mark', 100, '2017-01-05 08:26:57');
 
 -- --------------------------------------------------------
 
@@ -664,8 +859,8 @@ INSERT INTO `exam` (`Id`, `ExamName`, `ClassId`, `Term`, `Type`, `Percentage`, `
 -- Table structure for table `exam_subject`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_subject` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exam_subject` (
+  `Id` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) NOT NULL,
@@ -674,9 +869,8 @@ CREATE TABLE IF NOT EXISTS `exam_subject` (
   `FailMark` float NOT NULL,
   `Percentage` float NOT NULL,
   `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam_subject`
@@ -696,14 +890,13 @@ INSERT INTO `exam_subject` (`Id`, `ExamId`, `SubjectId`, `SubjectName`, `Type`, 
 -- Table structure for table `exam_subject_group`
 --
 
-CREATE TABLE IF NOT EXISTS `exam_subject_group` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `exam_subject_group` (
+  `Id` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam_subject_group`
@@ -713,8 +906,7 @@ INSERT INTO `exam_subject_group` (`Id`, `ExamId`, `SubjectGroupId`, `SubjectGrou
 (11, 2, 537, 'ENGLISH ORAL', '2016-08-23 11:15:20'),
 (12, 2, 539, 'NUMBER WORK (ORAL)', '2016-08-23 11:15:30'),
 (13, 2, 542, 'E.V.S. (WRITING)', '2016-08-23 11:15:37'),
-(14, 3, 1296, 'test', '2016-08-28 10:46:56'),
-(15, 2, 1297, 'partition', '2016-09-14 08:12:28');
+(14, 3, 1296, 'test', '2016-08-28 10:46:56');
 
 -- --------------------------------------------------------
 
@@ -722,16 +914,15 @@ INSERT INTO `exam_subject_group` (`Id`, `ExamId`, `SubjectGroupId`, `SubjectGrou
 -- Table structure for table `grade_class_wise`
 --
 
-CREATE TABLE IF NOT EXISTS `grade_class_wise` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `grade_class_wise` (
+  `Id` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `Grade` varchar(20) NOT NULL DEFAULT '',
   `MarkFrom` int(11) NOT NULL,
   `MarkTo` int(11) NOT NULL,
   `GradePoint` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_class_wise`
@@ -742,7 +933,9 @@ INSERT INTO `grade_class_wise` (`Id`, `ClassId`, `Grade`, `MarkFrom`, `MarkTo`, 
 (2, 1582, 'A', 81, 90, 9, '2016-09-25 05:38:38'),
 (3, 1582, 'B+', 71, 80, 8, '2016-09-25 06:39:41'),
 (4, 1582, 'B', 61, 70, 7, '2016-09-25 06:41:37'),
-(5, 1582, 'C+', 51, 60, 6, '2016-09-25 06:42:24');
+(5, 1582, 'C+', 51, 60, 6, '2016-09-25 06:42:24'),
+(6, 1583, 'A', 91, 100, 10, '2017-01-05 10:03:19'),
+(7, 1583, 'B', 81, 90, 9, '2017-01-05 10:05:04');
 
 -- --------------------------------------------------------
 
@@ -750,16 +943,15 @@ INSERT INTO `grade_class_wise` (`Id`, `ClassId`, `Grade`, `MarkFrom`, `MarkTo`, 
 -- Table structure for table `homework`
 --
 
-CREATE TABLE IF NOT EXISTS `homework` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `homework` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
   `HomeworkMessage` longtext NOT NULL,
   `HomeworkDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `homework`
@@ -768,7 +960,9 @@ CREATE TABLE IF NOT EXISTS `homework` (
 INSERT INTO `homework` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `HomeworkMessage`, `HomeworkDate`, `DateTimeRecordInserted`) VALUES
 (1, 5252, 5336, 'ENGLISH (ORAL)', 'Hello English dsfgsdfg', '1111-11-11', '2016-08-23 11:18:08'),
 (2, 5252, 5337, 'ENGLISH (WRITING)', 'worked', '1111-11-11', '2016-08-23 11:35:20'),
-(3, 5252, 5339, 'II LANGUAGE (WRITING)', 'asdfasdf asdf asdf  ', '1111-11-11', '2016-08-23 12:10:17');
+(3, 5252, 5339, 'II LANGUAGE (WRITING)', 'asdfasdf asdf asdf  ', '1111-11-11', '2016-08-23 12:10:17'),
+(4, 5252, 5336, 'ENGLISH (ORAL)', 'test again', '2017-01-02', '2017-01-05 10:51:35'),
+(5, 5252, 5336, 'ENGLISH (ORAL)', 'Eng Oral', '2017-02-01', '2017-02-09 07:48:35');
 
 -- --------------------------------------------------------
 
@@ -776,17 +970,16 @@ INSERT INTO `homework` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `Homework
 -- Table structure for table `mark`
 --
 
-CREATE TABLE IF NOT EXISTS `mark` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `mark` (
+  `Id` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
   `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=76 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mark`
@@ -874,8 +1067,8 @@ INSERT INTO `mark` (`Id`, `ExamId`, `SubjectId`, `SectionId`, `StudentId`, `Mark
 -- Table structure for table `move_student`
 --
 
-CREATE TABLE IF NOT EXISTS `move_student` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `move_student` (
+  `Id` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `StudentName` varchar(100) DEFAULT NULL,
   `SecIdFrom` bigint(20) NOT NULL,
@@ -883,9 +1076,8 @@ CREATE TABLE IF NOT EXISTS `move_student` (
   `SectionFrom` varchar(100) DEFAULT NULL,
   `SectionTo` varchar(100) DEFAULT NULL,
   `Status` varchar(20) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -893,14 +1085,13 @@ CREATE TABLE IF NOT EXISTS `move_student` (
 -- Table structure for table `portion`
 --
 
-CREATE TABLE IF NOT EXISTS `portion` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `portion` (
+  `Id` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `portion`
@@ -916,8 +1107,8 @@ INSERT INTO `portion` (`Id`, `ClassId`, `SubjectId`, `PortionName`, `DateTimeRec
 -- Table structure for table `school`
 --
 
-CREATE TABLE IF NOT EXISTS `school` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `school` (
+  `Id` bigint(20) NOT NULL,
   `SchoolName` varchar(100) NOT NULL,
   `Website` varchar(100) NOT NULL,
   `ShortenedSchoolName` varchar(100) NOT NULL,
@@ -935,9 +1126,8 @@ CREATE TABLE IF NOT EXISTS `school` (
   `Pincode` varchar(10) NOT NULL,
   `PrincipalId` bigint(20) NOT NULL,
   `NumberOfStudents` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=108 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `school`
@@ -952,14 +1142,13 @@ INSERT INTO `school` (`Id`, `SchoolName`, `Website`, `ShortenedSchoolName`, `Con
 -- Table structure for table `section`
 --
 
-CREATE TABLE IF NOT EXISTS `section` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `section` (
+  `Id` bigint(20) NOT NULL,
   `SectionName` varchar(100) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `TeacherId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5751 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `section`
@@ -1038,7 +1227,9 @@ INSERT INTO `section` (`Id`, `SectionName`, `ClassId`, `TeacherId`, `DateTimeRec
 (5746, 'B', 1681, 8741, '2016-07-05 16:29:31'),
 (5747, 'A', 1682, 11793, '2016-07-05 16:29:31'),
 (5748, 'B', 1682, 8633, '2016-07-05 16:29:31'),
-(5750, 'A Test', 1683, 8634, '2016-08-28 09:15:19');
+(5752, 'null', 0, 0, '2016-12-12 08:57:46'),
+(5754, 'add new fixed', 1683, 8650, '2017-01-05 07:36:02'),
+(5755, 'sdf', 1683, 8633, '2017-01-05 07:57:14');
 
 -- --------------------------------------------------------
 
@@ -1046,8 +1237,8 @@ INSERT INTO `section` (`Id`, `SectionName`, `ClassId`, `TeacherId`, `DateTimeRec
 -- Table structure for table `sliptest`
 --
 
-CREATE TABLE IF NOT EXISTS `sliptest` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sliptest` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SliptestName` varchar(100) NOT NULL,
@@ -1057,9 +1248,8 @@ CREATE TABLE IF NOT EXISTS `sliptest` (
   `Average` float NOT NULL,
   `TestDate` date NOT NULL,
   `SubmissionDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sliptest`
@@ -1074,14 +1264,13 @@ INSERT INTO `sliptest` (`Id`, `SectionId`, `SubjectId`, `SliptestName`, `Portion
 -- Table structure for table `sliptest_portion`
 --
 
-CREATE TABLE IF NOT EXISTS `sliptest_portion` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sliptest_portion` (
+  `Id` bigint(20) NOT NULL,
   `SliptestId` bigint(20) NOT NULL,
   `PortionId` bigint(20) NOT NULL,
   `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1089,15 +1278,14 @@ CREATE TABLE IF NOT EXISTS `sliptest_portion` (
 -- Table structure for table `sliptest_score`
 --
 
-CREATE TABLE IF NOT EXISTS `sliptest_score` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `sliptest_score` (
+  `Id` bigint(20) NOT NULL,
   `SliptestId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
   `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sliptest_score`
@@ -1145,11 +1333,100 @@ INSERT INTO `sliptest_score` (`Id`, `SliptestId`, `StudentId`, `Mark`, `Grade`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sms_api`
+--
+
+CREATE TABLE `sms_api` (
+  `id` int(11) NOT NULL,
+  `send_sms_api` varchar(2000) NOT NULL,
+  `response_variable` varchar(200) NOT NULL,
+  `sms_delivery_api` varchar(2000) NOT NULL,
+  `sms_delivery_variable` varchar(200) NOT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `unicode_api` text NOT NULL,
+  `sms_sent_variable` varchar(20) NOT NULL,
+  `vendor_name` varchar(200) NOT NULL,
+  `success_label` varchar(200) NOT NULL,
+  `require_country_code` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_queue`
+--
+
+CREATE TABLE `sms_queue` (
+  `Id` bigint(20) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Message` varchar(10000) NOT NULL,
+  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Status` int(10) NOT NULL,
+  `UserId` bigint(20) DEFAULT NULL,
+  `Role` varchar(20) NOT NULL,
+  `MessageId` bigint(20) NOT NULL,
+  `TransactionId` bigint(20) NOT NULL,
+  `DeliveredTimeStamp` varchar(25) NOT NULL,
+  `Response` varchar(25) NOT NULL,
+  `Cause` varchar(25) NOT NULL,
+  `ErrorCode` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_queue_low_priority`
+--
+
+CREATE TABLE `sms_queue_low_priority` (
+  `Id` bigint(20) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Message` varchar(10000) NOT NULL,
+  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Status` int(10) NOT NULL,
+  `UserId` bigint(20) DEFAULT NULL,
+  `Role` varchar(20) NOT NULL,
+  `MessageId` bigint(20) NOT NULL,
+  `TransactionId` bigint(20) NOT NULL,
+  `DeliveredTimeStamp` varchar(25) NOT NULL,
+  `Response` varchar(25) NOT NULL,
+  `Cause` varchar(25) NOT NULL,
+  `ErrorCode` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sms_queue_transaction`
+--
+
+CREATE TABLE `sms_queue_transaction` (
+  `Id` bigint(20) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `Phone` varchar(15) NOT NULL,
+  `Message` varchar(10000) NOT NULL,
+  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Status` int(10) NOT NULL,
+  `UserId` bigint(20) DEFAULT NULL,
+  `Role` varchar(20) NOT NULL,
+  `MessageId` bigint(20) NOT NULL,
+  `TransactionId` bigint(20) NOT NULL,
+  `DeliveredTimeStamp` varchar(25) NOT NULL,
+  `Response` varchar(25) NOT NULL,
+  `Cause` varchar(25) NOT NULL,
+  `ErrorCode` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
-CREATE TABLE IF NOT EXISTS `student` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `student` (
+  `Id` bigint(20) NOT NULL,
   `StudentName` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
@@ -1170,9 +1447,8 @@ CREATE TABLE IF NOT EXISTS `student` (
   `District` varchar(50) NOT NULL,
   `State` varchar(100) NOT NULL,
   `Pincode` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=496701 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
@@ -1319,7 +1595,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494149, 'VISHAL. B', 107, 5258, '4536', 39, 'S9486482965', 'S9486482965', '', 'BABU LAL. B', 'SUVADEVI. B ', '12-02-2011', 'M', '', '9486482965', '', '408/2, MAIN BAGALUR ROAD, BERIGAI', '', '', '', '0', '2016-07-05 12:08:12'),
 (494150, 'AMRIN R', 107, 5259, '4527', 1, 'S9791271745', 'S9791271745', '', '', '', '31-01-2012', 'F', '', '9791271745', '', '', '', '', '', '0', '2016-07-05 12:08:12'),
 (494151, 'ANTONY ANGELIN. D', 107, 5259, '4341', 2, 'S9865141563', 'S9865141563', '', 'DANIEL', 'MARY', '25-07-2011', 'F', '', '9865141563', '', '5/767-E, 3RD CROSS, MUNEESWAR NAGAR EXTN, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
-(494152, 'BHAVIYA SHREE. M', 107, 5259, '4443', 3, 'S9942445623', 'S9942445623', '', 'MURUGAN', 'KOUSALYA', '21-01-2012', 'F', '', '9942445623', '9842923241', '4/287-C1, 3RD CROSS, NGGO''S COLONY, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
+(494152, 'BHAVIYA SHREE. M', 107, 5259, '4443', 3, 'S9942445623', 'S9942445623', '', 'MURUGAN', 'KOUSALYA', '21-01-2012', 'F', '', '9942445623', '9842923241', '4/287-C1, 3RD CROSS, NGGO\'S COLONY, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494153, 'CHAITHNAYA.R', 107, 5259, '4515', 4, 'SCHAITHNAYAR', 'SCHAITHNAYAR', '', 'RAGAVENDRA PRASAD. N', 'DEEPA.N', '06-12-2011', 'F', '', '7598057849', '', '1/131, MAILASANORAM THUMMANAPALLI, HOSUR.', '', '', '', '0', '2016-07-05 12:08:12'),
 (494154, 'CHANDANA.M', 107, 5259, '4451', 5, 'S9626204777', 'S9626204777', '', 'MUNIVENKATAPPA', 'PILLAKKA', '08-11-2011', 'F', '', '9626204777', '9750582391', 'D.NO-331, SONNEPURAM, BERIKAI, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494155, 'DEBORAH. D', 107, 5259, '4362', 6, 'S9994267414', 'S9994267414', '', 'DEVARAJU', 'MARY THANGAM', '10-03-2011', 'F', '', '9994267414', '9789629512', 'NEW ASTC, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
@@ -1335,7 +1611,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494165, 'PRIYADHARSHINI. K', 107, 5259, '4406', 16, 'S9626429320', 'S9626429320', '', 'KEMPANNA', 'MALASREE', '14-05-2011', 'F', 'mdkempanna@gmail.com', '9626429320', '7094830132', 'LAKE AVENUE 4TH CROSS, PLOT NO-6, MANASA NILAYAM, HCF (POST) THALLY ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494166, 'SARVIKA. P', 107, 5259, '4332', 17, 'S9629860701', 'S9629860701', '', 'PRABAKARAN', 'SUDHA', '21-06-2011', 'F', '', '9629860701', '9629542895', '5/345, 1ST FLOOR, DR.ABDUL KALAM NAGAR, NEW ASTC HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494167, 'SATHANA. S', 107, 5259, '4405', 18, 'S9940861396', 'S9940861396', '', 'SENTHIL KUMAR', 'SARITHA', '30-03-2011', 'F', '', '9940861396', '', '5/717/2, BALAJI NAGAR, CHINNA ELSAGIRI, SIPCOT-1 PO, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
-(494168, 'SHANMATHI. M', 107, 5259, '4293', 19, 'S9442643977', 'S9442643977', '', 'MARIMUTHU', 'ANITHA', '06-03-2011', 'F', '', '9442643977', '', '4/146-2, 2ND CROSS, NGGO''S COLONY, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
+(494168, 'SHANMATHI. M', 107, 5259, '4293', 19, 'S9442643977', 'S9442643977', '', 'MARIMUTHU', 'ANITHA', '06-03-2011', 'F', '', '9442643977', '', '4/146-2, 2ND CROSS, NGGO\'S COLONY, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494170, 'SUMAYA. A', 107, 5259, '4346', 21, 'S8015506560', 'S8015506560', '', 'ABDULLAH', 'SADUKKULUNNA', '03-10-2011', 'F', '', '8015506560', '7200446478', 'CLASSIC TEXTILES, MALUR MAIN ROAD, BAGALUR CIRCLE', '', '', '', '0', '2016-07-05 12:08:12'),
 (494171, 'VEDHA PRIYA. M', 107, 5259, '4289', 22, 'S9488318680', 'S9488318680', '', 'MARESHA', 'VEENA', '07-01-2012', 'F', '', '9488318680', '9443051843', '2/756, NEW NO-4/262, 2ND CROSS, NGGOS COLONY, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494172, 'VISHALI. A', 107, 5259, '4413', 23, 'S9884477114', 'S9884477114', '', 'ARUN KUMAR.', 'SARANYA', '12-03-2011', 'F', '', '9884477114', '', 'LIG.788, NEW ASTC HUDCO ,VOC NAGAR, HOSUR.', '', '', '', '0', '2016-07-05 12:08:12'),
@@ -1442,7 +1718,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494272, 'VIJAYALAXMI. S', 107, 5262, '4414', 14, 'S9486347621', 'S9486347621', '', '', '', '06-10-2011', 'F', '', '9486347621', '', '', '', '', '', '0', '2016-07-05 12:08:12'),
 (494273, 'YOGA SHREE. C', 107, 5262, '4366', 15, 'S9487732857', 'S9487732857', '', 'CHANDRA SEKAR', 'SHASIKALA', '25-03-2011', 'F', '', '9487732857', '9789326624', 'NO-22, OLD TEMPLE LAND HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494274, 'YUVANITHA. M.S', 107, 5262, '4314', 16, 'S9865044482', 'S9865044482', '', 'SRINIVASAN', 'PARIMALA', '22-04-2011', 'F', '', '9865044482', '9443071943', 'PLOT NO-3/571, LAKSHMI NARASIMHA NAGAR, 2ND ST, NAVATHI ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
-(494275, 'ALAN JONES. J', 107, 5262, '4297', 17, 'S9944341300', 'S9944341300', '', 'JOHN BOSCO', 'BOBBY', '18-05-2011', 'M', '', '9944341300', '9629727900', '28-2, ST, MARY''S NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
+(494275, 'ALAN JONES. J', 107, 5262, '4297', 17, 'S9944341300', 'S9944341300', '', 'JOHN BOSCO', 'BOBBY', '18-05-2011', 'M', '', '9944341300', '9629727900', '28-2, ST, MARY\'S NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494276, 'CHANDANA.A', 107, 5262, '4373', 18, 'S9791171741', 'S9791171741', '', 'AANAD', 'PAVITHRA', '03-01-2012', 'F', '', '9791171741', '9994860933', 'NARAYANAMMA, ELUVAPALLI VILLAGE, NALLORE D.NO-4/223A', '', '', '', '0', '2016-07-05 12:08:12'),
 (494277, 'CHARAN RAJ. P.M', 107, 5262, '4315', 19, 'S9344157445', 'S9344157445', '', 'MANIKANTAPRABHU', 'PAVITHRA', '05-04-2011', 'M', '', '9344157445', '9965026158', '39A, NETHAJI ROAD, SLV HALL, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
 (494278, 'DANIEL GERSHOM. E', 107, 5262, '4298', 20, 'S9994781679', 'S9994781679', '', 'ELAIYARAJA', 'DHANALAKSHMI', '13-02-2011', 'M', '', '9994781679', '9600396166', '2/3, VOC NAGAR, RAILWAY STATION BACKSIDE, HOSUR', '', '', '', '0', '2016-07-05 12:08:12'),
@@ -1854,7 +2130,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494685, 'YUVAKISHOR.V', 107, 5269, '3654', 42, 'S9486347598', 'S9486347598', '', 'VENKATA RAMANA. M', 'JYOTHI.S', '22-01-2009', 'M', '', '9486347598', '8015106195', '4/105, ARUNTHATHIYAR ST, BAGALUR PO , HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494686, 'ZACHARIAH.M.J', 107, 5269, '3540', 43, 'S9360574303', 'S9360574303', '', 'JOJI GEORGE ABRAHAM', 'VIMIN JOJI', '09-09-2009', 'M', '', '9360574303', '', 'PLOT NO-08, ALA CAMPUS, JEEMANGALAM,BAGALUR PO , HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494687, 'ASTRINA.J', 107, 5270, '3572', 1, 'S9944801918', 'S9944801918', '', 'JEBA STEPHEN. D', 'JEBA', '20-11-2009', 'F', '', '9944801918', '', 'ASIAN CHRISTIAN ACADEMY, JEEMANGALAM,BAGALUR PO , HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
-(494688, 'DEEPSHIKA P.', 107, 5270, '4554', 2, 'S9715777516', 'S9715777516', '', 'PERUMAL', 'VENNIMALAI', '15-07-2009', 'F', '', '9715777516', '', '1/27, PWD QUARTERS, SUB COLLECTOR'' S  CAMPUS, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(494688, 'DEEPSHIKA P.', 107, 5270, '4554', 2, 'S9715777516', 'S9715777516', '', 'PERUMAL', 'VENNIMALAI', '15-07-2009', 'F', '', '9715777516', '', '1/27, PWD QUARTERS, SUB COLLECTOR\' S  CAMPUS, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494689, 'DHARSHIKA P.', 107, 5270, '4551', 3, 'S9790008195', 'S9790008195', '', 'PRASATH', 'DIVYA.', '19-05-2009', 'F', '', '9790008195', '', 'NO:127, SRI MEENAKSHI NAGAR, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494690, 'S.S.Harsha', 110, 4920, 'na', 22, 'S9489000123', 'S9489000123', '', 'S.Saravanan', 'S.Arulmozhi', '2007-08-09', 'F', 'ssharsha@gmail.com', '9489000123', '9487880124', 'C19-4,Tamilnadu Housing Board Quarters,DRO Colony,K.Pudur', '', '', '', '625007', '2016-07-05 12:08:13'),
 (494691, 'HARINI.C', 107, 5270, '3583', 4, 'S9443246324', 'S9443246324', '', 'RAMA RAJU. C', 'RAJESWARI. S', '28-05-2009', 'F', '', '9843647999', '9443246324', '55/34-C, EZHIL NIVAS, UMA SHANKAR NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
@@ -1967,8 +2243,8 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494799, 'KAILASH KUMAR.M', 107, 5272, '3661', 26, 'S9245171335', 'S9245171335', '', 'MUTHURENGAN. T', 'DHANALAKSHMI. M', '17-08-2009', 'M', '', '9245171335', '9245563936', '3/70, LAKSHMI NARASIMMA NAGAR, DINNUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494800, 'LALITSHARAN.D', 107, 5272, '3544', 27, 'S9894585456', 'S9894585456', '', 'DHANADAPANI. S', 'JANAGI. R', '18-06-2009', 'M', '', '9894585456', '9489291088', '3/375-1, LAKSHMI NARASIMMA NAGAR, ENKANIKOTTAH ROAD, ELFORGE OPP, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494801, 'LOHITRAJ.S', 107, 5272, '4603', 28, 'S8098276541', 'S8098276541', '', 'SAEE KUMAR', 'SELVAKUMARI', '23-05-2009', 'M', '', '8098276541', '', 'PLOT NO.22, GREEN GARDEN, BHARATHIYAR NAGAR, AVALAPALLI ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
-(494802, 'MUKESH.V', 107, 5272, '3653', 29, 'S9095067344', 'S9095067344', '', 'VENKATESH. S', 'JAYANTHI. M', '24-07-2009', 'M', '', '9095067344', '9095067345', '3/1-5, TEACHER''S COLONY, MALUR MAIN ROAD, BAGALUR, BELATHUR(PO).', '', '', '', '0', '2016-07-05 12:08:13'),
-(494803, 'RAJANEESH N.B', 107, 5272, '4594', 30, 'S7402068121', 'S7402068121', '', 'BALASUBRAMANIAN', 'UMAVATHI', '16-05-2009', 'M', '', '7402068121', '', 'PLOT NO.11, SAPTHAGIRI NAGAR, TEACHER''S COLONY, 3rd CROSS, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(494802, 'MUKESH.V', 107, 5272, '3653', 29, 'S9095067344', 'S9095067344', '', 'VENKATESH. S', 'JAYANTHI. M', '24-07-2009', 'M', '', '9095067344', '9095067345', '3/1-5, TEACHER\'S COLONY, MALUR MAIN ROAD, BAGALUR, BELATHUR(PO).', '', '', '', '0', '2016-07-05 12:08:13'),
+(494803, 'RAJANEESH N.B', 107, 5272, '4594', 30, 'S7402068121', 'S7402068121', '', 'BALASUBRAMANIAN', 'UMAVATHI', '16-05-2009', 'M', '', '7402068121', '', 'PLOT NO.11, SAPTHAGIRI NAGAR, TEACHER\'S COLONY, 3rd CROSS, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494804, 'RANGESH.P', 107, 5272, '4592', 31, 'S9942290138', 'S9942290138', '', 'PERUMAL', 'GOMATHI', '14-02-2009', 'M', '', '9942290138', '', '', '', '', '', '0', '2016-07-05 12:08:13'),
 (494805, 'RITHISH KUMAR.V', 107, 5272, '3647', 32, 'S9443064506', 'S9443064506', '', 'VENKATESH. J', 'BRINDA. V', '07-05-2009', 'M', '', '9443064506', '9944896703', '2/946-B, RITISH ILLAM, GANDHI NAGAR, 8TH CROSS, MOOKANDAPALLI, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494806, 'SABAREASHWARAN.S', 107, 5272, '4580', 33, 'S9840928451', 'S9840928451', '', 'SUNDARAVADIVELU', 'KALPANA', '04-05-2009', 'M', '', '9840928451', '', '1/1/3A, VELLALAR STREET, TALUK OFFICE ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
@@ -1987,14 +2263,14 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494819, 'GOPIKHA.S', 107, 5273, '4589', 5, 'S9498170379', 'S9498170379', '', 'SAKTHIVEL', 'SARANYA', '21-04-2009', 'F', '', '9498170379', '', 'EE-4, POLICE QUATERS, TALUK OFFICE ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494820, 'JANANI. B', 107, 5273, '3590', 6, 'S9962734848', 'S9962734848', '', 'BABU. K', 'TAMIL SELVI', '05-08-2009', 'F', '', '9962734848', '9035285662', '319, MEENAKSHI NAGAR, BAGALUR PO , HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494821, 'KEERTHANA.U', 107, 5273, '3557', 7, 'S9677312385', 'S9677312385', '', 'UDAI KUMAR. V', 'NAGAVENI. V', '26-05-2009', 'F', '', '9677312385', '9942344206', '6/185, JEEMANGALAM BAGLAUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
-(494822, 'LAKSHEETHA S.', 107, 5273, '4549', 8, 'S9865811201', 'S9865811201', '', 'SAI RAMAN', 'DEVAMALIKA', '30-11-2009', 'F', '', '9865811201', '', '2/661,B-1, 1st CROSS, NGGO''S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(494822, 'LAKSHEETHA S.', 107, 5273, '4549', 8, 'S9865811201', 'S9865811201', '', 'SAI RAMAN', 'DEVAMALIKA', '30-11-2009', 'F', '', '9865811201', '', '2/661,B-1, 1st CROSS, NGGO\'S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494823, 'LAKSITA.K.B', 107, 5273, '4578', 9, 'S9498170290', 'S9498170290', '', 'BHOOBAL', 'DEVANAI', '13-08-2009', 'F', '', '9498170290', '', 'D/NO.2-1, POLICE QUATERS, TALUK OFFICE ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494824, 'MONOLISHA. S', 107, 5273, '4610', 10, 'S9865518775', 'S9865518775', '', 'SADHASIVAM', 'CHANDRAMATHI', '21-08-2009', 'F', '', '9865518775', '', '3/465-14, SENTHAMIL NAGAR, ALASANATHAM, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494825, 'NITHYA SHREE.M', 107, 5273, '4121', 11, 'S9865261936', 'S9865261936', '', 'MANJUNATH. K', 'ASHA RANI. N', '07-02-2010', 'F', '', '9865261936', '9865261936', '2/195 BESTAPAT, BAGLAUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494826, 'POOJITHA.K', 107, 5273, '3585', 12, 'S9843039339', 'S9843039339', '', 'KUMAR. R', 'SHALINI. R', '20-09-2009', 'F', '', '9843039339', '', '69/128, NEW ASTC HUDCO, THALLY ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (494827, 'SARSHITHA.P', 107, 5273, '3596', 13, 'S8508651318', 'S8508651318', '', 'PRABAKARAN. S', 'P. PUNITHA', '10-10-2009', 'F', '', '8508651318', '8508651319', '2/411, BASTHI, V.O.C. NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:13');
 INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionNo`, `RollNo`, `Username`, `Password`, `Image`, `FatherName`, `MotherName`, `DateOfBirth`, `Gender`, `Email`, `Mobile1`, `Mobile2`, `Street`, `City`, `District`, `State`, `Pincode`, `DateTimeRecordInserted`) VALUES
-(494828, 'SUBHIKSHA S.', 107, 5273, '4552', 15, 'S9444812148', 'S9444812148', '', 'SURESH', 'MYTHILI', '20-04-2009', 'F', '', '9443796362', '9865770302', '4/208,2nd CROSS, NGGO''S COLONY,NEAR PILLAYAR KOVIL, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(494828, 'SUBHIKSHA S.', 107, 5273, '4552', 15, 'S9444812148', 'S9444812148', '', 'SURESH', 'MYTHILI', '20-04-2009', 'F', '', '9443796362', '9865770302', '4/208,2nd CROSS, NGGO\'S COLONY,NEAR PILLAYAR KOVIL, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494829, 'T. GANYA VRUSHAA', 107, 5273, '4568', 16, 'S9976677005', 'S9976677005', '', 'THAMODHARAN', 'SHANMUGAPRIYA', '03-09-2009', 'F', '', '9444812148', '9444801170', 'PLOT NO:77,THILLAI NAGAR,VISWANATHAPURAM,BAGALUR ROAD,HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494830, 'THANISHKA SRI.R', 107, 5273, '4586', 17, 'S9629149666', 'S9629149666', '', 'RENGARAJ', 'VIJI', '21-02-2009', 'F', '', '9976677005', '9994157005', 'PLOT.NO.30, KCC NAGAR APARTMENT BACKSIDE, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (494831, 'THARUNYA.R', 107, 5273, '3593', 18, 'S9865775776', 'S9865775776', '', 'RAMACHANDRAN. P', 'VIMALA', '21-11-2009', 'F', '', '9865775776', '9629149666', 'L-63, 2ND FLOOR, OLD TEMPLE HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
@@ -2312,14 +2588,14 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495144, 'LAKSHYA.V', 107, 5281, '4648', 6, 'S9943310911', 'S9943310911', '', 'VENKATACHALAM', 'LAKSHMI PRASANNA', '02-02-2009', 'F', '', '9943310911', '', 'D.NO.3/187, P.NO.57, MEENAKSHI NAGAR, BEHIND INCOME TAX OFFICE, K.GIRI MAIN RAOD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495145, 'MOHANA PRIYA R.', 107, 5281, '3303', 7, 'S9944325300', 'S9944325300', '', 'N.A.RAJENDRAN', 'C.AMARAVATHI', '20-03-2008', 'F', '', '9944325300', '7305548402', 'NO.62A, GREEN GARDEN, BHARATHIYAR NAGAR, BUS STOP CROSS, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495146, 'MU.SONALI', 107, 5281, '3298', 8, 'S9488387792', 'S9488387792', '', 'MURUGAN', 'ANITHA', '09-02-2008', 'F', '', '9488387792', '8015563295', 'P.NO- 8, SILVER CASTLE, CHINNA ELASAGIRI, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
-(495147, 'NAVIDHA SHREE S.', 107, 5281, '4220', 9, 'S9894358735', 'S9894358735', '', 'A. SAKTHIKUMAR', 'S. RICHARD LEENA', '26-12-2008', 'F', '', '8124922240', '9894358735', '4/304, 3rd CROSS, NGGO''S COLONY, BAGALUR ROADM HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(495147, 'NAVIDHA SHREE S.', 107, 5281, '4220', 9, 'S9894358735', 'S9894358735', '', 'A. SAKTHIKUMAR', 'S. RICHARD LEENA', '26-12-2008', 'F', '', '8124922240', '9894358735', '4/304, 3rd CROSS, NGGO\'S COLONY, BAGALUR ROADM HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495148, 'NIMRASHARIEFF Z', 107, 5281, '3423', 10, 'S9994857413', 'S9994857413', '', 'A.ZBEEULLA SHARIEFF', 'ASMA SULTANA', '27-06-2008', 'F', '', '9994857413', '9994140655', 'D.NO:1/188, THALASPET, BAGALUR(PO),HOSUR(TK)-635103.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495149, 'PRIYADHARSHINI P.S.', 107, 5281, '3518', 11, 'S9443244627', 'S9443244627', '', 'A.PALANI', 'SASIKALA.P', '23-05-2008', 'F', '', '9443244627', '9994131927', 'MIG-628, NEW TEMPLE HUDCO, PHASE X, R.K ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495150, 'RESHMIKA.E', 107, 5281, '3439', 12, 'S9444351483', 'S9444351483', '', 'ELANGO', 'SUBHA', '18-01-2009', 'F', '', '9444351483', '9444686149', 'P.NO- 189, D.NO- 2/467, SIPCOT STAFF HOUSING COLONY, MOOKANDAPALLI', '', '', '', '0', '2016-07-05 12:08:13'),
 (495151, 'S.S. DHIVYA', 107, 5281, '4534', 13, 'S9444586546', 'S9444586546', '', 'SARAVANAKUMAR', 'SARALA', '18-03-2008', 'F', '', '9444586546', '', '2/541-13, RAJIV NAGAR, OPP.JESUS WITH US CHURCH, BELATHUR, BAGALUR CIRCLE', '', '', '', '0', '2016-07-05 12:08:13'),
 (495152, 'SADHANA.K.R', 107, 5281, '3338', 14, 'S9843609609', 'S9843609609', '', 'KUMAR', 'RAJAMMAL', '04-05-2008', 'F', '', '9786868936', '9843609609', '2/455-4, NARAYANAPPA BUILDING, UPSTAIRS, BASTHI. 2nd CROSS, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495153, 'SADHAYAVEENA. K.V', 107, 5281, '4130', 15, 'S9600344009', 'S9600344009', '', 'KANNAN', 'VIJAYALAKSHMI', '01-01-2009', 'F', '', '9600344009', '9600344009', 'P.NO- 17 STAR ENCLAVE THOTTAGIRI ROAD, ALASANATHAM, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
-(495154, 'SAHANA SHREE S.L.', 107, 5281, '4239', 16, 'S9442173423', 'S9442173423', '', 'N. SANKAR', 'S. LALITHA', '24-01-2008', 'F', '', '9442173423', '', 'P.NO.20, KALKI GARDEN, SAPTHAGIRI NAGAR, TEACHER''S COLONY, 3rd CROSS , BAGALUR ROAD', '', '', '', '0', '2016-07-05 12:08:13'),
+(495154, 'SAHANA SHREE S.L.', 107, 5281, '4239', 16, 'S9442173423', 'S9442173423', '', 'N. SANKAR', 'S. LALITHA', '24-01-2008', 'F', '', '9442173423', '', 'P.NO.20, KALKI GARDEN, SAPTHAGIRI NAGAR, TEACHER\'S COLONY, 3rd CROSS , BAGALUR ROAD', '', '', '', '0', '2016-07-05 12:08:13'),
 (495155, 'SERITA.B', 107, 5281, '3386', 17, 'S9894226599', 'S9894226599', '', 'BABU SAMUEL', 'CHRISTILELA', '27-05-2008', 'F', '', '9894226599', '8098926112', 'P.NO- 35 SRI MEENAKSHI NAGAR MALLUR, BAGALUR ROAD', '', '', '', '0', '2016-07-05 12:08:13'),
 (495156, 'SUSHMITHA P.', 107, 5281, '4213', 18, 'S9843368069', 'S9843368069', '', 'R.PRAKASH KUMAR', 'RAJEWSARI', '25-07-2008', 'F', '', '9843368069', '', '4/477, 1CROSS, VINAYAKAPURAM, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495157, 'YUVANIPRIYA T.', 107, 5281, '3438', 19, 'S9944874016', 'S9944874016', '', 'THANIGACHALAM', 'NALINI', '08-09-2008', 'F', '', '9944874016', '9894175346', '5/772C, MUNEESWAR NAGAR EXTN., THALLY ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
@@ -2337,7 +2613,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495169, 'MANISH SURENDAR G.', 107, 5281, '4231', 31, 'S9362605113', 'S9362605113', '', 'T. GOPAL', 'G. ELAVARASI', '01-11-2007', 'M', '', '9362605113', '', '5/806M,SIVAKUMAR NAGAR THALLY ROAD HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (495170, 'MOHAMED FARHAN Z.', 107, 5281, '3449', 32, 'S9943311092', 'S9943311092', '', 'MOHAMMED ZIAULLA', 'AVESHA BANU', '26-10-2008', 'M', '', '9943311092', '9751420208', 'FLAT.NO133, 4th BLOCK, KCC NAGAR BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
 (495171, 'NITHISH.R', 107, 5281, '4129', 33, 'S9944225542', 'S9944225542', '', 'RAJARAM', 'SASIKALA', '23-04-2008', 'M', '', '9944225542', '9944225542', '4TH CROSS ANNAI SATHYA NAGAR', '', '', '', '0', '2016-07-05 12:08:13'),
-(495172, 'RAHUL G.', 107, 5281, '4242', 34, 'S9940862666', 'S9940862666', '', 'G. GUNASEKARAN', 'G. SHALINI', '28-10-2008', 'M', '', '9940862666', '', '4/173, NGGO''S COLONY, 2nd CROSS,  VIGNESH HOME, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
+(495172, 'RAHUL G.', 107, 5281, '4242', 34, 'S9940862666', 'S9940862666', '', 'G. GUNASEKARAN', 'G. SHALINI', '28-10-2008', 'M', '', '9940862666', '', '4/173, NGGO\'S COLONY, 2nd CROSS,  VIGNESH HOME, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495173, 'SALAI MUKUNTHAN.S', 107, 5281, '4193', 35, 'S9443430128', 'S9443430128', '', 'M.R.SURESH KUMAR', 'SALAIKOMALA', '16-12-2008', 'M', '', '9443430128', '', 'D.NO.5, GOPALAPPA COMPOUND, APPAVU NAGAR, HOSUR.', '', '', '', '0', '2016-07-05 12:08:13'),
 (495174, 'SATHYA SAI.M', 107, 5281, '3329', 36, 'S9442310439', 'S9442310439', '', 'MAHESH BABU', 'ARUNA', '30-01-2009', 'M', '', '9442310439', '7598414506', '', '', '', '', '0', '2016-07-05 12:08:13'),
 (495175, 'SHERJITH.F.P', 107, 5281, '3422', 37, 'S9952719997', 'S9952719997', '', 'PREM KUMAR', 'FARIDHA PREM', '29-10-2008', 'M', '', '9952719997', '9940346224', 'NO-11-C L.N NAGAR IIIRD CROSS, HOSUR', '', '', '', '0', '2016-07-05 12:08:13'),
@@ -2459,7 +2735,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495290, 'BHADMESH VIJAY. B', 107, 5284, '4136', 26, 'S8754124995', 'S8754124995', '', 'BASKAR', 'SASIKALA', '18-10-2007', 'M', '', '8012580813', '9487038249', 'NO-85, VENKATESHWARA LAYOUT, PHASE-2, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495291, 'CHARAN KUMAR.S', 107, 5284, '4644', 27, 'S9842764270', 'S9842764270', '', 'SAMANDI', 'JAYALAKSHMI', '15-01-2007', 'M', '', '9842764270', '8608848769', '3/12, SHIVASAKTHI NAGAR, ULAVAR SANTHAI BACK SIDE, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495292, 'DANUSH.G.V', 107, 5284, '2937', 28, 'S9894423142', 'S9894423142', '', 'VIJAYAKUMAR', 'VIDYA', '14-11-2007', 'M', '', '9894423142', '', '43, VAISHNAVI NAGAR NEAR TRAFFIC CIRCLE,', '', '', '', '0', '2016-07-05 12:08:14'),
-(495293, 'DHARANI RAJAH.M', 107, 5284, '2989', 29, 'S9345295934', 'S9345295934', '', '', '', '12-12-2007', 'M', '', '9345295934', '', '4/631-C3, FRIEND''S APPARTMENT, BASTHI GARDEN, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
+(495293, 'DHARANI RAJAH.M', 107, 5284, '2989', 29, 'S9345295934', 'S9345295934', '', '', '', '12-12-2007', 'M', '', '9345295934', '', '4/631-C3, FRIEND\'S APPARTMENT, BASTHI GARDEN, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495294, 'DIKSHITH.S.P', 107, 5284, '3783', 30, 'S9047023768', 'S9047023768', '', 'PRABAKARAN', 'SUKINDRA', '18-07-2007', 'M', '', '9047023768', '8098417456', '133, THILLAI NAGAR, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495295, 'GAUTHAMAN.V.D', 107, 5284, '3772', 31, 'S9944408569', 'S9944408569', '', 'VENKATESH', 'DHARANI', '24-10-2007', 'M', '', '9944408569', '', 'HIG-51, AVALAPALLI HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495296, 'HEMA BALAN.S', 107, 5284, '2968', 32, 'S9894602705', 'S9894602705', '', 'SARAVANAN', 'SAKKIYAMMAL', '23-05-2007', 'M', '', '9894602705', '', 'PLOT NO-6A, D.NO-777-3, MUNEESWAR NAGAR EXTN, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -2697,7 +2973,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495527, 'MOHANA.S', 107, 5290, '2528', 8, 'S9788878750', 'S9788878750', '', 'SIVAPPA', 'MAMATHA', '15-02-2006', 'F', '', '9788878750', '04344-253885', '1015-2 POLICE STATION ROAD, BERIKAI', '', '', '', '0', '2016-07-05 12:08:14'),
 (495528, 'NAINA.M', 107, 5290, '3895', 9, 'S9976175536', 'S9976175536', '', 'MANJUNATHA. R', 'BHUVANESHWARI. R', '05-06-2007', 'F', '', '9976175536', '7508271190', 'NO-48, 1ST MAIN, NEHRU NAGAR, OPP RAILWAY STATION', '', '', '', '0', '2016-07-05 12:08:14'),
 (495529, 'NISARGA C.', 107, 5290, '2523', 10, 'S8056686141', 'S8056686141', '', 'CHANDRAPPA', 'RANI', '20-04-2006', 'F', '', '8056686141', '9976977034', '6/132, JEEMANGALAM, BAGALUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
-(495530, 'NIYA S. ANIL', 107, 5290, '2324', 11, 'S9442756149', 'S9442756149', '', 'ANILKUMAR', 'STAJINA', '15-05-2006', 'F', '', '9442756149', '9488760065', '3/22-7, TEACHER''S COLONY, BAGALUR CIRCLE.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495530, 'NIYA S. ANIL', 107, 5290, '2324', 11, 'S9442756149', 'S9442756149', '', 'ANILKUMAR', 'STAJINA', '15-05-2006', 'F', '', '9442756149', '9488760065', '3/22-7, TEACHER\'S COLONY, BAGALUR CIRCLE.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495531, 'PAVITHRA M.A', 107, 5290, '2718', 12, 'S9865741191', 'S9865741191', '', 'MANIKANDAN', 'V.ANITHA', '05-02-2007', 'F', '', '9865741191', '9489642051', 'A-6 PML STAFF QTRS BELATHUR , BAGALUR HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495532, 'POOMIKA.S', 107, 5290, '3220', 13, 'S9952229632', 'S9952229632', '', 'SENTHIL KUMAR. V', 'BHAVANI. S', '12-04-2006', 'F', '', '9952229632', '8148245748', 'PLOT NO-49, D.NO-5/104-Y SHIVAKUMAR NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495533, 'RAKSHITHA. V', 107, 5290, '3849', 14, 'S9791238363', 'S9791238363', '', 'VENKATESAN. N', 'KAVITHA. A', '15-12-2006', 'F', '', '9791238363', '9940839652', '5/741-18A, RAJAMANICKAM LAYOUT, CHINNA ELASAGIRI, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -2705,7 +2981,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495535, 'SAHANA G', 107, 5290, '2387', 16, 'S9443934213', 'S9443934213', '', 'GOBY. S', 'KAVITHA.G', '02-03-2006', 'F', '', '9443934213', '9480213762', 'PLOT NO-37, BHARATH NAGAR, BEHIND ELFORGE, DINNUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495536, 'SAHANA.N', 107, 5290, '3237', 17, 'S9944376381', 'S9944376381', '', 'MURTHY', 'CHARUMATHI', '28-12-2006', 'F', '', '9944376381', '9600794631', 'P.NO- 162, SRI MEENAKSHI NAGAR, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495537, 'SANJANNA. .M', 107, 5290, '2342', 18, 'S9442310439', 'S9442310439', '', 'MAHESBABU', 'ARUNA', '05-10-2006', 'F', '', '9442310439', '9994777406', '1/222, MALUR MAIN ROAD, TALARPET BAGALUR (PO), HOSUR(TK).', '', '', '', '0', '2016-07-05 12:08:14'),
-(495538, 'SHILPA.S', 107, 5290, '3246', 19, 'S7708728778', 'S7708728778', '', 'SRIRAMARAO', 'RENUKA', '25-03-2006', 'F', '', '7708728778', '9952321573', 'NO-4/43 3-5, I CROSS MOOVENDAR NAGAR, NGGO''S COLONY BUSTOP, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495538, 'SHILPA.S', 107, 5290, '3246', 19, 'S7708728778', 'S7708728778', '', 'SRIRAMARAO', 'RENUKA', '25-03-2006', 'F', '', '7708728778', '9952321573', 'NO-4/43 3-5, I CROSS MOOVENDAR NAGAR, NGGO\'S COLONY BUSTOP, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495539, 'SRUTHI M.', 107, 5290, '2394', 20, 'S9655564739', 'S9655564739', '', 'RAMESH', 'SMITHA', '26-04-2006', 'F', '', '9655564739', '9159263525', 'Q.NO-A/2 V.H.PL CHENGARAPALLI, MDKI', '', '', '', '0', '2016-07-05 12:08:14'),
 (495540, 'SUJATHA.K', 107, 5290, '2897', 21, 'S9442045997', 'S9442045997', '', 'KUMAR', 'SUMATHI', '28-03-2006', 'F', '', '9442045997', '9444354724', '5/986-A AGNILLAM MUNEESWAR NAGAR, MAIN ROAD NEW ASTC , HUDCO', '', '', '', '0', '2016-07-05 12:08:14'),
 (495541, 'VARSHINI M', 107, 5290, '2712', 22, 'S9843097144', 'S9843097144', '', 'MUNIRAJU. G', 'VEENA. M', '06-03-2006', 'F', '', '9843097144', '8098702445', 'ELUVAPALLI (VILL), NALLUR PO, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -2965,7 +3241,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495797, 'ANDREW ROSS', 107, 5296, '4257', 23, 'S9141321815', 'S9141321815', '', 'FRANKLYN ROSS', 'PUNITHA ROSS', '29-01-2006', 'M', '', '9141321815', '', 'ACHS HOSTEL', '', '', '', '0', '2016-07-05 12:08:14'),
 (495798, 'DAWOOD AHMED.A', 107, 5296, '2104', 24, 'S9362321637', 'S9362321637', '', 'AMJAT AHMED', 'HINAH KOWSAR', '22-02-2004', 'M', '', '9362321637', '', '361,OLD BANGALORE ROAD,BEHIND ARRS SILKS,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495799, 'GAGAN DEEP B.R', 107, 5296, '2017', 25, 'S9442088280', 'S9442088280', '', 'RAMACHANDRA.D', 'BHARATHI.M', '04-04-2005', 'M', '', '9442088280', '', 'NO-2/178, CAR ST, BAGALUR', '', '', '', '0', '2016-07-05 12:08:14'),
-(495800, 'INFANT REX. J', 107, 5296, '2283', 26, 'S9944341300', 'S9944341300', '', 'JOHN BOSCO', 'ANGEL BOBBY', '17-01-2006', 'M', '', '9944341300', '', '28-2,St.MARY''S NAGAR,BHARATHI DASAN NAGAR,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
+(495800, 'INFANT REX. J', 107, 5296, '2283', 26, 'S9944341300', 'S9944341300', '', 'JOHN BOSCO', 'ANGEL BOBBY', '17-01-2006', 'M', '', '9944341300', '', '28-2,St.MARY\'S NAGAR,BHARATHI DASAN NAGAR,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495801, 'JYOTHESHWARA.K.S', 107, 5296, '2481', 27, 'S9003449659', 'S9003449659', '', 'S.SELVAM', 'G.SANTHI', '15-09-2005', 'M', '', '9003449659', '', 'P.NO- 12 1ST CROSS, KUMARAN NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495802, 'KEERTAN V.S.', 107, 5296, '2839', 28, 'S9442795247', 'S9442795247', '', 'P.M.SARAVANAN', 'S.MANGALAGOWRI', '29-05-2005', 'M', '', '8122925681', '7708373880', 'M-1/79, AVALAPALLI HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495803, 'LETGOUMANG  HAOKIP', 107, 5296, '4456', 29, 'SLETGOUMANGH', 'SLETGOUMANGH', '', '', '', '23-03-2004', 'M', '', '9972277102', '', 'ACA CAMPUS,ACHS JEEMANGALAM,BAGALUR POST,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -2978,7 +3254,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495810, 'PARVEEN KUMAR SOLANKI', 107, 5296, '1965', 36, 'S253301', 'S253301', '', 'HULCEROM', 'KOMALA', '26-11-2005', 'M', '', '253301', '', 'HEERA JEWELLERY, HALL MAIN BUS STAND, BERIGAI', '', '', '', '0', '2016-07-05 12:08:14'),
 (495811, 'POOMANI S.', 107, 5296, '2364', 37, 'S7639267263', 'S7639267263', '', 'SELVAN', 'SARASU', '14-12-2004', 'M', '', '7639267263', '8754040217', 'HOJ, ACA CAMPUS', '', '', '', '0', '2016-07-05 12:08:14'),
 (495812, 'RATHISH.S.N', 107, 5296, '2355', 38, 'S9844239383,', 'S9844239383,', '', 'NARAYANASAMY', 'BHARATHI', '01-03-2005', 'M', '', '7411345191', '', '', '', '', '', '0', '2016-07-05 12:08:14'),
-(495813, 'ROHITH NAIR', 107, 5296, '3092', 39, 'S9629486200', 'S9629486200', '', 'MUKUNTHAN', 'MADHAVI KUTTY', '24-10-2005', 'M', '', '9629486200', '', '4/69,NGGO''S COLONY,BAGALUR ROAD,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
+(495813, 'ROHITH NAIR', 107, 5296, '3092', 39, 'S9629486200', 'S9629486200', '', 'MUKUNTHAN', 'MADHAVI KUTTY', '24-10-2005', 'M', '', '9629486200', '', '4/69,NGGO\'S COLONY,BAGALUR ROAD,HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495814, 'S. GOURAV', 107, 5296, '4469', 40, 'SSGOURAV', 'SSGOURAV', '', '', '', '05-04-2005', 'M', '', '0', '', '', '', '', '', '0', '2016-07-05 12:08:14'),
 (495815, 'SANJAY S', 107, 5296, '2797', 41, 'S9789682050', 'S9789682050', '', 'SAMPATH', 'PHRIVITHRA', '02-08-2005', 'M', '', '9789682050', '9443051995', '', '', '', '', '0', '2016-07-05 12:08:14'),
 (495816, 'SOUNDAR RAJAN.S', 107, 5296, '2380', 42, 'S7639267263', 'S7639267263', '', 'SANDIL KUMAR', 'TAMILSELVI', '14-10-2003', 'M', '', '7639267263', '8754040217', 'HOJ,ACA CAMPUS', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -3034,10 +3310,10 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495865, 'MAMATHY J', 107, 5298, '3195', 8, 'S9442461708', 'S9442461708', '', 'JOHNSON', 'ANITHA', '10-07-2005', 'F', '', '9442461708', '9962138012', 'PLOT.NO:33, 2ND CROSS, THIRUPATHI MAJESTIC, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495866, 'MONIKKA R.', 107, 5298, '2873', 9, 'S9994086653', 'S9994086653', '', 'RAVI', 'ROSELINE', '24-3-2005', 'F', '', '9994086653', '', '2/652, CHAMUNDI NAGAR, THOTTAGIRI CROSS, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495867, 'PADMAVATHI.S', 107, 5298, '2280', 10, 'S9597101985', 'S9597101985', '', 'V.SARAVANAN', 'S.KALAIYARASI', '08-07-2005', 'F', '', '9597101985', '', '', '', '', '', '0', '2016-07-05 12:08:14'),
-(495868, 'RAMITHA.S', 107, 5298, '2816', 11, 'S9865811201', 'S9865811201', '', 'SAIRAMAN', 'DEVAMALIKA', '06-05-2005', 'F', '', '9865811201', '', '2/661-B1, 1st CROSS, NGGO''S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495868, 'RAMITHA.S', 107, 5298, '2816', 11, 'S9865811201', 'S9865811201', '', 'SAIRAMAN', 'DEVAMALIKA', '06-05-2005', 'F', '', '9865811201', '', '2/661-B1, 1st CROSS, NGGO\'S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495869, 'ROSHINI R.K.', 107, 5298, '3095', 12, 'S9442795197', 'S9442795197', '', 'RAVIKUMAR', 'KASILA', '22-05-2005', 'F', '', '9442795197', '', '5/322, OM SANTHI NAGAR, MATHAM R0AD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495870, 'SAMYUKTHA.K', 107, 5298, '2476', 13, 'SSAMYUKTHAK', 'SSAMYUKTHAK', '', 'KARTHI BALA', 'GANGA', '14-10-2005', 'F', '', '9790156684', '', 'NO-56, THANIGAI NAGAR, PHASE-II, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
-(495871, 'SHARLI G.S.', 107, 5298, '2473', 14, 'S9486465541', 'S9486465541', '', 'GANESH', 'SANGEETHA', '16-06-2005', 'F', 'VGANESHV77@GMAIL.COM', '9486465541', '8608275758', '4/252,VEERA ILLAM, 3RD CROSS, NGGO''S COLONY, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
+(495871, 'SHARLI G.S.', 107, 5298, '2473', 14, 'S9486465541', 'S9486465541', '', 'GANESH', 'SANGEETHA', '16-06-2005', 'F', 'VGANESHV77@GMAIL.COM', '9486465541', '8608275758', '4/252,VEERA ILLAM, 3RD CROSS, NGGO\'S COLONY, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495872, 'SHRI DHEVA DHARSINI.S', 107, 5298, '2498', 15, 'S9488330130', 'S9488330130', '', 'SARAVANAN', 'KALA', '22-08-2005', 'F', '', '9488330130', '8098699147', '3/272, SURIYA NAGAR, ARASANATTY, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495873, 'SILVIA.M', 107, 5298, '2875', 16, 'S9886575565', 'S9886575565', '', 'MUTHUKUMAR', 'VIMALA', '09-12-2005', 'F', '', '9886575565', '9865305090', '239-C, OLD ASTC HUDCO, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495874, 'SWATHY.N', 107, 5298, '2250', 17, 'S9994039835', 'S9994039835', '', 'U.NAGARAJ', 'S.PREMA', '07-12-2005', 'F', '', '9942943614', '9994039835', '2 MAIN ROAD, VI CROSS, VIKAS NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -3050,7 +3326,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495881, 'EBEN JOE.S', 107, 5298, '2726', 24, 'S9487037774', 'S9487037774', '', 'SELVAKUMARAN', 'NAVAROJ', '13-09-2005', 'M', '', '9487037774', '', 'LIG-424, NEW ASTC HUDCO, VOC NAGAR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495882, 'HAYAGREAVAR.K', 107, 5298, '2369', 25, 'S9688820094', 'S9688820094', '', 'T.K.KUMAR', 'N.GOWRI', '20-12-2005', 'M', '', '9688820094', '9543325731', '2/573, A4 INDIRA GANDHI NAGAR, BASTHI, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495883, 'HEMANATH.K', 107, 5298, '2304', 26, 'S9894240655', 'S9894240655', '', 'KUMARESAN', 'ROOPA', '25-10-2005', 'M', '', '9894240655', '9894727880', '2/1229, 2ND CROSS, BASTHI, AVALAPALLI ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
-(495884, 'HEMANTH KUMAR T.', 107, 5298, '2862', 27, 'S9944678497', 'S9944678497', '', 'THIRUPATHI', 'UMA', '20-3-2005', 'M', '', '9944678497', '', '4/170-3,736-3, RAMANASRI NAGAR,NGGO''S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495884, 'HEMANTH KUMAR T.', 107, 5298, '2862', 27, 'S9944678497', 'S9944678497', '', 'THIRUPATHI', 'UMA', '20-3-2005', 'M', '', '9944678497', '', '4/170-3,736-3, RAMANASRI NAGAR,NGGO\'S COLONY, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495885, 'JEBI SHARON S.E.', 107, 5298, '2216', 28, 'S9965768192', 'S9965768192', '', 'SUBASOBITHAN', 'EVANGELIN', '02-09-2005', 'M', '', '9865816733', '', 'PLOT NO-51, VASAVI NAGAR, DINNUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495886, 'LALITH ADITHIYA D.R.', 107, 5298, '2864', 29, 'S9003606363', 'S9003606363', '', 'RAJAPANDIYAN', 'DAISY', '11-12-2005', 'M', '', '9003606363', '', 'D.NO-32, GURUVAYURAPPAN OPP.DSP BUNGALOW, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495887, 'MONESH.S.D', 107, 5298, '2483', 30, 'S9944054591', 'S9944054591', '', 'D.DHINAKARAN', 'J.SUGANDHI', '01-10-2005', 'M', '', '9944054591', '', 'NO-64/61,NEW TEMPLE LAND HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -3059,8 +3335,8 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495890, 'NIKIL.M', 107, 5298, '2820', 33, 'S9994190936', 'S9994190936', '', 'K.B.MURUGAN', 'M.DHANALASKHMI', '20-06-2005', 'M', '', '9994190936', '', 'P.NO-42 NIKIL NIVAS, PHASE II VENKATESWARA LAYOUT', '', '', '', '0', '2016-07-05 12:08:14'),
 (495891, 'PRANAV M.S.', 107, 5298, '2834', 34, 'S9865857415', 'S9865857415', '', 'S.SENTHIL KUMAR', 'S.SUDHA MANI', '10-04-2005', 'M', '', '9865857415', '9444747816', 'BALAJI NAGAR. DINNUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495892, 'ROHINDHAN.V', 107, 5298, '2220', 35, 'S9443512712', 'S9443512712', '', 'C.VIJAYAKUMAR', 'ANU.H', '26-12-2005', 'M', '', '9487501948', '', '2/2-2 BUNGALOW MAIN ROAD, MOOKANDAPALLI, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
-(495893, 'SANJAY D.', 107, 5298, '2224', 36, 'S9791612169', 'S9791612169', '', 'C.DHANASEKAR', 'VIDHYA.S', '09-02-2006', 'M', '', '9791612169', '9443051995', '2/520, TEACHER''S COLONY, BELATHUR (PO), BAGALUR.', '', '', '', '0', '2016-07-05 12:08:14'),
-(495894, 'SHABAZ.S', 107, 5298, '2155', 37, 'S9994584800', 'S9994584800', '', 'SHERIF', 'SHEBEENA', '01-10-2005', 'M', '', '9994584800', '', '74/4B, TEACHER''S COLONY, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495893, 'SANJAY D.', 107, 5298, '2224', 36, 'S9791612169', 'S9791612169', '', 'C.DHANASEKAR', 'VIDHYA.S', '09-02-2006', 'M', '', '9791612169', '9443051995', '2/520, TEACHER\'S COLONY, BELATHUR (PO), BAGALUR.', '', '', '', '0', '2016-07-05 12:08:14'),
+(495894, 'SHABAZ.S', 107, 5298, '2155', 37, 'S9994584800', 'S9994584800', '', 'SHERIF', 'SHEBEENA', '01-10-2005', 'M', '', '9994584800', '', '74/4B, TEACHER\'S COLONY, BAGALUR ROAD, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495895, 'SREEKANTH SAI K.M.', 107, 5298, '2644', 38, 'S9488339843', 'S9488339843', '', 'K.S.MURALIDHAR RAO', 'S.PUSHPALATHA', '26-12-2005', 'M', '', '9944580817', '9894356714', 'PLOT NO-351, THILLAI NAGAR, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495896, 'SUDHISH VIJAI . V. R', 107, 5298, '2503', 39, 'S9994782155', 'S9994782155', '', 'RAJA.V', 'VIJAYALAKSHMI', '14-11-2005', 'M', 'rviji1977@gmail.com', '9994782155', '9442035536', 'Plot 350 Thillai Nager EXTN, Bagalur Road, Hosur-635109', '', '', '', '0', '2016-07-05 12:08:14'),
 (495897, 'SURYA PRAKASH  J', 107, 5298, '2812', 40, 'S9444918362', 'S9444918362', '', 'JEEVAN', 'JAYACHITRA', '24-06-2006', 'M', '', '9444918362', '', '5/1306, 1st CROSS STREET, ANNAI NAGAR, HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -3100,7 +3376,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (495931, 'NARESH KUMAR K.G.', 107, 5299, '2468', 32, 'S9159538112', 'S9159538112', '', 'B.KUMARESAN', 'GEETHA', '23-05-2005', 'M', '', '9159538112', '', '132-B, TREND CITY,CITANAPALLI,(VILLAGE), NALLUR (POST), HOSUR.', '', '', '', '0', '2016-07-05 12:08:14'),
 (495932, 'NEERAJ SINGH', 107, 5299, '2825', 33, 'S7373468059', 'S7373468059', '', 'B.RAMESH SINGH', 'B.MANJULA', '20-06-2005', 'M', '', '7373468059', '', '', '', '', '', '0', '2016-07-05 12:08:14'),
 (495933, 'NITISH KUMAR B.S.', 107, 5299, '2308', 34, 'S8883358583', 'S8883358583', '', 'SRINIVASAN', 'MEENAKSHI', '14-08-2005', 'M', '', '9677811920', '', '', '', '', '', '0', '2016-07-05 12:08:14'),
-(495934, 'PREM KUMAR.R', 107, 5299, '2231', 35, 'S9443803302', 'S9443803302', '', 'RAVEENDRA', 'CHANDRAKALA', '28-11-2005', 'M', '', '9003626070', '', '3/34, TEACHER''S COLONY, OPP.BELATHERE POST CHOODAPURAM', '', '', '', '0', '2016-07-05 12:08:14'),
+(495934, 'PREM KUMAR.R', 107, 5299, '2231', 35, 'S9443803302', 'S9443803302', '', 'RAVEENDRA', 'CHANDRAKALA', '28-11-2005', 'M', '', '9003626070', '', '3/34, TEACHER\'S COLONY, OPP.BELATHERE POST CHOODAPURAM', '', '', '', '0', '2016-07-05 12:08:14'),
 (495935, 'RHENIUS BLESSWIN.N', 107, 5299, '2310', 36, 'S9952598544', 'S9952598544', '', 'NAVALAN', 'CHRISTY', '02-07-2005', 'M', '', '9487700269', '', 'OLD TEMPLE LAND HUDCO', '', '', '', '0', '2016-07-05 12:08:14'),
 (495936, 'RISHIKESH S.', 107, 5299, '2879', 37, 'S9442461343', 'S9442461343', '', 'SUBRAMANI', 'GIRIJAMMA', '29-11-2005', 'M', '', '9442461343', '', 'SAMATHUVAPURAM, PASUMAI NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
 (495937, 'SAM DANIEL R.', 107, 5299, '2265', 38, 'S9940812418', 'S9940812418', '', 'N.RAJA', 'R.VIMALA RANI', '09-01-2005', 'M', '', '9940812418', '8220009529', '7/10, DURGA NAGAR HOSUR', '', '', '', '0', '2016-07-05 12:08:14'),
@@ -3467,7 +3743,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496297, 'MANOJ.S', 107, 5307, '2208', 30, 'S9486015152', 'S9486015152', '', 'N.SUDHAKAR', 'A.SHYLAJA', '09-02-2004', 'M', '', '7502114675', '', 'D.NO-5/63A LEAF GARDEN STREET, BERIKAI, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496298, 'MUKESH B.S.', 107, 5307, '1742', 31, 'S9940812298', 'S9940812298', '', 'R.BALAJI', 'R.SAVITHA', '20-01-2003', 'M', '', '9940812298', '9994267398', 'SUNNAMBU JEEBI DOWN,ACNS,VINAYAPURAM, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496299, 'NAGARAJ SRINIVASAN', 107, 5307, '1543', 32, 'S9865396445', 'S9865396445', '', 'V.SRINIVASAN', 'S.ROOPA', '01-06-2003', 'M', '', '9865396445', '', 'ELUVAPALLI , NALLUR HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
-(496300, 'NEVELL D''COUTH', 107, 5307, '4471', 33, 'S9633302392', 'S9633302392', '', 'DOMINIC D''COUTH', 'SHERIN CORREYA', '03-02-2004', 'M', '', '9633302392', '', 'ACA CAMPUS HOSTEL', '', '', '', '0', '2016-07-05 12:08:15'),
+(496300, 'NEVELL D\'COUTH', 107, 5307, '4471', 33, 'S9633302392', 'S9633302392', '', 'DOMINIC D\'COUTH', 'SHERIN CORREYA', '03-02-2004', 'M', '', '9633302392', '', 'ACA CAMPUS HOSTEL', '', '', '', '0', '2016-07-05 12:08:15'),
 (496301, 'NITHIN KUMAR B.M.', 107, 5307, '1801', 34, 'S9489879825', 'S9489879825', '', 'B.H.MURALI', 'R.BHARATHI', '13-06-2003', 'M', '', '9489879825', '', 'BALIGANAPALLI(VILL) HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496302, 'PRAJWAL.V', 107, 5307, '4164', 35, 'S9443689065', 'S9443689065', '', 'A.VENKATESH', 'S.PADMA', '18-05-2002', 'M', '', '9677826612', '', 'HOSUR KRISHNAGIRI, BAGALUR, GOLLEPATA', '', '', '', '0', '2016-07-05 12:08:15'),
 (496303, 'PRANAV BINOY', 107, 5307, '2133', 36, 'S9443376337', 'S9443376337', '', 'BINOY KURIAKOSE', 'SHIBI GEORGE', '24-07-2003', 'M', '', '9443376337', '9043896330', '1/143N, PRANAVAM, P.NO-69 RAJAJI NAGAR, 15TH CROSS, MOOKANDAPALLI, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
@@ -3525,11 +3801,11 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496355, 'BHUVANA SAMBATH KUMAR', 107, 5309, '2142', 4, 'S9600742511', 'S9600742511', '', 'SAMBATH KUMAR.G', 'MADHAVI.S', '20-11-2003', 'F', '', '9600742511', '9677915751', 'L.798 PH-X NEW TEMPLE LAND HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496356, 'JAYASHREE.R.P', 107, 5309, '2291', 5, 'S9597954876', 'S9597954876', '', 'K.PARTHASARATHY', 'B.RAJESWARI', '10-08-2003', 'F', '', '8903628438', '9597954876', '4/531, A12, VINAYAKAPURAM OPP OF I.N.G.G.O.S COLONY, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496357, 'JEHOSHEBA.M', 107, 5309, '2176', 6, 'S9443552194', 'S9443552194', '', 'REUBAN MANAVALAN', 'PUSHPALATHA.N', '16-04-2004', 'F', '', '9443552194', '9445855572', '14/21 EB QUTS THALLY ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
-(496358, 'KAVIYA JOSEPHINE A.', 107, 5309, '1675', 7, 'S9865163221', 'S9865163221', '', 'ANTHONI VISWASAM. A', 'MARIYA', '29-11-2003', 'F', '', '7373234825', '9865163221', '460/2'' L,1ST CROSS SHANTHI NAGAR WEST HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
+(496358, 'KAVIYA JOSEPHINE A.', 107, 5309, '1675', 7, 'S9865163221', 'S9865163221', '', 'ANTHONI VISWASAM. A', 'MARIYA', '29-11-2003', 'F', '', '7373234825', '9865163221', '460/2\' L,1ST CROSS SHANTHI NAGAR WEST HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496359, 'KEERTHANASREE.S', 107, 5309, '2170', 8, 'S9751816172', 'S9751816172', '', 'SARAVANAN.P', 'DHANALAKSHMI.S', '12-11-2003', 'F', '', '9629487031', '9092234187', '5/388 A, DWARAGA NAGAR EXTN, NEW ASTC  HUDCO, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496360, 'MEENAKSHI M.', 107, 5309, '3513', 9, 'S9940788704', 'S9940788704', '', 'B.MURALI KRISHNAN', 'S.SHARMILA', '25-12-2003', 'F', '', '9940788704', '8220019512', 'PO.35 DO.NO 40 KURUNJI NAGAR EXTENTION, KCC NAGAR ,BAGALUR ROAD ,HOSUR.', '', '', '', '0', '2016-07-05 12:08:15'),
 (496361, 'MONICA G REDDY', 107, 5309, '1738', 10, 'S786966693', 'S786966693', '', 'GOPAL REDDY', 'H.ANITHA', '22-10-2003', 'F', '', '9597599663', '9786966693', '2/17-A, ULIYALAM (VILL), AVALAPALLI PO, HOSUR TK', '', '', '', '0', '2016-07-05 12:08:15'),
-(496362, 'NAFISA SHAFIULLA S.K.', 107, 5309, '1601', 11, 'S8903854572', 'S8903854572', '', 'S.K.SHAFIULLA', 'TABASUM SULTANA', '17-05-2002', 'F', '', '8903854572', '7418221916', '3/408''2 SHOPPING COMPLEX OPP JAMIA MASJID BAGALUR', '', '', '', '0', '2016-07-05 12:08:15'),
+(496362, 'NAFISA SHAFIULLA S.K.', 107, 5309, '1601', 11, 'S8903854572', 'S8903854572', '', 'S.K.SHAFIULLA', 'TABASUM SULTANA', '17-05-2002', 'F', '', '8903854572', '7418221916', '3/408\'2 SHOPPING COMPLEX OPP JAMIA MASJID BAGALUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496363, 'PRADNYA K.T.', 107, 5309, '1830', 12, 'S9994419610', 'S9994419610', '', 'K.THAMARAI KANNAN', 'T.KRISHNAVENI', '08-06-2003', 'F', '', '9994419610', '9442778440', '3/193, BRATHANYA BHAVANAM, BERIGAI ROAD, BAGALUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496364, 'SAMYUKTHA A.V', 107, 5309, '2130', 13, 'S9788616242', 'S9788616242', '', 'M.ANANDAKUMAR', 'P.VIJAYA LAKSHMI', '23-06-2003', 'F', '', '9788616242', '9788616242', 'D.NO-5/562A RING ROAD, MUNEESHWAR NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496365, 'SUBIKSHAPREETHI S.', 107, 5309, '1720', 14, 'S9894762743', 'S9894762743', '', 'SELVAN B.K', 'NAGAJOTHI.G', '23-10-2003', 'F', '', '9597832972', '9894762743', '88/5, NARASAMMA COLONY, 3RD CROSS, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
@@ -3548,7 +3824,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496378, 'JOSEPH PETER J.', 107, 5309, '1870', 27, 'S9976883140', 'S9976883140', '', 'JEBAMANI SAMUEL', 'J.GUNASEELI', '25-04-2003', 'M', '', '8144345352', '9578765388', '508/2 INDRA GANDHI NAGAR, BASTHI, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496379, 'KIRAN YADAV.V', 107, 5309, '3868', 28, 'S8940795825', 'S8940795825', '', 'B.VENKATESAN', 'G.VISHALAKSHI', '02-02-2004', 'M', '', '8098158192', '8940795825', '5/752A,D.NO BALAJI NAGAR, CHINNA ELASAGIRI', '', '', '', '0', '2016-07-05 12:08:15'),
 (496380, 'LAVANTH  KUMAR M.', 107, 5309, '1728', 29, 'S9976977389', 'S9976977389', '', 'MUNIREDDY.R', 'GAYATHRI.H', '21-07-2003', 'M', '', '7502110884', '9976977389', 'D.NO-6/112, JEEMANGALAM, BAGALUR, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
-(496381, 'MANICKAM.S', 107, 5309, '1494', 30, 'S9842621437', 'S9842621437', '', 'M.SHANMUGANATHAN', 'MYTHILI.S', '30-12-2002', 'M', '', '9842621437', '9965285005', 'H''105,TNHB PHASE 9 OPP RAILWAY STATION, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
+(496381, 'MANICKAM.S', 107, 5309, '1494', 30, 'S9842621437', 'S9842621437', '', 'M.SHANMUGANATHAN', 'MYTHILI.S', '30-12-2002', 'M', '', '9842621437', '9965285005', 'H\'105,TNHB PHASE 9 OPP RAILWAY STATION, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496382, 'MANOJ KUMAR K.', 107, 5309, '1831', 31, 'S9443350661', 'S9443350661', '', 'KALYANRAJ.D', 'K.VARALAKSHMI', '01-08-2003', 'M', '', '9487570661', '', 'GUDICHETTLU BELATHUR PO, HOSUR TK, 1/223-1.', '', '', '', '0', '2016-07-05 12:08:15'),
 (496383, 'NITHIN KUMAR U.', 107, 5309, '2147', 32, 'S9688603320', 'S9688603320', '', 'K.UDHAYA SHANKAR', 'J.BHAVANI', '23-01-2003', 'M', '', '9688603320', '9945879050', 'MIG-53, RAINBOW GARDEN, TNHB-VI, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
 (496384, 'PAVAN K.B.', 107, 5309, '2363', 33, 'S9677963714', 'S9677963714', '', 'K.S.BHASKAR', 'V.MOHANAMBIKA', '23-10-2003', 'M', '', '9677963714', '9442276683', '# 2/271, KUMBAR STREET, BERIKAI, HOSUR', '', '', '', '0', '2016-07-05 12:08:15'),
@@ -3853,7 +4129,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496682, 'SREELAKSHMI P.S.', 107, 5318, '1866', 18, 'S9442778329', 'S9442778329', '', 'P.R.SURESH', 'P.N.SREEJA', '11-10-2000', 'F', '', '9442778329', '9042029065', 'PLOT NO.76 4TH CROSS VASVAI NAGAR, DINNUR BACKSIDE , HOSUR.', '', '', '', '0', '2016-07-05 12:08:16'),
 (496683, 'THAMIZHISAI.T', 107, 5318, '1257', 19, 'S9150548493', 'S9150548493', '', 'THAMIZHARASAN S.', 'SENTHAMARAI.K', '01-07-2000', 'F', '', '9443688175', '9150450283', '13, 2/1396, CHAMUNDI NAGAR, BASTHI, HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496684, 'UDAYASHREE  J.', 107, 5318, '1284', 20, 'S9487631937', 'S9487631937', '', 'M.JAGADISH', 'J.RAJALAKSHMI', '29-03-2001', 'F', '', '9443061146', '9487631937', '2/304, CAR ST, BAGALUR', '', '', '', '0', '2016-07-05 12:08:16'),
-(496685, 'ABIJITH C.', 107, 5318, '1325', 21, 'S9042101743', 'S9042101743', '', 'CHOODAPPA. M', 'BHAGYA.C', '29-12-2000', 'M', '', '8438545342', '9042101743', '3/502-D1 THIRUMALAI NAGAR,BASTHI''3,HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
+(496685, 'ABIJITH C.', 107, 5318, '1325', 21, 'S9042101743', 'S9042101743', '', 'CHOODAPPA. M', 'BHAGYA.C', '29-12-2000', 'M', '', '8438545342', '9042101743', '3/502-D1 THIRUMALAI NAGAR,BASTHI\'3,HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496686, 'ABISHEK.P', 107, 5318, '1103', 22, 'S9788854217', 'S9788854217', '', 'M.PRABHAKAR', 'M.SUMITHA', '03-06-2000', 'M', '', '9788854217', '8220868883', '2/100 , AVALLAPALLI PO, HOSUR.', '', '', '', '0', '2016-07-05 12:08:16'),
 (496687, 'ASHWIN B.', 107, 5318, '1232', 23, 'S9443512673', 'S9443512673', '', 'BHASKAR.K', 'MANJULA BHASKAR', '20-11-2000', 'M', '', '9443512673', '', 'H-5, AVALLAPALLI HUDCO, BAGALUR ROAD, HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496688, 'CHARAN KUMAR  S.P.', 107, 5318, '1246', 24, 'S9482667975', 'S9482667975', '', 'PILLAPPA.E', 'PREMA.K', '03-01-2000', 'M', '', '9482667975', '9482667974', 'SAMPANGIRI (VILL), ALAMBADI, KOLAR', '', '', '', '0', '2016-07-05 12:08:16'),
@@ -3865,7 +4141,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496694, 'JOJIMON ABRAHAM', 107, 5318, '1240', 30, 'S9865433769', 'S9865433769', '', 'ABRAHAM V.J.', 'SOLLY', '15-02-1999', 'M', '', '9865433769', '', 'VENCO RESEARCH & BREEEDING FARM LTD', '', '', '', '0', '2016-07-05 12:08:16'),
 (496695, 'MAHESH B', 107, 5318, '1067', 31, 'S9442437796', 'S9442437796', '', 'BHASKARAN S', 'INDIRAGANDHI. R', '07-04-1998', 'M', '', '9442437796', '', '2/536A, BALAJI NAGAR, BERIGAI, HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496696, 'MANOJ R', 107, 5318, '2046', 32, 'S9629386049', 'S9629386049', '', 'RAJAPPA M.', 'LATHA', '30-08-1999', 'M', '', '9751828366', '9629386049', '6/13, JEEMANGALAM, OPP ACHS, BAGALUR PO HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
-(496697, 'MOHIT NAIR', 107, 5318, '2381', 33, 'S9629486200', 'S9629486200', '', 'MUKUNDAN NAIR', ' MADHAVIKUTTY', '21-02-2001', 'M', '', '7708923123', '9629486200', '4/69 NGGO''S COLONY BAGALUR ROAD HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
+(496697, 'MOHIT NAIR', 107, 5318, '2381', 33, 'S9629486200', 'S9629486200', '', 'MUKUNDAN NAIR', ' MADHAVIKUTTY', '21-02-2001', 'M', '', '7708923123', '9629486200', '4/69 NGGO\'S COLONY BAGALUR ROAD HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496698, 'PARTHASARATHY T.', 107, 5318, '3473', 34, 'S9787063197', 'S9787063197', '', 'P.THIRUMANI CHAMY', 'T. MUTHULAKSHMI', '25-08-2000', 'M', '', '9629146158', '', '3/101-2, THANDHAI PERIYAR NAGAR, BAGALUR CIRCLE, BAGALUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496699, 'SUBIN SAM SAIMON', 107, 5318, '3147', 35, 'S9629521271', 'S9629521271', '', 'SAIMON SAMUEL', 'BINU SAIMON', '15-06-2000', 'M', '', '9629521271', '', '3, PANCHAKKAL, KIRALI NAGAR, HOSUR', '', '', '', '0', '2016-07-05 12:08:16'),
 (496700, 'SWATHISHWARAN. A', 107, 5318, '1223', 36, 'S9944678229', 'S9944678229', '', 'ANNADURAI V.', 'A.SUMATHI', '30-09-2000', 'M', '', '9944678229', '', '772/6, KRISHNA NAGAR, NR.MUNEESWAR HOSUR', '', '', '', '0', '2016-07-05 12:08:16');
@@ -3876,8 +4152,8 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 -- Table structure for table `subactivity`
 --
 
-CREATE TABLE IF NOT EXISTS `subactivity` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subactivity` (
+  `Id` bigint(20) NOT NULL,
   `ActivityId` bigint(20) NOT NULL,
   `SubActivityName` varchar(100) NOT NULL,
   `Type` varchar(10) NOT NULL DEFAULT 'Mark',
@@ -3886,9 +4162,8 @@ CREATE TABLE IF NOT EXISTS `subactivity` (
   `Calculation` int(11) NOT NULL,
   `SubActivityAvg` float NOT NULL DEFAULT '0',
   `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subactivity`
@@ -3904,15 +4179,14 @@ INSERT INTO `subactivity` (`Id`, `ActivityId`, `SubActivityName`, `Type`, `Maxim
 -- Table structure for table `subactivity_score`
 --
 
-CREATE TABLE IF NOT EXISTS `subactivity_score` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subactivity_score` (
+  `Id` bigint(20) NOT NULL,
   `SubActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
   `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subactivity_score`
@@ -4000,16 +4274,15 @@ INSERT INTO `subactivity_score` (`Id`, `SubActivityId`, `StudentId`, `Mark`, `Gr
 -- Table structure for table `subject`
 --
 
-CREATE TABLE IF NOT EXISTS `subject` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject` (
+  `Id` bigint(20) NOT NULL,
   `SchoolId` bigint(20) DEFAULT NULL,
   `SubjectName` varchar(100) NOT NULL,
   `PartitionType` int(11) NOT NULL,
   `TheorySubjectId` bigint(20) NOT NULL,
   `PracticalSubjectId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6024 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject`
@@ -4071,13 +4344,12 @@ INSERT INTO `subject` (`Id`, `SchoolId`, `SubjectName`, `PartitionType`, `Theory
 -- Table structure for table `subject_group`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_group` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject_group` (
+  `Id` bigint(20) NOT NULL,
   `SchoolId` bigint(20) DEFAULT NULL,
   `SubjectGroupName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1298 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_group`
@@ -4139,14 +4411,13 @@ INSERT INTO `subject_group` (`Id`, `SchoolId`, `SubjectGroupName`, `DateTimeReco
 -- Table structure for table `subject_group_subject`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_group_subject` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject_group_subject` (
+  `Id` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_group_subject`
@@ -4154,7 +4425,6 @@ CREATE TABLE IF NOT EXISTS `subject_group_subject` (
 
 INSERT INTO `subject_group_subject` (`Id`, `SubjectGroupId`, `SubjectId`, `SubjectName`, `DateTimeRecordInserted`) VALUES
 (1, 525, 5323, 'ENGLISH', '2016-07-05 10:19:19'),
-(2, 526, 5324, '2nd LANGUAGE', '2016-07-05 10:19:19'),
 (3, 527, 5325, 'MATHEMATICS', '2016-07-05 10:19:19'),
 (4, 528, 5326, 'ENVIRONMENTAL SCIENCE', '2016-07-05 10:19:19'),
 (5, 529, 5327, 'COMPUTER SCIENCE', '2016-07-05 10:19:19'),
@@ -4210,7 +4480,11 @@ INSERT INTO `subject_group_subject` (`Id`, `SubjectGroupId`, `SubjectId`, `Subje
 (55, 1295, 5398, 'ECONOMICS', '2016-07-05 10:19:19'),
 (56, 1296, 5342, 'E.V.S. (ORAL)', '2016-08-28 10:41:47'),
 (57, 1296, 5343, 'E.V.S. (WRITING)', '2016-08-28 10:42:02'),
-(58, 1297, 6023, 'partition subject', '2016-09-14 08:10:53');
+(58, 1297, 6023, 'partition subject', '2016-09-14 08:10:53'),
+(59, 1296, 6022, 'therory subject', '2016-12-10 12:49:37'),
+(62, 533, 6018, ' 3rd LANGUAGE', '2017-01-05 08:00:42'),
+(63, 526, 0, 'LANGUAGE II', '2017-02-09 17:01:03'),
+(64, 533, 0, ' ENGLISH', '2017-02-09 17:01:33');
 
 -- --------------------------------------------------------
 
@@ -4218,14 +4492,13 @@ INSERT INTO `subject_group_subject` (`Id`, `SubjectGroupId`, `SubjectId`, `Subje
 -- Table structure for table `subject_student`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_student` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject_student` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `StudentIds` varchar(30000) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_student`
@@ -4235,7 +4508,8 @@ INSERT INTO `subject_student` (`Id`, `SectionId`, `SubjectId`, `StudentIds`, `Da
 (1, 5252, 5336, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-13 09:29:14'),
 (2, 5252, 5337, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-13 09:30:39'),
 (3, 5252, 5342, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-19 09:21:32'),
-(4, 5252, 5343, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-19 09:22:07');
+(4, 5252, 5343, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-19 09:22:07'),
+(5, 5253, 5336, '494049,494050,494051,494052,494053,494054,494055,494056,494057,494058,494059,494060,494061,494062,494063,494064,494065,494066,494067,494068,494069,494070,494071,494072,494073,494074,494075,494076,494077,494078,494079,494080,494081,494082,494083,494084,494085', '2017-01-05 08:07:42');
 
 -- --------------------------------------------------------
 
@@ -4243,16 +4517,15 @@ INSERT INTO `subject_student` (`Id`, `SectionId`, `SubjectId`, `StudentIds`, `Da
 -- Table structure for table `subject_teacher`
 --
 
-CREATE TABLE IF NOT EXISTS `subject_teacher` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subject_teacher` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
   `TeacherId` bigint(20) DEFAULT '0',
   `TeacherName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18487 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_teacher`
@@ -5740,8 +6013,8 @@ INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `T
 -- Table structure for table `teacher`
 --
 
-CREATE TABLE IF NOT EXISTS `teacher` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `teacher` (
+  `Id` bigint(20) NOT NULL,
   `TeacherName` varchar(100) NOT NULL,
   `Image` varchar(1000) NOT NULL,
   `Username` varchar(100) NOT NULL,
@@ -5753,9 +6026,8 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `DateOfJoining` varchar(20) NOT NULL,
   `Gender` varchar(10) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15691 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `teacher`
@@ -5931,15 +6203,14 @@ INSERT INTO `teacher` (`Id`, `TeacherName`, `Image`, `Username`, `Password`, `Sc
 -- Table structure for table `term_remark`
 --
 
-CREATE TABLE IF NOT EXISTS `term_remark` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `term_remark` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) DEFAULT NULL,
   `Term` int(11) NOT NULL,
   `Remark` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -5947,17 +6218,16 @@ CREATE TABLE IF NOT EXISTS `term_remark` (
 -- Table structure for table `timetable`
 --
 
-CREATE TABLE IF NOT EXISTS `timetable` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `timetable` (
+  `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `DayOfWeek` varchar(10) NOT NULL,
   `PeriodNo` int(11) NOT NULL,
   `SubjectId` bigint(20) DEFAULT NULL,
   `TimingFrom` time DEFAULT '00:00:00',
   `TimingTo` time DEFAULT '00:00:00',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `timetable`
@@ -5973,6 +6243,476 @@ INSERT INTO `timetable` (`Id`, `SectionId`, `DayOfWeek`, `PeriodNo`, `SubjectId`
 (9, 5750, 'Monday', 1, 5325, '00:00:11', '00:00:12', '2016-08-28 10:40:45'),
 (10, 5252, 'Monday', 3, 5336, '11:00:00', '11:45:00', '2016-09-01 09:44:13');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity`
+--
+ALTER TABLE `activity`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `activity_score`
+--
+ALTER TABLE `activity_score`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `authorization`
+--
+ALTER TABLE `authorization`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_aspect_grade`
+--
+ALTER TABLE `cce_aspect_grade`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_aspect_primary`
+--
+ALTER TABLE `cce_aspect_primary`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_coscholastic`
+--
+ALTER TABLE `cce_coscholastic`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_coscholastic_class`
+--
+ALTER TABLE `cce_coscholastic_class`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_section_heading`
+--
+ALTER TABLE `cce_section_heading`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_student_profile`
+--
+ALTER TABLE `cce_student_profile`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_topic_grade`
+--
+ALTER TABLE `cce_topic_grade`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cce_topic_primary`
+--
+ALTER TABLE `cce_topic_primary`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `class`
+--
+ALTER TABLE `class`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `class_subject_group`
+--
+ALTER TABLE `class_subject_group`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `exam_subject`
+--
+ALTER TABLE `exam_subject`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `exam_subject_group`
+--
+ALTER TABLE `exam_subject_group`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `grade_class_wise`
+--
+ALTER TABLE `grade_class_wise`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `homework`
+--
+ALTER TABLE `homework`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mark`
+--
+ALTER TABLE `mark`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `move_student`
+--
+ALTER TABLE `move_student`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `portion`
+--
+ALTER TABLE `portion`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `school`
+--
+ALTER TABLE `school`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `section`
+--
+ALTER TABLE `section`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sliptest`
+--
+ALTER TABLE `sliptest`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sliptest_portion`
+--
+ALTER TABLE `sliptest_portion`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sliptest_score`
+--
+ALTER TABLE `sliptest_score`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sms_api`
+--
+ALTER TABLE `sms_api`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sms_queue`
+--
+ALTER TABLE `sms_queue`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sms_queue_low_priority`
+--
+ALTER TABLE `sms_queue_low_priority`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sms_queue_transaction`
+--
+ALTER TABLE `sms_queue_transaction`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subactivity`
+--
+ALTER TABLE `subactivity`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subactivity_score`
+--
+ALTER TABLE `subactivity_score`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subject_group`
+--
+ALTER TABLE `subject_group`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subject_group_subject`
+--
+ALTER TABLE `subject_group_subject`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subject_student`
+--
+ALTER TABLE `subject_student`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `subject_teacher`
+--
+ALTER TABLE `subject_teacher`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `teacher`
+--
+ALTER TABLE `teacher`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `term_remark`
+--
+ALTER TABLE `term_remark`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `activity`
+--
+ALTER TABLE `activity`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `activity_score`
+--
+ALTER TABLE `activity_score`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+--
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+--
+-- AUTO_INCREMENT for table `authorization`
+--
+ALTER TABLE `authorization`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+--
+-- AUTO_INCREMENT for table `cce_aspect_grade`
+--
+ALTER TABLE `cce_aspect_grade`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+--
+-- AUTO_INCREMENT for table `cce_aspect_primary`
+--
+ALTER TABLE `cce_aspect_primary`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `cce_coscholastic`
+--
+ALTER TABLE `cce_coscholastic`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `cce_coscholastic_class`
+--
+ALTER TABLE `cce_coscholastic_class`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `cce_section_heading`
+--
+ALTER TABLE `cce_section_heading`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `cce_student_profile`
+--
+ALTER TABLE `cce_student_profile`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `cce_topic_grade`
+--
+ALTER TABLE `cce_topic_grade`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `cce_topic_primary`
+--
+ALTER TABLE `cce_topic_primary`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1684;
+--
+-- AUTO_INCREMENT for table `class_subject_group`
+--
+ALTER TABLE `class_subject_group`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+--
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `exam_subject`
+--
+ALTER TABLE `exam_subject`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `exam_subject_group`
+--
+ALTER TABLE `exam_subject_group`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `grade_class_wise`
+--
+ALTER TABLE `grade_class_wise`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `homework`
+--
+ALTER TABLE `homework`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `mark`
+--
+ALTER TABLE `mark`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+--
+-- AUTO_INCREMENT for table `move_student`
+--
+ALTER TABLE `move_student`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `portion`
+--
+ALTER TABLE `portion`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `school`
+--
+ALTER TABLE `school`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+--
+-- AUTO_INCREMENT for table `section`
+--
+ALTER TABLE `section`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5756;
+--
+-- AUTO_INCREMENT for table `sliptest`
+--
+ALTER TABLE `sliptest`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `sliptest_portion`
+--
+ALTER TABLE `sliptest_portion`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sliptest_score`
+--
+ALTER TABLE `sliptest_score`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `sms_api`
+--
+ALTER TABLE `sms_api`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sms_queue`
+--
+ALTER TABLE `sms_queue`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sms_queue_low_priority`
+--
+ALTER TABLE `sms_queue_low_priority`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `sms_queue_transaction`
+--
+ALTER TABLE `sms_queue_transaction`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=496701;
+--
+-- AUTO_INCREMENT for table `subactivity`
+--
+ALTER TABLE `subactivity`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `subactivity_score`
+--
+ALTER TABLE `subactivity_score`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+--
+-- AUTO_INCREMENT for table `subject`
+--
+ALTER TABLE `subject`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6024;
+--
+-- AUTO_INCREMENT for table `subject_group`
+--
+ALTER TABLE `subject_group`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1298;
+--
+-- AUTO_INCREMENT for table `subject_group_subject`
+--
+ALTER TABLE `subject_group_subject`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+--
+-- AUTO_INCREMENT for table `subject_student`
+--
+ALTER TABLE `subject_student`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `subject_teacher`
+--
+ALTER TABLE `subject_teacher`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18487;
+--
+-- AUTO_INCREMENT for table `teacher`
+--
+ALTER TABLE `teacher`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15691;
+--
+-- AUTO_INCREMENT for table `term_remark`
+--
+ALTER TABLE `term_remark`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
