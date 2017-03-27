@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2017 at 10:10 AM
+-- Generation Time: Mar 27, 2017 at 07:39 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,29 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `unnamedprojectdb`
+-- Database: `thyreportdb`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity`
---
-
-CREATE TABLE `activity` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `ExamId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `ActivityName` varchar(100) NOT NULL,
-  `Type` varchar(10) NOT NULL DEFAULT 'Mark',
-  `MaximumMark` float NOT NULL,
-  `Weightage` float NOT NULL,
-  `Calculation` int(11) NOT NULL,
-  `ActivityAvg` float NOT NULL DEFAULT '0',
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activity`
@@ -49,21 +28,6 @@ INSERT INTO `activity` (`Id`, `SectionId`, `ExamId`, `SubjectId`, `ActivityName`
 (4, 5252, 2, 5336, 'act edited', '', 12, 25, 2, 0, 0, '2016-09-07 09:15:26'),
 (5, 5252, 2, 5336, 'act 2nd', 'null', 11, 100, 1, 0, 0, '2016-09-19 09:34:33'),
 (6, 5252, 2, 5336, 'asfd ', 'null', 12, 12, 1, 0, 0, '2017-01-01 10:44:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `activity_score`
---
-
-CREATE TABLE `activity_score` (
-  `Id` bigint(20) NOT NULL,
-  `ActivityId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `activity_score`
@@ -145,25 +109,6 @@ INSERT INTO `activity_score` (`Id`, `ActivityId`, `StudentId`, `Mark`, `Grade`, 
 (73, 5, 494047, 0, '', '2016-09-19 09:35:05'),
 (74, 5, 494048, 0, '', '2016-09-19 09:35:05');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `attendance`
---
-
-CREATE TABLE `attendance` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL DEFAULT '0',
-  `StudentName` varchar(100) DEFAULT NULL,
-  `SubjectId` bigint(20) NOT NULL DEFAULT '0',
-  `Type` varchar(10) NOT NULL DEFAULT 'Daily',
-  `Session` int(11) NOT NULL DEFAULT '0',
-  `DateAttendance` date NOT NULL,
-  `TypeOfLeave` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `attendance`
 --
@@ -176,186 +121,19 @@ INSERT INTO `attendance` (`Id`, `SectionId`, `StudentId`, `StudentName`, `Subjec
 (11, 5252, 494016, 'DEVA SHREE. M', 0, 'Daily', 0, '1111-11-11', 'Absent', '2016-08-10 08:11:13'),
 (12, 5252, 494017, 'DIYA. D', 0, 'Daily', 0, '1111-11-11', 'Absent', '2016-08-10 08:11:13'),
 (13, 5252, 494019, 'KAMALINI. K.S', 0, 'Daily', 0, '1111-11-11', 'Absent', '2016-08-10 08:12:12'),
-(14, 5258, 494111, 'HAMSA', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
-(15, 5258, 494112, 'JANANI.B.S', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
-(16, 5258, 494113, 'KASHINI. R', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:51:58'),
-(20, 5258, 494114, 'LASYA GOWDA. M', 0, 'Daily', 1, '1111-11-11', 'Absent', '2016-08-14 08:55:42'),
 (21, 5252, 494011, 'STACEY BLESSINA. A.M', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:18:47'),
 (22, 5255, 494297, 'ANISHMITHA. S', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:23:44'),
 (23, 5255, 494298, 'GNANA JENIFER. A', 0, 'Daily', 0, '2017-02-01', 'Absent', '2017-02-09 07:23:44'),
-(24, 5258, 494111, 'HAMSA', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
-(25, 5258, 494112, 'JANANI.B.S', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
-(26, 5258, 494113, 'KASHINI. R', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:24:07'),
-(27, 5255, 494299, 'GOBIKA SHREE', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:25:21');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `authorization`
---
-
-CREATE TABLE `authorization` (
-  `Id` bigint(20) NOT NULL,
-  `User` varchar(50) NOT NULL,
-  `Token` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `authorization`
---
-
-INSERT INTO `authorization` (`Id`, `User`, `Token`) VALUES
-(1, 'achs', 'schio840icrfjj9j4es59lo5o1'),
-(2, 'achs', 'o6rdv02b3db6k93f4aakt49oal'),
-(3, 'achs', 'r5t7in2qgfundd0l23mlbk2k77'),
-(4, 'achs', '63vi6qt62te3e9fsr3dn7502ra'),
-(5, 'achs', 'v3va7l3o11kn7jjl2ule7vjoeg'),
-(6, 'achs', 'epknihhg6ne6oq8o1abqjler85'),
-(7, 'achs', 'ceflthp83p8qpiiqfbb9bidfja'),
-(8, 'achs', '52m96f7rd9ivhdp24o3eb8ikc'),
-(9, 'achs', '9aa0ddvo50jn6q0m04o0hnjslf'),
-(10, 'achs', '982tk6omag0i2v89ri21fjfejs'),
-(11, 'achs', '597df45gcfucp5kch998lrqa5j'),
-(12, 'achs', 'er8c5dba7ilc2nulo6jn3kn7ev'),
-(13, 'achs', 'l92hg2aunl8bs4s0c5agcl31fk'),
-(14, 'achs', '8haohjvs83od707ufokgqup2rk'),
-(15, 'achs', '39nmdfigkk6rtfkmbf1nuh7pj'),
-(16, 'achs', 'tmluhslfkn09qtlas531evchi1'),
-(17, 'achs', 'krblgk65sbf7r0j0f0l59st35e'),
-(18, 'achs', '83lcqoagfmtiuluu1nfr1i1ppj'),
-(19, 'achs', 'qbar609mplbpq7qpnl5rppgs5j'),
-(20, 'achs', '25rjqj2njdos2d78ekvspldt0d'),
-(21, 'achs', 'fjgk1fhpnip85t2jdg6fgbat4r'),
-(22, 'achs', '58rqaeetoco788th4hfnukhfnk'),
-(23, 'achs', 'phvhd9nbqokk9epap0m8bt0lqq'),
-(24, 'achs', 'urmned92g2emjhogipokftcmfa'),
-(25, 'achs', 'ua6h1anm2jfmbacf330em9ajse'),
-(26, 'achs', 'hs1t1oc0jqdk9dif5f368jjllk'),
-(27, 'achs', 'oq7c9u008jqnudpqgdgbpn3e1d'),
-(28, 'achs', 'qv4k3ffife8skdp6r0ht6akcsf'),
-(29, 'achs', 'u399k8082qp4cfu3ar92pnre1v'),
-(30, 'achs', 'mht64bejkrhh8iddu075o545l5'),
-(31, 'achs', 'nqreomha881jrj1eg54b8l0ujv'),
-(32, 'achs', '3afc4bgo02dv71o7sb0fdbmash'),
-(33, 'achs', 'og9c5bf9k98lifueq62163ldlg'),
-(34, 'achs', '1tk2b0r9l5h8qudfi61vhkvvsl'),
-(35, 'achs', 'ftf1c3ui2pjlrovgi8k3ugot94'),
-(36, 'achs', 'a8i9l6thmkqfjtq61c5mtc833p'),
-(37, 'achs', '61alhl7akjlaqilfset01alh1b'),
-(38, 'achs', 'imk57253d3f1i1vct2gadnir5n'),
-(39, 'achs', '6voevpueucoj2l26qbdokbstio'),
-(40, 'achs', 'fhu0di3euvd85bvscch1mh7m06'),
-(41, 'achs', 'vaq8torluul0h7s0m86rjpjbb2'),
-(42, 'achs', 'dm1t10pdvtes3gdls22q3sqe90'),
-(43, 'achs', 'fvj95ds7bg81hh8jnumafdj947'),
-(44, 'achs', 'ske290hkrsitrv06durjfr0vsh'),
-(45, 'achs', 'ot2u27qsu028meo942ta8eqtv8'),
-(46, 'achs', '5oo66mnles66ebtgphah99pbvn'),
-(47, 'achs', '6idhnlcc4pi0v13p2sg3n7g8no'),
-(48, 'achs', 'm16jfeme20t423c1aoc0cgkrss'),
-(49, 'achs', 'iveql7q1jjk6vlqttilfba40do'),
-(50, 'achs', '2k9b5g7u091o93v1km0351l32u'),
-(51, 'achs', '69u7bgv13t2lcuinm82ghsdcnc'),
-(52, 'achs', 'udep3lj8u4tb0qdikvh72hbulf'),
-(53, 'achs', '1c3e5pij8d5ol1oinl8v6ljo2v'),
-(54, 'achs', '805b73l2lcm80rirdrmp7mv54l'),
-(55, 'achs', 'fmolq9an7lsnuctckfpidcefcs'),
-(56, 'achs', 'fuu2s5o9urr4r55qd8hatu7vg2'),
-(57, 'achs', 'v33q9cnllrd8gba417802s9mng'),
-(58, 'achs', 'thbr22r73rur7p2qce0tks81lv'),
-(59, 'achs', 'avtmjkbllu4esmlasnp2dk7qud'),
-(60, 'achs', 'l4hlcorkr4ucouam3bv6iuk6jk'),
-(61, 'achs', 'psmhdr6pdmu1m0ckkk3ag1vma6'),
-(62, 'achs', 'en8n3ka70tsjt9srcssnqneh0l'),
-(63, 'achs', '3u12rstorv22dcvkicdf6k7clp'),
-(64, 'achs', '6r6rva22g9em7tk6u3glerimu0'),
-(65, 'achs', 'hoav2b3rb5bsl2v6ukt76ija8c'),
-(66, 'achs', '68clgtu3i8gk9vbkqh9j16vn3c'),
-(67, 'achs', '7jvhcp7bbq3sd40mjlkqo7jp63'),
-(68, 'achs', 'b5bo0tk932vvefi8jfts5os8si'),
-(69, 'achs', 'gpal3njhio8ad2248gpi16no7m'),
-(70, 'achs', 'sivmog5dhefsepf5i58mgrmtr'),
-(71, 'achs', 'vmj7q7911260kfutbm725tlcn0'),
-(72, 'achs', '8o160ilsc5fa3tatc8520ilqq7'),
-(73, 'achs', 'd05pdpc9ajqhtbj54m0hu1i8m0'),
-(74, 'achs', 'ttjogpkm2l0vtv3pht3gf4quvh'),
-(75, 'achs', 'oompkabp9dremek45sav6ehuoc'),
-(76, 'achs', 'ocen85smd6rot3qfk130qpf56d'),
-(77, 'achs', '7l9fhol0mkdhh6b5gjdtret1bk'),
-(78, 'achs', '7f8r521dt4mf4llapri7m2dev9'),
-(79, 'achs', 'fis7f7evvrsmcoe9olkuju4u9e'),
-(80, 'achs', '6t8g77saniuavehf9b7snf4ml'),
-(81, '', '3t4gkjml9j4uf7df6smlp7kshb'),
-(82, '', 'mu8j8hd07f7qbef6t85i0d6ns2'),
-(83, 'achs', 'iemvsbgh1vmak0sindu0o323p7'),
-(84, 'achs', 'h5ilmrbkpgsfbj6nbicaboppi0'),
-(85, 'achs', '7go1c9g567fc3gkrkc140j85na'),
-(86, 'achs', 'i7ftqi4mt6oma5atqiq47de30m'),
-(87, 'achs', 'r6cc5m4hpss0g77ph8i8619glq'),
-(88, 'achs', 'f4tm17rrj0rknpc125j86o58j3'),
-(89, 'achs', 'u7165bja1ce6vdgjbhm03r0eg4'),
-(90, 'achs', '2o7td639mm1sn3srbug8pm8chm'),
-(91, 'achs', '5oa422poh2t0gd2f09cbf3i264'),
-(92, 'achs', 'juigdujkn97a6ujuduqdvflb06'),
-(93, '', '8ia3jrs42p5k8fmm0q64vl9oqp'),
-(94, 'achs', 'ocv69t5pi9c6pcdp6ldhnvkqt1'),
-(95, 'achs', '3nblsdn0081hvnhm55vqmcca9b'),
-(96, 'achs', '15kvpeooq8b997i8n3ca4oh2ov'),
-(97, 'achs', 'ijvsc7u7kqo8p1mfu0o3vc7tl0'),
-(98, 'achs', 'eg3sul9u5veri1cqphe2mhg03'),
-(99, 'achs', 'rm382kbu087bs89tccodjpk1am'),
-(100, 'achs', 'qqdtteb78vav63galc955cgvtu'),
-(101, 'achs', 'g62go0tlnhn3b9pqri0b262snv'),
-(102, 'achs', '39svvart8ngpb8rm0m9gcpedqe'),
-(103, 'achs', '80q7vgh8nfa8q79j67869fht2h'),
-(104, 'achs', 'udhslgeaiap5k9jn4r5mfal2sd'),
-(105, 'achs', 'k43tn5u3qps5tv86m57oktvkjd'),
-(106, 'achs', 'm2voe0l74rj45sjpkou6vhk4re'),
-(107, 'achs', '8lavvrrcj7afi75e15r2s1p71g'),
-(108, 'achs', 'pumfbda34arcfphve2mhd6o04'),
-(109, 'achs', 'be69rr2bou2b37mdsd2gsnsv3'),
-(110, 'achs', 'lk1tk8lh53n30u676jn3blu2mo'),
-(111, 'achs', 'idqf704cu1mdqh7d4o58s3q4v3'),
-(112, 'achs', '4ki0mhvmpn73hvqmttt4lcdld4'),
-(113, 'achs', 'a173afjssetpihu9sg6qafa9mc'),
-(114, 'achs', 'v1il2lvcqeqetqmpeq76n04vge'),
-(115, 'achs', 'qtr9scnmem5ntvuscab6n8trl7'),
-(116, 'achs', 'tp4r8j11hs42gel25qnq4u89c'),
-(117, 'achs', 'kevsnhji6lt4b3q918p9014u76'),
-(118, '', '1usos5f3qdlebsgqll55scqeku'),
-(119, '', 'cdjqvcbgtabl4eqho1ah62ppqd'),
-(120, '', 'cmf9d0r607ga3ffp4rkb36lrd5'),
-(121, 'achs', '22a3s2o0p1d3arregj4o3b8qks'),
-(122, 'achs', 'bmo07lbv3cuban6vkq23bdgkkl'),
-(123, '', 'dkm5ro6vpelkup9o1afp7v2sjb'),
-(124, '', '2gmb7lp1kd3r3474h44hk1hcnv'),
-(125, '', '60mpe9uim6isshtifto6uh7s07'),
-(126, 'achs', '194c0le6s4a19oi5cual3o8rac'),
-(127, 'achs', 'pcrjc44mtefo51ov9elqvqdhff'),
-(128, 'achs', 'ftjr53f0jnoju7gdsfsn1k4d17'),
-(129, 'achs', '38diocv1ns91tivtue2amch0ol'),
-(130, 'achs', '88ll7ctljgcvu6v577amogr7ob'),
-(131, 'achs', '4v9d5dd7i5n38hfetrjjst2m2i'),
-(132, 'achs', '4830quujo70qijvmnanc7qsl3r');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_aspect_grade`
---
-
-CREATE TABLE `cce_aspect_grade` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `AspectId` bigint(20) NOT NULL,
-  `Type` int(11) NOT NULL,
-  `Term` int(11) NOT NULL,
-  `Grade` varchar(20) NOT NULL,
-  `Value` int(11) NOT NULL,
-  `Description` varchar(200) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(27, 5255, 494299, 'GOBIKA SHREE', 0, 'Daily', 1, '2017-02-01', 'Absent', '2017-02-09 07:25:21'),
+(29, 5255, 494297, 'ANISHMITHA. S', 0, 'Session', 0, '2017-03-08', 'Absent', '2017-03-08 09:31:18'),
+(30, 5252, 494011, 'STACEY BLESSINA. A.M', 0, 'Daily', 0, '2017-03-12', 'Absent', '2017-03-12 07:40:35'),
+(31, 5252, 0, '-', 0, 'Daily', 0, '2017-03-11', 'NA', '2017-03-12 07:40:50'),
+(32, 5252, 494012, 'AFRIN BANU. K', 0, 'Daily', 0, '2017-03-10', 'Absent', '2017-03-12 08:48:41'),
+(33, 5255, 494297, 'ANISHMITHA. S', 0, 'Session', 0, '2017-03-12', 'Absent', '2017-03-12 08:51:33'),
+(34, 5255, 0, '-', 0, 'Session', 1, '2017-03-12', 'NA', '2017-03-12 08:51:42'),
+(35, 5258, 494111, 'HAMSA', 0, 'Period', 1, '2017-03-14', 'Absent', '2017-03-14 06:37:33'),
+(36, 5258, 0, '-', 0, 'Period', 2, '2017-03-14', 'NA', '2017-03-14 07:01:52'),
+(37, 5258, 494112, 'JANANI.B.S', 0, 'Period', 3, '2017-03-14', 'Absent', '2017-03-14 07:02:05');
 
 --
 -- Dumping data for table `cce_aspect_grade`
@@ -437,38 +215,12 @@ INSERT INTO `cce_aspect_grade` (`Id`, `SectionId`, `StudentId`, `AspectId`, `Typ
 (73, 5253, 494084, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50'),
 (74, 5253, 494085, 1, 0, 1, '', 0, '', '2017-01-13 09:18:50');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_aspect_primary`
---
-
-CREATE TABLE `cce_aspect_primary` (
-  `Id` bigint(20) NOT NULL,
-  `Name` varchar(200) NOT NULL,
-  `TopicId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `cce_aspect_primary`
 --
 
 INSERT INTO `cce_aspect_primary` (`Id`, `Name`, `TopicId`, `DateTimeRecordInserted`) VALUES
 (1, 'aspect primary test edited', 2, '2017-01-01 10:45:18');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_coscholastic`
---
-
-CREATE TABLE `cce_coscholastic` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cce_coscholastic`
@@ -478,39 +230,12 @@ INSERT INTO `cce_coscholastic` (`Id`, `SchoolId`, `Name`, `DateTimeRecordInserte
 (1, 107, 'co co sch', '2016-12-10 10:23:53'),
 (2, 107, 'new coscho edited', '2016-12-10 10:24:22');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_coscholastic_class`
---
-
-CREATE TABLE `cce_coscholastic_class` (
-  `Id` bigint(20) NOT NULL,
-  `CoScholasticId` bigint(20) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `ClassName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `cce_coscholastic_class`
 --
 
 INSERT INTO `cce_coscholastic_class` (`Id`, `CoScholasticId`, `ClassId`, `ClassName`, `DateTimeRecordInserted`) VALUES
 (1, 1, 1582, 'VLKG', '2016-12-10 15:50:11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_section_heading`
---
-
-CREATE TABLE `cce_section_heading` (
-  `Id` bigint(20) NOT NULL,
-  `Name` varchar(200) NOT NULL,
-  `CoScholasticId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cce_section_heading`
@@ -519,32 +244,6 @@ CREATE TABLE `cce_section_heading` (
 INSERT INTO `cce_section_heading` (`Id`, `Name`, `CoScholasticId`, `DateTimeRecordInserted`) VALUES
 (1, 'section heading demo', 1, '2016-12-12 08:58:56'),
 (2, '2nd heading', 1, '2017-01-01 10:58:58');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_student_profile`
---
-
-CREATE TABLE `cce_student_profile` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `Term` int(11) NOT NULL DEFAULT '1',
-  `FromDate` date NOT NULL,
-  `ToDate` date NOT NULL,
-  `TotalDays` int(11) NOT NULL,
-  `DaysAttended` float NOT NULL,
-  `Height` float NOT NULL,
-  `Weight` float NOT NULL,
-  `BloodGroup` varchar(20) NOT NULL,
-  `HealthStatus` varchar(100) NOT NULL,
-  `VisionLeft` varchar(100) NOT NULL,
-  `VisionRight` varchar(100) NOT NULL,
-  `Ailment` varchar(100) NOT NULL,
-  `OralHygiene` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cce_student_profile`
@@ -589,20 +288,6 @@ INSERT INTO `cce_student_profile` (`Id`, `SectionId`, `StudentId`, `Term`, `From
 (36, 5252, 494047, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18'),
 (37, 5252, 494048, 1, '2016-06-06', '2016-12-17', 135, 0, 0, 0, '', '', '', '', '', '', '2016-12-09 15:03:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_topic_grade`
---
-
-CREATE TABLE `cce_topic_grade` (
-  `Id` bigint(20) NOT NULL,
-  `TopicId` bigint(20) NOT NULL,
-  `Grade` varchar(20) NOT NULL,
-  `Value` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `cce_topic_grade`
 --
@@ -615,20 +300,6 @@ INSERT INTO `cce_topic_grade` (`Id`, `TopicId`, `Grade`, `Value`, `DateTimeRecor
 (6, 2, 'E', 6, '2017-01-10 15:45:45'),
 (7, 2, 'F', 5, '2017-01-10 15:45:53');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `cce_topic_primary`
---
-
-CREATE TABLE `cce_topic_primary` (
-  `Id` bigint(20) NOT NULL,
-  `Name` varchar(200) NOT NULL,
-  `SectionHeadingId` bigint(20) NOT NULL,
-  `Evaluation` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `cce_topic_primary`
 --
@@ -637,20 +308,6 @@ INSERT INTO `cce_topic_primary` (`Id`, `Name`, `SectionHeadingId`, `Evaluation`,
 (2, 'topic primary', 1, 0, '2016-12-13 11:51:30'),
 (4, 'name fixes', 1, 0, '2017-01-01 10:31:30'),
 (5, '2nd topic ', 2, 0, '2017-01-01 11:01:31');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `class`
---
-
-CREATE TABLE `class` (
-  `Id` bigint(20) NOT NULL,
-  `ClassName` varchar(100) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
@@ -674,20 +331,6 @@ INSERT INTO `class` (`Id`, `ClassName`, `SchoolId`, `AttendanceType`, `DateTimeR
 (1681, 'XI', 107, 'Daily', '2016-07-25 14:29:24'),
 (1682, 'XII', 107, 'Daily', '2016-07-25 14:29:24'),
 (1683, 'Class edited', 107, 'Period', '2016-08-28 09:13:08');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `class_subject_group`
---
-
-CREATE TABLE `class_subject_group` (
-  `Id` bigint(20) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `SubjectGroupId` bigint(20) NOT NULL,
-  `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class_subject_group`
@@ -832,22 +475,6 @@ INSERT INTO `class_subject_group` (`Id`, `ClassId`, `SubjectGroupId`, `SubjectGr
 (136, 1683, 535, 'SOCIAL SCIENCE', '2016-08-01 16:55:43'),
 (138, 1582, 1297, 'partition', '2016-09-14 08:11:56');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `exam`
---
-
-CREATE TABLE `exam` (
-  `Id` bigint(20) NOT NULL,
-  `ExamName` varchar(100) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `Term` int(11) NOT NULL DEFAULT '1',
-  `Type` varchar(10) NOT NULL DEFAULT 'Mark',
-  `Percentage` float NOT NULL DEFAULT '100',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `exam`
 --
@@ -857,25 +484,6 @@ INSERT INTO `exam` (`Id`, `ExamName`, `ClassId`, `Term`, `Type`, `Percentage`, `
 (3, 'test exam', 1683, 1, 'Mark', 100, '2016-08-28 10:46:32'),
 (4, 'ghndg', 1582, 2, 'Mark', 100, '2016-09-19 09:06:03'),
 (5, 'text back', 1582, 2, 'Mark', 100, '2017-01-05 08:26:57');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `exam_subject`
---
-
-CREATE TABLE `exam_subject` (
-  `Id` bigint(20) NOT NULL,
-  `ExamId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) NOT NULL,
-  `Type` varchar(10) NOT NULL DEFAULT 'Mark',
-  `MaximumMark` float NOT NULL,
-  `FailMark` float NOT NULL,
-  `Percentage` float NOT NULL,
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exam_subject`
@@ -889,20 +497,6 @@ INSERT INTO `exam_subject` (`Id`, `ExamId`, `SubjectId`, `SubjectName`, `Type`, 
 (9, 3, 5343, 'E.V.S. (WRITING)', '', 100, 30, 70, 0, '2016-08-28 10:48:01'),
 (10, 2, 6023, 'partition subject', '', 100, 35, 100, 0, '2016-09-14 12:57:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `exam_subject_group`
---
-
-CREATE TABLE `exam_subject_group` (
-  `Id` bigint(20) NOT NULL,
-  `ExamId` bigint(20) NOT NULL,
-  `SubjectGroupId` bigint(20) NOT NULL,
-  `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `exam_subject_group`
 --
@@ -912,22 +506,6 @@ INSERT INTO `exam_subject_group` (`Id`, `ExamId`, `SubjectGroupId`, `SubjectGrou
 (12, 2, 539, 'NUMBER WORK (ORAL)', '2016-08-23 11:15:30'),
 (13, 2, 542, 'E.V.S. (WRITING)', '2016-08-23 11:15:37'),
 (14, 3, 1296, 'test', '2016-08-28 10:46:56');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `grade_class_wise`
---
-
-CREATE TABLE `grade_class_wise` (
-  `Id` bigint(20) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `Grade` varchar(20) NOT NULL DEFAULT '',
-  `MarkFrom` int(11) NOT NULL,
-  `MarkTo` int(11) NOT NULL,
-  `GradePoint` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `grade_class_wise`
@@ -942,22 +520,6 @@ INSERT INTO `grade_class_wise` (`Id`, `ClassId`, `Grade`, `MarkFrom`, `MarkTo`, 
 (6, 1583, 'A', 91, 100, 10, '2017-01-05 10:03:19'),
 (7, 1583, 'B', 81, 90, 9, '2017-01-05 10:05:04');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `homework`
---
-
-CREATE TABLE `homework` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) DEFAULT NULL,
-  `HomeworkMessage` longtext NOT NULL,
-  `HomeworkDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `homework`
 --
@@ -967,24 +529,13 @@ INSERT INTO `homework` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `Homework
 (2, 5252, 5337, 'ENGLISH (WRITING)', 'worked', '1111-11-11', '2016-08-23 11:35:20'),
 (3, 5252, 5339, 'II LANGUAGE (WRITING)', 'asdfasdf asdf asdf  ', '1111-11-11', '2016-08-23 12:10:17'),
 (4, 5252, 5336, 'ENGLISH (ORAL)', 'test again', '2017-01-02', '2017-01-05 10:51:35'),
-(5, 5252, 5336, 'ENGLISH (ORAL)', 'Eng Oral', '2017-02-01', '2017-02-09 07:48:35');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `mark`
---
-
-CREATE TABLE `mark` (
-  `Id` bigint(20) NOT NULL,
-  `ExamId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(5, 5252, 5336, 'ENGLISH (ORAL)', 'Eng Oral', '2017-02-01', '2017-02-09 07:48:35'),
+(6, 5252, 5336, 'ENGLISH (ORAL)', 'Oral Homework', '2017-03-03', '2017-03-03 13:09:31'),
+(7, 5252, 5337, 'ENGLISH (WRITING)', 'writing homework', '2017-03-03', '2017-03-03 13:10:09'),
+(8, 5252, 5340, 'NUMBER WORK (ORAL)', '1,2,3,4', '2017-03-03', '2017-03-03 13:10:21'),
+(9, 5252, 5341, 'NUMBER WORK (WRITING)', '1,2,3,4...', '2017-03-03', '2017-03-03 13:10:30'),
+(10, 5252, 5345, 'STORY TELLING', 'kathe', '2017-03-03', '2017-03-03 13:10:40'),
+(11, 5255, 5336, 'ENGLISH (ORAL)', 'testing student switch in app', '2017-03-03', '2017-03-03 13:21:54');
 
 --
 -- Dumping data for table `mark`
@@ -1066,38 +617,6 @@ INSERT INTO `mark` (`Id`, `ExamId`, `SubjectId`, `SectionId`, `StudentId`, `Mark
 (74, 2, 5343, 5252, 494047, 0, '', '2016-09-19 09:33:27'),
 (75, 2, 5343, 5252, 494048, 0, '', '2016-09-19 09:33:27');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `move_student`
---
-
-CREATE TABLE `move_student` (
-  `Id` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `StudentName` varchar(100) DEFAULT NULL,
-  `SecIdFrom` bigint(20) NOT NULL,
-  `SecIdTo` bigint(20) NOT NULL,
-  `SectionFrom` varchar(100) DEFAULT NULL,
-  `SectionTo` varchar(100) DEFAULT NULL,
-  `Status` varchar(20) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `portion`
---
-
-CREATE TABLE `portion` (
-  `Id` bigint(20) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `portion`
 --
@@ -1106,54 +625,12 @@ INSERT INTO `portion` (`Id`, `ClassId`, `SubjectId`, `PortionName`, `DateTimeRec
 (1, 1582, 5336, 'new eng portion', '2016-09-23 08:48:05'),
 (2, 1582, 5336, 'another eng portion', '2016-09-23 08:48:18');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `school`
---
-
-CREATE TABLE `school` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolName` varchar(100) NOT NULL,
-  `Website` varchar(100) NOT NULL,
-  `ShortenedSchoolName` varchar(100) NOT NULL,
-  `ContactPersonName` varchar(200) NOT NULL,
-  `AdminUsername` varchar(100) NOT NULL,
-  `AdminPassword` varchar(100) NOT NULL,
-  `Landline` varchar(30) NOT NULL,
-  `Mobile1` varchar(20) NOT NULL,
-  `Mobile2` varchar(20) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Street` varchar(1000) NOT NULL,
-  `City` varchar(100) NOT NULL,
-  `District` varchar(50) NOT NULL,
-  `State` varchar(100) NOT NULL,
-  `Pincode` varchar(10) NOT NULL,
-  `PrincipalId` bigint(20) NOT NULL,
-  `NumberOfStudents` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `school`
 --
 
 INSERT INTO `school` (`Id`, `SchoolName`, `Website`, `ShortenedSchoolName`, `ContactPersonName`, `AdminUsername`, `AdminPassword`, `Landline`, `Mobile1`, `Mobile2`, `Email`, `Street`, `City`, `District`, `State`, `Pincode`, `PrincipalId`, `NumberOfStudents`, `DateTimeRecordInserted`) VALUES
 (107, 'Whatever lengthy  High School Name, Planet Earth, Mikyway Galaxy', 'what.aanglearning.com', 'WLHSN', 'Mr. Name', 'username', 'password', '020123456', '9886547445', '', 'vinaykrishna89@yahoo.co.in', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', 8632, 2545, '2016-07-05 11:57:26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `section`
---
-
-CREATE TABLE `section` (
-  `Id` bigint(20) NOT NULL,
-  `SectionName` varchar(100) NOT NULL,
-  `ClassId` bigint(20) NOT NULL,
-  `TeacherId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `section`
@@ -1236,61 +713,12 @@ INSERT INTO `section` (`Id`, `SectionName`, `ClassId`, `TeacherId`, `DateTimeRec
 (5754, 'add new fixed', 1683, 8650, '2017-01-05 07:36:02'),
 (5755, 'sdf', 1683, 8633, '2017-01-05 07:57:14');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `sliptest`
---
-
-CREATE TABLE `sliptest` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SliptestName` varchar(100) NOT NULL,
-  `PortionIds` varchar(500) NOT NULL,
-  `ExtraPortion` text NOT NULL,
-  `MaximumMark` float NOT NULL,
-  `Average` float NOT NULL,
-  `TestDate` date NOT NULL,
-  `SubmissionDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `sliptest`
 --
 
 INSERT INTO `sliptest` (`Id`, `SectionId`, `SubjectId`, `SliptestName`, `PortionIds`, `ExtraPortion`, `MaximumMark`, `Average`, `TestDate`, `SubmissionDate`, `DateTimeRecordInserted`) VALUES
 (1, 5252, 5336, 'test sliptest edited', '1,2', 'extras', 11.11, 10.11, '1111-01-11', '2222-02-22', '2016-09-22 13:53:06');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sliptest_portion`
---
-
-CREATE TABLE `sliptest_portion` (
-  `Id` bigint(20) NOT NULL,
-  `SliptestId` bigint(20) NOT NULL,
-  `PortionId` bigint(20) NOT NULL,
-  `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sliptest_score`
---
-
-CREATE TABLE `sliptest_score` (
-  `Id` bigint(20) NOT NULL,
-  `SliptestId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sliptest_score`
@@ -1335,133 +763,13 @@ INSERT INTO `sliptest_score` (`Id`, `SliptestId`, `StudentId`, `Mark`, `Grade`, 
 (36, 1, 494047, 0, '', '2016-09-23 12:02:23'),
 (37, 1, 494048, 0, '', '2016-09-23 12:02:23');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_api`
---
-
-CREATE TABLE `sms_api` (
-  `id` int(11) NOT NULL,
-  `send_sms_api` varchar(2000) NOT NULL,
-  `response_variable` varchar(200) NOT NULL,
-  `sms_delivery_api` varchar(2000) NOT NULL,
-  `sms_delivery_variable` varchar(200) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `unicode_api` text NOT NULL,
-  `sms_sent_variable` varchar(20) NOT NULL,
-  `vendor_name` varchar(200) NOT NULL,
-  `success_label` varchar(200) NOT NULL,
-  `require_country_code` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue`
---
-
-CREATE TABLE `sms_queue` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue_low_priority`
---
-
-CREATE TABLE `sms_queue_low_priority` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue_transaction`
---
-
-CREATE TABLE `sms_queue_transaction` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `Id` bigint(20) NOT NULL,
-  `StudentName` varchar(100) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `AdmissionNo` varchar(100) NOT NULL,
-  `RollNo` int(11) NOT NULL,
-  `Username` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `Image` varchar(1000) NOT NULL,
-  `FatherName` varchar(100) NOT NULL,
-  `MotherName` varchar(100) NOT NULL,
-  `DateOfBirth` varchar(20) NOT NULL,
-  `Gender` varchar(10) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `Mobile1` varchar(100) NOT NULL,
-  `Mobile2` varchar(100) NOT NULL,
-  `Street` varchar(1000) NOT NULL,
-  `City` varchar(100) NOT NULL,
-  `District` varchar(50) NOT NULL,
-  `State` varchar(100) NOT NULL,
-  `Pincode` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionNo`, `RollNo`, `Username`, `Password`, `Image`, `FatherName`, `MotherName`, `DateOfBirth`, `Gender`, `Email`, `Mobile1`, `Mobile2`, `Street`, `City`, `District`, `State`, `Pincode`, `DateTimeRecordInserted`) VALUES
-(494011, 'STACEY BLESSINA. A.M', 107, 5252, 'V777', 18, 'S9840473684', 'S9840473684', '', 'ARUN KUMAR', 'MERLIN MARY', '29-03-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
-(494012, 'AFRIN BANU. K', 107, 5252, 'V772', 1, 'S9843563153', 'S9843563153', '', 'KAJA MAIDEEN', 'FARJAN BEGAM', '15-04-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
+(494011, 'STACEY BLESSINA. A.M', 107, 5252, 'V777', 18, 'S9840473684', 'arunpassword', '', 'ARUN KUMAR', 'MERLIN MARY', '29-03-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
+(494012, 'AFRIN BANU. K', 107, 5252, 'V772', 1, 'S9843563153', 'password', '', 'KAJA MAIDEEN', 'FARJAN BEGAM', '15-04-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547444', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494013, 'AKSHAYA. P', 107, 5252, 'V770', 2, 'S9942941830', 'S9942941830', '', 'A.PADMANABHAN', 'R.AISHWARYA', '08-12-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494014, 'ATCHITHA. B.S', 107, 5252, 'V819', 3, 'S9865202777', 'S9865202777', '', 'BABU ', 'SARASWATHI', '18-07-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494015, 'CHHANDHINI', 107, 5252, 'V852', 4, 'S9894067075', 'S9894067075', '', 'SHANMUGAM', 'VARALAKSHMI', '19-10-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
@@ -1559,7 +867,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494108, 'ROSHAAN.C.S', 107, 5254, 'V795', 23, 'S9894463320', 'S9894463320', '', 'SIVAKUMAR', 'MANONMANI', '16-05-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494109, 'SANFORD. R', 107, 5254, 'V785', 24, 'S8870381709', 'S8870381709', '', 'REMEGIUSNAVIN', 'JENITA', '10-10-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494110, 'SHARUKH.A.P', 107, 5254, 'V765', 25, 'S8098711102', 'S8098711102', '', 'ANNAMALAI', 'PUNITHA', '14-05-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
-(494111, 'HAMSA', 107, 5258, '4342', 1, 'S7373739510', 'S7373739510', '', 'MAHESH KARANTH', 'SWATHI', '23-10-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
+(494111, 'HAMSA', 107, 5258, '4342', 1, 'S7373739510', 'password', '', 'MAHESH KARANTH', 'SWATHI', '23-10-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547444', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494112, 'JANANI.B.S', 107, 5258, '4357', 2, 'S8489428403', 'S8489428403', '', 'SASI KUMAR. M', 'BHARATHI. K', '26-12-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494113, 'KASHINI. R', 107, 5258, '4374', 3, 'S8148110359', 'S8148110359', '', 'RAJAN', 'SHARMILA', '14-02-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494114, 'LASYA GOWDA. M', 107, 5258, '4296', 4, 'S9952222547', 'S9952222547', '', 'MADESH. N', 'SAVITHA. P', '13-10-2011', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
@@ -1745,7 +1053,7 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (494294, 'YASHAS YADAV. M. R', 107, 5262, '4364', 36, 'S9972541052', 'S9972541052', '', 'RAMACHANDRU', 'AMBIKA', '25-03-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494295, 'YASHWANTH. K', 107, 5262, '4355', 37, 'S9566376371', 'S9566376371', '', 'KARTHIKEYAN', 'VANISREE', '13-07-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494296, 'Z. ZAYAAN', 107, 5262, '4538', 38, 'S9543870738', 'S9543870738', '', 'ZAMEER', 'SALENA', '16-07-2011', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
-(494297, 'ANISHMITHA. S', 107, 5255, 'V723', 1, 'S9629026606', 'S9629026606', '', 'SRINIVASAN.T', 'YOGESWARI. P', '10-06-2010', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
+(494297, 'ANISHMITHA. S', 107, 5255, 'V723', 1, 'S9629026606', 'password', '', 'SRINIVASAN.T', 'YOGESWARI. P', '10-06-2010', 'F', 'vinaykrishna1989@gmail.com', '9886547444', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494298, 'GNANA JENIFER. A', 107, 5255, 'V690', 2, 'S9489630178', 'S9489630178', '', 'ARUL MOYEESEN. S', 'ANANTHA SOPIYA. A', '03-06-2010', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494299, 'GOBIKA SHREE', 107, 5255, 'V578', 3, 'S9791476499', 'S9791476499', '', 'K.NAGARAJAN', 'K. KARTHIKA', '15-02-2010', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
 (494300, 'HAASHINE. S', 107, 5255, 'V696', 4, 'S9994599258', 'S9994599258', '', 'SRI KTH', 'PRIYA SRI KTH.D', '25-11-2010', 'F', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:12'),
@@ -4152,25 +3460,6 @@ INSERT INTO `student` (`Id`, `StudentName`, `SchoolId`, `SectionId`, `AdmissionN
 (496699, 'SUBIN SAM SAIMON', 107, 5318, '3147', 35, 'S9629521271', 'S9629521271', '', 'SAIMON SAMUEL', 'BINU SAIMON', '15-06-2000', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:16'),
 (496700, 'SWATHISHWARAN. A', 107, 5318, '1223', 36, 'S9944678229', 'S9944678229', '', 'ANNADURAI V.', 'A.SUMATHI', '30-09-2000', 'M', 'vinaykrishna1989@gmail.com', '9886547445', '8310896062', 'New Airport Road', 'Pune', 'Pune', 'Maharastra', '123456', '2016-07-05 12:08:16');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `subactivity`
---
-
-CREATE TABLE `subactivity` (
-  `Id` bigint(20) NOT NULL,
-  `ActivityId` bigint(20) NOT NULL,
-  `SubActivityName` varchar(100) NOT NULL,
-  `Type` varchar(10) NOT NULL DEFAULT 'Mark',
-  `MaximumMark` float NOT NULL,
-  `Weightage` float NOT NULL,
-  `Calculation` int(11) NOT NULL,
-  `SubActivityAvg` float NOT NULL DEFAULT '0',
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `subactivity`
 --
@@ -4178,21 +3467,6 @@ CREATE TABLE `subactivity` (
 INSERT INTO `subactivity` (`Id`, `ActivityId`, `SubActivityName`, `Type`, `MaximumMark`, `Weightage`, `Calculation`, `SubActivityAvg`, `Orders`, `DateTimeRecordInserted`) VALUES
 (2, 4, 'sub act edited', '', 25, 50, -1, 0, 0, '2016-09-07 13:02:12'),
 (3, 4, '2nd sub act', 'null', 50, 50, 1, 0, 0, '2016-09-20 09:14:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subactivity_score`
---
-
-CREATE TABLE `subactivity_score` (
-  `Id` bigint(20) NOT NULL,
-  `SubActivityId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subactivity_score`
@@ -4274,22 +3548,6 @@ INSERT INTO `subactivity_score` (`Id`, `SubActivityId`, `StudentId`, `Mark`, `Gr
 (73, 3, 494047, 0, '', '2016-09-20 09:15:28'),
 (74, 3, 494048, 0, '', '2016-09-20 09:15:28');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `subject`
---
-
-CREATE TABLE `subject` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) DEFAULT NULL,
-  `SubjectName` varchar(100) NOT NULL,
-  `PartitionType` int(11) NOT NULL,
-  `TheorySubjectId` bigint(20) NOT NULL,
-  `PracticalSubjectId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `subject`
 --
@@ -4344,19 +3602,6 @@ INSERT INTO `subject` (`Id`, `SchoolId`, `SubjectName`, `PartitionType`, `Theory
 (6022, 107, 'therory subject', 0, 0, 0, '2016-09-14 08:08:33'),
 (6023, 107, 'partition subject', 1, 6022, 6021, '2016-09-14 08:08:55');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `subject_group`
---
-
-CREATE TABLE `subject_group` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) DEFAULT NULL,
-  `SubjectGroupName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `subject_group`
 --
@@ -4410,20 +3655,6 @@ INSERT INTO `subject_group` (`Id`, `SchoolId`, `SubjectGroupName`, `DateTimeReco
 (1295, 107, 'ECONOMICS', '2016-07-05 16:17:34'),
 (1296, 107, 'test', '2016-07-31 09:40:24'),
 (1297, 107, 'partition', '2016-09-14 08:10:29');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `subject_group_subject`
---
-
-CREATE TABLE `subject_group_subject` (
-  `Id` bigint(20) NOT NULL,
-  `SubjectGroupId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subject_group_subject`
@@ -4492,20 +3723,6 @@ INSERT INTO `subject_group_subject` (`Id`, `SubjectGroupId`, `SubjectId`, `Subje
 (63, 526, 0, 'LANGUAGE II', '2017-02-09 17:01:03'),
 (64, 533, 0, ' ENGLISH', '2017-02-09 17:01:33');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `subject_student`
---
-
-CREATE TABLE `subject_student` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `StudentIds` varchar(30000) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `subject_student`
 --
@@ -4517,1523 +3734,1491 @@ INSERT INTO `subject_student` (`Id`, `SectionId`, `SubjectId`, `StudentIds`, `Da
 (4, 5252, 5343, '494012,494013,494014,494015,494016,494017,494019,494020,494021,494022,494023,494024,494025,494026,494027,494028,494029,494011,494030,494031,494032,494033,494034,494035,494036,494037,494038,494039,494040,494041,494042,494043,494044,494045,494046,494047,494048', '2016-09-19 09:22:07'),
 (5, 5253, 5336, '494049,494050,494051,494052,494053,494054,494055,494056,494057,494058,494059,494060,494061,494062,494063,494064,494065,494066,494067,494068,494069,494070,494071,494072,494073,494074,494075,494076,494077,494078,494079,494080,494081,494082,494083,494084,494085', '2017-01-05 08:07:42');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `subject_teacher`
---
-
-CREATE TABLE `subject_teacher` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) DEFAULT NULL,
-  `TeacherId` bigint(20) DEFAULT '0',
-  `TeacherName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `subject_teacher`
 --
 
-INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `TeacherId`, `TeacherName`, `DateTimeRecordInserted`) VALUES
-(2844, 4861, 5323, 'ENGLISH', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2845, 4861, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(2846, 4861, 5326, 'ENVIRONMENTAL SCIENCE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2847, 4861, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2848, 4861, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2849, 4861, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(2850, 4861, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2851, 4861, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2852, 4862, 5323, 'ENGLISH', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(2853, 4862, 5325, 'MATHEMATICS', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(2854, 4862, 5326, 'ENVIRONMENTAL SCIENCE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(2855, 4862, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2856, 4862, 5328, 'GENERAL KNOWLEDGE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(2857, 4862, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(2858, 4862, 5349, 'HINDI', 11034, 'RENUKABAI', '2016-07-05 11:51:11'),
-(2859, 4862, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2860, 4863, 5323, 'ENGLISH', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(2861, 4863, 5325, 'MATHEMATICS', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(2862, 4863, 5326, 'ENVIRONMENTAL SCIENCE', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(2863, 4863, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2864, 4863, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2865, 4863, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(2866, 4863, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2867, 4863, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2868, 4864, 5323, 'ENGLISH', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(2869, 4864, 5325, 'MATHEMATICS', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(2870, 4864, 5326, 'ENVIRONMENTAL SCIENCE', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(2871, 4864, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2872, 4864, 5328, 'GENERAL KNOWLEDGE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2873, 4864, 5348, 'TAMIL', 8726, 'SUDHA. S', '2016-07-05 11:51:11'),
-(2874, 4864, 5349, 'HINDI', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(2875, 4864, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2876, 4865, 5323, 'ENGLISH', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(2877, 4865, 5325, 'MATHEMATICS', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(2878, 4865, 5326, 'ENVIRONMENTAL SCIENCE', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(2879, 4865, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2880, 4865, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2881, 4865, 5348, 'TAMIL', 8726, 'SUDHA. S', '2016-07-05 11:51:11'),
-(2882, 4865, 5349, 'HINDI', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(2883, 4865, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2884, 4866, 5323, 'ENGLISH', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(2885, 4866, 5325, 'MATHEMATICS', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(2886, 4866, 5326, 'ENVIRONMENTAL SCIENCE', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(2887, 4866, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2888, 4866, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2889, 4866, 5348, 'TAMIL', 8726, 'SUDHA. S', '2016-07-05 11:51:11'),
-(2890, 4866, 5349, 'HINDI', 11034, 'RENUKABAI', '2016-07-05 11:51:11'),
-(2891, 4866, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2892, 4867, 5323, 'ENGLISH', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(2893, 4867, 5325, 'MATHEMATICS', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(2894, 4867, 5326, 'ENVIRONMENTAL SCIENCE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(2895, 4867, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2896, 4867, 5328, 'GENERAL KNOWLEDGE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(2897, 4867, 5348, 'TAMIL', 8726, 'SUDHA. S', '2016-07-05 11:51:11'),
-(2898, 4867, 5349, 'HINDI', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(2899, 4867, 5350, 'KANNADA', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(2900, 4868, 5323, 'ENGLISH', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(2901, 4868, 5325, 'MATHEMATICS', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(2902, 4868, 5326, 'ENVIRONMENTAL SCIENCE', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(2903, 4868, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2904, 4868, 5328, 'GENERAL KNOWLEDGE', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(2905, 4868, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(2906, 4868, 5349, 'HINDI', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(2907, 4868, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2908, 4869, 5323, 'ENGLISH', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(2909, 4869, 5325, 'MATHEMATICS', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(2910, 4869, 5326, 'ENVIRONMENTAL SCIENCE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(2911, 4869, 5327, 'COMPUTER SCIENCE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(2912, 4869, 5328, 'GENERAL KNOWLEDGE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(2913, 4869, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(2914, 4869, 5349, 'HINDI', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(2915, 4869, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2916, 4870, 5323, 'ENGLISH', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(2917, 4870, 5325, 'MATHEMATICS', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(2918, 4870, 5326, 'ENVIRONMENTAL SCIENCE', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(2919, 4870, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2920, 4870, 5328, 'GENERAL KNOWLEDGE', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(2921, 4870, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2922, 4870, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2923, 4870, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2924, 4871, 5323, 'ENGLISH', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(2925, 4871, 5325, 'MATHEMATICS', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(2926, 4871, 5326, 'ENVIRONMENTAL SCIENCE', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(2927, 4871, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2928, 4871, 5328, 'GENERAL KNOWLEDGE', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(2929, 4871, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2930, 4871, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2931, 4871, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2932, 4872, 5323, 'ENGLISH', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(2933, 4872, 5325, 'MATHEMATICS', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(2934, 4872, 5326, 'ENVIRONMENTAL SCIENCE', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(2935, 4872, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2936, 4872, 5328, 'GENERAL KNOWLEDGE', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(2937, 4872, 5348, 'TAMIL', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(2938, 4872, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2939, 4872, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2940, 4873, 5323, 'ENGLISH', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(2941, 4873, 5325, 'MATHEMATICS', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(2942, 4873, 5326, 'ENVIRONMENTAL SCIENCE', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(2943, 4873, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2944, 4873, 5328, 'GENERAL KNOWLEDGE', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(2945, 4873, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2946, 4873, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2947, 4873, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2948, 4874, 5323, 'ENGLISH', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(2949, 4874, 5325, 'MATHEMATICS', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(2950, 4874, 5326, 'ENVIRONMENTAL SCIENCE', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(2951, 4874, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(2952, 4874, 5328, 'GENERAL KNOWLEDGE', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(2953, 4874, 5348, 'TAMIL', 8726, 'SUDHA. S', '2016-07-05 11:51:11'),
-(2954, 4874, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2955, 4874, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2956, 4875, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(2957, 4875, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(2958, 4875, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(2959, 4875, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2960, 4875, 5328, 'GENERAL KNOWLEDGE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2961, 4875, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2962, 4875, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(2963, 4875, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2964, 4876, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(2965, 4876, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(2966, 4876, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(2967, 4876, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2968, 4876, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(2969, 4876, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2970, 4876, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(2971, 4876, 5350, 'KANNADA', 8695, 'AMBIKA G.M.', '2016-07-05 11:51:11'),
-(2972, 4877, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(2973, 4877, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(2974, 4877, 5326, 'ENVIRONMENTAL SCIENCE', 11042, 'NIRMALA BHASKAR', '2016-07-05 11:51:11'),
-(2975, 4877, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2976, 4877, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(2977, 4877, 5348, 'TAMIL', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(2978, 4877, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2979, 4877, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2980, 4878, 5323, 'ENGLISH', 11043, 'SAVITHRI.M', '2016-07-05 11:51:11'),
-(2981, 4878, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(2982, 4878, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(2983, 4878, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2984, 4878, 5328, 'GENERAL KNOWLEDGE', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(2985, 4878, 5348, 'TAMIL', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(2986, 4878, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2987, 4878, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2988, 4879, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(2989, 4879, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(2990, 4879, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(2991, 4879, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2992, 4879, 5328, 'GENERAL KNOWLEDGE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(2993, 4879, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(2994, 4879, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(2995, 4879, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(2996, 4880, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(2997, 4880, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(2998, 4880, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(2999, 4880, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3000, 4880, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(3001, 4880, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3002, 4880, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3003, 4880, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3004, 4881, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(3005, 4881, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(3006, 4881, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(3007, 4881, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3008, 4881, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(3009, 4881, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(3010, 4881, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3011, 4881, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3012, 4882, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(3013, 4882, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3014, 4882, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(3015, 4882, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3016, 4882, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3017, 4882, 5348, 'TAMIL', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(3018, 4882, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(3019, 4882, 5350, 'KANNADA', 11046, 'SHANTHAMMA', '2016-07-05 11:51:11'),
-(3020, 4883, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(3021, 4883, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3022, 4883, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(3023, 4883, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3024, 4883, 5328, 'GENERAL KNOWLEDGE', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(3025, 4883, 5348, 'TAMIL', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(3026, 4883, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(3027, 4883, 5350, 'KANNADA', 11046, 'SHANTHAMMA', '2016-07-05 11:51:11'),
-(3028, 4884, 5323, 'ENGLISH', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3029, 4884, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(3030, 4884, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(3031, 4884, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3032, 4884, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(3033, 4884, 5348, 'TAMIL', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(3034, 4884, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3035, 4884, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3036, 4885, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(3037, 4885, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(3038, 4885, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(3039, 4885, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3040, 4885, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(3041, 4885, 5348, 'TAMIL', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(3042, 4885, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3043, 4885, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3044, 4886, 5323, 'ENGLISH', 11043, 'SAVITHRI.M', '2016-07-05 11:51:11'),
-(3045, 4886, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(3046, 4886, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(3047, 4886, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3048, 4886, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(3049, 4886, 5348, 'TAMIL', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(3050, 4886, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3051, 4886, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3052, 4887, 5323, 'ENGLISH', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3053, 4887, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(3054, 4887, 5326, 'ENVIRONMENTAL SCIENCE', 11042, 'NIRMALA BHASKAR', '2016-07-05 11:51:11'),
-(3055, 4887, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3056, 4887, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(3057, 4887, 5348, 'TAMIL', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(3058, 4887, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3059, 4887, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3060, 4888, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(3061, 4888, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(3062, 4888, 5326, 'ENVIRONMENTAL SCIENCE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(3063, 4888, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3064, 4888, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(3065, 4888, 5348, 'TAMIL', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(3066, 4888, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3067, 4888, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3068, 4889, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(3069, 4889, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(3070, 4889, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3071, 4889, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(3072, 4889, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(3073, 4889, 5335, 'GEN.SCIENCE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(3074, 4889, 5348, 'TAMIL', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(3075, 4889, 5349, 'HINDI', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(3076, 4889, 5350, 'KANNADA', 11046, 'SHANTHAMMA', '2016-07-05 11:51:11'),
-(3077, 4889, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3078, 4890, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(3079, 4890, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(3080, 4890, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3081, 4890, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(3082, 4890, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S', '2016-07-05 11:51:11'),
-(3083, 4890, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(3084, 4890, 5348, 'TAMIL', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(3085, 4890, 5349, 'HINDI', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(3086, 4890, 5350, 'KANNADA', 11046, 'SHANTHAMMA', '2016-07-05 11:51:11'),
-(3087, 4890, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3088, 4891, 5323, 'ENGLISH', 0, NULL, '2016-07-05 11:51:11'),
-(3089, 4891, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3090, 4891, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3091, 4891, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3092, 4891, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3093, 4891, 5335, 'GEN.SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3094, 4891, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3095, 4891, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3096, 4891, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3097, 4891, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3098, 4892, 5323, 'ENGLISH', 0, NULL, '2016-07-05 11:51:11'),
-(3099, 4892, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3100, 4892, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3101, 4892, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3102, 4892, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3103, 4892, 5335, 'GEN.SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3104, 4892, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3105, 4892, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3106, 4892, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3107, 4892, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3108, 4893, 5323, 'ENGLISH', 0, NULL, '2016-07-05 11:51:11'),
-(3109, 4893, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3110, 4893, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3111, 4893, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3112, 4893, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3113, 4893, 5335, 'GEN.SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3114, 4893, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3115, 4893, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3116, 4893, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3117, 4893, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3118, 4894, 5323, 'ENGLISH', 0, NULL, '2016-07-05 11:51:11'),
-(3119, 4894, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3120, 4894, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3121, 4894, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3122, 4894, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3123, 4894, 5335, 'GEN.SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3124, 4894, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3125, 4894, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(3126, 4894, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(3127, 4894, 5351, '3rd LANGUAGE', 0, NULL, '2016-07-05 11:51:11'),
-(3128, 4895, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3129, 4895, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3130, 4895, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3131, 4895, 5330, 'LANGUAGE I', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(3132, 4895, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3133, 4895, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3134, 4895, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.', '2016-07-05 11:51:11'),
-(3135, 4895, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3136, 4896, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3137, 4896, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3138, 4896, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3139, 4896, 5330, 'LANGUAGE I', 0, NULL, '2016-07-05 11:51:11'),
-(3140, 4896, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3141, 4896, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3142, 4896, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3143, 4896, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3144, 4897, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(3145, 4897, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3146, 4897, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3147, 4897, 5330, 'LANGUAGE I', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(3148, 4897, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(3149, 4897, 5332, 'LANGUAGE III', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(3150, 4897, 5333, 'SCIENCE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(3151, 4897, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(3152, 4898, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(3153, 4898, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3154, 4898, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(3155, 4898, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(3156, 4898, 5331, 'LANGUAGE II', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(3157, 4898, 5332, 'LANGUAGE III', 11034, 'RENUKABAI', '2016-07-05 11:51:11'),
-(3158, 4898, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(3159, 4898, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(3160, 4899, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(3161, 4899, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3162, 4899, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(3163, 4899, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(3164, 4899, 5331, 'LANGUAGE II', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(3165, 4899, 5332, 'LANGUAGE III', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(3166, 4899, 5333, 'SCIENCE', 8683, 'KAVITHA K', '2016-07-05 11:51:11'),
-(3167, 4899, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(3168, 4900, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3169, 4900, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3170, 4900, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(3171, 4900, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(3172, 4900, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3173, 4900, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3174, 4900, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3175, 4900, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(3176, 4901, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.', '2016-07-05 11:51:11'),
-(3177, 4901, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(3178, 4901, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(3179, 4901, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(3180, 4901, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3181, 4901, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3182, 4901, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3183, 4901, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3184, 4902, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.', '2016-07-05 11:51:11'),
-(3185, 4902, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3186, 4902, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(3187, 4902, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(3188, 4902, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(3189, 4902, 5332, 'LANGUAGE III', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(3190, 4902, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3191, 4902, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3192, 4903, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(3193, 4903, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3194, 4903, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(3195, 4903, 5330, 'LANGUAGE I', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(3196, 4903, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(3197, 4903, 5332, 'LANGUAGE III', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(3198, 4903, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3199, 4903, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3200, 4904, 5325, 'MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(3201, 4904, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3202, 4904, 5328, 'GENERAL KNOWLEDGE', 0, NULL, '2016-07-05 11:51:11'),
-(3203, 4904, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(3204, 4904, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3205, 4904, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3206, 4904, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3207, 4904, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(3208, 4905, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(3209, 4905, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3210, 4905, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(3211, 4905, 5330, 'LANGUAGE I', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(3212, 4905, 5331, 'LANGUAGE II', 0, NULL, '2016-07-05 11:51:11'),
-(3213, 4905, 5332, 'LANGUAGE III', 0, NULL, '2016-07-05 11:51:11'),
-(3214, 4905, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3215, 4905, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(3216, 4906, 5325, 'MATHEMATICS', 8693, 'HARISH BABU K.V.', '2016-07-05 11:51:11'),
-(3217, 4906, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(3218, 4906, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(3219, 4906, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(3220, 4906, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(3221, 4906, 5332, 'LANGUAGE III', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(3222, 4906, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3223, 4906, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(3224, 4907, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(3225, 4907, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3226, 4907, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(3227, 4907, 5330, 'LANGUAGE I', 0, NULL, '2016-07-05 11:51:11'),
-(3228, 4907, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(3229, 4907, 5332, 'LANGUAGE III', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(3230, 4907, 5333, 'SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3231, 4907, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(3232, 4908, 5352, '101 ENGLISH COMMUNICATIVE', 0, NULL, '2016-07-05 11:51:11'),
-(3233, 4908, 5353, '006 TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3234, 4908, 5354, '041 MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3235, 4908, 5355, '086 SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3236, 4908, 5356, '087 SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3237, 4908, 5357, '402 INFORMATION TECHNOLOGY', 0, NULL, '2016-07-05 11:51:11'),
-(3238, 4909, 5352, '101 ENGLISH COMMUNICATIVE', 0, NULL, '2016-07-05 11:51:11'),
-(3239, 4909, 5353, '006 TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(3240, 4909, 5354, '041 MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3241, 4909, 5355, '086 SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3242, 4909, 5356, '087 SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3243, 4909, 5357, '402 INFORMATION TECHNOLOGY', 0, NULL, '2016-07-05 11:51:11'),
-(3244, 4910, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA', '2016-07-05 11:51:11'),
-(3245, 4910, 5353, '006 TAMIL', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(3246, 4910, 5354, '041 MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3247, 4910, 5355, '086 SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3248, 4910, 5356, '087 SOCIAL SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3249, 4910, 5357, '402 INFORMATION TECHNOLOGY', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(3250, 4911, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(3251, 4911, 5353, '006 TAMIL', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(3252, 4911, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(3253, 4911, 5355, '086 SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3254, 4911, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G', '2016-07-05 11:51:11'),
-(3255, 4911, 5357, '402 INFORMATION TECHNOLOGY', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(3256, 4912, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(3257, 4912, 5353, '006 TAMIL', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(3258, 4912, 5354, '041 MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3259, 4912, 5355, '086 SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3260, 4912, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G', '2016-07-05 11:51:11'),
-(3261, 4912, 5357, '402 INFORMATION TECHNOLOGY', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(3340, 4913, 5323, 'ENGLISH', 0, NULL, '2016-07-05 11:51:11'),
-(3341, 4913, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3342, 4913, 5327, 'COMPUTER SCIENCE', 0, NULL, '2016-07-05 11:51:11'),
-(3343, 4913, 5358, 'PHYSICS', 0, NULL, '2016-07-05 11:51:11'),
-(3344, 4913, 5359, 'CHEMISTRY', 0, NULL, '2016-07-05 11:51:11'),
-(3345, 4913, 5360, 'BIOLOGY', 0, NULL, '2016-07-05 11:51:11'),
-(3346, 4914, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(3347, 4914, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(3348, 4914, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(3349, 4914, 5358, 'PHYSICS', 0, NULL, '2016-07-05 11:51:11'),
-(3350, 4914, 5359, 'CHEMISTRY', 0, NULL, '2016-07-05 11:51:11'),
-(3351, 4914, 5360, 'BIOLOGY', 0, NULL, '2016-07-05 11:51:11'),
-(3929, 4851, 5336, 'ENGLISH (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3930, 4851, 5337, 'ENGLISH (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3931, 4851, 5338, 'II LANGUAGE (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3932, 4851, 5339, 'II LANGUAGE (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3933, 4851, 5340, 'NUMBER WORK (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3934, 4851, 5341, 'NUMBER WORK (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3935, 4851, 5342, 'E.V.S. (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3936, 4851, 5343, 'E.V.S. (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3937, 4851, 5344, 'RHYMES AND SONGS', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3938, 4851, 5345, 'STORY TELLING', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3939, 4851, 5346, 'DRAWING AND COLOURING', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3940, 4851, 5347, 'CRAFT WORK', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(3941, 4852, 5336, 'ENGLISH (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3942, 4852, 5337, 'ENGLISH (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3943, 4852, 5338, 'II LANGUAGE (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3944, 4852, 5339, 'II LANGUAGE (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3945, 4852, 5340, 'NUMBER WORK (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3946, 4852, 5341, 'NUMBER WORK (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3947, 4852, 5342, 'E.V.S. (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3948, 4852, 5343, 'E.V.S. (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3949, 4852, 5344, 'RHYMES AND SONGS', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3950, 4852, 5345, 'STORY TELLING', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3951, 4852, 5346, 'DRAWING AND COLOURING', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3952, 4852, 5347, 'CRAFT WORK', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(3953, 4853, 5336, 'ENGLISH (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3954, 4853, 5337, 'ENGLISH (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3955, 4853, 5338, 'II LANGUAGE (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3956, 4853, 5339, 'II LANGUAGE (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3957, 4853, 5340, 'NUMBER WORK (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3958, 4853, 5341, 'NUMBER WORK (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3959, 4853, 5342, 'E.V.S. (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3960, 4853, 5343, 'E.V.S. (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3961, 4853, 5344, 'RHYMES AND SONGS', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3962, 4853, 5345, 'STORY TELLING', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3963, 4853, 5346, 'DRAWING AND COLOURING', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3964, 4853, 5347, 'CRAFT WORK', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(3965, 4854, 5336, 'ENGLISH (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3966, 4854, 5337, 'ENGLISH (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3967, 4854, 5338, 'II LANGUAGE (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3968, 4854, 5339, 'II LANGUAGE (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3969, 4854, 5340, 'NUMBER WORK (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3970, 4854, 5341, 'NUMBER WORK (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3971, 4854, 5342, 'E.V.S. (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3972, 4854, 5343, 'E.V.S. (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3973, 4854, 5344, 'RHYMES AND SONGS', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3974, 4854, 5345, 'STORY TELLING', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3975, 4854, 5346, 'DRAWING AND COLOURING', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3976, 4854, 5347, 'CRAFT WORK', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(3977, 4855, 5336, 'ENGLISH (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3978, 4855, 5337, 'ENGLISH (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3979, 4855, 5338, 'II LANGUAGE (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3980, 4855, 5339, 'II LANGUAGE (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3981, 4855, 5340, 'NUMBER WORK (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3982, 4855, 5341, 'NUMBER WORK (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3983, 4855, 5342, 'E.V.S. (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3984, 4855, 5343, 'E.V.S. (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3985, 4855, 5344, 'RHYMES AND SONGS', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3986, 4855, 5345, 'STORY TELLING', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3987, 4855, 5346, 'DRAWING AND COLOURING', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3988, 4855, 5347, 'CRAFT WORK', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(3989, 4856, 5336, 'ENGLISH (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3990, 4856, 5337, 'ENGLISH (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3991, 4856, 5338, 'II LANGUAGE (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3992, 4856, 5339, 'II LANGUAGE (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3993, 4856, 5340, 'NUMBER WORK (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3994, 4856, 5341, 'NUMBER WORK (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3995, 4856, 5342, 'E.V.S. (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3996, 4856, 5343, 'E.V.S. (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3997, 4856, 5344, 'RHYMES AND SONGS', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3998, 4856, 5345, 'STORY TELLING', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(3999, 4856, 5346, 'DRAWING AND COLOURING', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(4000, 4856, 5347, 'CRAFT WORK', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(4001, 4857, 5336, 'ENGLISH (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4002, 4857, 5337, 'ENGLISH (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4003, 4857, 5338, 'II LANGUAGE (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4004, 4857, 5339, 'II LANGUAGE (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4005, 4857, 5340, 'NUMBER WORK (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4006, 4857, 5341, 'NUMBER WORK (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4007, 4857, 5342, 'E.V.S. (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4008, 4857, 5343, 'E.V.S. (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4009, 4857, 5344, 'RHYMES AND SONGS', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4010, 4857, 5345, 'STORY TELLING', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4011, 4857, 5346, 'DRAWING AND COLOURING', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4012, 4857, 5347, 'CRAFT WORK', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(4013, 4858, 5336, 'ENGLISH (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4014, 4858, 5337, 'ENGLISH (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4015, 4858, 5338, 'II LANGUAGE (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4016, 4858, 5339, 'II LANGUAGE (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4017, 4858, 5340, 'NUMBER WORK (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4018, 4858, 5341, 'NUMBER WORK (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4019, 4858, 5342, 'E.V.S. (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4020, 4858, 5343, 'E.V.S. (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4021, 4858, 5344, 'RHYMES AND SONGS', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4022, 4858, 5345, 'STORY TELLING', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4023, 4858, 5346, 'DRAWING AND COLOURING', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4024, 4858, 5347, 'CRAFT WORK', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(4025, 4859, 5336, 'ENGLISH (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4026, 4859, 5337, 'ENGLISH (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4027, 4859, 5338, 'II LANGUAGE (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4028, 4859, 5339, 'II LANGUAGE (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4029, 4859, 5340, 'NUMBER WORK (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4030, 4859, 5341, 'NUMBER WORK (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4031, 4859, 5342, 'E.V.S. (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4032, 4859, 5343, 'E.V.S. (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4033, 4859, 5344, 'RHYMES AND SONGS', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4034, 4859, 5345, 'STORY TELLING', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4035, 4859, 5346, 'DRAWING AND COLOURING', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4036, 4859, 5347, 'CRAFT WORK', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(4037, 4860, 5336, 'ENGLISH (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4038, 4860, 5337, 'ENGLISH (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4039, 4860, 5338, 'II LANGUAGE (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4040, 4860, 5339, 'II LANGUAGE (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4041, 4860, 5340, 'NUMBER WORK (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4042, 4860, 5341, 'NUMBER WORK (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4043, 4860, 5342, 'E.V.S. (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4044, 4860, 5343, 'E.V.S. (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4045, 4860, 5344, 'RHYMES AND SONGS', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4046, 4860, 5345, 'STORY TELLING', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4047, 4860, 5346, 'DRAWING AND COLOURING', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4048, 4860, 5347, 'CRAFT WORK', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(4049, 4845, 5336, 'ENGLISH (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4050, 4845, 5337, 'ENGLISH (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4051, 4845, 5338, 'II LANGUAGE (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4052, 4845, 5339, 'II LANGUAGE (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4053, 4845, 5340, 'NUMBER WORK (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4054, 4845, 5341, 'NUMBER WORK (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4055, 4845, 5342, 'E.V.S. (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4056, 4845, 5343, 'E.V.S. (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4057, 4845, 5344, 'RHYMES AND SONGS', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4058, 4845, 5345, 'STORY TELLING', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4059, 4845, 5346, 'DRAWING AND COLOURING', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4060, 4845, 5347, 'CRAFT WORK', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(4061, 4846, 5336, 'ENGLISH (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4062, 4846, 5337, 'ENGLISH (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4063, 4846, 5338, 'II LANGUAGE (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4064, 4846, 5339, 'II LANGUAGE (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4065, 4846, 5340, 'NUMBER WORK (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4066, 4846, 5341, 'NUMBER WORK (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4067, 4846, 5342, 'E.V.S. (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4068, 4846, 5343, 'E.V.S. (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4069, 4846, 5344, 'RHYMES AND SONGS', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4070, 4846, 5345, 'STORY TELLING', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4071, 4846, 5346, 'DRAWING AND COLOURING', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4072, 4846, 5347, 'CRAFT WORK', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(4073, 4847, 5336, 'ENGLISH (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4074, 4847, 5337, 'ENGLISH (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4075, 4847, 5338, 'II LANGUAGE (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4076, 4847, 5339, 'II LANGUAGE (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4077, 4847, 5340, 'NUMBER WORK (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4078, 4847, 5341, 'NUMBER WORK (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4079, 4847, 5342, 'E.V.S. (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4080, 4847, 5343, 'E.V.S. (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4081, 4847, 5344, 'RHYMES AND SONGS', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4082, 4847, 5345, 'STORY TELLING', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4083, 4847, 5346, 'DRAWING AND COLOURING', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4084, 4847, 5347, 'CRAFT WORK', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(4085, 4848, 5336, 'ENGLISH (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4086, 4848, 5337, 'ENGLISH (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4087, 4848, 5338, 'II LANGUAGE (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4088, 4848, 5339, 'II LANGUAGE (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4089, 4848, 5340, 'NUMBER WORK (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4090, 4848, 5341, 'NUMBER WORK (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4091, 4848, 5342, 'E.V.S. (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4092, 4848, 5343, 'E.V.S. (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4093, 4848, 5344, 'RHYMES AND SONGS', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4094, 4848, 5345, 'STORY TELLING', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4095, 4848, 5346, 'DRAWING AND COLOURING', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4096, 4848, 5347, 'CRAFT WORK', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(4097, 4849, 5336, 'ENGLISH (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4098, 4849, 5337, 'ENGLISH (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4099, 4849, 5338, 'II LANGUAGE (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4100, 4849, 5339, 'II LANGUAGE (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4101, 4849, 5340, 'NUMBER WORK (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4102, 4849, 5341, 'NUMBER WORK (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4103, 4849, 5342, 'E.V.S. (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4104, 4849, 5343, 'E.V.S. (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4105, 4849, 5344, 'RHYMES AND SONGS', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4106, 4849, 5345, 'STORY TELLING', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4107, 4849, 5346, 'DRAWING AND COLOURING', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4108, 4849, 5347, 'CRAFT WORK', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(4109, 4850, 5336, 'ENGLISH (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4110, 4850, 5337, 'ENGLISH (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4111, 4850, 5338, 'II LANGUAGE (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4112, 4850, 5339, 'II LANGUAGE (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4113, 4850, 5340, 'NUMBER WORK (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4114, 4850, 5341, 'NUMBER WORK (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4115, 4850, 5342, 'E.V.S. (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4116, 4850, 5343, 'E.V.S. (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4117, 4850, 5344, 'RHYMES AND SONGS', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4118, 4850, 5345, 'STORY TELLING', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4119, 4850, 5346, 'DRAWING AND COLOURING', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4120, 4850, 5347, 'CRAFT WORK', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(4302, 5165, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4303, 5165, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(4304, 5165, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(4305, 5165, 5359, 'CHEMISTRY', 8683, 'KAVITHA K', '2016-07-05 11:51:11'),
-(4306, 5165, 5360, 'BIOLOGY', 8664, 'PRIYA DHARSHINI M.', '2016-07-05 11:51:11'),
-(4307, 5166, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4308, 5166, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(4309, 5166, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(4310, 5166, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(4311, 5166, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(4312, 5167, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4313, 5167, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(4314, 5167, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(4315, 5167, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(4316, 5167, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(4440, 5168, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4441, 5168, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(4442, 5168, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(4443, 5168, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(4444, 5168, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(4445, 5169, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4446, 5169, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(4448, 5169, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(4449, 5169, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11');
-INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `TeacherId`, `TeacherName`, `DateTimeRecordInserted`) VALUES
-(4450, 5169, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(4451, 5171, 5323, 'ENGLISH', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(4452, 5171, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(4453, 5171, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(4454, 5171, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(4455, 5171, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(4456, 5170, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(4457, 5170, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(4458, 5170, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(4459, 5170, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(4460, 5170, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5552, 5302, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(5553, 5302, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5554, 5302, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5555, 5302, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.', '2016-07-05 11:51:11'),
-(5556, 5302, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(5560, 5303, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.', '2016-07-05 11:51:11'),
-(5561, 5303, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5562, 5303, 5328, 'GENERAL KNOWLEDGE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(5563, 5303, 5333, 'SCIENCE', 8664, 'PRIYA DHARSHINI M.', '2016-07-05 11:51:11'),
-(5564, 5303, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K', '2016-07-05 11:51:11'),
-(5568, 5304, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(5569, 5304, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5570, 5304, 5328, 'GENERAL KNOWLEDGE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(5571, 5304, 5333, 'SCIENCE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(5572, 5304, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(5576, 5305, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(5577, 5305, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5578, 5305, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5579, 5305, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(5580, 5305, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(5584, 5326, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(5585, 5326, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5586, 5326, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5587, 5326, 5333, 'SCIENCE', 8683, 'KAVITHA K', '2016-07-05 11:51:11'),
-(5588, 5326, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(5610, 5310, 5325, 'MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(5611, 5310, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5612, 5310, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5613, 5310, 5333, 'SCIENCE', 8664, 'PRIYA DHARSHINI M.', '2016-07-05 11:51:11'),
-(5614, 5310, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(5618, 5311, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5619, 5311, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5620, 5311, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5621, 5311, 5333, 'SCIENCE', 8658, 'BEULA CHRISTY', '2016-07-05 11:51:11'),
-(5622, 5311, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(5626, 5312, 5325, 'MATHEMATICS', 8693, 'HARISH BABU K.V.', '2016-07-05 11:51:11'),
-(5627, 5312, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5628, 5312, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5629, 5312, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.', '2016-07-05 11:51:11'),
-(5630, 5312, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(5634, 5313, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5635, 5313, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5636, 5313, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5637, 5313, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.', '2016-07-05 11:51:11'),
-(5638, 5313, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(5640, 5268, 5323, 'ENGLISH', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(5642, 5268, 5325, 'MATHEMATICS', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(5643, 5268, 5326, 'ENVIRONMENTAL SCIENCE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(5644, 5268, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5645, 5268, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(5646, 5269, 5323, 'ENGLISH', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(5648, 5269, 5325, 'MATHEMATICS', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(5649, 5269, 5326, 'ENVIRONMENTAL SCIENCE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(5650, 5269, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5651, 5269, 5328, 'GENERAL KNOWLEDGE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(5652, 5270, 5323, 'ENGLISH', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(5654, 5270, 5325, 'MATHEMATICS', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(5655, 5270, 5326, 'ENVIRONMENTAL SCIENCE', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(5656, 5270, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5657, 5270, 5328, 'GENERAL KNOWLEDGE', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(5658, 5271, 5323, 'ENGLISH', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(5660, 5271, 5325, 'MATHEMATICS', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(5661, 5271, 5326, 'ENVIRONMENTAL SCIENCE', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(5662, 5271, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5663, 5271, 5328, 'GENERAL KNOWLEDGE', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(5664, 5272, 5323, 'ENGLISH', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(5666, 5272, 5325, 'MATHEMATICS', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(5667, 5272, 5326, 'ENVIRONMENTAL SCIENCE', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(5668, 5272, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5669, 5272, 5328, 'GENERAL KNOWLEDGE', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(5670, 5273, 5323, 'ENGLISH', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(5672, 5273, 5325, 'MATHEMATICS', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(5673, 5273, 5326, 'ENVIRONMENTAL SCIENCE', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(5674, 5273, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5675, 5273, 5328, 'GENERAL KNOWLEDGE', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(5676, 5274, 5323, 'ENGLISH', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(5678, 5274, 5325, 'MATHEMATICS', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(5679, 5274, 5326, 'ENVIRONMENTAL SCIENCE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(5680, 5274, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5681, 5274, 5328, 'GENERAL KNOWLEDGE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(5682, 5275, 5323, 'ENGLISH', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(5684, 5275, 5325, 'MATHEMATICS', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(5685, 5275, 5326, 'ENVIRONMENTAL SCIENCE', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(5686, 5275, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5687, 5275, 5328, 'GENERAL KNOWLEDGE', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(5688, 5276, 5323, 'ENGLISH', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(5690, 5276, 5325, 'MATHEMATICS', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(5691, 5276, 5326, 'ENVIRONMENTAL SCIENCE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(5692, 5276, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5693, 5276, 5328, 'GENERAL KNOWLEDGE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(5694, 5277, 5323, 'ENGLISH', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(5696, 5277, 5325, 'MATHEMATICS', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(5697, 5277, 5326, 'ENVIRONMENTAL SCIENCE', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(5698, 5277, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5699, 5277, 5328, 'GENERAL KNOWLEDGE', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(5700, 5278, 5323, 'ENGLISH', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(5702, 5278, 5325, 'MATHEMATICS', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(5703, 5278, 5326, 'ENVIRONMENTAL SCIENCE', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(5704, 5278, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5705, 5278, 5328, 'GENERAL KNOWLEDGE', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(5706, 5279, 5323, 'ENGLISH', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(5708, 5279, 5325, 'MATHEMATICS', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(5709, 5279, 5326, 'ENVIRONMENTAL SCIENCE', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(5710, 5279, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5711, 5279, 5328, 'GENERAL KNOWLEDGE', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(5712, 5280, 5323, 'ENGLISH', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(5714, 5280, 5325, 'MATHEMATICS', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(5715, 5280, 5326, 'ENVIRONMENTAL SCIENCE', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(5716, 5280, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5717, 5280, 5328, 'GENERAL KNOWLEDGE', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(5718, 5281, 5323, 'ENGLISH', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(5720, 5281, 5325, 'MATHEMATICS', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(5721, 5281, 5326, 'ENVIRONMENTAL SCIENCE', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(5722, 5281, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M', '2016-07-05 11:51:11'),
-(5723, 5281, 5328, 'GENERAL KNOWLEDGE', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(5724, 5282, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(5726, 5282, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(5727, 5282, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5728, 5282, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5729, 5282, 5328, 'GENERAL KNOWLEDGE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(5730, 5283, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(5732, 5283, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(5733, 5283, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5734, 5283, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5735, 5283, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5736, 5284, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(5738, 5284, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(5739, 5284, 5326, 'ENVIRONMENTAL SCIENCE', 8661, 'NIRMALA P.', '2016-07-05 11:51:11'),
-(5740, 5284, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5741, 5284, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(5742, 5285, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M', '2016-07-05 11:51:11'),
-(5744, 5285, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(5745, 5285, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(5746, 5285, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5747, 5285, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5748, 5286, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE', '2016-07-05 11:51:11'),
-(5750, 5286, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(5751, 5286, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5752, 5286, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5753, 5286, 5328, 'GENERAL KNOWLEDGE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5754, 5287, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5756, 5287, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(5757, 5287, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5758, 5287, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5759, 5287, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(5760, 5288, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5762, 5288, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(5763, 5288, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5764, 5288, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5765, 5288, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY', '2016-07-05 11:51:11'),
-(5766, 5289, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(5768, 5289, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(5769, 5289, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5770, 5289, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5771, 5289, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5772, 5290, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(5774, 5290, 5325, 'MATHEMATICS', 11278, 'ASWATHY', '2016-07-05 11:51:11'),
-(5775, 5290, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(5776, 5290, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5777, 5290, 5328, 'GENERAL KNOWLEDGE', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(5778, 5291, 5323, 'ENGLISH', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5780, 5291, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(5781, 5291, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5782, 5291, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5783, 5291, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(5784, 5292, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(5786, 5292, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(5787, 5292, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5788, 5292, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5789, 5292, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5790, 5293, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M', '2016-07-05 11:51:11'),
-(5792, 5293, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP', '2016-07-05 11:51:11'),
-(5793, 5293, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(5794, 5293, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5795, 5293, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5796, 5294, 5323, 'ENGLISH', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5798, 5294, 5325, 'MATHEMATICS', 11047, 'SUGANYA', '2016-07-05 11:51:11'),
-(5799, 5294, 5326, 'ENVIRONMENTAL SCIENCE', 8661, 'NIRMALA P.', '2016-07-05 11:51:11'),
-(5800, 5294, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5801, 5294, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5802, 5295, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5804, 5295, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V', '2016-07-05 11:51:11'),
-(5805, 5295, 5326, 'ENVIRONMENTAL SCIENCE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5806, 5295, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5807, 5295, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.', '2016-07-05 11:51:11'),
-(5808, 5296, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(5810, 5296, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(5811, 5296, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5812, 5296, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5813, 5296, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(5814, 5296, 5335, 'GEN.SCIENCE', 11048, 'LATHA.R', '2016-07-05 11:51:11'),
-(5815, 5296, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(5816, 5297, 5323, 'ENGLISH', 11045, 'DEBORAH', '2016-07-05 11:51:11'),
-(5818, 5297, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(5819, 5297, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5820, 5297, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5821, 5297, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S', '2016-07-05 11:51:11'),
-(5822, 5297, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5823, 5297, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(5824, 5298, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M', '2016-07-05 11:51:11'),
-(5826, 5298, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(5827, 5298, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R', '2016-07-05 11:51:11'),
-(5828, 5298, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL', '2016-07-05 11:51:11'),
-(5829, 5298, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.', '2016-07-05 11:51:11'),
-(5830, 5298, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5831, 5298, 5351, '3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(5832, 5299, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M', '2016-07-05 11:51:11'),
-(5834, 5299, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(5835, 5299, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.', '2016-07-05 11:51:11'),
-(5836, 5299, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5837, 5299, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S', '2016-07-05 11:51:11'),
-(5838, 5299, 5335, 'GEN.SCIENCE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(5839, 5299, 5351, '3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(5840, 5300, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(5842, 5300, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.', '2016-07-05 11:51:11'),
-(5843, 5300, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5844, 5300, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5845, 5300, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K', '2016-07-05 11:51:11'),
-(5846, 5300, 5335, 'GEN.SCIENCE', 8661, 'NIRMALA P.', '2016-07-05 11:51:11'),
-(5847, 5300, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(5848, 5301, 5323, 'ENGLISH', 8727, 'AMBIGA. T', '2016-07-05 11:51:11'),
-(5850, 5301, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A', '2016-07-05 11:51:11'),
-(5851, 5301, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5852, 5301, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R', '2016-07-05 11:51:11'),
-(5853, 5301, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K', '2016-07-05 11:51:11'),
-(5854, 5301, 5335, 'GEN.SCIENCE', 8661, 'NIRMALA P.', '2016-07-05 11:51:11'),
-(5855, 5301, 5351, '3rd LANGUAGE', 11034, 'RENUKABAI', '2016-07-05 11:51:11'),
-(5856, 5306, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5857, 5306, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5858, 5306, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5860, 5306, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(5862, 5306, 5333, 'SCIENCE', 8683, 'KAVITHA K', '2016-07-05 11:51:11'),
-(5863, 5306, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(5864, 5307, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.', '2016-07-05 11:51:11'),
-(5865, 5307, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5866, 5307, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5868, 5307, 5331, 'LANGUAGE II', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(5870, 5307, 5333, 'SCIENCE', 11044, 'ARUL JOTHI', '2016-07-05 11:51:11'),
-(5871, 5307, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL', '2016-07-05 11:51:11'),
-(5872, 5308, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.', '2016-07-05 11:51:11'),
-(5873, 5308, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5874, 5308, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5876, 5308, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(5878, 5308, 5333, 'SCIENCE', 8710, 'BHUVANESWARI M', '2016-07-05 11:51:11'),
-(5879, 5308, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(5880, 5309, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P', '2016-07-05 11:51:11'),
-(5881, 5309, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5882, 5309, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5884, 5309, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(5886, 5309, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H', '2016-07-05 11:51:11'),
-(5887, 5309, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.', '2016-07-05 11:51:11'),
-(5889, 5310, 5331, 'LANGUAGE II', 8641, 'ANURADHA R.', '2016-07-05 11:51:11'),
-(5892, 5311, 5331, 'LANGUAGE II', 8641, 'ANURADHA R.', '2016-07-05 11:51:11'),
-(5895, 5312, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(5898, 5313, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(5900, 5314, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.', '2016-07-05 11:51:11'),
-(5901, 5315, 5357, '402 INFORMATION TECHNOLOGY', 8660, 'SANGEETHA Y.S.', '2016-07-05 11:51:11'),
-(5902, 5316, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.', '2016-07-05 11:51:11'),
-(5903, 5314, 5352, '101 ENGLISH COMMUNICATIVE', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5904, 5314, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(5905, 5314, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY', '2016-07-05 11:51:11'),
-(5906, 5314, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU', '2016-07-05 11:51:11'),
-(5907, 5315, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA', '2016-07-05 11:51:11'),
-(5908, 5315, 5354, '041 MATHEMATICS', 8693, 'HARISH BABU K.V.', '2016-07-05 11:51:11'),
-(5909, 5315, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY', '2016-07-05 11:51:11'),
-(5910, 5315, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU', '2016-07-05 11:51:11'),
-(5911, 5316, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA', '2016-07-05 11:51:11'),
-(5912, 5316, 5354, '041 MATHEMATICS', 11793, 'JEYARANI S', '2016-07-05 11:51:11'),
-(5913, 5316, 5355, '086 SCIENCE', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5914, 5316, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU', '2016-07-05 11:51:11'),
-(5916, 5317, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(5917, 5317, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(5918, 5317, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY', '2016-07-05 11:51:11'),
-(5919, 5317, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G', '2016-07-05 11:51:11'),
-(5920, 5317, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.', '2016-07-05 11:51:11'),
-(5922, 5318, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(5923, 5318, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.', '2016-07-05 11:51:11'),
-(5924, 5318, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY', '2016-07-05 11:51:11'),
-(5925, 5318, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G', '2016-07-05 11:51:11'),
-(5926, 5318, 5357, '402 INFORMATION TECHNOLOGY', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5927, 5319, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5928, 5319, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5929, 5319, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5930, 5319, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5931, 5319, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(5932, 5322, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5933, 5322, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(5934, 5322, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5935, 5322, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(5936, 5322, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(5937, 5320, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5938, 5320, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5939, 5320, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5940, 5320, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5941, 5320, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5942, 5321, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5943, 5321, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(5944, 5321, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5945, 5321, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5946, 5321, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(5947, 5323, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5948, 5323, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5949, 5323, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5950, 5323, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5951, 5323, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(5952, 5324, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(5953, 5324, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI', '2016-07-05 11:51:11'),
-(5954, 5324, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(5955, 5324, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(5956, 5324, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(5957, 5324, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(5958, 5325, 5323, 'ENGLISH', 8632, 'TERESSAMMAL ROBI', '2016-07-05 11:51:11'),
-(5959, 5325, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(5960, 5325, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5961, 5325, 5397, 'BUSINESS STUDIES', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(5962, 5325, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(6687, 5268, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6688, 5268, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6689, 5268, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6690, 5269, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6691, 5269, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6692, 5269, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6693, 5270, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6694, 5270, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6695, 5270, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6696, 5271, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6697, 5271, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6698, 5271, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6699, 5272, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6700, 5272, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6701, 5272, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6702, 5273, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6703, 5273, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6704, 5273, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6705, 5274, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6706, 5274, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6707, 5274, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6708, 5275, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6709, 5275, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6710, 5275, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6711, 5276, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6712, 5276, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6713, 5276, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6714, 5277, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6715, 5277, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6716, 5277, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6717, 5278, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6718, 5278, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6719, 5278, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6720, 5279, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6721, 5279, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6722, 5279, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6723, 5280, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6724, 5280, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6725, 5280, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6726, 5281, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6727, 5281, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6728, 5281, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6777, 5282, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6778, 5282, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6779, 5282, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6780, 5283, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6781, 5283, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6782, 5283, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6783, 5284, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6784, 5284, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6785, 5284, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6786, 5285, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6787, 5285, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6788, 5285, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6789, 5286, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6790, 5286, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6791, 5286, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6792, 5287, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6793, 5287, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6794, 5287, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6795, 5288, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6796, 5288, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6797, 5288, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6938, 5289, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6939, 5289, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6940, 5289, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6941, 5290, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6942, 5290, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6943, 5290, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6944, 5291, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6945, 5291, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6946, 5291, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6947, 5292, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6948, 5292, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6949, 5292, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6950, 5293, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6951, 5293, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6952, 5293, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6953, 5294, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6954, 5294, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6955, 5294, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(6956, 5295, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(6957, 5295, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(6958, 5295, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7124, 5296, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7125, 5296, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7126, 5296, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7127, 5297, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7128, 5297, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7129, 5297, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7130, 5298, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7131, 5298, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7132, 5298, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7133, 5299, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7134, 5299, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7135, 5299, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7136, 5300, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7137, 5300, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7138, 5300, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7139, 5301, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7140, 5301, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7141, 5301, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7142, 5302, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7143, 5302, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7144, 5302, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7145, 5303, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7146, 5303, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7147, 5303, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7148, 5304, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7149, 5304, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7150, 5304, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7151, 5305, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7152, 5305, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7153, 5305, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7154, 5326, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7155, 5326, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7156, 5326, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7255, 5314, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7256, 5314, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7257, 5314, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7258, 5315, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7259, 5315, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7260, 5315, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7261, 5316, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7262, 5316, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7263, 5316, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7264, 5317, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7265, 5317, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7266, 5317, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(7267, 5318, 5348, 'TAMIL', 0, NULL, '2016-07-05 11:51:11'),
-(7268, 5318, 5349, 'HINDI', 0, NULL, '2016-07-05 11:51:11'),
-(7269, 5318, 5350, 'KANNADA', 0, NULL, '2016-07-05 11:51:11'),
-(10169, 5258, 5336, 'ENGLISH (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10170, 5259, 5336, 'ENGLISH (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10171, 5260, 5336, 'ENGLISH (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10172, 5261, 5336, 'ENGLISH (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10173, 5262, 5336, 'ENGLISH (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10174, 5258, 5337, 'ENGLISH (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10175, 5258, 5339, 'II LANGUAGE (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10176, 5258, 5340, 'NUMBER WORK (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10177, 5258, 5341, 'NUMBER WORK (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10178, 5258, 5342, 'E.V.S. (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10179, 5258, 5343, 'E.V.S. (WRITING)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10180, 5258, 5344, 'RHYMES AND SONGS', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10181, 5258, 5345, 'STORY TELLING', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10182, 5258, 5346, 'DRAWING AND COLOURING', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10183, 5258, 5347, 'CRAFT WORK', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10184, 5258, 5348, 'TAMIL', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10185, 5258, 5349, 'HINDI', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10186, 5258, 5350, 'KANNADA', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(10187, 5259, 5337, 'ENGLISH (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10188, 5259, 5339, 'II LANGUAGE (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10189, 5259, 5340, 'NUMBER WORK (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10190, 5259, 5341, 'NUMBER WORK (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10191, 5259, 5342, 'E.V.S. (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10192, 5259, 5343, 'E.V.S. (WRITING)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10193, 5259, 5344, 'RHYMES AND SONGS', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10194, 5259, 5345, 'STORY TELLING', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10195, 5259, 5346, 'DRAWING AND COLOURING', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10196, 5259, 5347, 'CRAFT WORK', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10197, 5259, 5348, 'TAMIL', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10198, 5259, 5349, 'HINDI', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10199, 5259, 5350, 'KANNADA', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(10200, 5260, 5337, 'ENGLISH (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10201, 5260, 5339, 'II LANGUAGE (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10202, 5260, 5340, 'NUMBER WORK (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10203, 5260, 5341, 'NUMBER WORK (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10204, 5260, 5342, 'E.V.S. (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10205, 5260, 5343, 'E.V.S. (WRITING)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10206, 5260, 5344, 'RHYMES AND SONGS', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10207, 5260, 5345, 'STORY TELLING', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10208, 5260, 5346, 'DRAWING AND COLOURING', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10209, 5260, 5347, 'CRAFT WORK', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10210, 5260, 5348, 'TAMIL', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10211, 5260, 5349, 'HINDI', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10212, 5260, 5350, 'KANNADA', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(10213, 5261, 5337, 'ENGLISH (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10214, 5261, 5339, 'II LANGUAGE (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10215, 5261, 5340, 'NUMBER WORK (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10216, 5261, 5341, 'NUMBER WORK (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10217, 5261, 5342, 'E.V.S. (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10218, 5261, 5343, 'E.V.S. (WRITING)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10219, 5261, 5344, 'RHYMES AND SONGS', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10220, 5261, 5345, 'STORY TELLING', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10221, 5261, 5346, 'DRAWING AND COLOURING', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10222, 5261, 5347, 'CRAFT WORK', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10223, 5261, 5348, 'TAMIL', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10224, 5261, 5349, 'HINDI', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10225, 5261, 5350, 'KANNADA', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(10226, 5262, 5337, 'ENGLISH (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10227, 5262, 5339, 'II LANGUAGE (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10228, 5262, 5340, 'NUMBER WORK (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10229, 5262, 5341, 'NUMBER WORK (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10230, 5262, 5342, 'E.V.S. (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10231, 5262, 5343, 'E.V.S. (WRITING)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10232, 5262, 5344, 'RHYMES AND SONGS', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10233, 5262, 5345, 'STORY TELLING', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10234, 5262, 5346, 'DRAWING AND COLOURING', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10235, 5262, 5347, 'CRAFT WORK', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10236, 5262, 5348, 'TAMIL', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10237, 5262, 5349, 'HINDI', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10238, 5262, 5350, 'KANNADA', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(10239, 5255, 5336, 'ENGLISH (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10240, 5256, 5336, 'ENGLISH (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10241, 5257, 5336, 'ENGLISH (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10242, 5255, 5337, 'ENGLISH (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10243, 5255, 5339, 'II LANGUAGE (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10244, 5255, 5340, 'NUMBER WORK (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10245, 5255, 5341, 'NUMBER WORK (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10246, 5255, 5342, 'E.V.S. (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10247, 5255, 5343, 'E.V.S. (WRITING)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10248, 5255, 5344, 'RHYMES AND SONGS', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10249, 5255, 5345, 'STORY TELLING', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10250, 5255, 5346, 'DRAWING AND COLOURING', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10251, 5255, 5347, 'CRAFT WORK', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10252, 5255, 5348, 'TAMIL', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10253, 5255, 5349, 'HINDI', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10254, 5255, 5350, 'KANNADA', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(10255, 5256, 5337, 'ENGLISH (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10256, 5256, 5339, 'II LANGUAGE (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10257, 5256, 5340, 'NUMBER WORK (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10258, 5256, 5341, 'NUMBER WORK (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10259, 5256, 5342, 'E.V.S. (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10260, 5256, 5343, 'E.V.S. (WRITING)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10261, 5256, 5344, 'RHYMES AND SONGS', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10262, 5256, 5345, 'STORY TELLING', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10263, 5256, 5346, 'DRAWING AND COLOURING', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10264, 5256, 5347, 'CRAFT WORK', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10265, 5256, 5348, 'TAMIL', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10266, 5256, 5349, 'HINDI', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10267, 5256, 5350, 'KANNADA', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(10268, 5257, 5337, 'ENGLISH (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10269, 5257, 5339, 'II LANGUAGE (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10270, 5257, 5340, 'NUMBER WORK (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10271, 5257, 5341, 'NUMBER WORK (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10272, 5257, 5342, 'E.V.S. (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10273, 5257, 5343, 'E.V.S. (WRITING)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10274, 5257, 5344, 'RHYMES AND SONGS', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10275, 5257, 5345, 'STORY TELLING', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10276, 5257, 5346, 'DRAWING AND COLOURING', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10277, 5257, 5347, 'CRAFT WORK', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10278, 5257, 5348, 'TAMIL', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10279, 5257, 5349, 'HINDI', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10280, 5257, 5350, 'KANNADA', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(10281, 5252, 5336, 'ENGLISH (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10282, 5253, 5336, 'ENGLISH (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10283, 5254, 5336, 'ENGLISH (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10284, 5252, 5337, 'ENGLISH (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10285, 5252, 5339, 'II LANGUAGE (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10286, 5252, 5340, 'NUMBER WORK (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10287, 5252, 5341, 'NUMBER WORK (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10288, 5252, 5342, 'E.V.S. (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10289, 5252, 5343, 'E.V.S. (WRITING)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10290, 5252, 5344, 'RHYMES AND SONGS', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10291, 5252, 5345, 'STORY TELLING', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10292, 5252, 5346, 'DRAWING AND COLOURING', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10293, 5252, 5347, 'CRAFT WORK', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10294, 5252, 5348, 'TAMIL', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10295, 5252, 5349, 'HINDI', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10296, 5252, 5350, 'KANNADA', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(10297, 5253, 5337, 'ENGLISH (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10298, 5253, 5339, 'II LANGUAGE (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10299, 5253, 5340, 'NUMBER WORK (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10300, 5253, 5341, 'NUMBER WORK (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10301, 5253, 5342, 'E.V.S. (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10302, 5253, 5343, 'E.V.S. (WRITING)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10303, 5253, 5344, 'RHYMES AND SONGS', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10304, 5253, 5345, 'STORY TELLING', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10305, 5253, 5346, 'DRAWING AND COLOURING', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10306, 5253, 5347, 'CRAFT WORK', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10307, 5253, 5348, 'TAMIL', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10308, 5253, 5349, 'HINDI', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10309, 5253, 5350, 'KANNADA', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(10310, 5254, 5337, 'ENGLISH (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10311, 5254, 5339, 'II LANGUAGE (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10312, 5254, 5340, 'NUMBER WORK (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10313, 5254, 5341, 'NUMBER WORK (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10314, 5254, 5342, 'E.V.S. (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10315, 5254, 5343, 'E.V.S. (WRITING)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10316, 5254, 5344, 'RHYMES AND SONGS', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10317, 5254, 5345, 'STORY TELLING', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10318, 5254, 5346, 'DRAWING AND COLOURING', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10319, 5254, 5347, 'CRAFT WORK', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10320, 5254, 5348, 'TAMIL', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10321, 5254, 5349, 'HINDI', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10322, 5254, 5350, 'KANNADA', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(10323, 5263, 5336, 'ENGLISH (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10324, 5264, 5336, 'ENGLISH (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10325, 5265, 5336, 'ENGLISH (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10326, 5266, 5336, 'ENGLISH (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10327, 5267, 5336, 'ENGLISH (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10328, 5263, 5337, 'ENGLISH (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10329, 5263, 5339, 'II LANGUAGE (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10330, 5263, 5340, 'NUMBER WORK (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10331, 5263, 5341, 'NUMBER WORK (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10332, 5263, 5342, 'E.V.S. (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10333, 5263, 5343, 'E.V.S. (WRITING)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10334, 5263, 5344, 'RHYMES AND SONGS', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10335, 5263, 5345, 'STORY TELLING', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10336, 5263, 5346, 'DRAWING AND COLOURING', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10337, 5263, 5347, 'CRAFT WORK', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10338, 5263, 5348, 'TAMIL', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10339, 5263, 5349, 'HINDI', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10340, 5263, 5350, 'KANNADA', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(10341, 5264, 5337, 'ENGLISH (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10342, 5264, 5339, 'II LANGUAGE (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10343, 5264, 5340, 'NUMBER WORK (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10344, 5264, 5341, 'NUMBER WORK (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10345, 5264, 5342, 'E.V.S. (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10346, 5264, 5343, 'E.V.S. (WRITING)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10347, 5264, 5344, 'RHYMES AND SONGS', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10348, 5264, 5345, 'STORY TELLING', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10349, 5264, 5346, 'DRAWING AND COLOURING', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10350, 5264, 5347, 'CRAFT WORK', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10351, 5264, 5348, 'TAMIL', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10352, 5264, 5349, 'HINDI', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10353, 5264, 5350, 'KANNADA', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(10354, 5265, 5337, 'ENGLISH (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10355, 5265, 5339, 'II LANGUAGE (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10356, 5265, 5340, 'NUMBER WORK (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10357, 5265, 5341, 'NUMBER WORK (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10358, 5265, 5342, 'E.V.S. (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11');
-INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `TeacherId`, `TeacherName`, `DateTimeRecordInserted`) VALUES
-(10359, 5265, 5343, 'E.V.S. (WRITING)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10360, 5265, 5344, 'RHYMES AND SONGS', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10361, 5265, 5345, 'STORY TELLING', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10362, 5265, 5346, 'DRAWING AND COLOURING', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10363, 5265, 5347, 'CRAFT WORK', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10364, 5265, 5348, 'TAMIL', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10365, 5265, 5349, 'HINDI', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10366, 5265, 5350, 'KANNADA', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(10367, 5266, 5337, 'ENGLISH (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10368, 5266, 5339, 'II LANGUAGE (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10369, 5266, 5340, 'NUMBER WORK (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10370, 5266, 5341, 'NUMBER WORK (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10371, 5266, 5342, 'E.V.S. (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10372, 5266, 5343, 'E.V.S. (WRITING)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10373, 5266, 5344, 'RHYMES AND SONGS', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10374, 5266, 5345, 'STORY TELLING', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10375, 5266, 5346, 'DRAWING AND COLOURING', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10376, 5266, 5347, 'CRAFT WORK', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10377, 5266, 5348, 'TAMIL', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10378, 5266, 5349, 'HINDI', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10379, 5266, 5350, 'KANNADA', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(10380, 5267, 5337, 'ENGLISH (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10381, 5267, 5339, 'II LANGUAGE (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10382, 5267, 5340, 'NUMBER WORK (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10383, 5267, 5341, 'NUMBER WORK (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10384, 5267, 5342, 'E.V.S. (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10385, 5267, 5343, 'E.V.S. (WRITING)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10386, 5267, 5344, 'RHYMES AND SONGS', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10387, 5267, 5345, 'STORY TELLING', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10388, 5267, 5346, 'DRAWING AND COLOURING', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10389, 5267, 5347, 'CRAFT WORK', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10390, 5267, 5348, 'TAMIL', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10391, 5267, 5349, 'HINDI', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10392, 5267, 5350, 'KANNADA', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(10415, 5747, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(10416, 5747, 5325, 'MATHEMATICS', 11793, 'JEYARANI S', '2016-07-05 11:51:11'),
-(10417, 5747, 5327, 'COMPUTER SCIENCE', 13737, 'NALINI B.', '2016-07-05 11:51:11'),
-(10418, 5747, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(10420, 5747, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(10421, 5747, 5396, 'ACCOUNTANCY', 0, NULL, '2016-07-05 11:51:11'),
-(10422, 5747, 5397, 'BUSINESS STUDIES', 0, NULL, '2016-07-05 11:51:11'),
-(10423, 5747, 5398, 'ECONOMICS', 0, NULL, '2016-07-05 11:51:11'),
-(10424, 5747, 5663, 'COMPUTER SCIENCE-P.S', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(10426, 5748, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER', '2016-07-05 11:51:11'),
-(10427, 5748, 5325, 'MATHEMATICS', 11793, 'JEYARANI S', '2016-07-05 11:51:11'),
-(10428, 5748, 5327, 'COMPUTER SCIENCE', 13737, 'NALINI B.', '2016-07-05 11:51:11'),
-(10429, 5748, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI', '2016-07-05 11:51:11'),
-(10431, 5748, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(10432, 5748, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(10433, 5748, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(10434, 5748, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(10435, 5748, 5663, 'COMPUTER SCIENCE-P.S', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(11371, 5747, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A', '2016-07-05 11:51:11'),
-(11373, 5748, 5397, 'BUSINESS STUDIES', 0, NULL, '2016-07-05 11:51:11'),
-(15297, 5258, 5338, 'II LANGUAGE (ORAL)', 8689, 'JYOTHI. K', '2016-07-05 11:51:11'),
-(15298, 5259, 5338, 'II LANGUAGE (ORAL)', 8724, 'SOWMYA. M', '2016-07-05 11:51:11'),
-(15299, 5260, 5338, 'II LANGUAGE (ORAL)', 8650, 'ASHA Ebi', '2016-07-05 11:51:11'),
-(15300, 5261, 5338, 'II LANGUAGE (ORAL)', 10909, 'KARTHIKA.D', '2016-07-05 11:51:11'),
-(15301, 5262, 5338, 'II LANGUAGE (ORAL)', 8690, 'HEMALATHA P.', '2016-07-05 11:51:11'),
-(15303, 5263, 5338, 'II LANGUAGE (ORAL)', 8649, 'LIZY JOSE', '2016-07-05 11:51:11'),
-(15304, 5264, 5338, 'II LANGUAGE (ORAL)', 8657, 'DEEPA BIJU', '2016-07-05 11:51:11'),
-(15305, 5265, 5338, 'II LANGUAGE (ORAL)', 8659, 'PRATHIMA K.', '2016-07-05 11:51:11'),
-(15306, 5266, 5338, 'II LANGUAGE (ORAL)', 8691, 'LIJI MARTIN', '2016-07-05 11:51:11'),
-(15307, 5267, 5338, 'II LANGUAGE (ORAL)', 8643, 'GEETHA MANJUNATH', '2016-07-05 11:51:11'),
-(15308, 5252, 5338, 'II LANGUAGE (ORAL)', 8713, 'RAJALAKSHMI U', '2016-07-05 11:51:11'),
-(15309, 5253, 5338, 'II LANGUAGE (ORAL)', 8704, 'RETHINAM AUGUSTINE', '2016-07-05 11:51:11'),
-(15310, 5254, 5338, 'II LANGUAGE (ORAL)', 8703, 'SHEBA JAI', '2016-07-05 11:51:11'),
-(15311, 5255, 5338, 'II LANGUAGE (ORAL)', 8701, 'ELSON SAJI', '2016-07-05 11:51:11'),
-(15312, 5256, 5338, 'II LANGUAGE (ORAL)', 8738, 'BABASINI DEVI S.', '2016-07-05 11:51:11'),
-(15313, 5257, 5338, 'II LANGUAGE (ORAL)', 8702, 'MEGHA DEEPAN', '2016-07-05 11:51:11'),
-(15314, 5268, 5324, '2nd LANGUAGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(15315, 5269, 5324, '2nd LANGUAGE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(15316, 5270, 5324, '2nd LANGUAGE', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(15317, 5271, 5324, '2nd LANGUAGE', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(15318, 5272, 5324, '2nd LANGUAGE', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(15319, 5273, 5324, '2nd LANGUAGE', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(15320, 5274, 5324, '2nd LANGUAGE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(15321, 5275, 5324, '2nd LANGUAGE', 8682, 'REJANI R.', '2016-07-05 11:51:11'),
-(15322, 5276, 5324, '2nd LANGUAGE', 8740, 'VEDA P', '2016-07-05 11:51:11'),
-(15323, 5277, 5324, '2nd LANGUAGE', 8662, 'ANGELINE HEPZIBA RAMYA J.', '2016-07-05 11:51:11'),
-(15324, 5278, 5324, '2nd LANGUAGE', 8714, 'KARTHIKAA. K.S', '2016-07-05 11:51:11'),
-(15325, 5279, 5324, '2nd LANGUAGE', 11035, 'LINI FLORA', '2016-07-05 11:51:11'),
-(15326, 5280, 5324, '2nd LANGUAGE', 8666, 'ANITTA GNANA CAROLIN', '2016-07-05 11:51:11'),
-(15327, 5281, 5324, '2nd LANGUAGE', 11036, 'JAYA PRADHA', '2016-07-05 11:51:11'),
-(15328, 5282, 5324, '2nd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15329, 5283, 5324, '2nd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15330, 5284, 5324, '2nd LANGUAGE', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(15331, 5285, 5324, '2nd LANGUAGE', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(15332, 5286, 5324, '2nd LANGUAGE', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(15333, 5287, 5324, '2nd LANGUAGE', 8722, 'TAMIL SELVI. R', '2016-07-05 11:51:11'),
-(15334, 5288, 5324, '2nd LANGUAGE', 8655, 'HELEN JULIET RANI', '2016-07-05 11:51:11'),
-(15335, 5289, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(15336, 5290, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(15337, 5291, 5324, '2nd LANGUAGE', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(15338, 5292, 5324, '2nd LANGUAGE', 8696, 'VERONE ANCY', '2016-07-05 11:51:11'),
-(15339, 5293, 5324, '2nd LANGUAGE', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(15340, 5294, 5324, '2nd LANGUAGE', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(15341, 5295, 5324, '2nd LANGUAGE', 8679, 'VANITHA S', '2016-07-05 11:51:11'),
-(15342, 5296, 5324, '2nd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15343, 5297, 5324, '2nd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15344, 5298, 5324, '2nd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15345, 5299, 5324, '2nd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15346, 5300, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(15347, 5301, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.', '2016-07-05 11:51:11'),
-(15348, 5302, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(15349, 5302, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(15350, 5303, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(15351, 5303, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15352, 5304, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15353, 5304, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15354, 5305, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15355, 5305, 6018, ' 3rd LANGUAGE', 11034, 'RENUKABAI', '2016-07-05 11:51:11'),
-(15356, 5326, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15357, 5326, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(15358, 5302, 6020, ' ENGLISH', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(15359, 5303, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(15360, 5304, 6020, ' ENGLISH', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(15361, 5305, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(15362, 5326, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(15363, 5306, 6017, ' 2nd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15364, 5306, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15365, 5306, 6020, ' ENGLISH', 11051, 'VERONICA', '2016-07-05 11:51:11'),
-(15366, 5307, 6017, ' 2nd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15367, 5307, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15368, 5307, 6020, ' ENGLISH', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(15369, 5308, 6017, ' 2nd LANGUAGE', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(15370, 5308, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.', '2016-07-05 11:51:11'),
-(15371, 5308, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(15372, 5309, 6017, ' 2nd LANGUAGE', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(15373, 5309, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.', '2016-07-05 11:51:11'),
-(15374, 5309, 6020, ' ENGLISH', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(15375, 5310, 6017, ' 2nd LANGUAGE', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(15376, 5310, 6018, ' 3rd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15377, 5310, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW', '2016-07-05 11:51:11'),
-(15378, 5311, 6017, ' 2nd LANGUAGE', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(15379, 5311, 6018, ' 3rd LANGUAGE', 8647, 'SUBBULAKSHMI', '2016-07-05 11:51:11'),
-(15380, 5311, 6020, ' ENGLISH', 8667, 'HELEN D.', '2016-07-05 11:51:11'),
-(15381, 5312, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(15382, 5312, 6018, ' 3rd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15383, 5312, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.', '2016-07-05 11:51:11'),
-(15384, 5313, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE', '2016-07-05 11:51:11'),
-(15385, 5313, 6018, ' 3rd LANGUAGE', 8673, 'RAJESHWARI.K.V', '2016-07-05 11:51:11'),
-(15386, 5313, 6020, ' ENGLISH', 11051, 'VERONICA', '2016-07-05 11:51:11'),
-(15387, 5314, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(15388, 5315, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8634, 'ESTHER MALLIGA', '2016-07-05 11:51:11'),
-(15389, 5316, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(15390, 5317, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(15391, 5318, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M', '2016-07-05 11:51:11'),
-(15630, 5268, 6018, ' 3rd LANGUAGE', 8648, 'JEYA GANDHI', '2016-07-05 11:51:11'),
-(15631, 5269, 6018, ' 3rd LANGUAGE', 8742, 'ANJALI P.S', '2016-07-05 11:51:11'),
-(15632, 5270, 6018, ' 3rd LANGUAGE', 8721, 'SUMATHI. V', '2016-07-05 11:51:11'),
-(15633, 5271, 6018, ' 3rd LANGUAGE', 11037, 'PAULINE TERESA', '2016-07-05 11:51:11'),
-(15634, 5272, 6018, ' 3rd LANGUAGE', 11038, 'SUJATHA.D', '2016-07-05 11:51:11'),
-(15635, 5273, 6018, ' 3rd LANGUAGE', 11039, 'KEERTHANA.S', '2016-07-05 11:51:11'),
-(15636, 5274, 6018, ' 3rd LANGUAGE', 8652, 'SARALA B.', '2016-07-05 11:51:11'),
-(18427, 5745, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(18430, 5746, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON', '2016-07-05 11:51:11'),
-(18431, 5745, 5396, 'ACCOUNTANCY', 0, NULL, '2016-07-05 11:51:11'),
-(18432, 5745, 5397, 'BUSINESS STUDIES', 0, NULL, '2016-07-05 11:51:11'),
-(18433, 5745, 5398, 'ECONOMICS', 0, NULL, '2016-07-05 11:51:11'),
-(18434, 5746, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE', '2016-07-05 11:51:11'),
-(18435, 5746, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.', '2016-07-05 11:51:11'),
-(18436, 5746, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS', '2016-07-05 11:51:11'),
-(18437, 5745, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(18438, 5745, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P', '2016-07-05 11:51:11'),
-(18439, 5746, 5325, 'MATHEMATICS', 0, NULL, '2016-07-05 11:51:11'),
-(18440, 5746, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V', '2016-07-05 11:51:11'),
-(18477, 5749, 5323, 'ENGLISH', 8651, 'JAYAKUMARI T.', '2016-08-02 14:34:50'),
-(18478, 5749, 5325, 'MATHEMATICS', 0, NULL, '2016-08-02 14:34:50'),
-(18479, 5749, 5333, 'SCIENCE', 0, NULL, '2016-08-02 14:34:50'),
-(18480, 5749, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-08-02 14:34:50'),
-(18481, 5750, 5323, 'ENGLISH', 8738, 'BABASINI DEVI S.', '2016-08-28 10:43:14'),
-(18482, 5750, 5325, 'MATHEMATICS', 0, NULL, '2016-08-28 10:43:14'),
-(18483, 5750, 5333, 'SCIENCE', 0, NULL, '2016-08-28 10:43:14'),
-(18484, 5750, 5334, 'SOCIAL SCIENCE', 0, NULL, '2016-08-28 10:43:14'),
-(18485, 5750, 5342, 'E.V.S. (ORAL)', 0, NULL, '2016-08-28 10:43:14'),
-(18486, 5750, 5343, 'E.V.S. (WRITING)', 0, NULL, '2016-08-28 10:43:14');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacher`
---
-
-CREATE TABLE `teacher` (
-  `Id` bigint(20) NOT NULL,
-  `TeacherName` varchar(100) NOT NULL,
-  `Image` varchar(1000) NOT NULL,
-  `Username` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `DateOfBirth` varchar(20) NOT NULL,
-  `Mobile` varchar(12) NOT NULL,
-  `Qualification` varchar(100) NOT NULL,
-  `DateOfJoining` varchar(20) DEFAULT NULL,
-  `Gender` varchar(10) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `TeacherId`, `TeacherName`) VALUES
+(2844, 4861, 5323, 'ENGLISH', 8648, 'JEYA GANDHI'),
+(2845, 4861, 5325, 'MATHEMATICS', 0, NULL),
+(2846, 4861, 5326, 'ENVIRONMENTAL SCIENCE', 8648, 'JEYA GANDHI'),
+(2847, 4861, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2848, 4861, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI'),
+(2849, 4861, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(2850, 4861, 5349, 'HINDI', 0, NULL),
+(2851, 4861, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2852, 4862, 5323, 'ENGLISH', 8742, 'ANJALI P.S'),
+(2853, 4862, 5325, 'MATHEMATICS', 8742, 'ANJALI P.S'),
+(2854, 4862, 5326, 'ENVIRONMENTAL SCIENCE', 8742, 'ANJALI P.S'),
+(2855, 4862, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2856, 4862, 5328, 'GENERAL KNOWLEDGE', 8742, 'ANJALI P.S'),
+(2857, 4862, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(2858, 4862, 5349, 'HINDI', 11034, 'RENUKABAI'),
+(2859, 4862, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2860, 4863, 5323, 'ENGLISH', 8721, 'SUMATHI. V'),
+(2861, 4863, 5325, 'MATHEMATICS', 8721, 'SUMATHI. V'),
+(2862, 4863, 5326, 'ENVIRONMENTAL SCIENCE', 8721, 'SUMATHI. V'),
+(2863, 4863, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2864, 4863, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI'),
+(2865, 4863, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(2866, 4863, 5349, 'HINDI', 0, NULL),
+(2867, 4863, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2868, 4864, 5323, 'ENGLISH', 11037, 'PAULINE TERESA'),
+(2869, 4864, 5325, 'MATHEMATICS', 11037, 'PAULINE TERESA'),
+(2870, 4864, 5326, 'ENVIRONMENTAL SCIENCE', 11037, 'PAULINE TERESA'),
+(2871, 4864, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2872, 4864, 5328, 'GENERAL KNOWLEDGE', 8678, 'SANDHYA M'),
+(2873, 4864, 5348, 'TAMIL', 8726, 'SUDHA. S'),
+(2874, 4864, 5349, 'HINDI', 8743, 'SASIKALA A.V.'),
+(2875, 4864, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2876, 4865, 5323, 'ENGLISH', 11038, 'SUJATHA.D'),
+(2877, 4865, 5325, 'MATHEMATICS', 11038, 'SUJATHA.D'),
+(2878, 4865, 5326, 'ENVIRONMENTAL SCIENCE', 11038, 'SUJATHA.D'),
+(2879, 4865, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2880, 4865, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI'),
+(2881, 4865, 5348, 'TAMIL', 8726, 'SUDHA. S'),
+(2882, 4865, 5349, 'HINDI', 8743, 'SASIKALA A.V.'),
+(2883, 4865, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2884, 4866, 5323, 'ENGLISH', 11039, 'KEERTHANA.S'),
+(2885, 4866, 5325, 'MATHEMATICS', 11039, 'KEERTHANA.S'),
+(2886, 4866, 5326, 'ENVIRONMENTAL SCIENCE', 11039, 'KEERTHANA.S'),
+(2887, 4866, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2888, 4866, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI'),
+(2889, 4866, 5348, 'TAMIL', 8726, 'SUDHA. S'),
+(2890, 4866, 5349, 'HINDI', 11034, 'RENUKABAI'),
+(2891, 4866, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2892, 4867, 5323, 'ENGLISH', 8652, 'SARALA B.'),
+(2893, 4867, 5325, 'MATHEMATICS', 8648, 'JEYA GANDHI'),
+(2894, 4867, 5326, 'ENVIRONMENTAL SCIENCE', 8652, 'SARALA B.'),
+(2895, 4867, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2896, 4867, 5328, 'GENERAL KNOWLEDGE', 8652, 'SARALA B.'),
+(2897, 4867, 5348, 'TAMIL', 8726, 'SUDHA. S'),
+(2898, 4867, 5349, 'HINDI', 8743, 'SASIKALA A.V.'),
+(2899, 4867, 5350, 'KANNADA', 8652, 'SARALA B.'),
+(2900, 4868, 5323, 'ENGLISH', 8682, 'REJANI R.'),
+(2901, 4868, 5325, 'MATHEMATICS', 8682, 'REJANI R.'),
+(2902, 4868, 5326, 'ENVIRONMENTAL SCIENCE', 8682, 'REJANI R.'),
+(2903, 4868, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2904, 4868, 5328, 'GENERAL KNOWLEDGE', 8682, 'REJANI R.'),
+(2905, 4868, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(2906, 4868, 5349, 'HINDI', 8743, 'SASIKALA A.V.'),
+(2907, 4868, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2908, 4869, 5323, 'ENGLISH', 8740, 'VEDA P'),
+(2909, 4869, 5325, 'MATHEMATICS', 8740, 'VEDA P'),
+(2910, 4869, 5326, 'ENVIRONMENTAL SCIENCE', 8740, 'VEDA P'),
+(2911, 4869, 5327, 'COMPUTER SCIENCE', 8740, 'VEDA P'),
+(2912, 4869, 5328, 'GENERAL KNOWLEDGE', 8740, 'VEDA P'),
+(2913, 4869, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(2914, 4869, 5349, 'HINDI', 8743, 'SASIKALA A.V.'),
+(2915, 4869, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2916, 4870, 5323, 'ENGLISH', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(2917, 4870, 5325, 'MATHEMATICS', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(2918, 4870, 5326, 'ENVIRONMENTAL SCIENCE', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(2919, 4870, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2920, 4870, 5328, 'GENERAL KNOWLEDGE', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(2921, 4870, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2922, 4870, 5349, 'HINDI', 0, NULL),
+(2923, 4870, 5350, 'KANNADA', 0, NULL),
+(2924, 4871, 5323, 'ENGLISH', 8714, 'KARTHIKAA. K.S'),
+(2925, 4871, 5325, 'MATHEMATICS', 8714, 'KARTHIKAA. K.S'),
+(2926, 4871, 5326, 'ENVIRONMENTAL SCIENCE', 8714, 'KARTHIKAA. K.S'),
+(2927, 4871, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2928, 4871, 5328, 'GENERAL KNOWLEDGE', 8714, 'KARTHIKAA. K.S'),
+(2929, 4871, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2930, 4871, 5349, 'HINDI', 0, NULL),
+(2931, 4871, 5350, 'KANNADA', 0, NULL),
+(2932, 4872, 5323, 'ENGLISH', 11035, 'LINI FLORA'),
+(2933, 4872, 5325, 'MATHEMATICS', 11035, 'LINI FLORA'),
+(2934, 4872, 5326, 'ENVIRONMENTAL SCIENCE', 11035, 'LINI FLORA'),
+(2935, 4872, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2936, 4872, 5328, 'GENERAL KNOWLEDGE', 11035, 'LINI FLORA'),
+(2937, 4872, 5348, 'TAMIL', 8679, 'VANITHA S'),
+(2938, 4872, 5349, 'HINDI', 0, NULL),
+(2939, 4872, 5350, 'KANNADA', 0, NULL),
+(2940, 4873, 5323, 'ENGLISH', 8666, 'ANITTA GNANA CAROLIN'),
+(2941, 4873, 5325, 'MATHEMATICS', 8666, 'ANITTA GNANA CAROLIN'),
+(2942, 4873, 5326, 'ENVIRONMENTAL SCIENCE', 8666, 'ANITTA GNANA CAROLIN'),
+(2943, 4873, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2944, 4873, 5328, 'GENERAL KNOWLEDGE', 8666, 'ANITTA GNANA CAROLIN'),
+(2945, 4873, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2946, 4873, 5349, 'HINDI', 0, NULL),
+(2947, 4873, 5350, 'KANNADA', 0, NULL),
+(2948, 4874, 5323, 'ENGLISH', 11036, 'JAYA PRADHA'),
+(2949, 4874, 5325, 'MATHEMATICS', 11036, 'JAYA PRADHA'),
+(2950, 4874, 5326, 'ENVIRONMENTAL SCIENCE', 11036, 'JAYA PRADHA'),
+(2951, 4874, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(2952, 4874, 5328, 'GENERAL KNOWLEDGE', 11036, 'JAYA PRADHA'),
+(2953, 4874, 5348, 'TAMIL', 8726, 'SUDHA. S'),
+(2954, 4874, 5349, 'HINDI', 0, NULL),
+(2955, 4874, 5350, 'KANNADA', 0, NULL),
+(2956, 4875, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(2957, 4875, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(2958, 4875, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(2959, 4875, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(2960, 4875, 5328, 'GENERAL KNOWLEDGE', 8650, 'ASHA Ebi'),
+(2961, 4875, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2962, 4875, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.'),
+(2963, 4875, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2964, 4876, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(2965, 4876, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(2966, 4876, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(2967, 4876, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(2968, 4876, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(2969, 4876, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2970, 4876, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.'),
+(2971, 4876, 5350, 'KANNADA', 8695, 'AMBIKA G.M.'),
+(2972, 4877, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(2973, 4877, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(2974, 4877, 5326, 'ENVIRONMENTAL SCIENCE', 11042, 'NIRMALA BHASKAR'),
+(2975, 4877, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(2976, 4877, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY'),
+(2977, 4877, 5348, 'TAMIL', 8674, 'SUSEELA S.'),
+(2978, 4877, 5349, 'HINDI', 0, NULL),
+(2979, 4877, 5350, 'KANNADA', 0, NULL),
+(2980, 4878, 5323, 'ENGLISH', 11043, 'SAVITHRI.M'),
+(2981, 4878, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(2982, 4878, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(2983, 4878, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(2984, 4878, 5328, 'GENERAL KNOWLEDGE', 11045, 'DEBORAH'),
+(2985, 4878, 5348, 'TAMIL', 8679, 'VANITHA S'),
+(2986, 4878, 5349, 'HINDI', 0, NULL),
+(2987, 4878, 5350, 'KANNADA', 0, NULL),
+(2988, 4879, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(2989, 4879, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(2990, 4879, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(2991, 4879, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(2992, 4879, 5328, 'GENERAL KNOWLEDGE', 8650, 'ASHA Ebi'),
+(2993, 4879, 5348, 'TAMIL', 8655, 'HELEN JULIET RANI'),
+(2994, 4879, 5349, 'HINDI', 0, NULL),
+(2995, 4879, 5350, 'KANNADA', 0, NULL),
+(2996, 4880, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(2997, 4880, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V'),
+(2998, 4880, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(2999, 4880, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3000, 4880, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H'),
+(3001, 4880, 5348, 'TAMIL', 0, NULL),
+(3002, 4880, 5349, 'HINDI', 0, NULL),
+(3003, 4880, 5350, 'KANNADA', 0, NULL),
+(3004, 4881, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL'),
+(3005, 4881, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(3006, 4881, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(3007, 4881, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(3008, 4881, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY'),
+(3009, 4881, 5348, 'TAMIL', 8722, 'TAMIL SELVI. R'),
+(3010, 4881, 5349, 'HINDI', 0, NULL),
+(3011, 4881, 5350, 'KANNADA', 0, NULL),
+(3012, 4882, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(3013, 4882, 5325, 'MATHEMATICS', 0, NULL),
+(3014, 4882, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(3015, 4882, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3016, 4882, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3017, 4882, 5348, 'TAMIL', 8674, 'SUSEELA S.'),
+(3018, 4882, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.'),
+(3019, 4882, 5350, 'KANNADA', 11046, 'SHANTHAMMA'),
+(3020, 4883, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(3021, 4883, 5325, 'MATHEMATICS', 0, NULL),
+(3022, 4883, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(3023, 4883, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3024, 4883, 5328, 'GENERAL KNOWLEDGE', 8705, 'LINET MARIYA V'),
+(3025, 4883, 5348, 'TAMIL', 8674, 'SUSEELA S.'),
+(3026, 4883, 5349, 'HINDI', 8731, 'VEENA NAGARAJ S.'),
+(3027, 4883, 5350, 'KANNADA', 11046, 'SHANTHAMMA'),
+(3028, 4884, 5323, 'ENGLISH', 8708, 'SURYA K.V.'),
+(3029, 4884, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(3030, 4884, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(3031, 4884, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3032, 4884, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H'),
+(3033, 4884, 5348, 'TAMIL', 8696, 'VERONE ANCY'),
+(3034, 4884, 5349, 'HINDI', 0, NULL),
+(3035, 4884, 5350, 'KANNADA', 0, NULL),
+(3036, 4885, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(3037, 4885, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(3038, 4885, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(3039, 4885, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(3040, 4885, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M'),
+(3041, 4885, 5348, 'TAMIL', 8696, 'VERONE ANCY'),
+(3042, 4885, 5349, 'HINDI', 0, NULL),
+(3043, 4885, 5350, 'KANNADA', 0, NULL),
+(3044, 4886, 5323, 'ENGLISH', 11043, 'SAVITHRI.M'),
+(3045, 4886, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(3046, 4886, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(3047, 4886, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3048, 4886, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(3049, 4886, 5348, 'TAMIL', 8674, 'SUSEELA S.'),
+(3050, 4886, 5349, 'HINDI', 0, NULL),
+(3051, 4886, 5350, 'KANNADA', 0, NULL),
+(3052, 4887, 5323, 'ENGLISH', 8708, 'SURYA K.V.'),
+(3053, 4887, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(3054, 4887, 5326, 'ENVIRONMENTAL SCIENCE', 11042, 'NIRMALA BHASKAR'),
+(3055, 4887, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3056, 4887, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(3057, 4887, 5348, 'TAMIL', 8679, 'VANITHA S'),
+(3058, 4887, 5349, 'HINDI', 0, NULL),
+(3059, 4887, 5350, 'KANNADA', 0, NULL),
+(3060, 4888, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL'),
+(3061, 4888, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V'),
+(3062, 4888, 5326, 'ENVIRONMENTAL SCIENCE', 8711, 'KRUSTIPA. R'),
+(3063, 4888, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3064, 4888, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(3065, 4888, 5348, 'TAMIL', 8679, 'VANITHA S'),
+(3066, 4888, 5349, 'HINDI', 0, NULL),
+(3067, 4888, 5350, 'KANNADA', 0, NULL),
+(3068, 4889, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(3069, 4889, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(3070, 4889, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3071, 4889, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R'),
+(3072, 4889, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(3073, 4889, 5335, 'GEN.SCIENCE', 11048, 'LATHA.R'),
+(3074, 4889, 5348, 'TAMIL', 8696, 'VERONE ANCY'),
+(3075, 4889, 5349, 'HINDI', 8673, 'RAJESHWARI.K.V'),
+(3076, 4889, 5350, 'KANNADA', 11046, 'SHANTHAMMA'),
+(3077, 4889, 5351, '3rd LANGUAGE', 0, NULL),
+(3078, 4890, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(3079, 4890, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(3080, 4890, 5327, 'COMPUTER SCIENCE', 8650, 'ASHA Ebi'),
+(3081, 4890, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(3082, 4890, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S'),
+(3083, 4890, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R'),
+(3084, 4890, 5348, 'TAMIL', 8696, 'VERONE ANCY'),
+(3085, 4890, 5349, 'HINDI', 8673, 'RAJESHWARI.K.V'),
+(3086, 4890, 5350, 'KANNADA', 11046, 'SHANTHAMMA'),
+(3087, 4890, 5351, '3rd LANGUAGE', 0, NULL),
+(3088, 4891, 5323, 'ENGLISH', 0, NULL),
+(3089, 4891, 5325, 'MATHEMATICS', 0, NULL),
+(3090, 4891, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3091, 4891, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3092, 4891, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3093, 4891, 5335, 'GEN.SCIENCE', 0, NULL),
+(3094, 4891, 5348, 'TAMIL', 0, NULL),
+(3095, 4891, 5349, 'HINDI', 0, NULL),
+(3096, 4891, 5350, 'KANNADA', 0, NULL),
+(3097, 4891, 5351, '3rd LANGUAGE', 0, NULL),
+(3098, 4892, 5323, 'ENGLISH', 0, NULL),
+(3099, 4892, 5325, 'MATHEMATICS', 0, NULL),
+(3100, 4892, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3101, 4892, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3102, 4892, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3103, 4892, 5335, 'GEN.SCIENCE', 0, NULL),
+(3104, 4892, 5348, 'TAMIL', 0, NULL),
+(3105, 4892, 5349, 'HINDI', 0, NULL),
+(3106, 4892, 5350, 'KANNADA', 0, NULL),
+(3107, 4892, 5351, '3rd LANGUAGE', 0, NULL),
+(3108, 4893, 5323, 'ENGLISH', 0, NULL),
+(3109, 4893, 5325, 'MATHEMATICS', 0, NULL),
+(3110, 4893, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3111, 4893, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3112, 4893, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3113, 4893, 5335, 'GEN.SCIENCE', 0, NULL),
+(3114, 4893, 5348, 'TAMIL', 0, NULL),
+(3115, 4893, 5349, 'HINDI', 0, NULL),
+(3116, 4893, 5350, 'KANNADA', 0, NULL),
+(3117, 4893, 5351, '3rd LANGUAGE', 0, NULL),
+(3118, 4894, 5323, 'ENGLISH', 0, NULL),
+(3119, 4894, 5325, 'MATHEMATICS', 0, NULL),
+(3120, 4894, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3121, 4894, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3122, 4894, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3123, 4894, 5335, 'GEN.SCIENCE', 0, NULL),
+(3124, 4894, 5348, 'TAMIL', 0, NULL),
+(3125, 4894, 5349, 'HINDI', 0, NULL),
+(3126, 4894, 5350, 'KANNADA', 0, NULL),
+(3127, 4894, 5351, '3rd LANGUAGE', 0, NULL),
+(3128, 4895, 5325, 'MATHEMATICS', 0, NULL),
+(3129, 4895, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(3130, 4895, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3131, 4895, 5330, 'LANGUAGE I', 8667, 'HELEN D.'),
+(3132, 4895, 5331, 'LANGUAGE II', 0, NULL),
+(3133, 4895, 5332, 'LANGUAGE III', 0, NULL),
+(3134, 4895, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.'),
+(3135, 4895, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3136, 4896, 5325, 'MATHEMATICS', 0, NULL),
+(3137, 4896, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3138, 4896, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3139, 4896, 5330, 'LANGUAGE I', 0, NULL),
+(3140, 4896, 5331, 'LANGUAGE II', 0, NULL),
+(3141, 4896, 5332, 'LANGUAGE III', 0, NULL),
+(3142, 4896, 5333, 'SCIENCE', 0, NULL),
+(3143, 4896, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3144, 4897, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P'),
+(3145, 4897, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3146, 4897, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3147, 4897, 5330, 'LANGUAGE I', 8667, 'HELEN D.'),
+(3148, 4897, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE'),
+(3149, 4897, 5332, 'LANGUAGE III', 8731, 'VEENA NAGARAJ S.'),
+(3150, 4897, 5333, 'SCIENCE', 11048, 'LATHA.R'),
+(3151, 4897, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(3152, 4898, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P'),
+(3153, 4898, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3154, 4898, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(3155, 4898, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW'),
+(3156, 4898, 5331, 'LANGUAGE II', 8685, 'NEETHIMOZHI M'),
+(3157, 4898, 5332, 'LANGUAGE III', 11034, 'RENUKABAI'),
+(3158, 4898, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H'),
+(3159, 4898, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(3160, 4899, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(3161, 4899, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(3162, 4899, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(3163, 4899, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW'),
+(3164, 4899, 5331, 'LANGUAGE II', 8674, 'SUSEELA S.'),
+(3165, 4899, 5332, 'LANGUAGE III', 8743, 'SASIKALA A.V.'),
+(3166, 4899, 5333, 'SCIENCE', 8683, 'KAVITHA K'),
+(3167, 4899, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(3168, 4900, 5325, 'MATHEMATICS', 0, NULL),
+(3169, 4900, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3170, 4900, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(3171, 4900, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(3172, 4900, 5331, 'LANGUAGE II', 0, NULL),
+(3173, 4900, 5332, 'LANGUAGE III', 0, NULL),
+(3174, 4900, 5333, 'SCIENCE', 0, NULL),
+(3175, 4900, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(3176, 4901, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.'),
+(3177, 4901, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(3178, 4901, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(3179, 4901, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW'),
+(3180, 4901, 5331, 'LANGUAGE II', 0, NULL),
+(3181, 4901, 5332, 'LANGUAGE III', 0, NULL),
+(3182, 4901, 5333, 'SCIENCE', 0, NULL),
+(3183, 4901, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3184, 4902, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.'),
+(3185, 4902, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(3186, 4902, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(3187, 4902, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(3188, 4902, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA'),
+(3189, 4902, 5332, 'LANGUAGE III', 8731, 'VEENA NAGARAJ S.'),
+(3190, 4902, 5333, 'SCIENCE', 0, NULL),
+(3191, 4902, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3192, 4903, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P'),
+(3193, 4903, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(3194, 4903, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(3195, 4903, 5330, 'LANGUAGE I', 8667, 'HELEN D.'),
+(3196, 4903, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA'),
+(3197, 4903, 5332, 'LANGUAGE III', 8743, 'SASIKALA A.V.'),
+(3198, 4903, 5333, 'SCIENCE', 0, NULL),
+(3199, 4903, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(3200, 4904, 5325, 'MATHEMATICS', 8665, 'GEETHA V.B.'),
+(3201, 4904, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3202, 4904, 5328, 'GENERAL KNOWLEDGE', 0, NULL),
+(3203, 4904, 5330, 'LANGUAGE I', 8717, 'RENJU VARGHESE MATHEW'),
+(3204, 4904, 5331, 'LANGUAGE II', 0, NULL),
+(3205, 4904, 5332, 'LANGUAGE III', 0, NULL),
+(3206, 4904, 5333, 'SCIENCE', 0, NULL),
+(3207, 4904, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(3208, 4905, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(3209, 4905, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(3210, 4905, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(3211, 4905, 5330, 'LANGUAGE I', 8667, 'HELEN D.'),
+(3212, 4905, 5331, 'LANGUAGE II', 0, NULL),
+(3213, 4905, 5332, 'LANGUAGE III', 0, NULL),
+(3214, 4905, 5333, 'SCIENCE', 0, NULL),
+(3215, 4905, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(3216, 4906, 5325, 'MATHEMATICS', 8693, 'HARISH BABU K.V.'),
+(3217, 4906, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(3218, 4906, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(3219, 4906, 5330, 'LANGUAGE I', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(3220, 4906, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI'),
+(3221, 4906, 5332, 'LANGUAGE III', 8673, 'RAJESHWARI.K.V'),
+(3222, 4906, 5333, 'SCIENCE', 0, NULL),
+(3223, 4906, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(3224, 4907, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(3225, 4907, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(3226, 4907, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(3227, 4907, 5330, 'LANGUAGE I', 0, NULL),
+(3228, 4907, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE'),
+(3229, 4907, 5332, 'LANGUAGE III', 8673, 'RAJESHWARI.K.V'),
+(3230, 4907, 5333, 'SCIENCE', 0, NULL),
+(3231, 4907, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(3232, 4908, 5352, '101 ENGLISH COMMUNICATIVE', 0, NULL),
+(3233, 4908, 5353, '006 TAMIL', 0, NULL),
+(3234, 4908, 5354, '041 MATHEMATICS', 0, NULL),
+(3235, 4908, 5355, '086 SCIENCE', 0, NULL),
+(3236, 4908, 5356, '087 SOCIAL SCIENCE', 0, NULL),
+(3237, 4908, 5357, '402 INFORMATION TECHNOLOGY', 0, NULL),
+(3238, 4909, 5352, '101 ENGLISH COMMUNICATIVE', 0, NULL),
+(3239, 4909, 5353, '006 TAMIL', 0, NULL),
+(3240, 4909, 5354, '041 MATHEMATICS', 0, NULL),
+(3241, 4909, 5355, '086 SCIENCE', 0, NULL),
+(3242, 4909, 5356, '087 SOCIAL SCIENCE', 0, NULL),
+(3243, 4909, 5357, '402 INFORMATION TECHNOLOGY', 0, NULL),
+(3244, 4910, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA'),
+(3245, 4910, 5353, '006 TAMIL', 8685, 'NEETHIMOZHI M'),
+(3246, 4910, 5354, '041 MATHEMATICS', 0, NULL),
+(3247, 4910, 5355, '086 SCIENCE', 0, NULL),
+(3248, 4910, 5356, '087 SOCIAL SCIENCE', 0, NULL),
+(3249, 4910, 5357, '402 INFORMATION TECHNOLOGY', 8735, 'NALINI. V'),
+(3250, 4911, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI'),
+(3251, 4911, 5353, '006 TAMIL', 8634, 'ESTHER MALLIGA'),
+(3252, 4911, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.'),
+(3253, 4911, 5355, '086 SCIENCE', 0, NULL),
+(3254, 4911, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G'),
+(3255, 4911, 5357, '402 INFORMATION TECHNOLOGY', 8735, 'NALINI. V'),
+(3256, 4912, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI'),
+(3257, 4912, 5353, '006 TAMIL', 8685, 'NEETHIMOZHI M'),
+(3258, 4912, 5354, '041 MATHEMATICS', 0, NULL),
+(3259, 4912, 5355, '086 SCIENCE', 0, NULL),
+(3260, 4912, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G'),
+(3261, 4912, 5357, '402 INFORMATION TECHNOLOGY', 8728, 'KAVITHA. P'),
+(3340, 4913, 5323, 'ENGLISH', 0, NULL),
+(3341, 4913, 5325, 'MATHEMATICS', 0, NULL),
+(3342, 4913, 5327, 'COMPUTER SCIENCE', 0, NULL),
+(3343, 4913, 5358, 'PHYSICS', 0, NULL),
+(3344, 4913, 5359, 'CHEMISTRY', 0, NULL),
+(3345, 4913, 5360, 'BIOLOGY', 0, NULL),
+(3346, 4914, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(3347, 4914, 5325, 'MATHEMATICS', 0, NULL),
+(3348, 4914, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(3349, 4914, 5358, 'PHYSICS', 0, NULL),
+(3350, 4914, 5359, 'CHEMISTRY', 0, NULL),
+(3351, 4914, 5360, 'BIOLOGY', 0, NULL),
+(3929, 4851, 5336, 'ENGLISH (ORAL)', 8689, 'JYOTHI. K'),
+(3930, 4851, 5337, 'ENGLISH (WRITING)', 8689, 'JYOTHI. K'),
+(3931, 4851, 5338, 'II LANGUAGE (ORAL)', 8689, 'JYOTHI. K'),
+(3932, 4851, 5339, 'II LANGUAGE (WRITING)', 8689, 'JYOTHI. K'),
+(3933, 4851, 5340, 'NUMBER WORK (ORAL)', 8689, 'JYOTHI. K'),
+(3934, 4851, 5341, 'NUMBER WORK (WRITING)', 8689, 'JYOTHI. K'),
+(3935, 4851, 5342, 'E.V.S. (ORAL)', 8689, 'JYOTHI. K'),
+(3936, 4851, 5343, 'E.V.S. (WRITING)', 8689, 'JYOTHI. K'),
+(3937, 4851, 5344, 'RHYMES AND SONGS', 8689, 'JYOTHI. K'),
+(3938, 4851, 5345, 'STORY TELLING', 8689, 'JYOTHI. K'),
+(3939, 4851, 5346, 'DRAWING AND COLOURING', 8689, 'JYOTHI. K'),
+(3940, 4851, 5347, 'CRAFT WORK', 8689, 'JYOTHI. K'),
+(3941, 4852, 5336, 'ENGLISH (ORAL)', 8724, 'SOWMYA. M'),
+(3942, 4852, 5337, 'ENGLISH (WRITING)', 8724, 'SOWMYA. M'),
+(3943, 4852, 5338, 'II LANGUAGE (ORAL)', 8724, 'SOWMYA. M'),
+(3944, 4852, 5339, 'II LANGUAGE (WRITING)', 8724, 'SOWMYA. M'),
+(3945, 4852, 5340, 'NUMBER WORK (ORAL)', 8724, 'SOWMYA. M'),
+(3946, 4852, 5341, 'NUMBER WORK (WRITING)', 8724, 'SOWMYA. M'),
+(3947, 4852, 5342, 'E.V.S. (ORAL)', 8724, 'SOWMYA. M'),
+(3948, 4852, 5343, 'E.V.S. (WRITING)', 8724, 'SOWMYA. M'),
+(3949, 4852, 5344, 'RHYMES AND SONGS', 8724, 'SOWMYA. M'),
+(3950, 4852, 5345, 'STORY TELLING', 8724, 'SOWMYA. M'),
+(3951, 4852, 5346, 'DRAWING AND COLOURING', 8724, 'SOWMYA. M'),
+(3952, 4852, 5347, 'CRAFT WORK', 8724, 'SOWMYA. M'),
+(3953, 4853, 5336, 'ENGLISH (ORAL)', 8650, 'ASHA Ebi'),
+(3954, 4853, 5337, 'ENGLISH (WRITING)', 8650, 'ASHA Ebi'),
+(3955, 4853, 5338, 'II LANGUAGE (ORAL)', 8650, 'ASHA Ebi'),
+(3956, 4853, 5339, 'II LANGUAGE (WRITING)', 8650, 'ASHA Ebi'),
+(3957, 4853, 5340, 'NUMBER WORK (ORAL)', 8650, 'ASHA Ebi'),
+(3958, 4853, 5341, 'NUMBER WORK (WRITING)', 8650, 'ASHA Ebi'),
+(3959, 4853, 5342, 'E.V.S. (ORAL)', 8650, 'ASHA Ebi'),
+(3960, 4853, 5343, 'E.V.S. (WRITING)', 8650, 'ASHA Ebi'),
+(3961, 4853, 5344, 'RHYMES AND SONGS', 8650, 'ASHA Ebi'),
+(3962, 4853, 5345, 'STORY TELLING', 8650, 'ASHA Ebi'),
+(3963, 4853, 5346, 'DRAWING AND COLOURING', 8650, 'ASHA Ebi'),
+(3964, 4853, 5347, 'CRAFT WORK', 8650, 'ASHA Ebi'),
+(3965, 4854, 5336, 'ENGLISH (ORAL)', 10909, 'KARTHIKA.D'),
+(3966, 4854, 5337, 'ENGLISH (WRITING)', 10909, 'KARTHIKA.D'),
+(3967, 4854, 5338, 'II LANGUAGE (ORAL)', 10909, 'KARTHIKA.D'),
+(3968, 4854, 5339, 'II LANGUAGE (WRITING)', 10909, 'KARTHIKA.D'),
+(3969, 4854, 5340, 'NUMBER WORK (ORAL)', 10909, 'KARTHIKA.D'),
+(3970, 4854, 5341, 'NUMBER WORK (WRITING)', 10909, 'KARTHIKA.D'),
+(3971, 4854, 5342, 'E.V.S. (ORAL)', 10909, 'KARTHIKA.D'),
+(3972, 4854, 5343, 'E.V.S. (WRITING)', 10909, 'KARTHIKA.D'),
+(3973, 4854, 5344, 'RHYMES AND SONGS', 10909, 'KARTHIKA.D'),
+(3974, 4854, 5345, 'STORY TELLING', 10909, 'KARTHIKA.D'),
+(3975, 4854, 5346, 'DRAWING AND COLOURING', 10909, 'KARTHIKA.D'),
+(3976, 4854, 5347, 'CRAFT WORK', 10909, 'KARTHIKA.D'),
+(3977, 4855, 5336, 'ENGLISH (ORAL)', 8690, 'HEMALATHA P.'),
+(3978, 4855, 5337, 'ENGLISH (WRITING)', 8690, 'HEMALATHA P.'),
+(3979, 4855, 5338, 'II LANGUAGE (ORAL)', 8690, 'HEMALATHA P.'),
+(3980, 4855, 5339, 'II LANGUAGE (WRITING)', 8690, 'HEMALATHA P.'),
+(3981, 4855, 5340, 'NUMBER WORK (ORAL)', 8690, 'HEMALATHA P.'),
+(3982, 4855, 5341, 'NUMBER WORK (WRITING)', 8690, 'HEMALATHA P.'),
+(3983, 4855, 5342, 'E.V.S. (ORAL)', 8690, 'HEMALATHA P.'),
+(3984, 4855, 5343, 'E.V.S. (WRITING)', 8690, 'HEMALATHA P.'),
+(3985, 4855, 5344, 'RHYMES AND SONGS', 8690, 'HEMALATHA P.'),
+(3986, 4855, 5345, 'STORY TELLING', 8690, 'HEMALATHA P.'),
+(3987, 4855, 5346, 'DRAWING AND COLOURING', 8690, 'HEMALATHA P.'),
+(3988, 4855, 5347, 'CRAFT WORK', 8690, 'HEMALATHA P.'),
+(3989, 4856, 5336, 'ENGLISH (ORAL)', 8649, 'LIZY JOSE'),
+(3990, 4856, 5337, 'ENGLISH (WRITING)', 8649, 'LIZY JOSE'),
+(3991, 4856, 5338, 'II LANGUAGE (ORAL)', 8649, 'LIZY JOSE'),
+(3992, 4856, 5339, 'II LANGUAGE (WRITING)', 8649, 'LIZY JOSE'),
+(3993, 4856, 5340, 'NUMBER WORK (ORAL)', 8649, 'LIZY JOSE'),
+(3994, 4856, 5341, 'NUMBER WORK (WRITING)', 8649, 'LIZY JOSE'),
+(3995, 4856, 5342, 'E.V.S. (ORAL)', 8649, 'LIZY JOSE'),
+(3996, 4856, 5343, 'E.V.S. (WRITING)', 8649, 'LIZY JOSE'),
+(3997, 4856, 5344, 'RHYMES AND SONGS', 8649, 'LIZY JOSE'),
+(3998, 4856, 5345, 'STORY TELLING', 8649, 'LIZY JOSE'),
+(3999, 4856, 5346, 'DRAWING AND COLOURING', 8649, 'LIZY JOSE'),
+(4000, 4856, 5347, 'CRAFT WORK', 8649, 'LIZY JOSE'),
+(4001, 4857, 5336, 'ENGLISH (ORAL)', 8657, 'DEEPA BIJU'),
+(4002, 4857, 5337, 'ENGLISH (WRITING)', 8657, 'DEEPA BIJU'),
+(4003, 4857, 5338, 'II LANGUAGE (ORAL)', 8657, 'DEEPA BIJU'),
+(4004, 4857, 5339, 'II LANGUAGE (WRITING)', 8657, 'DEEPA BIJU'),
+(4005, 4857, 5340, 'NUMBER WORK (ORAL)', 8657, 'DEEPA BIJU'),
+(4006, 4857, 5341, 'NUMBER WORK (WRITING)', 8657, 'DEEPA BIJU'),
+(4007, 4857, 5342, 'E.V.S. (ORAL)', 8657, 'DEEPA BIJU'),
+(4008, 4857, 5343, 'E.V.S. (WRITING)', 8657, 'DEEPA BIJU'),
+(4009, 4857, 5344, 'RHYMES AND SONGS', 8657, 'DEEPA BIJU'),
+(4010, 4857, 5345, 'STORY TELLING', 8657, 'DEEPA BIJU'),
+(4011, 4857, 5346, 'DRAWING AND COLOURING', 8657, 'DEEPA BIJU'),
+(4012, 4857, 5347, 'CRAFT WORK', 8657, 'DEEPA BIJU'),
+(4013, 4858, 5336, 'ENGLISH (ORAL)', 8659, 'PRATHIMA K.'),
+(4014, 4858, 5337, 'ENGLISH (WRITING)', 8659, 'PRATHIMA K.'),
+(4015, 4858, 5338, 'II LANGUAGE (ORAL)', 8659, 'PRATHIMA K.'),
+(4016, 4858, 5339, 'II LANGUAGE (WRITING)', 8659, 'PRATHIMA K.'),
+(4017, 4858, 5340, 'NUMBER WORK (ORAL)', 8659, 'PRATHIMA K.'),
+(4018, 4858, 5341, 'NUMBER WORK (WRITING)', 8659, 'PRATHIMA K.'),
+(4019, 4858, 5342, 'E.V.S. (ORAL)', 8659, 'PRATHIMA K.'),
+(4020, 4858, 5343, 'E.V.S. (WRITING)', 8659, 'PRATHIMA K.'),
+(4021, 4858, 5344, 'RHYMES AND SONGS', 8659, 'PRATHIMA K.'),
+(4022, 4858, 5345, 'STORY TELLING', 8659, 'PRATHIMA K.'),
+(4023, 4858, 5346, 'DRAWING AND COLOURING', 8659, 'PRATHIMA K.'),
+(4024, 4858, 5347, 'CRAFT WORK', 8659, 'PRATHIMA K.'),
+(4025, 4859, 5336, 'ENGLISH (ORAL)', 8691, 'LIJI MARTIN'),
+(4026, 4859, 5337, 'ENGLISH (WRITING)', 8691, 'LIJI MARTIN'),
+(4027, 4859, 5338, 'II LANGUAGE (ORAL)', 8691, 'LIJI MARTIN'),
+(4028, 4859, 5339, 'II LANGUAGE (WRITING)', 8691, 'LIJI MARTIN'),
+(4029, 4859, 5340, 'NUMBER WORK (ORAL)', 8691, 'LIJI MARTIN'),
+(4030, 4859, 5341, 'NUMBER WORK (WRITING)', 8691, 'LIJI MARTIN'),
+(4031, 4859, 5342, 'E.V.S. (ORAL)', 8691, 'LIJI MARTIN'),
+(4032, 4859, 5343, 'E.V.S. (WRITING)', 8691, 'LIJI MARTIN'),
+(4033, 4859, 5344, 'RHYMES AND SONGS', 8691, 'LIJI MARTIN'),
+(4034, 4859, 5345, 'STORY TELLING', 8691, 'LIJI MARTIN'),
+(4035, 4859, 5346, 'DRAWING AND COLOURING', 8691, 'LIJI MARTIN'),
+(4036, 4859, 5347, 'CRAFT WORK', 8691, 'LIJI MARTIN'),
+(4037, 4860, 5336, 'ENGLISH (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(4038, 4860, 5337, 'ENGLISH (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(4039, 4860, 5338, 'II LANGUAGE (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(4040, 4860, 5339, 'II LANGUAGE (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(4041, 4860, 5340, 'NUMBER WORK (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(4042, 4860, 5341, 'NUMBER WORK (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(4043, 4860, 5342, 'E.V.S. (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(4044, 4860, 5343, 'E.V.S. (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(4045, 4860, 5344, 'RHYMES AND SONGS', 8643, 'GEETHA MANJUNATH'),
+(4046, 4860, 5345, 'STORY TELLING', 8643, 'GEETHA MANJUNATH'),
+(4047, 4860, 5346, 'DRAWING AND COLOURING', 8643, 'GEETHA MANJUNATH'),
+(4048, 4860, 5347, 'CRAFT WORK', 8643, 'GEETHA MANJUNATH'),
+(4049, 4845, 5336, 'ENGLISH (ORAL)', 8713, 'RAJALAKSHMI U'),
+(4050, 4845, 5337, 'ENGLISH (WRITING)', 8713, 'RAJALAKSHMI U'),
+(4051, 4845, 5338, 'II LANGUAGE (ORAL)', 8713, 'RAJALAKSHMI U'),
+(4052, 4845, 5339, 'II LANGUAGE (WRITING)', 8713, 'RAJALAKSHMI U'),
+(4053, 4845, 5340, 'NUMBER WORK (ORAL)', 8713, 'RAJALAKSHMI U'),
+(4054, 4845, 5341, 'NUMBER WORK (WRITING)', 8713, 'RAJALAKSHMI U'),
+(4055, 4845, 5342, 'E.V.S. (ORAL)', 8713, 'RAJALAKSHMI U'),
+(4056, 4845, 5343, 'E.V.S. (WRITING)', 8713, 'RAJALAKSHMI U'),
+(4057, 4845, 5344, 'RHYMES AND SONGS', 8713, 'RAJALAKSHMI U'),
+(4058, 4845, 5345, 'STORY TELLING', 8713, 'RAJALAKSHMI U'),
+(4059, 4845, 5346, 'DRAWING AND COLOURING', 8713, 'RAJALAKSHMI U'),
+(4060, 4845, 5347, 'CRAFT WORK', 8713, 'RAJALAKSHMI U'),
+(4061, 4846, 5336, 'ENGLISH (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(4062, 4846, 5337, 'ENGLISH (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(4063, 4846, 5338, 'II LANGUAGE (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(4064, 4846, 5339, 'II LANGUAGE (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(4065, 4846, 5340, 'NUMBER WORK (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(4066, 4846, 5341, 'NUMBER WORK (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(4067, 4846, 5342, 'E.V.S. (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(4068, 4846, 5343, 'E.V.S. (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(4069, 4846, 5344, 'RHYMES AND SONGS', 8704, 'RETHINAM AUGUSTINE'),
+(4070, 4846, 5345, 'STORY TELLING', 8704, 'RETHINAM AUGUSTINE'),
+(4071, 4846, 5346, 'DRAWING AND COLOURING', 8704, 'RETHINAM AUGUSTINE'),
+(4072, 4846, 5347, 'CRAFT WORK', 8704, 'RETHINAM AUGUSTINE'),
+(4073, 4847, 5336, 'ENGLISH (ORAL)', 8703, 'SHEBA JAI'),
+(4074, 4847, 5337, 'ENGLISH (WRITING)', 8703, 'SHEBA JAI'),
+(4075, 4847, 5338, 'II LANGUAGE (ORAL)', 8703, 'SHEBA JAI'),
+(4076, 4847, 5339, 'II LANGUAGE (WRITING)', 8703, 'SHEBA JAI'),
+(4077, 4847, 5340, 'NUMBER WORK (ORAL)', 8703, 'SHEBA JAI'),
+(4078, 4847, 5341, 'NUMBER WORK (WRITING)', 8703, 'SHEBA JAI'),
+(4079, 4847, 5342, 'E.V.S. (ORAL)', 8703, 'SHEBA JAI'),
+(4080, 4847, 5343, 'E.V.S. (WRITING)', 8703, 'SHEBA JAI'),
+(4081, 4847, 5344, 'RHYMES AND SONGS', 8703, 'SHEBA JAI'),
+(4082, 4847, 5345, 'STORY TELLING', 8703, 'SHEBA JAI'),
+(4083, 4847, 5346, 'DRAWING AND COLOURING', 8703, 'SHEBA JAI'),
+(4084, 4847, 5347, 'CRAFT WORK', 8703, 'SHEBA JAI'),
+(4085, 4848, 5336, 'ENGLISH (ORAL)', 8701, 'ELSON SAJI'),
+(4086, 4848, 5337, 'ENGLISH (WRITING)', 8701, 'ELSON SAJI'),
+(4087, 4848, 5338, 'II LANGUAGE (ORAL)', 8701, 'ELSON SAJI'),
+(4088, 4848, 5339, 'II LANGUAGE (WRITING)', 8701, 'ELSON SAJI'),
+(4089, 4848, 5340, 'NUMBER WORK (ORAL)', 8701, 'ELSON SAJI'),
+(4090, 4848, 5341, 'NUMBER WORK (WRITING)', 8701, 'ELSON SAJI'),
+(4091, 4848, 5342, 'E.V.S. (ORAL)', 8701, 'ELSON SAJI'),
+(4092, 4848, 5343, 'E.V.S. (WRITING)', 8701, 'ELSON SAJI'),
+(4093, 4848, 5344, 'RHYMES AND SONGS', 8701, 'ELSON SAJI'),
+(4094, 4848, 5345, 'STORY TELLING', 8701, 'ELSON SAJI'),
+(4095, 4848, 5346, 'DRAWING AND COLOURING', 8701, 'ELSON SAJI'),
+(4096, 4848, 5347, 'CRAFT WORK', 8701, 'ELSON SAJI'),
+(4097, 4849, 5336, 'ENGLISH (ORAL)', 8738, 'BABASINI DEVI S.'),
+(4098, 4849, 5337, 'ENGLISH (WRITING)', 8738, 'BABASINI DEVI S.'),
+(4099, 4849, 5338, 'II LANGUAGE (ORAL)', 8738, 'BABASINI DEVI S.'),
+(4100, 4849, 5339, 'II LANGUAGE (WRITING)', 8738, 'BABASINI DEVI S.'),
+(4101, 4849, 5340, 'NUMBER WORK (ORAL)', 8738, 'BABASINI DEVI S.'),
+(4102, 4849, 5341, 'NUMBER WORK (WRITING)', 8738, 'BABASINI DEVI S.'),
+(4103, 4849, 5342, 'E.V.S. (ORAL)', 8738, 'BABASINI DEVI S.'),
+(4104, 4849, 5343, 'E.V.S. (WRITING)', 8738, 'BABASINI DEVI S.'),
+(4105, 4849, 5344, 'RHYMES AND SONGS', 8738, 'BABASINI DEVI S.'),
+(4106, 4849, 5345, 'STORY TELLING', 8738, 'BABASINI DEVI S.'),
+(4107, 4849, 5346, 'DRAWING AND COLOURING', 8738, 'BABASINI DEVI S.'),
+(4108, 4849, 5347, 'CRAFT WORK', 8738, 'BABASINI DEVI S.'),
+(4109, 4850, 5336, 'ENGLISH (ORAL)', 8702, 'MEGHA DEEPAN'),
+(4110, 4850, 5337, 'ENGLISH (WRITING)', 8702, 'MEGHA DEEPAN'),
+(4111, 4850, 5338, 'II LANGUAGE (ORAL)', 8702, 'MEGHA DEEPAN'),
+(4112, 4850, 5339, 'II LANGUAGE (WRITING)', 8702, 'MEGHA DEEPAN'),
+(4113, 4850, 5340, 'NUMBER WORK (ORAL)', 8702, 'MEGHA DEEPAN'),
+(4114, 4850, 5341, 'NUMBER WORK (WRITING)', 8702, 'MEGHA DEEPAN'),
+(4115, 4850, 5342, 'E.V.S. (ORAL)', 8702, 'MEGHA DEEPAN'),
+(4116, 4850, 5343, 'E.V.S. (WRITING)', 8702, 'MEGHA DEEPAN'),
+(4117, 4850, 5344, 'RHYMES AND SONGS', 8702, 'MEGHA DEEPAN'),
+(4118, 4850, 5345, 'STORY TELLING', 8702, 'MEGHA DEEPAN'),
+(4119, 4850, 5346, 'DRAWING AND COLOURING', 8702, 'MEGHA DEEPAN'),
+(4120, 4850, 5347, 'CRAFT WORK', 8702, 'MEGHA DEEPAN'),
+(4302, 5165, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4303, 5165, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(4304, 5165, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(4305, 5165, 5359, 'CHEMISTRY', 8683, 'KAVITHA K'),
+(4306, 5165, 5360, 'BIOLOGY', 8664, 'PRIYA DHARSHINI M.'),
+(4307, 5166, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4308, 5166, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(4309, 5166, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(4310, 5166, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(4311, 5166, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(4312, 5167, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4313, 5167, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(4314, 5167, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(4315, 5167, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(4316, 5167, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(4440, 5168, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4441, 5168, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(4442, 5168, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(4443, 5168, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.'),
+(4444, 5168, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(4445, 5169, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4446, 5169, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(4448, 5169, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(4449, 5169, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(4450, 5169, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(4451, 5171, 5323, 'ENGLISH', 8632, 'TERESSAMMAL ROBI'),
+(4452, 5171, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(4453, 5171, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(4454, 5171, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.'),
+(4455, 5171, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(4456, 5170, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(4457, 5170, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(4458, 5170, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(4459, 5170, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(4460, 5170, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5552, 5302, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(5553, 5302, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5554, 5302, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5555, 5302, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.'),
+(5556, 5302, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(5560, 5303, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.'),
+(5561, 5303, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5562, 5303, 5328, 'GENERAL KNOWLEDGE', 11048, 'LATHA.R'),
+(5563, 5303, 5333, 'SCIENCE', 8664, 'PRIYA DHARSHINI M.'),
+(5564, 5303, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K'),
+(5568, 5304, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P'),
+(5569, 5304, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5570, 5304, 5328, 'GENERAL KNOWLEDGE', 11048, 'LATHA.R'),
+(5571, 5304, 5333, 'SCIENCE', 11048, 'LATHA.R'),
+(5572, 5304, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(5576, 5305, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P'),
+(5577, 5305, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5578, 5305, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(5579, 5305, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H'),
+(5580, 5305, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(5584, 5326, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(5585, 5326, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(5586, 5326, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5587, 5326, 5333, 'SCIENCE', 8683, 'KAVITHA K'),
+(5588, 5326, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(5610, 5310, 5325, 'MATHEMATICS', 8665, 'GEETHA V.B.'),
+(5611, 5310, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5612, 5310, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(5613, 5310, 5333, 'SCIENCE', 8664, 'PRIYA DHARSHINI M.'),
+(5614, 5310, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(5618, 5311, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5619, 5311, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5620, 5311, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(5621, 5311, 5333, 'SCIENCE', 8658, 'BEULA CHRISTY'),
+(5622, 5311, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(5626, 5312, 5325, 'MATHEMATICS', 8693, 'HARISH BABU K.V.'),
+(5627, 5312, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(5628, 5312, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(5629, 5312, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.'),
+(5630, 5312, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(5634, 5313, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5635, 5313, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5636, 5313, 5328, 'GENERAL KNOWLEDGE', 8633, 'SAJI S. VARGHESE'),
+(5637, 5313, 5333, 'SCIENCE', 8676, 'GANDHIMATHI T.S.'),
+(5638, 5313, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(5640, 5268, 5323, 'ENGLISH', 8648, 'JEYA GANDHI'),
+(5642, 5268, 5325, 'MATHEMATICS', 8648, 'JEYA GANDHI'),
+(5643, 5268, 5326, 'ENVIRONMENTAL SCIENCE', 8648, 'JEYA GANDHI'),
+(5644, 5268, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5645, 5268, 5328, 'GENERAL KNOWLEDGE', 8648, 'JEYA GANDHI'),
+(5646, 5269, 5323, 'ENGLISH', 8742, 'ANJALI P.S'),
+(5648, 5269, 5325, 'MATHEMATICS', 8742, 'ANJALI P.S'),
+(5649, 5269, 5326, 'ENVIRONMENTAL SCIENCE', 8742, 'ANJALI P.S'),
+(5650, 5269, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5651, 5269, 5328, 'GENERAL KNOWLEDGE', 8742, 'ANJALI P.S'),
+(5652, 5270, 5323, 'ENGLISH', 8721, 'SUMATHI. V'),
+(5654, 5270, 5325, 'MATHEMATICS', 8721, 'SUMATHI. V'),
+(5655, 5270, 5326, 'ENVIRONMENTAL SCIENCE', 8721, 'SUMATHI. V'),
+(5656, 5270, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5657, 5270, 5328, 'GENERAL KNOWLEDGE', 8721, 'SUMATHI. V'),
+(5658, 5271, 5323, 'ENGLISH', 11037, 'PAULINE TERESA'),
+(5660, 5271, 5325, 'MATHEMATICS', 11037, 'PAULINE TERESA'),
+(5661, 5271, 5326, 'ENVIRONMENTAL SCIENCE', 11037, 'PAULINE TERESA'),
+(5662, 5271, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5663, 5271, 5328, 'GENERAL KNOWLEDGE', 11037, 'PAULINE TERESA'),
+(5664, 5272, 5323, 'ENGLISH', 11038, 'SUJATHA.D'),
+(5666, 5272, 5325, 'MATHEMATICS', 11038, 'SUJATHA.D'),
+(5667, 5272, 5326, 'ENVIRONMENTAL SCIENCE', 11038, 'SUJATHA.D'),
+(5668, 5272, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5669, 5272, 5328, 'GENERAL KNOWLEDGE', 11038, 'SUJATHA.D'),
+(5670, 5273, 5323, 'ENGLISH', 11039, 'KEERTHANA.S'),
+(5672, 5273, 5325, 'MATHEMATICS', 11039, 'KEERTHANA.S'),
+(5673, 5273, 5326, 'ENVIRONMENTAL SCIENCE', 11039, 'KEERTHANA.S'),
+(5674, 5273, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5675, 5273, 5328, 'GENERAL KNOWLEDGE', 11039, 'KEERTHANA.S'),
+(5676, 5274, 5323, 'ENGLISH', 8652, 'SARALA B.'),
+(5678, 5274, 5325, 'MATHEMATICS', 8652, 'SARALA B.'),
+(5679, 5274, 5326, 'ENVIRONMENTAL SCIENCE', 8652, 'SARALA B.'),
+(5680, 5274, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5681, 5274, 5328, 'GENERAL KNOWLEDGE', 8652, 'SARALA B.'),
+(5682, 5275, 5323, 'ENGLISH', 8682, 'REJANI R.'),
+(5684, 5275, 5325, 'MATHEMATICS', 8682, 'REJANI R.'),
+(5685, 5275, 5326, 'ENVIRONMENTAL SCIENCE', 8682, 'REJANI R.'),
+(5686, 5275, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5687, 5275, 5328, 'GENERAL KNOWLEDGE', 8682, 'REJANI R.'),
+(5688, 5276, 5323, 'ENGLISH', 8740, 'VEDA P'),
+(5690, 5276, 5325, 'MATHEMATICS', 8740, 'VEDA P'),
+(5691, 5276, 5326, 'ENVIRONMENTAL SCIENCE', 8740, 'VEDA P'),
+(5692, 5276, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5693, 5276, 5328, 'GENERAL KNOWLEDGE', 8740, 'VEDA P'),
+(5694, 5277, 5323, 'ENGLISH', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(5696, 5277, 5325, 'MATHEMATICS', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(5697, 5277, 5326, 'ENVIRONMENTAL SCIENCE', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(5698, 5277, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5699, 5277, 5328, 'GENERAL KNOWLEDGE', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(5700, 5278, 5323, 'ENGLISH', 8714, 'KARTHIKAA. K.S'),
+(5702, 5278, 5325, 'MATHEMATICS', 8714, 'KARTHIKAA. K.S'),
+(5703, 5278, 5326, 'ENVIRONMENTAL SCIENCE', 8714, 'KARTHIKAA. K.S'),
+(5704, 5278, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5705, 5278, 5328, 'GENERAL KNOWLEDGE', 8714, 'KARTHIKAA. K.S'),
+(5706, 5279, 5323, 'ENGLISH', 11035, 'LINI FLORA'),
+(5708, 5279, 5325, 'MATHEMATICS', 11035, 'LINI FLORA'),
+(5709, 5279, 5326, 'ENVIRONMENTAL SCIENCE', 11035, 'LINI FLORA'),
+(5710, 5279, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5711, 5279, 5328, 'GENERAL KNOWLEDGE', 11035, 'LINI FLORA'),
+(5712, 5280, 5323, 'ENGLISH', 8666, 'ANITTA GNANA CAROLIN'),
+(5714, 5280, 5325, 'MATHEMATICS', 8666, 'ANITTA GNANA CAROLIN'),
+(5715, 5280, 5326, 'ENVIRONMENTAL SCIENCE', 8666, 'ANITTA GNANA CAROLIN'),
+(5716, 5280, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5717, 5280, 5328, 'GENERAL KNOWLEDGE', 8666, 'ANITTA GNANA CAROLIN'),
+(5718, 5281, 5323, 'ENGLISH', 11036, 'JAYA PRADHA'),
+(5720, 5281, 5325, 'MATHEMATICS', 11036, 'JAYA PRADHA'),
+(5721, 5281, 5326, 'ENVIRONMENTAL SCIENCE', 11036, 'JAYA PRADHA'),
+(5722, 5281, 5327, 'COMPUTER SCIENCE', 8678, 'SANDHYA M'),
+(5723, 5281, 5328, 'GENERAL KNOWLEDGE', 11036, 'JAYA PRADHA'),
+(5724, 5282, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(5726, 5282, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(5727, 5282, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(5728, 5282, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5729, 5282, 5328, 'GENERAL KNOWLEDGE', 11044, 'ARUL JOTHI'),
+(5730, 5283, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(5732, 5283, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(5733, 5283, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(5734, 5283, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5735, 5283, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5736, 5284, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(5738, 5284, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(5739, 5284, 5326, 'ENVIRONMENTAL SCIENCE', 8661, 'NIRMALA P.'),
+(5740, 5284, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5741, 5284, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY'),
+(5742, 5285, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M'),
+(5744, 5285, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(5745, 5285, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(5746, 5285, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5747, 5285, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5748, 5286, 5323, 'ENGLISH', 8636, 'SUDHA MOSHE'),
+(5750, 5286, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(5751, 5286, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(5752, 5286, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5753, 5286, 5328, 'GENERAL KNOWLEDGE', 13732, 'ASHA R'),
+(5754, 5287, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL'),
+(5756, 5287, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V'),
+(5757, 5287, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(5758, 5287, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5759, 5287, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H'),
+(5760, 5288, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL'),
+(5762, 5288, 5325, 'MATHEMATICS', 8646, 'CICILY ANTONY'),
+(5763, 5288, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(5764, 5288, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(5765, 5288, 5328, 'GENERAL KNOWLEDGE', 8646, 'CICILY ANTONY'),
+(5766, 5289, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(5768, 5289, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(5769, 5289, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(5770, 5289, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5771, 5289, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M'),
+(5772, 5290, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(5774, 5290, 5325, 'MATHEMATICS', 11278, 'ASWATHY'),
+(5775, 5290, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(5776, 5290, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5777, 5290, 5328, 'GENERAL KNOWLEDGE', 8705, 'LINET MARIYA V'),
+(5778, 5291, 5323, 'ENGLISH', 8708, 'SURYA K.V.'),
+(5780, 5291, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(5781, 5291, 5326, 'ENVIRONMENTAL SCIENCE', 8710, 'BHUVANESWARI M'),
+(5782, 5291, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5783, 5291, 5328, 'GENERAL KNOWLEDGE', 8720, 'EBENAZER STELLA BAI. H'),
+(5784, 5292, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(5786, 5292, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(5787, 5292, 5326, 'ENVIRONMENTAL SCIENCE', 8644, 'BHUVANESWARI B.'),
+(5788, 5292, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(5789, 5292, 5328, 'GENERAL KNOWLEDGE', 8710, 'BHUVANESWARI M'),
+(5790, 5293, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M'),
+(5792, 5293, 5325, 'MATHEMATICS', 11040, 'DEEPA PRADEEP'),
+(5793, 5293, 5326, 'ENVIRONMENTAL SCIENCE', 11044, 'ARUL JOTHI'),
+(5794, 5293, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5795, 5293, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(5796, 5294, 5323, 'ENGLISH', 8708, 'SURYA K.V.'),
+(5798, 5294, 5325, 'MATHEMATICS', 11047, 'SUGANYA'),
+(5799, 5294, 5326, 'ENVIRONMENTAL SCIENCE', 8661, 'NIRMALA P.'),
+(5800, 5294, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5801, 5294, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(5802, 5295, 5323, 'ENGLISH', 11041, 'ANGEL SAMUEL'),
+(5804, 5295, 5325, 'MATHEMATICS', 8705, 'LINET MARIYA V'),
+(5805, 5295, 5326, 'ENVIRONMENTAL SCIENCE', 8711, 'KRUSTIPA. R'),
+(5806, 5295, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5807, 5295, 5328, 'GENERAL KNOWLEDGE', 8644, 'BHUVANESWARI B.'),
+(5808, 5296, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(5810, 5296, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(5811, 5296, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5812, 5296, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R'),
+(5813, 5296, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(5814, 5296, 5335, 'GEN.SCIENCE', 11048, 'LATHA.R'),
+(5815, 5296, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(5816, 5297, 5323, 'ENGLISH', 11045, 'DEBORAH'),
+(5818, 5297, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(5819, 5297, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5820, 5297, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5821, 5297, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S'),
+(5822, 5297, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R'),
+(5823, 5297, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(5824, 5298, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M'),
+(5826, 5298, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(5827, 5298, 5327, 'COMPUTER SCIENCE', 13732, 'ASHA R'),
+(5828, 5298, 5328, 'GENERAL KNOWLEDGE', 11041, 'ANGEL SAMUEL'),
+(5829, 5298, 5334, 'SOCIAL SCIENCE', 8744, 'NISHITHA PREETHI H.'),
+(5830, 5298, 5335, 'GEN.SCIENCE', 8711, 'KRUSTIPA. R'),
+(5831, 5298, 5351, '3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(5832, 5299, 5323, 'ENGLISH', 8719, 'SAVITHRI RAVI SANKAR. M'),
+(5834, 5299, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(5835, 5299, 5327, 'COMPUTER SCIENCE', 8708, 'SURYA K.V.'),
+(5836, 5299, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R'),
+(5837, 5299, 5334, 'SOCIAL SCIENCE', 8725, 'KETHRIN FLAMY. E. S'),
+(5838, 5299, 5335, 'GEN.SCIENCE', 8720, 'EBENAZER STELLA BAI. H'),
+(5839, 5299, 5351, '3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(5840, 5300, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(5842, 5300, 5325, 'MATHEMATICS', 8736, 'SRIDHARAN S.V.'),
+(5843, 5300, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5844, 5300, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R'),
+(5845, 5300, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K'),
+(5846, 5300, 5335, 'GEN.SCIENCE', 8661, 'NIRMALA P.'),
+(5847, 5300, 5351, '3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(5848, 5301, 5323, 'ENGLISH', 8727, 'AMBIGA. T'),
+(5850, 5301, 5325, 'MATHEMATICS', 8715, 'THIRUMALESH. A'),
+(5851, 5301, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5852, 5301, 5328, 'GENERAL KNOWLEDGE', 8711, 'KRUSTIPA. R'),
+(5853, 5301, 5334, 'SOCIAL SCIENCE', 8706, 'UMA K'),
+(5854, 5301, 5335, 'GEN.SCIENCE', 8661, 'NIRMALA P.'),
+(5855, 5301, 5351, '3rd LANGUAGE', 11034, 'RENUKABAI'),
+(5856, 5306, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5857, 5306, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5858, 5306, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(5860, 5306, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI'),
+(5862, 5306, 5333, 'SCIENCE', 8683, 'KAVITHA K'),
+(5863, 5306, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(5864, 5307, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.'),
+(5865, 5307, 5327, 'COMPUTER SCIENCE', 8660, 'SANGEETHA Y.S.'),
+(5866, 5307, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(5868, 5307, 5331, 'LANGUAGE II', 8673, 'RAJESHWARI.K.V'),
+(5870, 5307, 5333, 'SCIENCE', 11044, 'ARUL JOTHI'),
+(5871, 5307, 5334, 'SOCIAL SCIENCE', 8640, 'SUSANNA PAUL'),
+(5872, 5308, 5325, 'MATHEMATICS', 8694, 'MOHAN K.V.'),
+(5873, 5308, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5874, 5308, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(5876, 5308, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA'),
+(5878, 5308, 5333, 'SCIENCE', 8710, 'BHUVANESWARI M'),
+(5879, 5308, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(5880, 5309, 5325, 'MATHEMATICS', 11049, 'PRADHEESHA.P');
+INSERT INTO `subject_teacher` (`Id`, `SectionId`, `SubjectId`, `SubjectName`, `TeacherId`, `TeacherName`) VALUES
+(5881, 5309, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5882, 5309, 5328, 'GENERAL KNOWLEDGE', 8741, 'CHINJU V.R.'),
+(5884, 5309, 5331, 'LANGUAGE II', 8634, 'ESTHER MALLIGA'),
+(5886, 5309, 5333, 'SCIENCE', 8720, 'EBENAZER STELLA BAI. H'),
+(5887, 5309, 5334, 'SOCIAL SCIENCE', 8645, 'VANITHA A.'),
+(5889, 5310, 5331, 'LANGUAGE II', 8641, 'ANURADHA R.'),
+(5892, 5311, 5331, 'LANGUAGE II', 8641, 'ANURADHA R.'),
+(5895, 5312, 5331, 'LANGUAGE II', 8647, 'SUBBULAKSHMI'),
+(5898, 5313, 5331, 'LANGUAGE II', 8670, 'S.VANISHREE'),
+(5900, 5314, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.'),
+(5901, 5315, 5357, '402 INFORMATION TECHNOLOGY', 8660, 'SANGEETHA Y.S.'),
+(5902, 5316, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.'),
+(5903, 5314, 5352, '101 ENGLISH COMMUNICATIVE', 8684, 'LIZZY CHRISTOPHER'),
+(5904, 5314, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.'),
+(5905, 5314, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY'),
+(5906, 5314, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU'),
+(5907, 5315, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA'),
+(5908, 5315, 5354, '041 MATHEMATICS', 8693, 'HARISH BABU K.V.'),
+(5909, 5315, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY'),
+(5910, 5315, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU'),
+(5911, 5316, 5352, '101 ENGLISH COMMUNICATIVE', 11051, 'VERONICA'),
+(5912, 5316, 5354, '041 MATHEMATICS', 11793, 'JEYARANI S'),
+(5913, 5316, 5355, '086 SCIENCE', 8681, 'T VASANTHA KUMARI'),
+(5914, 5316, 5356, '087 SOCIAL SCIENCE', 8635, 'SISILI BABU'),
+(5916, 5317, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI'),
+(5917, 5317, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.'),
+(5918, 5317, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY'),
+(5919, 5317, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G'),
+(5920, 5317, 5357, '402 INFORMATION TECHNOLOGY', 13737, 'NALINI B.'),
+(5922, 5318, 5352, '101 ENGLISH COMMUNICATIVE', 8632, 'TERESSAMMAL ROBI'),
+(5923, 5318, 5354, '041 MATHEMATICS', 8665, 'GEETHA V.B.'),
+(5924, 5318, 5355, '086 SCIENCE', 8658, 'BEULA CHRISTY'),
+(5925, 5318, 5356, '087 SOCIAL SCIENCE', 8688, 'SIJUMON .K.G'),
+(5926, 5318, 5357, '402 INFORMATION TECHNOLOGY', 8728, 'KAVITHA. P'),
+(5927, 5319, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5928, 5319, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5929, 5319, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(5930, 5319, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5931, 5319, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(5932, 5322, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5933, 5322, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(5934, 5322, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(5935, 5322, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.'),
+(5936, 5322, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(5937, 5320, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5938, 5320, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5939, 5320, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5940, 5320, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(5941, 5320, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5942, 5321, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5943, 5321, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(5944, 5321, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(5945, 5321, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5946, 5321, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(5947, 5323, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5948, 5323, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5949, 5323, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(5950, 5323, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5951, 5323, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(5952, 5324, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(5953, 5324, 5325, 'MATHEMATICS', 11050, 'JAYA RAVI'),
+(5954, 5324, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(5955, 5324, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(5956, 5324, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(5957, 5324, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(5958, 5325, 5323, 'ENGLISH', 8632, 'TERESSAMMAL ROBI'),
+(5959, 5325, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(5960, 5325, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(5961, 5325, 5397, 'BUSINESS STUDIES', 8633, 'SAJI S. VARGHESE'),
+(5962, 5325, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(6687, 5268, 5349, 'HINDI', 0, NULL),
+(6688, 5268, 5350, 'KANNADA', 0, NULL),
+(6689, 5268, 5348, 'TAMIL', 0, NULL),
+(6690, 5269, 5349, 'HINDI', 0, NULL),
+(6691, 5269, 5350, 'KANNADA', 0, NULL),
+(6692, 5269, 5348, 'TAMIL', 0, NULL),
+(6693, 5270, 5349, 'HINDI', 0, NULL),
+(6694, 5270, 5350, 'KANNADA', 0, NULL),
+(6695, 5270, 5348, 'TAMIL', 0, NULL),
+(6696, 5271, 5349, 'HINDI', 0, NULL),
+(6697, 5271, 5350, 'KANNADA', 0, NULL),
+(6698, 5271, 5348, 'TAMIL', 0, NULL),
+(6699, 5272, 5349, 'HINDI', 0, NULL),
+(6700, 5272, 5350, 'KANNADA', 0, NULL),
+(6701, 5272, 5348, 'TAMIL', 0, NULL),
+(6702, 5273, 5349, 'HINDI', 0, NULL),
+(6703, 5273, 5350, 'KANNADA', 0, NULL),
+(6704, 5273, 5348, 'TAMIL', 0, NULL),
+(6705, 5274, 5349, 'HINDI', 0, NULL),
+(6706, 5274, 5350, 'KANNADA', 0, NULL),
+(6707, 5274, 5348, 'TAMIL', 0, NULL),
+(6708, 5275, 5348, 'TAMIL', 0, NULL),
+(6709, 5275, 5349, 'HINDI', 0, NULL),
+(6710, 5275, 5350, 'KANNADA', 0, NULL),
+(6711, 5276, 5348, 'TAMIL', 0, NULL),
+(6712, 5276, 5349, 'HINDI', 0, NULL),
+(6713, 5276, 5350, 'KANNADA', 0, NULL),
+(6714, 5277, 5348, 'TAMIL', 0, NULL),
+(6715, 5277, 5349, 'HINDI', 0, NULL),
+(6716, 5277, 5350, 'KANNADA', 0, NULL),
+(6717, 5278, 5348, 'TAMIL', 0, NULL),
+(6718, 5278, 5349, 'HINDI', 0, NULL),
+(6719, 5278, 5350, 'KANNADA', 0, NULL),
+(6720, 5279, 5348, 'TAMIL', 0, NULL),
+(6721, 5279, 5349, 'HINDI', 0, NULL),
+(6722, 5279, 5350, 'KANNADA', 0, NULL),
+(6723, 5280, 5348, 'TAMIL', 0, NULL),
+(6724, 5280, 5349, 'HINDI', 0, NULL),
+(6725, 5280, 5350, 'KANNADA', 0, NULL),
+(6726, 5281, 5348, 'TAMIL', 0, NULL),
+(6727, 5281, 5349, 'HINDI', 0, NULL),
+(6728, 5281, 5350, 'KANNADA', 0, NULL),
+(6777, 5282, 5349, 'HINDI', 0, NULL),
+(6778, 5282, 5350, 'KANNADA', 0, NULL),
+(6779, 5282, 5348, 'TAMIL', 0, NULL),
+(6780, 5283, 5349, 'HINDI', 0, NULL),
+(6781, 5283, 5350, 'KANNADA', 0, NULL),
+(6782, 5283, 5348, 'TAMIL', 0, NULL),
+(6783, 5284, 5349, 'HINDI', 0, NULL),
+(6784, 5284, 5350, 'KANNADA', 0, NULL),
+(6785, 5284, 5348, 'TAMIL', 0, NULL),
+(6786, 5285, 5349, 'HINDI', 0, NULL),
+(6787, 5285, 5350, 'KANNADA', 0, NULL),
+(6788, 5285, 5348, 'TAMIL', 0, NULL),
+(6789, 5286, 5349, 'HINDI', 0, NULL),
+(6790, 5286, 5350, 'KANNADA', 0, NULL),
+(6791, 5286, 5348, 'TAMIL', 0, NULL),
+(6792, 5287, 5349, 'HINDI', 0, NULL),
+(6793, 5287, 5350, 'KANNADA', 0, NULL),
+(6794, 5287, 5348, 'TAMIL', 0, NULL),
+(6795, 5288, 5349, 'HINDI', 0, NULL),
+(6796, 5288, 5350, 'KANNADA', 0, NULL),
+(6797, 5288, 5348, 'TAMIL', 0, NULL),
+(6938, 5289, 5348, 'TAMIL', 0, NULL),
+(6939, 5289, 5349, 'HINDI', 0, NULL),
+(6940, 5289, 5350, 'KANNADA', 0, NULL),
+(6941, 5290, 5348, 'TAMIL', 0, NULL),
+(6942, 5290, 5349, 'HINDI', 0, NULL),
+(6943, 5290, 5350, 'KANNADA', 0, NULL),
+(6944, 5291, 5348, 'TAMIL', 0, NULL),
+(6945, 5291, 5349, 'HINDI', 0, NULL),
+(6946, 5291, 5350, 'KANNADA', 0, NULL),
+(6947, 5292, 5348, 'TAMIL', 0, NULL),
+(6948, 5292, 5349, 'HINDI', 0, NULL),
+(6949, 5292, 5350, 'KANNADA', 0, NULL),
+(6950, 5293, 5348, 'TAMIL', 0, NULL),
+(6951, 5293, 5349, 'HINDI', 0, NULL),
+(6952, 5293, 5350, 'KANNADA', 0, NULL),
+(6953, 5294, 5348, 'TAMIL', 0, NULL),
+(6954, 5294, 5349, 'HINDI', 0, NULL),
+(6955, 5294, 5350, 'KANNADA', 0, NULL),
+(6956, 5295, 5348, 'TAMIL', 0, NULL),
+(6957, 5295, 5349, 'HINDI', 0, NULL),
+(6958, 5295, 5350, 'KANNADA', 0, NULL),
+(7124, 5296, 5348, 'TAMIL', 0, NULL),
+(7125, 5296, 5349, 'HINDI', 0, NULL),
+(7126, 5296, 5350, 'KANNADA', 0, NULL),
+(7127, 5297, 5348, 'TAMIL', 0, NULL),
+(7128, 5297, 5349, 'HINDI', 0, NULL),
+(7129, 5297, 5350, 'KANNADA', 0, NULL),
+(7130, 5298, 5348, 'TAMIL', 0, NULL),
+(7131, 5298, 5349, 'HINDI', 0, NULL),
+(7132, 5298, 5350, 'KANNADA', 0, NULL),
+(7133, 5299, 5348, 'TAMIL', 0, NULL),
+(7134, 5299, 5349, 'HINDI', 0, NULL),
+(7135, 5299, 5350, 'KANNADA', 0, NULL),
+(7136, 5300, 5348, 'TAMIL', 0, NULL),
+(7137, 5300, 5349, 'HINDI', 0, NULL),
+(7138, 5300, 5350, 'KANNADA', 0, NULL),
+(7139, 5301, 5348, 'TAMIL', 0, NULL),
+(7140, 5301, 5349, 'HINDI', 0, NULL),
+(7141, 5301, 5350, 'KANNADA', 0, NULL),
+(7142, 5302, 5348, 'TAMIL', 0, NULL),
+(7143, 5302, 5349, 'HINDI', 0, NULL),
+(7144, 5302, 5350, 'KANNADA', 0, NULL),
+(7145, 5303, 5348, 'TAMIL', 0, NULL),
+(7146, 5303, 5349, 'HINDI', 0, NULL),
+(7147, 5303, 5350, 'KANNADA', 0, NULL),
+(7148, 5304, 5348, 'TAMIL', 0, NULL),
+(7149, 5304, 5349, 'HINDI', 0, NULL),
+(7150, 5304, 5350, 'KANNADA', 0, NULL),
+(7151, 5305, 5348, 'TAMIL', 0, NULL),
+(7152, 5305, 5349, 'HINDI', 0, NULL),
+(7153, 5305, 5350, 'KANNADA', 0, NULL),
+(7154, 5326, 5348, 'TAMIL', 0, NULL),
+(7155, 5326, 5349, 'HINDI', 0, NULL),
+(7156, 5326, 5350, 'KANNADA', 0, NULL),
+(7255, 5314, 5348, 'TAMIL', 0, NULL),
+(7256, 5314, 5349, 'HINDI', 0, NULL),
+(7257, 5314, 5350, 'KANNADA', 0, NULL),
+(7258, 5315, 5348, 'TAMIL', 0, NULL),
+(7259, 5315, 5349, 'HINDI', 0, NULL),
+(7260, 5315, 5350, 'KANNADA', 0, NULL),
+(7261, 5316, 5348, 'TAMIL', 0, NULL),
+(7262, 5316, 5349, 'HINDI', 0, NULL),
+(7263, 5316, 5350, 'KANNADA', 0, NULL),
+(7264, 5317, 5348, 'TAMIL', 0, NULL),
+(7265, 5317, 5349, 'HINDI', 0, NULL),
+(7266, 5317, 5350, 'KANNADA', 0, NULL),
+(7267, 5318, 5348, 'TAMIL', 0, NULL),
+(7268, 5318, 5349, 'HINDI', 0, NULL),
+(7269, 5318, 5350, 'KANNADA', 0, NULL),
+(10169, 5258, 5336, 'ENGLISH (ORAL)', 8689, 'JYOTHI. K'),
+(10170, 5259, 5336, 'ENGLISH (ORAL)', 8724, 'SOWMYA. M'),
+(10171, 5260, 5336, 'ENGLISH (ORAL)', 8650, 'ASHA Ebi'),
+(10172, 5261, 5336, 'ENGLISH (ORAL)', 10909, 'KARTHIKA.D'),
+(10173, 5262, 5336, 'ENGLISH (ORAL)', 8690, 'HEMALATHA P.'),
+(10174, 5258, 5337, 'ENGLISH (WRITING)', 8689, 'JYOTHI. K'),
+(10175, 5258, 5339, 'II LANGUAGE (WRITING)', 8689, 'JYOTHI. K'),
+(10176, 5258, 5340, 'NUMBER WORK (ORAL)', 8689, 'JYOTHI. K'),
+(10177, 5258, 5341, 'NUMBER WORK (WRITING)', 8689, 'JYOTHI. K'),
+(10178, 5258, 5342, 'E.V.S. (ORAL)', 8689, 'JYOTHI. K'),
+(10179, 5258, 5343, 'E.V.S. (WRITING)', 8689, 'JYOTHI. K'),
+(10180, 5258, 5344, 'RHYMES AND SONGS', 8689, 'JYOTHI. K'),
+(10181, 5258, 5345, 'STORY TELLING', 8689, 'JYOTHI. K'),
+(10182, 5258, 5346, 'DRAWING AND COLOURING', 8689, 'JYOTHI. K'),
+(10183, 5258, 5347, 'CRAFT WORK', 8689, 'JYOTHI. K'),
+(10184, 5258, 5348, 'TAMIL', 8689, 'JYOTHI. K'),
+(10185, 5258, 5349, 'HINDI', 8689, 'JYOTHI. K'),
+(10186, 5258, 5350, 'KANNADA', 8689, 'JYOTHI. K'),
+(10187, 5259, 5337, 'ENGLISH (WRITING)', 8724, 'SOWMYA. M'),
+(10188, 5259, 5339, 'II LANGUAGE (WRITING)', 8724, 'SOWMYA. M'),
+(10189, 5259, 5340, 'NUMBER WORK (ORAL)', 8724, 'SOWMYA. M'),
+(10190, 5259, 5341, 'NUMBER WORK (WRITING)', 8724, 'SOWMYA. M'),
+(10191, 5259, 5342, 'E.V.S. (ORAL)', 8724, 'SOWMYA. M'),
+(10192, 5259, 5343, 'E.V.S. (WRITING)', 8724, 'SOWMYA. M'),
+(10193, 5259, 5344, 'RHYMES AND SONGS', 8724, 'SOWMYA. M'),
+(10194, 5259, 5345, 'STORY TELLING', 8724, 'SOWMYA. M'),
+(10195, 5259, 5346, 'DRAWING AND COLOURING', 8724, 'SOWMYA. M'),
+(10196, 5259, 5347, 'CRAFT WORK', 8724, 'SOWMYA. M'),
+(10197, 5259, 5348, 'TAMIL', 8724, 'SOWMYA. M'),
+(10198, 5259, 5349, 'HINDI', 8724, 'SOWMYA. M'),
+(10199, 5259, 5350, 'KANNADA', 8724, 'SOWMYA. M'),
+(10200, 5260, 5337, 'ENGLISH (WRITING)', 8650, 'ASHA Ebi'),
+(10201, 5260, 5339, 'II LANGUAGE (WRITING)', 8650, 'ASHA Ebi'),
+(10202, 5260, 5340, 'NUMBER WORK (ORAL)', 8650, 'ASHA Ebi'),
+(10203, 5260, 5341, 'NUMBER WORK (WRITING)', 8650, 'ASHA Ebi'),
+(10204, 5260, 5342, 'E.V.S. (ORAL)', 8650, 'ASHA Ebi'),
+(10205, 5260, 5343, 'E.V.S. (WRITING)', 8650, 'ASHA Ebi'),
+(10206, 5260, 5344, 'RHYMES AND SONGS', 8650, 'ASHA Ebi'),
+(10207, 5260, 5345, 'STORY TELLING', 8650, 'ASHA Ebi'),
+(10208, 5260, 5346, 'DRAWING AND COLOURING', 8650, 'ASHA Ebi'),
+(10209, 5260, 5347, 'CRAFT WORK', 8650, 'ASHA Ebi'),
+(10210, 5260, 5348, 'TAMIL', 8650, 'ASHA Ebi'),
+(10211, 5260, 5349, 'HINDI', 8650, 'ASHA Ebi'),
+(10212, 5260, 5350, 'KANNADA', 8650, 'ASHA Ebi'),
+(10213, 5261, 5337, 'ENGLISH (WRITING)', 10909, 'KARTHIKA.D'),
+(10214, 5261, 5339, 'II LANGUAGE (WRITING)', 10909, 'KARTHIKA.D'),
+(10215, 5261, 5340, 'NUMBER WORK (ORAL)', 10909, 'KARTHIKA.D'),
+(10216, 5261, 5341, 'NUMBER WORK (WRITING)', 10909, 'KARTHIKA.D'),
+(10217, 5261, 5342, 'E.V.S. (ORAL)', 10909, 'KARTHIKA.D'),
+(10218, 5261, 5343, 'E.V.S. (WRITING)', 10909, 'KARTHIKA.D'),
+(10219, 5261, 5344, 'RHYMES AND SONGS', 10909, 'KARTHIKA.D'),
+(10220, 5261, 5345, 'STORY TELLING', 10909, 'KARTHIKA.D'),
+(10221, 5261, 5346, 'DRAWING AND COLOURING', 10909, 'KARTHIKA.D'),
+(10222, 5261, 5347, 'CRAFT WORK', 10909, 'KARTHIKA.D'),
+(10223, 5261, 5348, 'TAMIL', 10909, 'KARTHIKA.D'),
+(10224, 5261, 5349, 'HINDI', 10909, 'KARTHIKA.D'),
+(10225, 5261, 5350, 'KANNADA', 10909, 'KARTHIKA.D'),
+(10226, 5262, 5337, 'ENGLISH (WRITING)', 8690, 'HEMALATHA P.'),
+(10227, 5262, 5339, 'II LANGUAGE (WRITING)', 8690, 'HEMALATHA P.'),
+(10228, 5262, 5340, 'NUMBER WORK (ORAL)', 8690, 'HEMALATHA P.'),
+(10229, 5262, 5341, 'NUMBER WORK (WRITING)', 8690, 'HEMALATHA P.'),
+(10230, 5262, 5342, 'E.V.S. (ORAL)', 8690, 'HEMALATHA P.'),
+(10231, 5262, 5343, 'E.V.S. (WRITING)', 8690, 'HEMALATHA P.'),
+(10232, 5262, 5344, 'RHYMES AND SONGS', 8690, 'HEMALATHA P.'),
+(10233, 5262, 5345, 'STORY TELLING', 8690, 'HEMALATHA P.'),
+(10234, 5262, 5346, 'DRAWING AND COLOURING', 8690, 'HEMALATHA P.'),
+(10235, 5262, 5347, 'CRAFT WORK', 8690, 'HEMALATHA P.'),
+(10236, 5262, 5348, 'TAMIL', 8690, 'HEMALATHA P.'),
+(10237, 5262, 5349, 'HINDI', 8690, 'HEMALATHA P.'),
+(10238, 5262, 5350, 'KANNADA', 8690, 'HEMALATHA P.'),
+(10239, 5255, 5336, 'ENGLISH (ORAL)', 8701, 'ELSON SAJI'),
+(10240, 5256, 5336, 'ENGLISH (ORAL)', 8738, 'BABASINI DEVI S.'),
+(10241, 5257, 5336, 'ENGLISH (ORAL)', 8702, 'MEGHA DEEPAN'),
+(10242, 5255, 5337, 'ENGLISH (WRITING)', 8701, 'ELSON SAJI'),
+(10243, 5255, 5339, 'II LANGUAGE (WRITING)', 8701, 'ELSON SAJI'),
+(10244, 5255, 5340, 'NUMBER WORK (ORAL)', 8701, 'ELSON SAJI'),
+(10245, 5255, 5341, 'NUMBER WORK (WRITING)', 8701, 'ELSON SAJI'),
+(10246, 5255, 5342, 'E.V.S. (ORAL)', 8701, 'ELSON SAJI'),
+(10247, 5255, 5343, 'E.V.S. (WRITING)', 8701, 'ELSON SAJI'),
+(10248, 5255, 5344, 'RHYMES AND SONGS', 8701, 'ELSON SAJI'),
+(10249, 5255, 5345, 'STORY TELLING', 8701, 'ELSON SAJI'),
+(10250, 5255, 5346, 'DRAWING AND COLOURING', 8701, 'ELSON SAJI'),
+(10251, 5255, 5347, 'CRAFT WORK', 8701, 'ELSON SAJI'),
+(10252, 5255, 5348, 'TAMIL', 8701, 'ELSON SAJI'),
+(10253, 5255, 5349, 'HINDI', 8701, 'ELSON SAJI'),
+(10254, 5255, 5350, 'KANNADA', 8701, 'ELSON SAJI'),
+(10255, 5256, 5337, 'ENGLISH (WRITING)', 8738, 'BABASINI DEVI S.'),
+(10256, 5256, 5339, 'II LANGUAGE (WRITING)', 8738, 'BABASINI DEVI S.'),
+(10257, 5256, 5340, 'NUMBER WORK (ORAL)', 8738, 'BABASINI DEVI S.'),
+(10258, 5256, 5341, 'NUMBER WORK (WRITING)', 8738, 'BABASINI DEVI S.'),
+(10259, 5256, 5342, 'E.V.S. (ORAL)', 8738, 'BABASINI DEVI S.'),
+(10260, 5256, 5343, 'E.V.S. (WRITING)', 8738, 'BABASINI DEVI S.'),
+(10261, 5256, 5344, 'RHYMES AND SONGS', 8738, 'BABASINI DEVI S.'),
+(10262, 5256, 5345, 'STORY TELLING', 8738, 'BABASINI DEVI S.'),
+(10263, 5256, 5346, 'DRAWING AND COLOURING', 8738, 'BABASINI DEVI S.'),
+(10264, 5256, 5347, 'CRAFT WORK', 8738, 'BABASINI DEVI S.'),
+(10265, 5256, 5348, 'TAMIL', 8738, 'BABASINI DEVI S.'),
+(10266, 5256, 5349, 'HINDI', 8738, 'BABASINI DEVI S.'),
+(10267, 5256, 5350, 'KANNADA', 8738, 'BABASINI DEVI S.'),
+(10268, 5257, 5337, 'ENGLISH (WRITING)', 8702, 'MEGHA DEEPAN'),
+(10269, 5257, 5339, 'II LANGUAGE (WRITING)', 8702, 'MEGHA DEEPAN'),
+(10270, 5257, 5340, 'NUMBER WORK (ORAL)', 8702, 'MEGHA DEEPAN'),
+(10271, 5257, 5341, 'NUMBER WORK (WRITING)', 8702, 'MEGHA DEEPAN'),
+(10272, 5257, 5342, 'E.V.S. (ORAL)', 8702, 'MEGHA DEEPAN'),
+(10273, 5257, 5343, 'E.V.S. (WRITING)', 8702, 'MEGHA DEEPAN'),
+(10274, 5257, 5344, 'RHYMES AND SONGS', 8702, 'MEGHA DEEPAN'),
+(10275, 5257, 5345, 'STORY TELLING', 8702, 'MEGHA DEEPAN'),
+(10276, 5257, 5346, 'DRAWING AND COLOURING', 8702, 'MEGHA DEEPAN'),
+(10277, 5257, 5347, 'CRAFT WORK', 8702, 'MEGHA DEEPAN'),
+(10278, 5257, 5348, 'TAMIL', 8702, 'MEGHA DEEPAN'),
+(10279, 5257, 5349, 'HINDI', 8702, 'MEGHA DEEPAN'),
+(10280, 5257, 5350, 'KANNADA', 8702, 'MEGHA DEEPAN'),
+(10282, 5253, 5336, 'ENGLISH (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(10283, 5254, 5336, 'ENGLISH (ORAL)', 8703, 'SHEBA JAI'),
+(10297, 5253, 5337, 'ENGLISH (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(10298, 5253, 5339, 'II LANGUAGE (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(10299, 5253, 5340, 'NUMBER WORK (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(10300, 5253, 5341, 'NUMBER WORK (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(10301, 5253, 5342, 'E.V.S. (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(10302, 5253, 5343, 'E.V.S. (WRITING)', 8704, 'RETHINAM AUGUSTINE'),
+(10303, 5253, 5344, 'RHYMES AND SONGS', 8704, 'RETHINAM AUGUSTINE'),
+(10304, 5253, 5345, 'STORY TELLING', 8704, 'RETHINAM AUGUSTINE'),
+(10305, 5253, 5346, 'DRAWING AND COLOURING', 8704, 'RETHINAM AUGUSTINE'),
+(10306, 5253, 5347, 'CRAFT WORK', 8704, 'RETHINAM AUGUSTINE'),
+(10307, 5253, 5348, 'TAMIL', 8704, 'RETHINAM AUGUSTINE'),
+(10308, 5253, 5349, 'HINDI', 8704, 'RETHINAM AUGUSTINE'),
+(10309, 5253, 5350, 'KANNADA', 8704, 'RETHINAM AUGUSTINE'),
+(10310, 5254, 5337, 'ENGLISH (WRITING)', 8703, 'SHEBA JAI'),
+(10311, 5254, 5339, 'II LANGUAGE (WRITING)', 8703, 'SHEBA JAI'),
+(10312, 5254, 5340, 'NUMBER WORK (ORAL)', 8703, 'SHEBA JAI'),
+(10313, 5254, 5341, 'NUMBER WORK (WRITING)', 8703, 'SHEBA JAI'),
+(10314, 5254, 5342, 'E.V.S. (ORAL)', 8703, 'SHEBA JAI'),
+(10315, 5254, 5343, 'E.V.S. (WRITING)', 8703, 'SHEBA JAI'),
+(10316, 5254, 5344, 'RHYMES AND SONGS', 8703, 'SHEBA JAI'),
+(10317, 5254, 5345, 'STORY TELLING', 8703, 'SHEBA JAI'),
+(10318, 5254, 5346, 'DRAWING AND COLOURING', 8703, 'SHEBA JAI'),
+(10319, 5254, 5347, 'CRAFT WORK', 8703, 'SHEBA JAI'),
+(10320, 5254, 5348, 'TAMIL', 8703, 'SHEBA JAI'),
+(10321, 5254, 5349, 'HINDI', 8703, 'SHEBA JAI'),
+(10322, 5254, 5350, 'KANNADA', 8703, 'SHEBA JAI'),
+(10323, 5263, 5336, 'ENGLISH (ORAL)', 8649, 'LIZY JOSE'),
+(10324, 5264, 5336, 'ENGLISH (ORAL)', 8657, 'DEEPA BIJU'),
+(10325, 5265, 5336, 'ENGLISH (ORAL)', 8659, 'PRATHIMA K.'),
+(10326, 5266, 5336, 'ENGLISH (ORAL)', 8691, 'LIJI MARTIN'),
+(10327, 5267, 5336, 'ENGLISH (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(10328, 5263, 5337, 'ENGLISH (WRITING)', 8649, 'LIZY JOSE'),
+(10329, 5263, 5339, 'II LANGUAGE (WRITING)', 8649, 'LIZY JOSE'),
+(10330, 5263, 5340, 'NUMBER WORK (ORAL)', 8649, 'LIZY JOSE'),
+(10331, 5263, 5341, 'NUMBER WORK (WRITING)', 8649, 'LIZY JOSE'),
+(10332, 5263, 5342, 'E.V.S. (ORAL)', 8649, 'LIZY JOSE'),
+(10333, 5263, 5343, 'E.V.S. (WRITING)', 8649, 'LIZY JOSE'),
+(10334, 5263, 5344, 'RHYMES AND SONGS', 8649, 'LIZY JOSE'),
+(10335, 5263, 5345, 'STORY TELLING', 8649, 'LIZY JOSE'),
+(10336, 5263, 5346, 'DRAWING AND COLOURING', 8649, 'LIZY JOSE'),
+(10337, 5263, 5347, 'CRAFT WORK', 8649, 'LIZY JOSE'),
+(10338, 5263, 5348, 'TAMIL', 8649, 'LIZY JOSE'),
+(10339, 5263, 5349, 'HINDI', 8649, 'LIZY JOSE'),
+(10340, 5263, 5350, 'KANNADA', 8649, 'LIZY JOSE'),
+(10341, 5264, 5337, 'ENGLISH (WRITING)', 8657, 'DEEPA BIJU'),
+(10342, 5264, 5339, 'II LANGUAGE (WRITING)', 8657, 'DEEPA BIJU'),
+(10343, 5264, 5340, 'NUMBER WORK (ORAL)', 8657, 'DEEPA BIJU'),
+(10344, 5264, 5341, 'NUMBER WORK (WRITING)', 8657, 'DEEPA BIJU'),
+(10345, 5264, 5342, 'E.V.S. (ORAL)', 8657, 'DEEPA BIJU'),
+(10346, 5264, 5343, 'E.V.S. (WRITING)', 8657, 'DEEPA BIJU'),
+(10347, 5264, 5344, 'RHYMES AND SONGS', 8657, 'DEEPA BIJU'),
+(10348, 5264, 5345, 'STORY TELLING', 8657, 'DEEPA BIJU'),
+(10349, 5264, 5346, 'DRAWING AND COLOURING', 8657, 'DEEPA BIJU'),
+(10350, 5264, 5347, 'CRAFT WORK', 8657, 'DEEPA BIJU'),
+(10351, 5264, 5348, 'TAMIL', 8657, 'DEEPA BIJU'),
+(10352, 5264, 5349, 'HINDI', 8657, 'DEEPA BIJU'),
+(10353, 5264, 5350, 'KANNADA', 8657, 'DEEPA BIJU'),
+(10354, 5265, 5337, 'ENGLISH (WRITING)', 8659, 'PRATHIMA K.'),
+(10355, 5265, 5339, 'II LANGUAGE (WRITING)', 8659, 'PRATHIMA K.'),
+(10356, 5265, 5340, 'NUMBER WORK (ORAL)', 8659, 'PRATHIMA K.'),
+(10357, 5265, 5341, 'NUMBER WORK (WRITING)', 8659, 'PRATHIMA K.'),
+(10358, 5265, 5342, 'E.V.S. (ORAL)', 8659, 'PRATHIMA K.'),
+(10359, 5265, 5343, 'E.V.S. (WRITING)', 8659, 'PRATHIMA K.'),
+(10360, 5265, 5344, 'RHYMES AND SONGS', 8659, 'PRATHIMA K.'),
+(10361, 5265, 5345, 'STORY TELLING', 8659, 'PRATHIMA K.'),
+(10362, 5265, 5346, 'DRAWING AND COLOURING', 8659, 'PRATHIMA K.'),
+(10363, 5265, 5347, 'CRAFT WORK', 8659, 'PRATHIMA K.'),
+(10364, 5265, 5348, 'TAMIL', 8659, 'PRATHIMA K.'),
+(10365, 5265, 5349, 'HINDI', 8659, 'PRATHIMA K.'),
+(10366, 5265, 5350, 'KANNADA', 8659, 'PRATHIMA K.'),
+(10367, 5266, 5337, 'ENGLISH (WRITING)', 8691, 'LIJI MARTIN'),
+(10368, 5266, 5339, 'II LANGUAGE (WRITING)', 8691, 'LIJI MARTIN'),
+(10369, 5266, 5340, 'NUMBER WORK (ORAL)', 8691, 'LIJI MARTIN'),
+(10370, 5266, 5341, 'NUMBER WORK (WRITING)', 8691, 'LIJI MARTIN'),
+(10371, 5266, 5342, 'E.V.S. (ORAL)', 8691, 'LIJI MARTIN'),
+(10372, 5266, 5343, 'E.V.S. (WRITING)', 8691, 'LIJI MARTIN'),
+(10373, 5266, 5344, 'RHYMES AND SONGS', 8691, 'LIJI MARTIN'),
+(10374, 5266, 5345, 'STORY TELLING', 8691, 'LIJI MARTIN'),
+(10375, 5266, 5346, 'DRAWING AND COLOURING', 8691, 'LIJI MARTIN'),
+(10376, 5266, 5347, 'CRAFT WORK', 8691, 'LIJI MARTIN'),
+(10377, 5266, 5348, 'TAMIL', 8691, 'LIJI MARTIN'),
+(10378, 5266, 5349, 'HINDI', 8691, 'LIJI MARTIN'),
+(10379, 5266, 5350, 'KANNADA', 8691, 'LIJI MARTIN'),
+(10380, 5267, 5337, 'ENGLISH (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(10381, 5267, 5339, 'II LANGUAGE (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(10382, 5267, 5340, 'NUMBER WORK (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(10383, 5267, 5341, 'NUMBER WORK (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(10384, 5267, 5342, 'E.V.S. (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(10385, 5267, 5343, 'E.V.S. (WRITING)', 8643, 'GEETHA MANJUNATH'),
+(10386, 5267, 5344, 'RHYMES AND SONGS', 8643, 'GEETHA MANJUNATH'),
+(10387, 5267, 5345, 'STORY TELLING', 8643, 'GEETHA MANJUNATH'),
+(10388, 5267, 5346, 'DRAWING AND COLOURING', 8643, 'GEETHA MANJUNATH'),
+(10389, 5267, 5347, 'CRAFT WORK', 8643, 'GEETHA MANJUNATH'),
+(10390, 5267, 5348, 'TAMIL', 8643, 'GEETHA MANJUNATH'),
+(10391, 5267, 5349, 'HINDI', 8643, 'GEETHA MANJUNATH'),
+(10392, 5267, 5350, 'KANNADA', 8643, 'GEETHA MANJUNATH'),
+(10415, 5747, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(10416, 5747, 5325, 'MATHEMATICS', 11793, 'JEYARANI S'),
+(10417, 5747, 5327, 'COMPUTER SCIENCE', 13737, 'NALINI B.'),
+(10418, 5747, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(10420, 5747, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(10421, 5747, 5396, 'ACCOUNTANCY', 0, NULL),
+(10422, 5747, 5397, 'BUSINESS STUDIES', 0, NULL),
+(10423, 5747, 5398, 'ECONOMICS', 0, NULL),
+(10424, 5747, 5663, 'COMPUTER SCIENCE-P.S', 8728, 'KAVITHA. P'),
+(10426, 5748, 5323, 'ENGLISH', 8684, 'LIZZY CHRISTOPHER'),
+(10427, 5748, 5325, 'MATHEMATICS', 11793, 'JEYARANI S'),
+(10428, 5748, 5327, 'COMPUTER SCIENCE', 13737, 'NALINI B.'),
+(10429, 5748, 5358, 'PHYSICS', 8681, 'T VASANTHA KUMARI'),
+(10431, 5748, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(10432, 5748, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(10433, 5748, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.'),
+(10434, 5748, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(10435, 5748, 5663, 'COMPUTER SCIENCE-P.S', 8728, 'KAVITHA. P'),
+(11371, 5747, 5359, 'CHEMISTRY', 8686, 'REVATHI JOSHIPHA A'),
+(15297, 5258, 5338, 'II LANGUAGE (ORAL)', 8689, 'JYOTHI. K'),
+(15298, 5259, 5338, 'II LANGUAGE (ORAL)', 8724, 'SOWMYA. M'),
+(15299, 5260, 5338, 'II LANGUAGE (ORAL)', 8650, 'ASHA Ebi'),
+(15300, 5261, 5338, 'II LANGUAGE (ORAL)', 10909, 'KARTHIKA.D'),
+(15301, 5262, 5338, 'II LANGUAGE (ORAL)', 8690, 'HEMALATHA P.'),
+(15303, 5263, 5338, 'II LANGUAGE (ORAL)', 8649, 'LIZY JOSE'),
+(15304, 5264, 5338, 'II LANGUAGE (ORAL)', 8657, 'DEEPA BIJU'),
+(15305, 5265, 5338, 'II LANGUAGE (ORAL)', 8659, 'PRATHIMA K.'),
+(15306, 5266, 5338, 'II LANGUAGE (ORAL)', 8691, 'LIJI MARTIN'),
+(15307, 5267, 5338, 'II LANGUAGE (ORAL)', 8643, 'GEETHA MANJUNATH'),
+(15309, 5253, 5338, 'II LANGUAGE (ORAL)', 8704, 'RETHINAM AUGUSTINE'),
+(15310, 5254, 5338, 'II LANGUAGE (ORAL)', 8703, 'SHEBA JAI'),
+(15311, 5255, 5338, 'II LANGUAGE (ORAL)', 8701, 'ELSON SAJI'),
+(15312, 5256, 5338, 'II LANGUAGE (ORAL)', 8738, 'BABASINI DEVI S.'),
+(15313, 5257, 5338, 'II LANGUAGE (ORAL)', 8702, 'MEGHA DEEPAN'),
+(15314, 5268, 5324, '2nd LANGUAGE', 8648, 'JEYA GANDHI'),
+(15315, 5269, 5324, '2nd LANGUAGE', 8742, 'ANJALI P.S'),
+(15316, 5270, 5324, '2nd LANGUAGE', 8721, 'SUMATHI. V'),
+(15317, 5271, 5324, '2nd LANGUAGE', 11037, 'PAULINE TERESA'),
+(15318, 5272, 5324, '2nd LANGUAGE', 11038, 'SUJATHA.D'),
+(15319, 5273, 5324, '2nd LANGUAGE', 11039, 'KEERTHANA.S'),
+(15320, 5274, 5324, '2nd LANGUAGE', 8652, 'SARALA B.'),
+(15321, 5275, 5324, '2nd LANGUAGE', 8682, 'REJANI R.'),
+(15322, 5276, 5324, '2nd LANGUAGE', 8740, 'VEDA P'),
+(15323, 5277, 5324, '2nd LANGUAGE', 8662, 'ANGELINE HEPZIBA RAMYA J.'),
+(15324, 5278, 5324, '2nd LANGUAGE', 8714, 'KARTHIKAA. K.S'),
+(15325, 5279, 5324, '2nd LANGUAGE', 11035, 'LINI FLORA'),
+(15326, 5280, 5324, '2nd LANGUAGE', 8666, 'ANITTA GNANA CAROLIN'),
+(15327, 5281, 5324, '2nd LANGUAGE', 11036, 'JAYA PRADHA'),
+(15328, 5282, 5324, '2nd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15329, 5283, 5324, '2nd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15330, 5284, 5324, '2nd LANGUAGE', 8679, 'VANITHA S'),
+(15331, 5285, 5324, '2nd LANGUAGE', 8679, 'VANITHA S'),
+(15332, 5286, 5324, '2nd LANGUAGE', 8655, 'HELEN JULIET RANI'),
+(15333, 5287, 5324, '2nd LANGUAGE', 8722, 'TAMIL SELVI. R'),
+(15334, 5288, 5324, '2nd LANGUAGE', 8655, 'HELEN JULIET RANI'),
+(15335, 5289, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.'),
+(15336, 5290, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.'),
+(15337, 5291, 5324, '2nd LANGUAGE', 8696, 'VERONE ANCY'),
+(15338, 5292, 5324, '2nd LANGUAGE', 8696, 'VERONE ANCY'),
+(15339, 5293, 5324, '2nd LANGUAGE', 8679, 'VANITHA S'),
+(15340, 5294, 5324, '2nd LANGUAGE', 8679, 'VANITHA S'),
+(15341, 5295, 5324, '2nd LANGUAGE', 8679, 'VANITHA S'),
+(15342, 5296, 5324, '2nd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15343, 5297, 5324, '2nd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15344, 5298, 5324, '2nd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15345, 5299, 5324, '2nd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15346, 5300, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.'),
+(15347, 5301, 5324, '2nd LANGUAGE', 8674, 'SUSEELA S.'),
+(15348, 5302, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE'),
+(15349, 5302, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(15350, 5303, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE'),
+(15351, 5303, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15352, 5304, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15353, 5304, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15354, 5305, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15355, 5305, 6018, ' 3rd LANGUAGE', 11034, 'RENUKABAI'),
+(15356, 5326, 6017, ' 2nd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15357, 5326, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(15358, 5302, 6020, ' ENGLISH', 8667, 'HELEN D.'),
+(15359, 5303, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(15360, 5304, 6020, ' ENGLISH', 8667, 'HELEN D.'),
+(15361, 5305, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW'),
+(15362, 5326, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW'),
+(15363, 5306, 6017, ' 2nd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15364, 5306, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15365, 5306, 6020, ' ENGLISH', 11051, 'VERONICA'),
+(15366, 5307, 6017, ' 2nd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15367, 5307, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15368, 5307, 6020, ' ENGLISH', 8667, 'HELEN D.'),
+(15369, 5308, 6017, ' 2nd LANGUAGE', 8634, 'ESTHER MALLIGA'),
+(15370, 5308, 6018, ' 3rd LANGUAGE', 8731, 'VEENA NAGARAJ S.'),
+(15371, 5308, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(15372, 5309, 6017, ' 2nd LANGUAGE', 8634, 'ESTHER MALLIGA'),
+(15373, 5309, 6018, ' 3rd LANGUAGE', 8743, 'SASIKALA A.V.'),
+(15374, 5309, 6020, ' ENGLISH', 8667, 'HELEN D.'),
+(15375, 5310, 6017, ' 2nd LANGUAGE', 8685, 'NEETHIMOZHI M'),
+(15376, 5310, 6018, ' 3rd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15377, 5310, 6020, ' ENGLISH', 8717, 'RENJU VARGHESE MATHEW'),
+(15378, 5311, 6017, ' 2nd LANGUAGE', 8685, 'NEETHIMOZHI M'),
+(15379, 5311, 6018, ' 3rd LANGUAGE', 8647, 'SUBBULAKSHMI'),
+(15380, 5311, 6020, ' ENGLISH', 8667, 'HELEN D.'),
+(15381, 5312, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE'),
+(15382, 5312, 6018, ' 3rd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15383, 5312, 6020, ' ENGLISH', 8671, 'KETZIA PHIARIE DENNIS D.'),
+(15384, 5313, 6017, ' 2nd LANGUAGE', 8670, 'S.VANISHREE'),
+(15385, 5313, 6018, ' 3rd LANGUAGE', 8673, 'RAJESHWARI.K.V'),
+(15386, 5313, 6020, ' ENGLISH', 11051, 'VERONICA'),
+(15387, 5314, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8634, 'ESTHER MALLIGA'),
+(15388, 5315, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8634, 'ESTHER MALLIGA'),
+(15389, 5316, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M'),
+(15390, 5317, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M'),
+(15391, 5318, 6019, '006 TAMIL / 015 KANNADA / 085 HINDI COURSE B', 8685, 'NEETHIMOZHI M'),
+(15630, 5268, 6018, ' 3rd LANGUAGE', 8648, 'JEYA GANDHI'),
+(15631, 5269, 6018, ' 3rd LANGUAGE', 8742, 'ANJALI P.S'),
+(15632, 5270, 6018, ' 3rd LANGUAGE', 8721, 'SUMATHI. V'),
+(15633, 5271, 6018, ' 3rd LANGUAGE', 11037, 'PAULINE TERESA'),
+(15634, 5272, 6018, ' 3rd LANGUAGE', 11038, 'SUJATHA.D'),
+(15635, 5273, 6018, ' 3rd LANGUAGE', 11039, 'KEERTHANA.S'),
+(15636, 5274, 6018, ' 3rd LANGUAGE', 8652, 'SARALA B.'),
+(18427, 5745, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(18430, 5746, 5360, 'BIOLOGY', 8639, 'JEEMA LIVINGSTON'),
+(18431, 5745, 5396, 'ACCOUNTANCY', 0, NULL),
+(18432, 5745, 5397, 'BUSINESS STUDIES', 0, NULL),
+(18433, 5745, 5398, 'ECONOMICS', 0, NULL),
+(18434, 5746, 5396, 'ACCOUNTANCY', 8633, 'SAJI S. VARGHESE'),
+(18435, 5746, 5397, 'BUSINESS STUDIES', 8741, 'CHINJU V.R.'),
+(18436, 5746, 5398, 'ECONOMICS', 8668, 'JIMCY THOMAS'),
+(18437, 5745, 5325, 'MATHEMATICS', 0, NULL),
+(18438, 5745, 5327, 'COMPUTER SCIENCE', 8728, 'KAVITHA. P'),
+(18439, 5746, 5325, 'MATHEMATICS', 0, NULL),
+(18440, 5746, 5327, 'COMPUTER SCIENCE', 8735, 'NALINI. V'),
+(18477, 5749, 5323, 'ENGLISH', 8651, 'JAYAKUMARI T.'),
+(18478, 5749, 5325, 'MATHEMATICS', 0, NULL),
+(18479, 5749, 5333, 'SCIENCE', 0, NULL),
+(18480, 5749, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(18481, 5750, 5323, 'ENGLISH', 8738, 'BABASINI DEVI S.'),
+(18482, 5750, 5325, 'MATHEMATICS', 0, NULL),
+(18483, 5750, 5333, 'SCIENCE', 0, NULL),
+(18484, 5750, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(18485, 5750, 5342, 'E.V.S. (ORAL)', 0, NULL),
+(18486, 5750, 5343, 'E.V.S. (WRITING)', 0, NULL),
+(18487, 5754, 5323, 'ENGLISH', 0, NULL),
+(18488, 5754, 5325, 'MATHEMATICS', 0, NULL),
+(18489, 5754, 5333, 'SCIENCE', 0, NULL),
+(18490, 5754, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(18491, 5755, 5323, 'ENGLISH', 0, NULL),
+(18492, 5755, 5325, 'MATHEMATICS', 0, NULL),
+(18493, 5755, 5333, 'SCIENCE', 0, NULL),
+(18510, 5755, 5334, 'SOCIAL SCIENCE', 0, NULL),
+(18614, 5253, 6023, 'partition subject', 0, NULL),
+(18627, 5254, 6023, 'partition subject', 0, NULL),
+(18680, 5252, 5336, 'ENGLISH (ORAL)', 0, NULL),
+(18681, 5252, 5337, 'ENGLISH (WRITING)', 0, NULL),
+(18682, 5252, 5340, 'NUMBER WORK (ORAL)', 0, NULL),
+(18683, 5252, 5341, 'NUMBER WORK (WRITING)', 0, NULL),
+(18684, 5252, 5342, 'E.V.S. (ORAL)', 0, NULL),
+(18685, 5252, 5343, 'E.V.S. (WRITING)', 0, NULL),
+(18686, 5252, 5344, 'RHYMES AND SONGS', 0, NULL),
+(18687, 5252, 5345, 'STORY TELLING', 0, NULL),
+(18688, 5252, 5346, 'DRAWING AND COLOURING', 0, NULL),
+(18689, 5252, 5347, 'CRAFT WORK', 0, NULL),
+(18690, 5252, 5339, 'II LANGUAGE (WRITING)', 0, NULL),
+(18691, 5252, 5338, 'II LANGUAGE (ORAL)', 0, NULL),
+(18692, 5252, 6023, 'partition subject', 0, NULL);
 
 --
 -- Dumping data for table `teacher`
@@ -6203,38 +5388,6 @@ INSERT INTO `teacher` (`Id`, `TeacherName`, `Image`, `Username`, `Password`, `Sc
 (14172, 'LAVANYA.M', '', 'T9994229902', 'T9994229902', 107, '', '8669159782', '', '0000-00-00', 'F', 'shrey256@gmail.com', '2016-07-05 12:02:32'),
 (15690, 'SHANTHANAYAKI', '', 'T8807219489', 'T8807219489', 107, '1985-04-17', '8669159782', 'M.Sc,M.Phil,B.Ed', '0000-00-00', 'F', 'shrey256@gmail.com', '2016-07-05 12:02:32');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `term_remark`
---
-
-CREATE TABLE `term_remark` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `StudentId` bigint(20) DEFAULT NULL,
-  `Term` int(11) NOT NULL,
-  `Remark` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `timetable`
---
-
-CREATE TABLE `timetable` (
-  `Id` bigint(20) NOT NULL,
-  `SectionId` bigint(20) NOT NULL,
-  `DayOfWeek` varchar(10) NOT NULL,
-  `PeriodNo` int(11) NOT NULL,
-  `SubjectId` bigint(20) DEFAULT NULL,
-  `TimingFrom` time DEFAULT '00:00:00',
-  `TimingTo` time DEFAULT '00:00:00',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `timetable`
 --
@@ -6249,476 +5402,6 @@ INSERT INTO `timetable` (`Id`, `SectionId`, `DayOfWeek`, `PeriodNo`, `SubjectId`
 (9, 5750, 'Monday', 1, 5325, '00:00:11', '00:00:12', '2016-08-28 10:40:45'),
 (10, 5252, 'Monday', 3, 5336, '11:00:00', '11:45:00', '2016-09-01 09:44:13');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `activity`
---
-ALTER TABLE `activity`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `activity_score`
---
-ALTER TABLE `activity_score`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `attendance`
---
-ALTER TABLE `attendance`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `authorization`
---
-ALTER TABLE `authorization`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_aspect_grade`
---
-ALTER TABLE `cce_aspect_grade`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_aspect_primary`
---
-ALTER TABLE `cce_aspect_primary`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_coscholastic`
---
-ALTER TABLE `cce_coscholastic`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_coscholastic_class`
---
-ALTER TABLE `cce_coscholastic_class`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_section_heading`
---
-ALTER TABLE `cce_section_heading`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_student_profile`
---
-ALTER TABLE `cce_student_profile`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_topic_grade`
---
-ALTER TABLE `cce_topic_grade`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `cce_topic_primary`
---
-ALTER TABLE `cce_topic_primary`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `class`
---
-ALTER TABLE `class`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `class_subject_group`
---
-ALTER TABLE `class_subject_group`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `exam`
---
-ALTER TABLE `exam`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `exam_subject`
---
-ALTER TABLE `exam_subject`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `exam_subject_group`
---
-ALTER TABLE `exam_subject_group`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `grade_class_wise`
---
-ALTER TABLE `grade_class_wise`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `homework`
---
-ALTER TABLE `homework`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `mark`
---
-ALTER TABLE `mark`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `move_student`
---
-ALTER TABLE `move_student`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `portion`
---
-ALTER TABLE `portion`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `school`
---
-ALTER TABLE `school`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `section`
---
-ALTER TABLE `section`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sliptest`
---
-ALTER TABLE `sliptest`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sliptest_portion`
---
-ALTER TABLE `sliptest_portion`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sliptest_score`
---
-ALTER TABLE `sliptest_score`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sms_api`
---
-ALTER TABLE `sms_api`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sms_queue`
---
-ALTER TABLE `sms_queue`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sms_queue_low_priority`
---
-ALTER TABLE `sms_queue_low_priority`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sms_queue_transaction`
---
-ALTER TABLE `sms_queue_transaction`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subactivity`
---
-ALTER TABLE `subactivity`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subactivity_score`
---
-ALTER TABLE `subactivity_score`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subject`
---
-ALTER TABLE `subject`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subject_group`
---
-ALTER TABLE `subject_group`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subject_group_subject`
---
-ALTER TABLE `subject_group_subject`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subject_student`
---
-ALTER TABLE `subject_student`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `subject_teacher`
---
-ALTER TABLE `subject_teacher`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `teacher`
---
-ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `term_remark`
---
-ALTER TABLE `term_remark`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `timetable`
---
-ALTER TABLE `timetable`
-  ADD PRIMARY KEY (`Id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `activity`
---
-ALTER TABLE `activity`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `activity_score`
---
-ALTER TABLE `activity_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
---
--- AUTO_INCREMENT for table `attendance`
---
-ALTER TABLE `attendance`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT for table `authorization`
---
-ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
---
--- AUTO_INCREMENT for table `cce_aspect_grade`
---
-ALTER TABLE `cce_aspect_grade`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
---
--- AUTO_INCREMENT for table `cce_aspect_primary`
---
-ALTER TABLE `cce_aspect_primary`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `cce_coscholastic`
---
-ALTER TABLE `cce_coscholastic`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `cce_coscholastic_class`
---
-ALTER TABLE `cce_coscholastic_class`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `cce_section_heading`
---
-ALTER TABLE `cce_section_heading`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `cce_student_profile`
---
-ALTER TABLE `cce_student_profile`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
---
--- AUTO_INCREMENT for table `cce_topic_grade`
---
-ALTER TABLE `cce_topic_grade`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `cce_topic_primary`
---
-ALTER TABLE `cce_topic_primary`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `class`
---
-ALTER TABLE `class`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1684;
---
--- AUTO_INCREMENT for table `class_subject_group`
---
-ALTER TABLE `class_subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
---
--- AUTO_INCREMENT for table `exam`
---
-ALTER TABLE `exam`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `exam_subject`
---
-ALTER TABLE `exam_subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `exam_subject_group`
---
-ALTER TABLE `exam_subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
---
--- AUTO_INCREMENT for table `grade_class_wise`
---
-ALTER TABLE `grade_class_wise`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `homework`
---
-ALTER TABLE `homework`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `mark`
---
-ALTER TABLE `mark`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
---
--- AUTO_INCREMENT for table `move_student`
---
-ALTER TABLE `move_student`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `portion`
---
-ALTER TABLE `portion`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `school`
---
-ALTER TABLE `school`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
---
--- AUTO_INCREMENT for table `section`
---
-ALTER TABLE `section`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5756;
---
--- AUTO_INCREMENT for table `sliptest`
---
-ALTER TABLE `sliptest`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `sliptest_portion`
---
-ALTER TABLE `sliptest_portion`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sliptest_score`
---
-ALTER TABLE `sliptest_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
---
--- AUTO_INCREMENT for table `sms_api`
---
-ALTER TABLE `sms_api`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue`
---
-ALTER TABLE `sms_queue`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue_low_priority`
---
-ALTER TABLE `sms_queue_low_priority`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue_transaction`
---
-ALTER TABLE `sms_queue_transaction`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=496701;
---
--- AUTO_INCREMENT for table `subactivity`
---
-ALTER TABLE `subactivity`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `subactivity_score`
---
-ALTER TABLE `subactivity_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
---
--- AUTO_INCREMENT for table `subject`
---
-ALTER TABLE `subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6024;
---
--- AUTO_INCREMENT for table `subject_group`
---
-ALTER TABLE `subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1298;
---
--- AUTO_INCREMENT for table `subject_group_subject`
---
-ALTER TABLE `subject_group_subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
---
--- AUTO_INCREMENT for table `subject_student`
---
-ALTER TABLE `subject_student`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `subject_teacher`
---
-ALTER TABLE `subject_teacher`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18487;
---
--- AUTO_INCREMENT for table `teacher`
---
-ALTER TABLE `teacher`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15691;
---
--- AUTO_INCREMENT for table `term_remark`
---
-ALTER TABLE `term_remark`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `timetable`
---
-ALTER TABLE `timetable`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
