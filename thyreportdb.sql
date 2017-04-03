@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2017 at 07:39 AM
+-- Generation Time: Apr 03, 2017 at 10:42 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -223,6 +223,7 @@ CREATE TABLE `class` (
   `Id` bigint(20) NOT NULL,
   `ClassName` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
+  `TeacherId` bigint(20) DEFAULT '0',
   `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily',
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -379,7 +380,10 @@ CREATE TABLE `mark` (
 CREATE TABLE `message` (
   `Id` bigint(20) NOT NULL,
   `SenderId` bigint(20) NOT NULL,
+  `SenderRole` enum('admin','teacher','student') NOT NULL,
   `RecipientId` bigint(20) NOT NULL,
+  `RecipientRole` enum('admin','teacher','student') NOT NULL,
+  `GroupId` bigint(20) NOT NULL,
   `MessageType` enum('text','image') DEFAULT NULL,
   `MessageBody` varchar(1000) DEFAULT NULL,
   `ImageUrl` varchar(255) DEFAULT NULL,
@@ -395,7 +399,8 @@ CREATE TABLE `message` (
 CREATE TABLE `message_recipient` (
   `Id` bigint(20) NOT NULL,
   `RecipientId` bigint(20) NOT NULL,
-  `RecipientGroupId` bigint(20) NOT NULL,
+  `Role` enum('admin','teacher','student') NOT NULL,
+  `GroupId` bigint(20) NOT NULL,
   `MessageId` bigint(20) NOT NULL,
   `IsRead` char(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -814,7 +819,6 @@ CREATE TABLE `user_group` (
   `UserId` bigint(20) NOT NULL,
   `Role` enum('admin','teacher','student') NOT NULL,
   `GroupId` bigint(20) NOT NULL,
-  `CreateDate` date NOT NULL,
   `IsActive` char(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -1128,7 +1132,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 --
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
@@ -1208,7 +1212,7 @@ ALTER TABLE `grade_class_wise`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `homework`
 --
@@ -1343,7 +1347,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
