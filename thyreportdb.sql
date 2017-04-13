@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2017 at 10:42 AM
+-- Generation Time: Apr 13, 2017 at 10:29 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -381,8 +381,8 @@ CREATE TABLE `message` (
   `Id` bigint(20) NOT NULL,
   `SenderId` bigint(20) NOT NULL,
   `SenderRole` enum('admin','teacher','student') NOT NULL,
-  `RecipientId` bigint(20) NOT NULL,
-  `RecipientRole` enum('admin','teacher','student') NOT NULL,
+  `RecipientId` bigint(20) NOT NULL DEFAULT '0',
+  `RecipientRole` enum('admin','teacher','student','anonymous','group') DEFAULT 'anonymous',
   `GroupId` bigint(20) NOT NULL,
   `MessageType` enum('text','image') DEFAULT NULL,
   `MessageBody` varchar(1000) DEFAULT NULL,
@@ -400,9 +400,9 @@ CREATE TABLE `message_recipient` (
   `Id` bigint(20) NOT NULL,
   `RecipientId` bigint(20) NOT NULL,
   `Role` enum('admin','teacher','student') NOT NULL,
-  `GroupId` bigint(20) NOT NULL,
+  `GroupId` bigint(20) NOT NULL DEFAULT '0',
   `MessageId` bigint(20) NOT NULL,
-  `IsRead` char(1) NOT NULL
+  `IsRead` char(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -627,6 +627,7 @@ CREATE TABLE `student` (
   `Id` bigint(20) NOT NULL,
   `StudentName` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
+  `ClassId` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `AdmissionNo` varchar(100) NOT NULL,
   `RollNo` int(11) NOT NULL,
@@ -1132,7 +1133,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 --
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
@@ -1227,7 +1228,7 @@ ALTER TABLE `mark`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `message_recipient`
 --
@@ -1347,7 +1348,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
