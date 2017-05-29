@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2017 at 10:29 AM
+-- Generation Time: May 29, 2017 at 04:03 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -216,6 +216,24 @@ CREATE TABLE `cce_topic_primary` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `Id` bigint(20) NOT NULL,
+  `StudentId` bigint(20) NOT NULL,
+  `StudentName` varchar(100) NOT NULL,
+  `ClassName` varchar(100) DEFAULT NULL,
+  `SectionName` varchar(100) DEFAULT NULL,
+  `TeacherId` bigint(20) NOT NULL,
+  `TeacherName` varchar(100) NOT NULL,
+  `CreatedBy` bigint(20) NOT NULL,
+  `CreatorRole` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `class`
 --
 
@@ -253,7 +271,7 @@ CREATE TABLE `deleted_message` (
   `MessageId` bigint(20) NOT NULL,
   `UserId` bigint(20) NOT NULL,
   `DeletedAt` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -336,7 +354,7 @@ CREATE TABLE `groups` (
   `CreatedBy` bigint(20) NOT NULL,
   `CreatedDate` date NOT NULL,
   `IsActive` char(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -388,7 +406,7 @@ CREATE TABLE `message` (
   `MessageBody` varchar(1000) DEFAULT NULL,
   `ImageUrl` varchar(255) DEFAULT NULL,
   `CreatedAt` datetime DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -403,7 +421,7 @@ CREATE TABLE `message_recipient` (
   `GroupId` bigint(20) NOT NULL DEFAULT '0',
   `MessageId` bigint(20) NOT NULL,
   `IsRead` char(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -477,6 +495,24 @@ CREATE TABLE `section` (
   `ClassId` bigint(20) NOT NULL,
   `TeacherId` bigint(20) NOT NULL,
   `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service`
+--
+
+CREATE TABLE `service` (
+  `Id` bigint(20) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `IsMessage` tinyint(1) DEFAULT '1',
+  `IsSms` tinyint(1) DEFAULT '0',
+  `IsChat` tinyint(1) DEFAULT '1',
+  `IsAttendance` tinyint(1) DEFAULT '0',
+  `IsAttendanceSms` tinyint(1) DEFAULT '0',
+  `IsHomework` tinyint(1) DEFAULT '0',
+  `IsHomeworkSms` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -821,7 +857,7 @@ CREATE TABLE `user_group` (
   `Role` enum('admin','teacher','student') NOT NULL,
   `GroupId` bigint(20) NOT NULL,
   `IsActive` char(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -897,6 +933,12 @@ ALTER TABLE `cce_topic_grade`
 -- Indexes for table `cce_topic_primary`
 --
 ALTER TABLE `cce_topic_primary`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -993,6 +1035,12 @@ ALTER TABLE `school`
 -- Indexes for table `section`
 --
 ALTER TABLE `section`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `service`
+--
+ALTER TABLE `service`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -1128,12 +1176,12 @@ ALTER TABLE `activity_score`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 --
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
@@ -1175,10 +1223,15 @@ ALTER TABLE `cce_topic_grade`
 ALTER TABLE `cce_topic_primary`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1684;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1683;
 --
 -- AUTO_INCREMENT for table `class_subject_group`
 --
@@ -1213,12 +1266,12 @@ ALTER TABLE `grade_class_wise`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `homework`
 --
 ALTER TABLE `homework`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `mark`
 --
@@ -1228,7 +1281,7 @@ ALTER TABLE `mark`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `message_recipient`
 --
@@ -1254,6 +1307,11 @@ ALTER TABLE `school`
 --
 ALTER TABLE `section`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5756;
+--
+-- AUTO_INCREMENT for table `service`
+--
+ALTER TABLE `service`
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `sliptest`
 --
@@ -1348,7 +1406,7 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
