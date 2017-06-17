@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2017 at 04:03 AM
+-- Generation Time: Jun 17, 2017 at 02:05 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -512,7 +512,8 @@ CREATE TABLE `service` (
   `IsAttendance` tinyint(1) DEFAULT '0',
   `IsAttendanceSms` tinyint(1) DEFAULT '0',
   `IsHomework` tinyint(1) DEFAULT '0',
-  `IsHomeworkSms` tinyint(1) DEFAULT '0'
+  `IsHomeworkSms` tinyint(1) DEFAULT '0',
+  `IsTimetable` tinyint(1) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1176,12 +1177,12 @@ ALTER TABLE `activity_score`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 --
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
 --
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
@@ -1401,7 +1402,7 @@ ALTER TABLE `term_remark`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user_group`
 --
