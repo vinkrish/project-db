@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2017 at 02:05 PM
+-- Generation Time: Jun 19, 2017 at 04:17 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -84,7 +84,8 @@ CREATE TABLE `attendance` (
 CREATE TABLE `authorization` (
   `Id` bigint(20) NOT NULL,
   `User` varchar(50) NOT NULL,
-  `Token` varchar(100) NOT NULL
+  `Token` varchar(100) NOT NULL,
+  `FcmToken` varchar(512) NOT NULL DEFAULT '""'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -398,9 +399,9 @@ CREATE TABLE `mark` (
 CREATE TABLE `message` (
   `Id` bigint(20) NOT NULL,
   `SenderId` bigint(20) NOT NULL,
-  `SenderRole` enum('admin','teacher','student') NOT NULL,
+  `SenderRole` varchar(25) NOT NULL,
   `RecipientId` bigint(20) NOT NULL DEFAULT '0',
-  `RecipientRole` enum('admin','teacher','student','anonymous','group') DEFAULT 'anonymous',
+  `RecipientRole` varchar(25) NOT NULL,
   `GroupId` bigint(20) NOT NULL,
   `MessageType` enum('text','image') DEFAULT NULL,
   `MessageBody` varchar(1000) DEFAULT NULL,
@@ -1182,7 +1183,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=292;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
@@ -1227,7 +1228,7 @@ ALTER TABLE `cce_topic_primary`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `class`
 --
@@ -1282,7 +1283,7 @@ ALTER TABLE `mark`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `message_recipient`
 --
