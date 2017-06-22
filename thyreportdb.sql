@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2017 at 04:17 PM
+-- Generation Time: Jun 22, 2017 at 05:20 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -663,7 +663,7 @@ CREATE TABLE `sms_queue_transaction` (
 
 CREATE TABLE `student` (
   `Id` bigint(20) NOT NULL,
-  `StudentName` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
@@ -671,7 +671,7 @@ CREATE TABLE `student` (
   `RollNo` int(11) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `Image` varchar(1000) NOT NULL,
+  `Image` varchar(256) NOT NULL,
   `FatherName` varchar(100) NOT NULL,
   `MotherName` varchar(100) NOT NULL,
   `DateOfBirth` varchar(20) NOT NULL,
@@ -801,8 +801,8 @@ CREATE TABLE `subject_teacher` (
 
 CREATE TABLE `teacher` (
   `Id` bigint(20) NOT NULL,
-  `TeacherName` varchar(100) NOT NULL,
-  `Image` varchar(1000) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Image` varchar(256) NOT NULL,
   `Username` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
