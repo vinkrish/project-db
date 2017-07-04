@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2017 at 05:20 PM
+-- Generation Time: Jul 04, 2017 at 05:11 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `thyreportdb`
+-- Database: `shikshithadb`
 --
 
 -- --------------------------------------------------------
@@ -569,95 +569,6 @@ CREATE TABLE `sliptest_score` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sms_api`
---
-
-CREATE TABLE `sms_api` (
-  `id` int(11) NOT NULL,
-  `send_sms_api` varchar(2000) NOT NULL,
-  `response_variable` varchar(200) NOT NULL,
-  `sms_delivery_api` varchar(2000) NOT NULL,
-  `sms_delivery_variable` varchar(200) NOT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0',
-  `unicode_api` text NOT NULL,
-  `sms_sent_variable` varchar(20) NOT NULL,
-  `vendor_name` varchar(200) NOT NULL,
-  `success_label` varchar(200) NOT NULL,
-  `require_country_code` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue`
---
-
-CREATE TABLE `sms_queue` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue_low_priority`
---
-
-CREATE TABLE `sms_queue_low_priority` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sms_queue_transaction`
---
-
-CREATE TABLE `sms_queue_transaction` (
-  `Id` bigint(20) NOT NULL,
-  `SchoolId` bigint(20) NOT NULL,
-  `Phone` varchar(15) NOT NULL,
-  `Message` varchar(10000) NOT NULL,
-  `DateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Status` int(10) NOT NULL,
-  `UserId` bigint(20) DEFAULT NULL,
-  `Role` varchar(20) NOT NULL,
-  `MessageId` bigint(20) NOT NULL,
-  `TransactionId` bigint(20) NOT NULL,
-  `DeliveredTimeStamp` varchar(25) NOT NULL,
-  `Response` varchar(25) NOT NULL,
-  `Cause` varchar(25) NOT NULL,
-  `ErrorCode` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `student`
 --
 
@@ -1064,30 +975,6 @@ ALTER TABLE `sliptest_score`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `sms_api`
---
-ALTER TABLE `sms_api`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `sms_queue`
---
-ALTER TABLE `sms_queue`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sms_queue_low_priority`
---
-ALTER TABLE `sms_queue_low_priority`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `sms_queue_transaction`
---
-ALTER TABLE `sms_queue_transaction`
-  ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -1168,17 +1055,17 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `activity_score`
 --
 ALTER TABLE `activity_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `authorization`
 --
@@ -1188,7 +1075,7 @@ ALTER TABLE `authorization`
 -- AUTO_INCREMENT for table `cce_aspect_grade`
 --
 ALTER TABLE `cce_aspect_grade`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_aspect_primary`
 --
@@ -1213,22 +1100,22 @@ ALTER TABLE `cce_section_heading`
 -- AUTO_INCREMENT for table `cce_student_profile`
 --
 ALTER TABLE `cce_student_profile`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_topic_grade`
 --
 ALTER TABLE `cce_topic_grade`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_topic_primary`
 --
 ALTER TABLE `cce_topic_primary`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `class`
 --
@@ -1248,12 +1135,12 @@ ALTER TABLE `deleted_message`
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `exam_subject`
 --
 ALTER TABLE `exam_subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `exam_subject_group`
 --
@@ -1268,22 +1155,22 @@ ALTER TABLE `grade_class_wise`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `homework`
 --
 ALTER TABLE `homework`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mark`
 --
 ALTER TABLE `mark`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `message_recipient`
 --
@@ -1328,26 +1215,6 @@ ALTER TABLE `sliptest_portion`
 -- AUTO_INCREMENT for table `sliptest_score`
 --
 ALTER TABLE `sliptest_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
---
--- AUTO_INCREMENT for table `sms_api`
---
-ALTER TABLE `sms_api`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue`
---
-ALTER TABLE `sms_queue`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue_low_priority`
---
-ALTER TABLE `sms_queue_low_priority`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sms_queue_transaction`
---
-ALTER TABLE `sms_queue_transaction`
   MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `student`
@@ -1358,12 +1225,12 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `subactivity`
 --
 ALTER TABLE `subactivity`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subactivity_score`
 --
 ALTER TABLE `subactivity_score`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject`
 --
@@ -1403,12 +1270,12 @@ ALTER TABLE `term_remark`
 -- AUTO_INCREMENT for table `timetable`
 --
 ALTER TABLE `timetable`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user_group`
 --
 ALTER TABLE `user_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
