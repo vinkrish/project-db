@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2017 at 05:11 AM
+-- Generation Time: Jul 07, 2017 at 11:40 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shikshithadb`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -37,8 +37,7 @@ CREATE TABLE `activity` (
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `ActivityAvg` float NOT NULL DEFAULT '0',
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Orders` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,8 +51,7 @@ CREATE TABLE `activity_score` (
   `ActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Grade` varchar(10) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,8 +69,7 @@ CREATE TABLE `attendance` (
   `Type` varchar(10) NOT NULL DEFAULT 'Daily',
   `Session` int(11) NOT NULL DEFAULT '0',
   `DateAttendance` date NOT NULL,
-  `TypeOfLeave` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `TypeOfLeave` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -103,8 +100,7 @@ CREATE TABLE `cce_aspect_grade` (
   `Term` int(11) NOT NULL,
   `Grade` varchar(20) NOT NULL,
   `Value` int(11) NOT NULL,
-  `Description` varchar(200) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -116,8 +112,7 @@ CREATE TABLE `cce_aspect_grade` (
 CREATE TABLE `cce_aspect_primary` (
   `Id` bigint(20) NOT NULL,
   `Name` varchar(200) NOT NULL,
-  `TopicId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `TopicId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,8 +124,7 @@ CREATE TABLE `cce_aspect_primary` (
 CREATE TABLE `cce_coscholastic` (
   `Id` bigint(20) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
-  `Name` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -143,8 +137,7 @@ CREATE TABLE `cce_coscholastic_class` (
   `Id` bigint(20) NOT NULL,
   `CoScholasticId` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
-  `ClassName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `ClassName` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -156,8 +149,7 @@ CREATE TABLE `cce_coscholastic_class` (
 CREATE TABLE `cce_section_heading` (
   `Id` bigint(20) NOT NULL,
   `Name` varchar(200) NOT NULL,
-  `CoScholasticId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `CoScholasticId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -182,8 +174,7 @@ CREATE TABLE `cce_student_profile` (
   `VisionLeft` varchar(100) NOT NULL,
   `VisionRight` varchar(100) NOT NULL,
   `Ailment` varchar(100) NOT NULL,
-  `OralHygiene` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `OralHygiene` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -196,8 +187,7 @@ CREATE TABLE `cce_topic_grade` (
   `Id` bigint(20) NOT NULL,
   `TopicId` bigint(20) NOT NULL,
   `Grade` varchar(20) NOT NULL,
-  `Value` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Value` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -210,8 +200,7 @@ CREATE TABLE `cce_topic_primary` (
   `Id` bigint(20) NOT NULL,
   `Name` varchar(200) NOT NULL,
   `SectionHeadingId` bigint(20) NOT NULL,
-  `Evaluation` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Evaluation` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -243,8 +232,7 @@ CREATE TABLE `class` (
   `ClassName` varchar(100) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
   `TeacherId` bigint(20) DEFAULT '0',
-  `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -257,8 +245,7 @@ CREATE TABLE `class_subject_group` (
   `Id` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
-  `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `SubjectGroupName` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -286,8 +273,7 @@ CREATE TABLE `exam` (
   `ClassId` bigint(20) NOT NULL,
   `Term` int(11) NOT NULL DEFAULT '1',
   `Type` varchar(10) NOT NULL DEFAULT 'Mark',
-  `Percentage` float NOT NULL DEFAULT '100',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Percentage` float NOT NULL DEFAULT '100'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -305,8 +291,7 @@ CREATE TABLE `exam_subject` (
   `MaximumMark` float NOT NULL,
   `FailMark` float NOT NULL,
   `Percentage` float NOT NULL,
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Orders` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -319,8 +304,7 @@ CREATE TABLE `exam_subject_group` (
   `Id` bigint(20) NOT NULL,
   `ExamId` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
-  `SubjectGroupName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `SubjectGroupName` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -335,8 +319,7 @@ CREATE TABLE `grade_class_wise` (
   `Grade` varchar(20) NOT NULL DEFAULT '',
   `MarkFrom` int(11) NOT NULL,
   `MarkTo` int(11) NOT NULL,
-  `GradePoint` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `GradePoint` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -369,8 +352,7 @@ CREATE TABLE `homework` (
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
   `HomeworkMessage` longtext NOT NULL,
-  `HomeworkDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `HomeworkDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -386,8 +368,7 @@ CREATE TABLE `mark` (
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Grade` varchar(10) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -438,8 +419,7 @@ CREATE TABLE `move_student` (
   `SecIdTo` bigint(20) NOT NULL,
   `SectionFrom` varchar(100) DEFAULT NULL,
   `SectionTo` varchar(100) DEFAULT NULL,
-  `Status` varchar(20) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Status` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -452,8 +432,7 @@ CREATE TABLE `portion` (
   `Id` bigint(20) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
-  `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `PortionName` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -480,8 +459,7 @@ CREATE TABLE `school` (
   `State` varchar(100) NOT NULL,
   `Pincode` varchar(10) NOT NULL,
   `PrincipalId` bigint(20) NOT NULL,
-  `NumberOfStudents` int(11) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `NumberOfStudents` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -494,8 +472,7 @@ CREATE TABLE `section` (
   `Id` bigint(20) NOT NULL,
   `SectionName` varchar(100) NOT NULL,
   `ClassId` bigint(20) NOT NULL,
-  `TeacherId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `TeacherId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -533,8 +510,7 @@ CREATE TABLE `sliptest` (
   `MaximumMark` float NOT NULL,
   `Average` float NOT NULL,
   `TestDate` date NOT NULL,
-  `SubmissionDate` date NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `SubmissionDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -547,8 +523,7 @@ CREATE TABLE `sliptest_portion` (
   `Id` bigint(20) NOT NULL,
   `SliptestId` bigint(20) NOT NULL,
   `PortionId` bigint(20) NOT NULL,
-  `PortionName` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `PortionName` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -562,8 +537,7 @@ CREATE TABLE `sliptest_score` (
   `SliptestId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Grade` varchar(10) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -594,8 +568,7 @@ CREATE TABLE `student` (
   `City` varchar(100) NOT NULL,
   `District` varchar(50) NOT NULL,
   `State` varchar(100) NOT NULL,
-  `Pincode` varchar(10) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Pincode` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -613,8 +586,7 @@ CREATE TABLE `subactivity` (
   `Weightage` float NOT NULL,
   `Calculation` int(11) NOT NULL,
   `SubActivityAvg` float NOT NULL DEFAULT '0',
-  `Orders` int(11) NOT NULL DEFAULT '0',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Orders` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -628,8 +600,7 @@ CREATE TABLE `subactivity_score` (
   `SubActivityId` bigint(20) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Grade` varchar(10) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -644,8 +615,7 @@ CREATE TABLE `subject` (
   `SubjectName` varchar(100) NOT NULL,
   `PartitionType` int(11) NOT NULL,
   `TheorySubjectId` bigint(20) NOT NULL,
-  `PracticalSubjectId` bigint(20) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `PracticalSubjectId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -657,8 +627,7 @@ CREATE TABLE `subject` (
 CREATE TABLE `subject_group` (
   `Id` bigint(20) NOT NULL,
   `SchoolId` bigint(20) DEFAULT NULL,
-  `SubjectGroupName` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `SubjectGroupName` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -671,8 +640,7 @@ CREATE TABLE `subject_group_subject` (
   `Id` bigint(20) NOT NULL,
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
-  `SubjectName` varchar(100) DEFAULT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `SubjectName` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -685,8 +653,7 @@ CREATE TABLE `subject_student` (
   `Id` bigint(20) NOT NULL,
   `SectionId` bigint(20) NOT NULL,
   `SubjectId` bigint(20) NOT NULL,
-  `StudentIds` varchar(30000) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `StudentIds` varchar(30000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -722,8 +689,7 @@ CREATE TABLE `teacher` (
   `Qualification` varchar(100) NOT NULL,
   `DateOfJoining` varchar(20) DEFAULT NULL,
   `Gender` varchar(10) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -737,8 +703,7 @@ CREATE TABLE `term_remark` (
   `SectionId` bigint(20) NOT NULL,
   `StudentId` bigint(20) DEFAULT NULL,
   `Term` int(11) NOT NULL,
-  `Remark` text NOT NULL,
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Remark` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -754,8 +719,7 @@ CREATE TABLE `timetable` (
   `PeriodNo` int(11) NOT NULL,
   `SubjectId` bigint(20) DEFAULT NULL,
   `TimingFrom` time DEFAULT '00:00:00',
-  `TimingTo` time DEFAULT '00:00:00',
-  `DateTimeRecordInserted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `TimingTo` time DEFAULT '00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1080,22 +1044,22 @@ ALTER TABLE `cce_aspect_grade`
 -- AUTO_INCREMENT for table `cce_aspect_primary`
 --
 ALTER TABLE `cce_aspect_primary`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_coscholastic`
 --
 ALTER TABLE `cce_coscholastic`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_coscholastic_class`
 --
 ALTER TABLE `cce_coscholastic_class`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_section_heading`
 --
 ALTER TABLE `cce_section_heading`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `cce_student_profile`
 --
@@ -1120,12 +1084,12 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1683;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `class_subject_group`
 --
 ALTER TABLE `class_subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `deleted_message`
 --
@@ -1145,12 +1109,12 @@ ALTER TABLE `exam_subject`
 -- AUTO_INCREMENT for table `exam_subject_group`
 --
 ALTER TABLE `exam_subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `grade_class_wise`
 --
 ALTER TABLE `grade_class_wise`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
@@ -1185,27 +1149,27 @@ ALTER TABLE `move_student`
 -- AUTO_INCREMENT for table `portion`
 --
 ALTER TABLE `portion`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5756;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `sliptest`
 --
 ALTER TABLE `sliptest`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `sliptest_portion`
 --
@@ -1220,7 +1184,7 @@ ALTER TABLE `sliptest_score`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=496701;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2678;
 --
 -- AUTO_INCREMENT for table `subactivity`
 --
@@ -1235,32 +1199,32 @@ ALTER TABLE `subactivity_score`
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6024;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `subject_group`
 --
 ALTER TABLE `subject_group`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1298;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `subject_group_subject`
 --
 ALTER TABLE `subject_group_subject`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject_student`
 --
 ALTER TABLE `subject_student`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject_teacher`
 --
 ALTER TABLE `subject_teacher`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18693;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15691;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT for table `term_remark`
 --
