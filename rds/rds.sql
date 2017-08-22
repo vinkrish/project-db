@@ -11,7 +11,7 @@ CREATE TABLE `activity` (
   `ActivityAvg` float NOT NULL DEFAULT '0',
   `Orders` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `activity_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -33,7 +33,7 @@ CREATE TABLE `attendance` (
   `DateAttendance` date NOT NULL,
   `TypeOfLeave` varchar(10) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `authorization` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -41,7 +41,7 @@ CREATE TABLE `authorization` (
   `Token` varchar(100) NOT NULL,
   `FcmToken` varchar(512) NOT NULL DEFAULT '""',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cce_aspect_grade` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -132,7 +132,7 @@ CREATE TABLE `chat` (
   `CreatedBy` bigint(20) NOT NULL,
   `CreatorRole` varchar(15) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `class` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -141,7 +141,7 @@ CREATE TABLE `class` (
   `TeacherId` bigint(20) DEFAULT '0',
   `AttendanceType` varchar(10) NOT NULL DEFAULT 'Daily',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `class_subject_group` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -149,7 +149,7 @@ CREATE TABLE `class_subject_group` (
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectGroupName` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `deleted_message` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -168,7 +168,7 @@ CREATE TABLE `exam` (
   `Calculation` int(11) DEFAULT '0',
   `Percentage` float NOT NULL DEFAULT '100',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `exam_subject` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -182,7 +182,7 @@ CREATE TABLE `exam_subject` (
   `Percentage` float NOT NULL,
   `Orders` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `exam_subject_group` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -190,7 +190,7 @@ CREATE TABLE `exam_subject_group` (
   `SubjectGroupId` bigint(20) NOT NULL,
   `SubjectGroupName` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `grade_class_wise` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -200,7 +200,7 @@ CREATE TABLE `grade_class_wise` (
   `MarkTo` int(11) NOT NULL,
   `GradePoint` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `groups` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -216,7 +216,7 @@ CREATE TABLE `groups` (
   `CreatedDate` date NOT NULL,
   `IsActive` char(1) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `homework` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -226,7 +226,7 @@ CREATE TABLE `homework` (
   `HomeworkMessage` longtext NOT NULL,
   `HomeworkDate` date NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `mark` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -251,7 +251,7 @@ CREATE TABLE `message` (
   `ImageUrl` varchar(255) DEFAULT NULL,
   `CreatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `message_recipient` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -281,7 +281,7 @@ CREATE TABLE `portion` (
   `SubjectId` bigint(20) NOT NULL,
   `PortionName` text NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `school` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -303,7 +303,7 @@ CREATE TABLE `school` (
   `PrincipalId` bigint(20) NOT NULL,
   `NumberOfStudents` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `section` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -311,7 +311,7 @@ CREATE TABLE `section` (
   `ClassId` bigint(20) NOT NULL,
   `TeacherId` bigint(20) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `service` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -325,7 +325,7 @@ CREATE TABLE `service` (
   `IsHomeworkSms` tinyint(1) DEFAULT '0',
   `IsTimetable` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `sliptest` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -383,7 +383,7 @@ CREATE TABLE `student` (
   `State` varchar(100) NOT NULL,
   `Pincode` varchar(10) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2680 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subactivity` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -395,7 +395,7 @@ CREATE TABLE `subactivity` (
   `SubActivityAvg` float NOT NULL DEFAULT '0',
   `Orders` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subactivity_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -414,14 +414,14 @@ CREATE TABLE `subject` (
   `TheorySubjectId` bigint(20) NOT NULL,
   `PracticalSubjectId` bigint(20) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subject_group` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SchoolId` bigint(20) DEFAULT NULL,
   `SubjectGroupName` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subject_group_subject` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -429,7 +429,7 @@ CREATE TABLE `subject_group_subject` (
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subject_student` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -437,7 +437,7 @@ CREATE TABLE `subject_student` (
   `SubjectId` bigint(20) NOT NULL,
   `StudentIds` varchar(30000) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `subject_teacher` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -448,7 +448,7 @@ CREATE TABLE `subject_teacher` (
   `TeacherName` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `SectionId` (`SectionId`,`SubjectId`)
-) ENGINE=InnoDB AUTO_INCREMENT=727 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `teacher` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -464,7 +464,7 @@ CREATE TABLE `teacher` (
   `Gender` varchar(10) NOT NULL,
   `Email` varchar(100) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `term_remark` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -484,7 +484,7 @@ CREATE TABLE `timetable` (
   `TimingFrom` time DEFAULT '00:00:00',
   `TimingTo` time DEFAULT '00:00:00',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `user_group` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -493,4 +493,54 @@ CREATE TABLE `user_group` (
   `GroupId` bigint(20) NOT NULL,
   `IsActive` char(1) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2723 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SchoolId` bigint(20) NOT NULL,
+  `EventTitle` varchar(50) NOT NULL,
+  `EventDescription` varchar(500) DEFAULT NULL,
+  `StartDate` date NOT NULL,
+  `EndDate` date DEFAULT NULL,
+  `StartTime` bigint(20) DEFAULT NULL,
+  `EndTime` bigint(20) DEFAULT NULL,
+  `NoOfDays` int(11) NOT NULL,
+  `IsContinuousDays` tinyint(1) NOT NULL DEFAULT '0',
+  `IsFullDayEvent` tinyint(1) NOT NULL DEFAULT '0',
+  `IsRecurring` tinyint(1) NOT NULL DEFAULT '0',
+  `CreatedBy` varchar(50) NOT NULL,
+  `CreatedDate` date NOT NULL,
+  `ParentEventId` int(11) DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event_dates` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `EventId` int(11) NOT NULL,
+  `EventDate` date NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event_exception` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `EventId` int(11) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `IsRescheduled` tinyint(1) NOT NULL DEFAULT '0',
+  `IsCancelled` tinyint(1) NOT NULL DEFAULT '0',
+  `CreatedBy` varchar(50) NOT NULL,
+  `CreatedDate` date NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `event_recurring_pattern` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `EventId` int(11) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
+  `RecurringType` enum('weekly','monthly') DEFAULT NULL,
+  `SeparationCount` int(11) DEFAULT '0',
+  `MaxNumOfOccurrences` int(11) DEFAULT NULL,
+  `DayOfWeek` int(11) DEFAULT NULL,
+  `WeekOfMonth` int(11) DEFAULT NULL,
+  `DayOfMonth` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

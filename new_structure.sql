@@ -17,10 +17,60 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `test`
+-- Database: `shikshithadb`
 --
 
 -- --------------------------------------------------------
+
+CREATE TABLE event (
+    Id int NOT NULL AUTO_INCREMENT,
+	SchoolId bigint(20) NOT NULL,
+    EventTitle varchar(50) NOT NULL,
+    EventDescription varchar(500),
+    StartDate date NOT NULL,
+    EndDate date,
+    StartTime bigint(20),
+    EndTime bigint(20),
+	NoOfDays int NOT NULL,
+	IsContinuousDays tinyint(1) NOT NULL DEFAULT 0,
+    IsFullDayEvent tinyint(1) NOT NULL DEFAULT 0,
+    IsRecurring tinyint(1) NOT NULL DEFAULT 0,
+    CreatedBy varchar(50) NOT NULL,
+    CreatedDate date NOT NULL,
+    ParentEventId int DEFAULT 0,
+    PRIMARY KEY (Id)
+);
+
+CREATE TABLE event_recurring_pattern (
+	Id int NOT NULL AUTO_INCREMENT,
+    EventId int NOT NULL,
+	SchoolId bigint(20) NOT NULL,
+    RecurringType enum('weekly','monthly'),
+    SeparationCount int DEFAULT 0,
+    MaxNumOfOccurrences int,
+    DayOfWeek int,
+    WeekOfMonth int,
+    DayOfMonth int,
+    PRIMARY KEY (Id)
+);
+
+CREATE TABLE event_exception (
+    Id int NOT NULL AUTO_INCREMENT,
+    EventId int NOT NULL,
+	SchoolId bigint(20) NOT NULL,
+    IsRescheduled tinyint(1) NOT NULL DEFAULT 0,
+    IsCancelled tinyint(1) NOT NULL DEFAULT 0,
+    CreatedBy varchar(50) NOT NULL,
+    CreatedDate date NOT NULL,
+    PRIMARY KEY (Id)
+);
+
+CREATE TABLE event_dates(
+	Id int NOT NULL AUTO_INCREMENT,
+	EventId int NOT NULL,
+	EventDate date NOT NULL,
+	PRIMARY KEY (Id)
+);
 
 --
 -- Table structure for table `activity`
