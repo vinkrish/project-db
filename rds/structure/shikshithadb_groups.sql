@@ -35,8 +35,9 @@ CREATE TABLE `groups` (
   `CreatorRole` varchar(20) NOT NULL DEFAULT '',
   `CreatedDate` date NOT NULL,
   `IsActive` char(1) NOT NULL,
+  `SchoolId` bigint(20) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -25,12 +25,15 @@ DROP TABLE IF EXISTS `message_recipient`;
 CREATE TABLE `message_recipient` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `RecipientId` bigint(20) NOT NULL,
-  `Role` enum('admin','teacher','student') NOT NULL,
-  `GroupId` bigint(20) NOT NULL DEFAULT '0',
-  `MessageId` bigint(20) NOT NULL,
+  `RecipientName` varchar(50) DEFAULT NULL,
+  `Role` varchar(25) DEFAULT NULL,
+  `GroupId` bigint(20) DEFAULT '0',
+  `MessageId` bigint(20) DEFAULT '0',
   `IsRead` char(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ReadAt` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `unique_index` (`RecipientId`,`GroupId`,`MessageId`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -42,4 +45,4 @@ CREATE TABLE `message_recipient` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22 15:30:30
+-- Dump completed on 2017-08-27  8:06:12
