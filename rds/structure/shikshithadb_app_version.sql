@@ -16,14 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `school`
+-- Table structure for table `app_version`
 --
 
-LOCK TABLES `school` WRITE;
-/*!40000 ALTER TABLE `school` DISABLE KEYS */;
-INSERT INTO `school` VALUES (1,'A lengthy School Name, Planet Earth, Milkyway Galaxy','shikshitha.com','','WLSN','Mr. Name','admin','apassword','020123456','7406087387','8453697713','vinaykrishna89@yahoo.co.in','New Airport Road','Pune','Pune','Maharastra','123456',1,2545,0),(2,'Maruthi International School','https://www.mis.ac.in/','mis.jpg','MIS','Aanchal','misadmin','mispassword',' 0816-2255175','9008497608','9880705899','aanchal@gmail.com','No.9, I Main, Siddaganga Extension','Tumkur','Tumkur','Karnataka','572102',164,490,0);
-/*!40000 ALTER TABLE `school` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `app_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `app_version` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `VersionId` int(11) NOT NULL,
+  `VersionName` varchar(25) NOT NULL,
+  `AppName` varchar(20) NOT NULL,
+  `Status` varchar(10) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -34,4 +41,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-14  9:20:31
+-- Dump completed on 2017-09-13 10:14:11

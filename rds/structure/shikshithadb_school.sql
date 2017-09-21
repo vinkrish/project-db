@@ -26,6 +26,7 @@ CREATE TABLE `school` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SchoolName` varchar(100) NOT NULL,
   `Website` varchar(100) NOT NULL,
+  `Logo` varchar(16) NOT NULL,
   `ShortenedSchoolName` varchar(100) NOT NULL,
   `ContactPersonName` varchar(200) NOT NULL,
   `AdminUsername` varchar(100) NOT NULL,
@@ -41,8 +42,9 @@ CREATE TABLE `school` (
   `Pincode` varchar(10) NOT NULL,
   `PrincipalId` bigint(20) NOT NULL,
   `NumberOfStudents` int(11) NOT NULL,
+  `NumberOfSms` int(11) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ CREATE TABLE `school` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22 15:29:52
+-- Dump completed on 2017-09-14  9:19:20
