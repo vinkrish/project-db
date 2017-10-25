@@ -16,13 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `cce_coscholastic_class`
+-- Table structure for table `app_user`
 --
 
-LOCK TABLES `cce_coscholastic_class` WRITE;
-/*!40000 ALTER TABLE `cce_coscholastic_class` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cce_coscholastic_class` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `app_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `app_user` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `SchoolId` bigint(20) NOT NULL,
+  `UserId` bigint(20) NOT NULL,
+  `AppName` varchar(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -33,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:38:06
+-- Dump completed on 2017-10-25 20:29:36

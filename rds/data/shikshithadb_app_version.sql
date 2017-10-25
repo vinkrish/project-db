@@ -16,12 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `term_remark`
+-- Dumping data for table `app_version`
 --
 
-LOCK TABLES `term_remark` WRITE;
-/*!40000 ALTER TABLE `term_remark` DISABLE KEYS */;
-/*!40000 ALTER TABLE `term_remark` ENABLE KEYS */;
+LOCK TABLES `app_version` WRITE;
+/*!40000 ALTER TABLE `app_version` DISABLE KEYS */;
+INSERT INTO `app_version` VALUES (59,27,'2.7','teacher','obsolete'),(61,27,'2.7','principal','obsolete'),(62,21,'2.1','admin','obsolete'),(64,22,'2.2','admin','obsolete'),(66,28,'2.8','principal','obsolete'),(67,28,'2.8','teacher','obsolete'),(68,26,'2.6','principal','obsolete'),(69,20,'2.0','admin','obsolete'),(70,26,'2.6','teacher','obsolete'),(71,23,'2.3','admin','obsolete'),(72,26,'2.6','parent','update'),(73,29,'2.9','principal','obsolete'),(74,29,'2.9','teacher','obsolete'),(77,1,'0.1','sms','obsolete'),(78,24,'2.4','admin','obsolete'),(79,30,'3.0','principal','obsolete'),(80,30,'3.0','teacher','update'),(81,27,'27','parent','update'),(82,25,'2.5','admin','obsolete'),(83,28,'2.8','parent','update'),(84,31,'3.1','principal','obsolete'),(85,31,'3.1','teacher','update'),(86,26,'2.6','admin','obsolete'),(87,2,'0.2','sms','obsolete'),(88,3,'0.3','sms','live'),(89,27,'2.7','admin','live'),(90,29,'2.9','parent','live'),(91,32,'3.2','principal','live'),(92,32,'3.2','teacher','live');
+/*!40000 ALTER TABLE `app_version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -33,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:44:50
+-- Dump completed on 2017-10-25 20:34:15

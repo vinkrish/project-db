@@ -25,10 +25,12 @@ DROP TABLE IF EXISTS `deleted_message`;
 CREATE TABLE `deleted_message` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `MessageId` bigint(20) NOT NULL,
-  `UserId` bigint(20) NOT NULL,
-  `DeletedAt` datetime DEFAULT NULL,
+  `SenderId` bigint(20) NOT NULL,
+  `RecipientId` bigint(20) NOT NULL,
+  `GroupId` bigint(20) NOT NULL,
+  `DeletedAt` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -40,4 +42,4 @@ CREATE TABLE `deleted_message` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22 15:30:06
+-- Dump completed on 2017-10-25 20:28:09

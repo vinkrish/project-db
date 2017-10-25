@@ -21,7 +21,7 @@
 
 LOCK TABLES `school` WRITE;
 /*!40000 ALTER TABLE `school` DISABLE KEYS */;
-INSERT INTO `school` VALUES (1,'A lengthy School Name, Planet Earth, Milkyway Galaxy','shikshitha.com','','WLSN','Mr. Name','admin','apassword','020123456','7406087387','8453697713','vinaykrishna89@yahoo.co.in','New Airport Road','Pune','Pune','Maharastra','123456',1,2545,0),(2,'Maruthi International School','https://www.mis.ac.in/','mis.jpg','MIS','Aanchal','misadmin','mispassword',' 0816-2255175','9008497608','9880705899','aanchal@gmail.com','No.9, I Main, Siddaganga Extension','Tumkur','Tumkur','Karnataka','572102',164,490,0);
+INSERT INTO `school` VALUES (1,'A lengthy School Name, Planet Earth, Milkyway Galaxy','shikshitha.com','','WLSN','Mr. Name','admin','apassword','020123456','7406087387','8453697713','vinaykrishna89@yahoo.co.in','New Airport Road','Pune','Pune','Maharastra','123456',1,2545,89),(2,'Maruthi International School','https://www.mis.ac.in/','mis.jpg','MIS','Aanchal','misadmin','mispassword',' 0816-2255175','9008497608','9880705899','aanchal@gmail.com','No.9, I Main, Siddaganga Extension','Tumkur','Tumkur','Karnataka','572102',164,490,1423);
 /*!40000 ALTER TABLE `school` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -34,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-14  9:20:31
+-- Dump completed on 2017-10-25 20:34:51

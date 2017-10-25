@@ -30,12 +30,12 @@ CREATE TABLE `message` (
   `RecipientRole` varchar(25) NOT NULL,
   `GroupId` bigint(20) NOT NULL,
   `MessageType` varchar(8) NOT NULL,
-  `MessageBody` varchar(1000) NOT NULL DEFAULT '',
+  `MessageBody` text NOT NULL,
   `ImageUrl` varchar(100) NOT NULL DEFAULT '',
   `VideoUrl` varchar(256) NOT NULL DEFAULT '',
   `CreatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -47,4 +47,4 @@ CREATE TABLE `message` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22 15:24:04
+-- Dump completed on 2017-10-25 20:28:18

@@ -16,14 +16,23 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `exam_subject_group`
+-- Table structure for table `client`
 --
 
-LOCK TABLES `exam_subject_group` WRITE;
-/*!40000 ALTER TABLE `exam_subject_group` DISABLE KEYS */;
-INSERT INTO `exam_subject_group` VALUES (3,1,1,'ENGLISH'),(4,1,3,'MATHEMATICS'),(5,1,4,'ENVIRONMENTAL SCIENCE'),(6,1,5,'COMPUTER SCIENCE'),(7,1,6,'GENERAL KNOWLEDGE');
-/*!40000 ALTER TABLE `exam_subject_group` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `client` (
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) NOT NULL,
+  `Mobile` varchar(10) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `SmsCredentials` int(11) DEFAULT NULL,
+  `SmsCount` int(11) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -34,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:41:52
+-- Dump completed on 2017-10-25 20:24:00

@@ -16,13 +16,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `subactivity_score`
+-- Table structure for table `sms_customer`
 --
 
-LOCK TABLES `subactivity_score` WRITE;
-/*!40000 ALTER TABLE `subactivity_score` DISABLE KEYS */;
-/*!40000 ALTER TABLE `subactivity_score` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `sms_customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sms_customer` (
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Message` varchar(160) NOT NULL,
+  `ClientId` bigint(20) NOT NULL,
+  `SentTo` text NOT NULL,
+  `SentTime` bigint(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -33,4 +41,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:37:41
+-- Dump completed on 2017-10-25 20:27:59

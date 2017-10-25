@@ -16,14 +16,20 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `exam`
+-- Table structure for table `class_event`
 --
 
-LOCK TABLES `exam` WRITE;
-/*!40000 ALTER TABLE `exam` DISABLE KEYS */;
-INSERT INTO `exam` VALUES (1,'SA1',5,1,'Mark',0,100),(2,'SA2',5,2,'Mark',0,100);
-/*!40000 ALTER TABLE `exam` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `class_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `class_event` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `EventId` int(11) NOT NULL,
+  `ClassId` bigint(20) NOT NULL,
+  `ClassName` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -34,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:41:07
+-- Dump completed on 2017-10-25 20:23:41

@@ -16,12 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `cce_aspect_primary`
+-- Dumping data for table `app_user`
 --
 
-LOCK TABLES `cce_aspect_primary` WRITE;
-/*!40000 ALTER TABLE `cce_aspect_primary` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cce_aspect_primary` ENABLE KEYS */;
+LOCK TABLES `app_user` WRITE;
+/*!40000 ALTER TABLE `app_user` DISABLE KEYS */;
+INSERT INTO `app_user` VALUES (1,1,17,'admin'),(2,1,17,'sms'),(3,2,184,'admin'),(4,2,184,'sms');
+/*!40000 ALTER TABLE `app_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -33,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:40:46
+-- Dump completed on 2017-10-25 20:34:59

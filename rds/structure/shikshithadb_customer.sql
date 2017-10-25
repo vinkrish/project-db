@@ -16,14 +16,24 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `grade_class_wise`
+-- Table structure for table `customer`
 --
 
-LOCK TABLES `grade_class_wise` WRITE;
-/*!40000 ALTER TABLE `grade_class_wise` DISABLE KEYS */;
-INSERT INTO `grade_class_wise` VALUES (1,5,'S',91,100,10),(2,5,'A+',81,90,9),(3,5,'A',71,80,8),(4,5,'B+',61,70,7),(5,5,'B',51,60,6),(6,5,'C+',41,50,5),(7,5,'C',35,40,4);
-/*!40000 ALTER TABLE `grade_class_wise` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer` (
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `ClientId` bigint(20) NOT NULL,
+  `RefId` varchar(15) DEFAULT NULL,
+  `Name` varchar(100) DEFAULT NULL,
+  `Mobile` varchar(10) NOT NULL,
+  `Date` date NOT NULL,
+  `Place` varchar(50) DEFAULT NULL,
+  `CreatedTime` bigint(20) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -34,4 +44,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-27 11:41:18
+-- Dump completed on 2017-10-25 20:27:29

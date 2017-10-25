@@ -45,4 +45,4 @@ CREATE TABLE `event_recurring_pattern` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-22 15:23:07
+-- Dump completed on 2017-10-25 20:21:21
