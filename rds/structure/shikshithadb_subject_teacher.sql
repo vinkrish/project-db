@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `subject_teacher`;
 CREATE TABLE `subject_teacher` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `SectionId` bigint(20) NOT NULL,
+  `ClassId` bigint(20) NOT NULL DEFAULT '0',
   `SubjectId` bigint(20) NOT NULL,
   `SubjectName` varchar(100) DEFAULT NULL,
   `TeacherId` bigint(20) DEFAULT '0',
@@ -42,4 +43,4 @@ CREATE TABLE `subject_teacher` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-25 20:25:34
+-- Dump completed on 2017-12-17 20:28:30

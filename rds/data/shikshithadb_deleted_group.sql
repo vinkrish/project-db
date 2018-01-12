@@ -16,21 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `subactivity_score`
+-- Dumping data for table `deleted_group`
 --
 
-DROP TABLE IF EXISTS `subactivity_score`;
-CREATE TABLE `subactivity_score` (
-  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `SubActivityId` bigint(20) NOT NULL,
-  `RollNo` int(11) NOT NULL,
-  `StudentId` bigint(20) NOT NULL,
-  `StudentName` varchar(100) NOT NULL,
-  `Mark` float NOT NULL DEFAULT '0',
-  `Grade` varchar(10) NOT NULL DEFAULT '',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `deleted_group` WRITE;
+/*!40000 ALTER TABLE `deleted_group` DISABLE KEYS */;
+INSERT INTO `deleted_group` VALUES (1,17,12,1,1508423828868),(2,17,2,1,1508424005256),(3,17,1,1,1508424952902),(4,17,29,1,1508425371571),(5,17,30,1,1508425927517),(6,17,31,1,1508428282264),(7,17,32,1,1508429280842),(8,17,33,1,1508429288983),(9,1,35,1,1508477739856),(10,163,36,1,1508477915444),(11,17,34,1,1508557355830),(12,17,38,1,1508641112968),(13,163,37,1,1508641419582),(14,17,42,1,1508746979806),(15,17,43,1,1510538201693);
+/*!40000 ALTER TABLE `deleted_group` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -41,4 +34,4 @@ CREATE TABLE `subactivity_score` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-25 20:20:53
+-- Dump completed on 2017-12-12 20:15:53

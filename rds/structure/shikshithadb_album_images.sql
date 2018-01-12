@@ -19,7 +19,7 @@
 -- Table structure for table `album_images`
 --
 
-DROP TABLE IF EXISTS `album_images`;
+DROP TABLE IF EXISTS `album_image`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `album_images` (

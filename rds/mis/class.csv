@@ -1,0 +1,14 @@
+Id,ClassName,SchoolId,TeacherId,AttendanceType
+19,"TLC - 1",2,184,Daily
+20,"TLC - 2",2,184,Daily
+21,"Pre - Primary",2,184,Daily
+22,"Class 1",2,168,Daily
+23,"Class 2",2,173,Daily
+24,"Class 3",2,172,Daily
+25,"Class 4",2,176,Daily
+26,"Class 5",2,184,Daily
+27,"Class 6",2,171,Daily
+28,"Class 7",2,173,Daily
+29,"Class 8",2,202,Daily
+30,"Class 9",2,201,Daily
+31,"Class 10",2,199,Daily

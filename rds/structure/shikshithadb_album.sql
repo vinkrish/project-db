@@ -23,15 +23,18 @@ DROP TABLE IF EXISTS `album`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `album` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
+  `CoverPic` varchar(50) DEFAULT '',
   `CreatedBy` bigint(20) NOT NULL,
   `CreatorName` varchar(100) NOT NULL DEFAULT '',
   `CreatorRole` varchar(20) NOT NULL DEFAULT '',
   `CreatedAt` bigint(20) NOT NULL,
   `SchoolId` bigint(20) NOT NULL,
+  `ClassId` bigint(20) NOT NULL DEFAULT '0',
+  `SectionId` bigint(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -43,4 +46,4 @@ CREATE TABLE `album` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 21:00:10
+-- Dump completed on 2017-12-17 20:01:37

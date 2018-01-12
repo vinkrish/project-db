@@ -20,12 +20,12 @@
 --
 
 DROP TABLE IF EXISTS `activity_score`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `activity_score` (
   `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ActivityId` bigint(20) NOT NULL,
+  `RollNo` int(11) NOT NULL,
   `StudentId` bigint(20) NOT NULL,
+  `StudentName` varchar(100) NOT NULL,
   `Mark` float NOT NULL DEFAULT '0',
   `Grade` varchar(10) NOT NULL DEFAULT '',
   PRIMARY KEY (`Id`)
